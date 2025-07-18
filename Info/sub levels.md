@@ -11,7 +11,7 @@ The higher the sub level, the better the quality of the subtitles.<br>
 The sub levels are as follows:
 - **Level 3 (L3)**
     - Generally, the best quality fansubs.
-    - Required: ED, TS, Song Styling, fixed timing issues, QC.
+    - Required: ED, TS, Song Styling, fixed timing issues, TLC (doesn't have to be 100% check), QC.
 - **Level 2 (L2)**
     - Mid-tier fansubs.
     - Two of the following: ED, TS, Song Styling.
@@ -28,6 +28,14 @@ The sub levels are as follows:
     - A release can obtain a higher level than other batch releases by being higher quality.
         - Quality is slightly subjective, but it *usually* does not depend on the encode quality, as this is categorized by Video Type.
 
+!!!info Edge case:
+If an episode can't have a certain job done, then you can count it as being done.<br>
+Example 1: If an episode has no songs, then you can count Song Styling as being done.<br>
+Example 2: If an episode has no signs, then you can count TS as being done.<br>
+However, just because an episode has no songs or signs, doesn't automatically make it L2.<br>
+If you have done other jobs (TLC, QC, etc), then you can make it L2.
+!!!
+
 Here's a flow chart to help you categorize your release's sub level:
 
 ```mermaid
@@ -39,7 +47,7 @@ config:
 graph LR
     A{Are the subtitles untouched from their official source?} -->|Yes| B[Level 0]
     A -->|No| C{Have you done at least 2 of the following:<br>ED, TS, Song Styling?}
-    C -->|Yes| E{Did you do ED, TS, Song Styling,<br>fix timing issues and a QC pass?}
+    C -->|Yes| E{Did you do ED, TS, Song Styling,<br>fix timing issues, part TLC and a QC pass?}
     C -->|No| D[Level 1]
     E -->|Yes| G{Is this a batch release?}
     E -->|No| F[Level 2]
