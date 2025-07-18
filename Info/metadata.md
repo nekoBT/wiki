@@ -24,11 +24,12 @@ The **Video Type** tag indicates the video's source and any encoding applied.
 | BD - Mini    | Blu-ray Disc encode with reduced quality to save space.                     | 12  |
 | BD - BDMV    | Blu-ray Disc in the BDMV structure.                                         | 11  |
 | BD - ISO     | Blu-ray Disc ISO image.                                                     | 10  |
+| BD - ISO (Unpacked) | An unpacked Blu-ray Disc ISO image.                                  | 16  |
 | WEB - Raw    | Direct copy from a streaming service (WEB-DL).                              | 9   |
 | WEB - Encode | Re-encode of the WEB source.                                                | 8   |
 | WEB - Mini   | WEB source encode with reduced quality to save space.                       | 7   |
 | DVD - Encode | An encode of a DVD.                                                         | 6   |
-| DVD - Raw    | Direct copy of a DVD in a playable format.                                  | 5   |
+| DVD - Remux  | Direct copy of a DVD in a playable format.                                  | 5   |
 | TV - Raw     | Direct copy of a TV broadcast.                                              | 4   |
 | TV - Encode  | TV broadcast, re-encoded.                                                   | 3   |
 | Laserdisc    | Laserdisc source in a playable format.                                      | 2   |
