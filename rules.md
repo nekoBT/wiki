@@ -43,7 +43,7 @@ This list is not exhaustive. Staff may decide that your actions negatively affec
 11. **No impersonation**. Impersonating another user or group (even if they aren't registered on the site), or claiming to be a staff member is not allowed.
 12. **"Bad" video or audio quality is not allowed.** This is subjective. Torrents where the video or audio quality has been significantly degraded, due to poor encoding, are not allowed. Generally, don't do these, *just for the sake of it*:
     - No AI upscaling (like 1080p->4k, downscaling and rescaling is fine if you know what you're doing).
-    - No Frame interpolation (increasing FPS).
+    - No Frame interpolation (increasing FPS. Exceptions are made for field interpolation required to properly deinterlace interlaced material).
     - No super-low-bitrate encodes (mini's are allowed, but don't cook it too hard).
 13. **No leaked content.** Content that isn't officially released is not allowed. This also means **no CAM or Telesync releases.**
 14. **No tracker cheating.** You are not allowed to manipulate your tracker stats in any way. This includes:
