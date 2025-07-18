@@ -1,0 +1,22 @@
+input: .
+output: .retype
+
+url: wiki.nekobt.to # Use your website address here
+
+start:
+  # Uncomment the next line to try Retype Pro features
+  # pro: true
+
+branding:
+  title: nekoBT
+  label: Wiki
+
+meta:
+  title: " - nekoBT Wiki"
+
+#links:
+#- text: Getting Started
+#  link: https://retype.com/guides/getting-started/
+
+footer:
+  copyright: ":3"
