@@ -41,6 +41,15 @@ You can invite registered users and unregistered users to your group.
 - If the user is registered, they will receive a notification with the invite.
 - If the user is unregistered, you'll need to send them the invite link through the group edit page.
 
+### Primary vs Secondary Groups
+Torrents can have a primary group and secondary groups.
+- **Primary Group**: The main group that is credited for the release. This is the group that is shown in the torrent title, usually referred to as the `Release Group`.
+- **Secondary Groups**: Other groups that's work is used in the release. These groups are shown in the contributors section.
+    - You can add secondary groups when uploading a torrent, or edit the torrent later to add them.
+
+By using secondary groups, it allows groups to see who has used their work, and makes finding muxes of other's work easier.<br>
+For example, if `Apple` makes fansubs but they don't have dual audio, users looking for dual audio can search for torrents that contain `Apple` as a secondary group to find muxes that include their fansubs.
+
 ### Permissions
 Groups have 3 permission levels:
 - **Member**: Part of the group, no special permissions.

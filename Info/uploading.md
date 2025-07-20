@@ -43,6 +43,15 @@ If you want to upload to another public tracker as well (Nyaa, etc), you should 
 ### 4. Upload your torrent
 Now you can upload your torrent file to the upload page. Make sure to fill in all the required fields, and **check the Preview box** for warnings and errors when parsing your torrent. You should also check that the media matched to your torrent is correct.
 
+Not sure what to put in each field? You can find more information about each field here:
+- [Primary Group](/info/groups)
+- [Secondary Groups](/info/groups#primary-vs-secondary-groups)
+- [Sub Level](/info/sub-levels)
+- [Machine-Translated Subtitles](/info/metadata#mtl-machine-translation)
+- [Video Type](/info/metadata#video-type)
+- [Video Codec](/info/metadata#video-codec)
+- [Languages](/info/metadata#languages)
+
 
 ### 5. Seed your torrent
 After uploading, you should start seeding your torrent immediately. This is important to ensure that users can download your release. If you don't seed, your torrent will not be available for others to download.
