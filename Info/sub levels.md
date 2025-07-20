@@ -28,6 +28,7 @@ The sub levels are as follows:
     - Contains batch fixes, such as typos, missing typesetting, etc.
     - A release can obtain a higher level than other batch releases by being higher quality.
         - Quality is slightly subjective, but it *usually* does not depend on the encode quality, as this is categorized by Video Type.
+    - As these levels are reserved for batch releases, they are not available for movies.
 
 !!!info Edge case:
 If an episode can't have a certain job done, then you can count it as being done.<br>
@@ -50,7 +51,7 @@ graph LR
     A -->|No| C{Have you done at least 2 of the following:<br>ED, TS, Song Styling?}
     C -->|Yes| E{Did you do ED, TS, Song Styling,<br>fix timing issues, part TLC and a QC pass?}
     C -->|No| D[Level 1]
-    E -->|Yes| G{Is this a batch release?}
+    E -->|Yes| G{Is this a batch release and not a movie?}
     E -->|No| F[Level 2]
     G -->|Yes| I[Level 3 +<br>Request Upgrade to L4+]
     G -->|No| H[Level 3]
