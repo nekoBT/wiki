@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806331696742">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806333306012">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -30,11 +30,11 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=3.11.0.806331696742" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.11.0.806333306012" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.806331696742" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.806333306012" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.806331696742" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.806333306012" data-turbo-eval="false" defer></script>
     <script id="mermaid-js" data-cfasync="false" src="../../resources/js/mermaid.js?v=3.11.0" defer></script>
 
     <meta name="darkreader-lock" />
@@ -203,6 +203,7 @@ The higher the sub level, the better the quality of the subtitles.<br></p>
 <li>Quality is slightly subjective, but it <em>usually</em> does not depend on the encode quality, as this is categorized by Video Type.</li>
 </ul>
 </li>
+<li>As these levels are reserved for batch releases, they are not available for movies.</li>
 </ul>
 </li>
 </ul>
@@ -239,7 +240,7 @@ graph LR
     A --&gt;|No| C{Have you done at least 2 of the following:&lt;br&gt;ED, TS, Song Styling?}
     C --&gt;|Yes| E{Did you do ED, TS, Song Styling,&lt;br&gt;fix timing issues, part TLC and a QC pass?}
     C --&gt;|No| D[Level 1]
-    E --&gt;|Yes| G{Is this a batch release?}
+    E --&gt;|Yes| G{Is this a batch release and not a movie?}
     E --&gt;|No| F[Level 2]
     G --&gt;|Yes| I[Level 3 +&lt;br&gt;Request Upgrade to L4+]
     G --&gt;|No| H[Level 3]</pre></div>
