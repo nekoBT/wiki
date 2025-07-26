@@ -11,7 +11,7 @@ The higher the sub level, the better the quality of the subtitles.<br>
 The sub levels are as follows:
 - **Level 3 (L3)**
     - Generally, the best quality fansubs.
-    - Required: ED, TS, Song Styling, fixed timing issues, TLC (doesn't have to be 100% check), QC.
+    - Required: ED, TS, Song Styling, fixed timing issues, QC.
 - **Level 2 (L2)**
     - Mid-tier fansubs.
     - Two of the following: ED, TS, Song Styling.
@@ -28,7 +28,7 @@ The sub levels are as follows:
     - Contains batch fixes, such as typos, missing typesetting, etc.
     - A release can obtain a higher level than other batch releases by being higher quality.
         - Quality is slightly subjective, but it *usually* does not depend on the encode quality, as this is categorized by Video Type.
-    - As these levels are reserved for batch releases, they are not available for movies.
+    - For movies, L4 is only used to mark upgrades in quality compared to other L3 releases.
 
 !!!info Edge case:
 If an episode can't have a certain job done, then you can count it as being done.<br>
@@ -49,12 +49,12 @@ config:
 graph LR
     A{Are the subtitles untouched or only had a main style change from their official source?} -->|Yes| B[Level 0]
     A -->|No| C{Have you done at least 2 of the following:<br>ED, TS, Song Styling?}
-    C -->|Yes| E{Did you do ED, TS, Song Styling,<br>fix timing issues, part TLC and a QC pass?}
+    C -->|Yes| E{Did you do ED, TS, Song Styling,<br>fix timing issues, and done a QC pass?}
     C -->|No| D[Level 1]
-    E -->|Yes| G{Is this a batch release and not a movie?}
+    E -->|Yes| G{Is this a batch release? Is this a movie and it's better than the other L3s?}
     E -->|No| F[Level 2]
     G -->|Yes| I[Level 3 +<br>Request Upgrade to L4+]
-    G -->|No| H[Level 3]
+    G -->|No to both| H[Level 3]
 ```
 
 
@@ -62,3 +62,4 @@ graph LR
 - **ED**: Editing, making changes to the script to make it read well.
 - **TS**: Typesetting, turning foreign signs (text on screen) into your language.
 - **QC**: Quality Check, checking everyone's work for errors, typos, etc.
+- **TLC**: Translation Check, checking the translation for accuracy.
