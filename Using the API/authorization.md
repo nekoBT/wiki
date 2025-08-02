@@ -19,7 +19,7 @@ If you are caught doing this, your account will be punished.
 
 To obtain an API key:
 1. Log in to nekoBT.
-2. Go to your [account settings](https://nekoBT.net/users/@me/edit).
+2. Go to your [account settings](https://nekobt.to/users/@me/edit).
 3. Press `Generate` in the API Keys section.
 
 Once you have an API key, you can use it to authenticate your requests to the API.
