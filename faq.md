@@ -5,6 +5,23 @@ order: 2000
 ---
 # FAQ
 
+## General Questions
+==- What is nekoBT?
+nekoBT is a public torrent tracker for anime, with a focus on fansubs and groups. Our aim is to make it easier to organize and categorize fansub releases, while providing a platform for users to share and discover new content.
+===
+==- Public and private download links? What does that mean?
+If you are logged in, you will see two download options: public (blue) and private (purple).
+- Public can be shared with anyone, and they will be able to access the torrent without needing an account.
+- Private are only to be used by you, and are used to track your upload/download stats.
+!!!danger
+Do not share private links with anyone, as these contain your torrent key.<br>
+Anyone with your torrent key can mess up your stats, and it could be seen as torrent cheating, which is a bannable offense.
+!!!
+===
+==- L3? L0? What does that mean? (Sub Levels)
+L0-9 refer to the sub level of a torrent, view more info [here](/info/sub-levels).
+===
+
 ## Account Questions
 ==- How can I change my username?
 You cannot change your username. If you want to change it, you can contact staff, but it is not guaranteed that they will change it for you.

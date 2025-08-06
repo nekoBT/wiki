@@ -6,7 +6,7 @@ order: 3000
 ---
 # Privacy Policy
 
-Last Updated: 10 July 2025
+Last Updated: 6 August 2025
 
 This privacy policy explains how we collect, use, and protect your information when you use our site.
 
@@ -55,6 +55,10 @@ In order to function, we might collect/store the following information:
     - Last download timestamp
     - Time spent seeding
     - Time spent leeching
+
+We also might collect data on your usage of the site in the form of logs, in order to improve our service and debug issues. These logs will not be held for more than 90 days, and will not contain any personally identifiable information.
+
+We may store your IP address on certain actions that are considered sensitive, due to anti-abuse measures. These will be deleted after 30 days, and will not be used for any other purpose.
 
 ## How we use your data
 All information we collect is used to provide our services to you. We do not sell your information with third parties. We do not share any private information with third parties.

@@ -76,6 +76,12 @@ GET /media/<media_id>
 ```
 Returns information about a specific media item, including its title, description, and other metadata.
 
+### Search media
+```
+GET /media/search
+```
+Searches for media items based on search query.
+
 ### Get site statistics
 ```
 GET /stats
@@ -178,6 +184,9 @@ Returns a list of torrents that the user is a peer of, including their upload an
 GET /users/search
 ```
 Searches for users based on their username.
+!!!warning
+Due to security concerns, this endpoint only returns a user when the search query is an exact match of the username.
+!!!
 
 
 ## Torznab API

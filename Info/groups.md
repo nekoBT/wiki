@@ -46,14 +46,16 @@ Torrents can have a primary group and secondary groups.
 - **Primary Group**: The main group that is credited for the release. This is the group that is shown in the torrent title, usually referred to as the `Release Group`.
 - **Secondary Groups**: Other groups that's work is used in the release. These groups are shown in the contributors section.
     - You can add secondary groups when uploading a torrent, or edit the torrent later to add them.
+    - You may also choose to add parent groups as secondary groups, if you are doing a joint release, however this is not strictly necessary.
 
 By using secondary groups, it allows groups to see who has used their work, and makes finding muxes of other's work easier.<br>
 For example, if `Apple` makes fansubs but they don't have dual audio, users looking for dual audio can search for torrents that contain `Apple` as a secondary group to find muxes that include their fansubs.
 
 ### Permissions
-Groups have 3 permission levels:
-- **Member**: Part of the group, no special permissions.
-- **Admin**: Can create torrents, invite users, and change display names of invites.
+Groups have 4 levels of membership:
+- **Contributor**: Contributed to the group, but not necessarily a permanent member. Invites are given this role.
+- **Member**: Given to users who are part of the group. No additional permissions. Has a cool badge.
+- **Admin**: Can create torrents, edit and delete group torrents, invite users, and change display names of invites.
 - **Leader**: Can do everything.
 
 Only the leader can manage permissions.
