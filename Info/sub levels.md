@@ -9,19 +9,17 @@ Sub levels is how nekoBT attempts to categorize the **quality** of a release's s
 The higher the sub level, the better the quality of the subtitles.<br>
 
 The sub levels are as follows:
-- **Level 3 (L3)**
-    - Generally, the best quality fansubs.
-    - Required: ED, TS, Song Styling, fixed timing issues, QC.
-- **Level 2 (L2)**
-    - Mid-tier fansubs.
-    - Two of the following: ED, TS, Song Styling.
-- **Level 1 (L1)**
-    - Basic fansubs, small changes from official sources.
-- **Level 0 (L0)**: Official subtitles.
-    - These are the official subtitles provided by the source.
+- **Level 0 (L0)**: Official subtitles
+    - These are official subtitles taken from a source.
         - Examples: Netflix, Crunchyroll, Blu-ray, etc.
     - Edits to the main style are considered as "minor changes", and would still be L0.
-- **Level 4-9 (L4-L9)**: Batch releases.
+- **Level 1 (L1)**: Basic fansubs
+    - Any modified subtitles that goes further than just changing the style.
+- **Level 2 (L2)**: Mid-tier fansubs
+    - Requires two of the following: ED, TS, or Song Styling.
+- **Level 3 (L3)**: High quality fansubs
+    - Requires all of the following: ED, TS, Song Styling, fixed timing issues, and QC.
+- **Level 4-9 (L4-L9)**: Batch releases
     - These levels are reserved for batch releases, and can only be awarded by staff.
         - To get L4+ on a release, report the torrent under the "Request Level Increase for Batch" category.
     - Must meet L3 requirements.
@@ -45,6 +43,7 @@ Here's a flow chart to help you categorize your release's sub level:
 config:
     themeVariables:
         fontSize: '24px'
+        backgroundColor: 'transparent'
 ---
 graph LR
     A{Are the subtitles untouched or only had a main style change from their official source?} -->|Yes| B[Level 0]
