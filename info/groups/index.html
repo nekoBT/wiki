@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.806851481551">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.807818302150">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -30,11 +30,11 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=3.11.0.806851481551" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.11.0.807818302150" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.806851481551" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.807818302150" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.806851481551" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.807818302150" data-turbo-eval="false" defer></script>
 
     <meta name="darkreader-lock" />
 </head>
@@ -266,6 +266,7 @@ You can invite registered users and unregistered users to your group.</p>
 <li><strong>Secondary Groups</strong>: Other groups that&#x27;s work is used in the release. These groups are shown in the contributors section.
 <ul>
 <li>You can add secondary groups when uploading a torrent, or edit the torrent later to add them.</li>
+<li>You may also choose to add parent groups as secondary groups, if you are doing a joint release, however this is not strictly necessary.</li>
 </ul>
 </li>
 </ul>
@@ -277,10 +278,11 @@ For example, if <code v-pre>Apple</code> makes fansubs but they don&#x27;t have 
         <span>Permissions</span>
     </h3>
 </doc-anchor-target>
-<p>Groups have 3 permission levels:</p>
+<p>Groups have 4 levels of membership:</p>
 <ul>
-<li><strong>Member</strong>: Part of the group, no special permissions.</li>
-<li><strong>Admin</strong>: Can create torrents, invite users, and change display names of invites.</li>
+<li><strong>Contributor</strong>: Contributed to the group, but not necessarily a permanent member. Invites are given this role.</li>
+<li><strong>Member</strong>: Given to users who are part of the group. No additional permissions. Has a cool badge.</li>
+<li><strong>Admin</strong>: Can create torrents, edit and delete group torrents, invite users, and change display names of invites.</li>
 <li><strong>Leader</strong>: Can do everything.</li>
 </ul>
 <p>Only the leader can manage permissions.</p>
