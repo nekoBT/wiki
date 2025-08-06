@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.807818302150">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.807818397054">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -30,11 +30,11 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=3.11.0.807818302150" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.11.0.807818397054" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.807818302150" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.807818397054" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.807818302150" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.807818397054" data-turbo-eval="false" defer></script>
     <script id="mermaid-js" data-cfasync="false" src="../../resources/js/mermaid.js?v=3.11.0" defer></script>
 
     <meta name="darkreader-lock" />
@@ -162,26 +162,9 @@
 The higher the sub level, the better the quality of the subtitles.<br></p>
 <p>The sub levels are as follows:</p>
 <ul>
-<li><strong>Level 3 (L3)</strong>
+<li><strong>Level 0 (L0)</strong>: Official subtitles
 <ul>
-<li>Generally, the best quality fansubs.</li>
-<li>Required: ED, TS, Song Styling, fixed timing issues, QC.</li>
-</ul>
-</li>
-<li><strong>Level 2 (L2)</strong>
-<ul>
-<li>Mid-tier fansubs.</li>
-<li>Two of the following: ED, TS, Song Styling.</li>
-</ul>
-</li>
-<li><strong>Level 1 (L1)</strong>
-<ul>
-<li>Basic fansubs, small changes from official sources.</li>
-</ul>
-</li>
-<li><strong>Level 0 (L0)</strong>: Official subtitles.
-<ul>
-<li>These are the official subtitles provided by the source.
+<li>These are official subtitles taken from a source.
 <ul>
 <li>Examples: Netflix, Crunchyroll, Blu-ray, etc.</li>
 </ul>
@@ -189,7 +172,22 @@ The higher the sub level, the better the quality of the subtitles.<br></p>
 <li>Edits to the main style are considered as &quot;minor changes&quot;, and would still be L0.</li>
 </ul>
 </li>
-<li><strong>Level 4-9 (L4-L9)</strong>: Batch releases.
+<li><strong>Level 1 (L1)</strong>: Basic fansubs
+<ul>
+<li>Any modified subtitles that goes further than just changing the style.</li>
+</ul>
+</li>
+<li><strong>Level 2 (L2)</strong>: Mid-tier fansubs
+<ul>
+<li>Requires two of the following: ED, TS, or Song Styling.</li>
+</ul>
+</li>
+<li><strong>Level 3 (L3)</strong>: High quality fansubs
+<ul>
+<li>Requires all of the following: ED, TS, Song Styling, fixed timing issues, and QC.</li>
+</ul>
+</li>
+<li><strong>Level 4-9 (L4-L9)</strong>: Batch releases
 <ul>
 <li>These levels are reserved for batch releases, and can only be awarded by staff.
 <ul>
@@ -234,6 +232,7 @@ If you have done other jobs (TLC, QC, etc), then you can make it L2.</p>
 config:
     themeVariables:
         fontSize: '24px'
+        backgroundColor: 'transparent'
 ---
 graph LR
     A{Are the subtitles untouched or only had a main style change from their official source?} --&gt;|Yes| B[Level 0]
