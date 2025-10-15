@@ -58,7 +58,7 @@ graph LR
 
 
 ### Appendix
-- **ED**: Editing, making changes to the script to make it read well.
-- **TS**: Typesetting, turning foreign signs (text on screen) into your language.
-- **QC**: Quality Check, checking everyone's work for errors, typos, etc.
-- **TLC**: Translation Check, checking the translation for accuracy.
+- **ED**: Editing — making changes to the script to make it read well.
+- **TS**: Typesetting — turning foreign signs (text on screen) into your language.
+- **QC**: Quality Check — checking everyone's work for errors, typos, etc.
+- **TLC**: Translation Check — checking the translation for accuracy.
