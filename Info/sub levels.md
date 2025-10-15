@@ -5,20 +5,24 @@ order: 2000
 ---
 # Sub Levels
 
-Sub levels is how nekoBT attempts to categorize the **quality** of a release's subtitles.<br>
-The higher the sub level, the better the quality of the subtitles.<br>
+Sub levels is how nekoBT attempts to categorize the **quality** of a release's subtitles.
+The higher the sub level, the more extensive the work put into the subtitles.
+
+The keywords "SHOULD" and "MUST" below are to be interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
 
 The sub levels are as follows:
 - **Level 0 (L0)**: Official subtitles
     - These are official subtitles taken from a source.
         - Examples: Netflix, Crunchyroll, Blu-ray, etc.
     - Edits to the main style are considered as "minor changes", and would still be L0.
-- **Level 1 (L1)**: Basic fansubs
+- **Level 1 (L1)**: Slight modifications
     - Any modified subtitles that goes further than just changing the style.
-- **Level 2 (L2)**: Mid-tier fansubs
-    - Requires two of the following: ED, TS, or Song Styling.
-- **Level 3 (L3)**: High quality fansubs
-    - Requires all of the following: ED, TS, Song Styling, fixed timing issues, and QC.
+- **Level 2 (L2)**: Small-scale fansubs
+    - SHOULD have at least two of the following: ED, TS, and SS; or
+    - MUST be an original translation (OTL).
+- **Level 3 (L3)**: Full-scale fansubs
+    - SHOULD have all of the following: ED, TS, SS, fixed timing issues.
+    - MUST have QC.
 - **Level 4-9 (L4-L9)**: Batch releases
     - These levels are reserved for batch releases, and can only be awarded by staff.
         - To get L4+ on a release, report the torrent under the "Request Level Increase for Batch" category.
@@ -60,5 +64,9 @@ graph LR
 ### Appendix
 - **ED**: Editing — making changes to the script to make it read well.
 - **TS**: Typesetting — turning foreign signs (text on screen) into your language.
-- **QC**: Quality Check — checking everyone's work for errors, typos, etc.
+- **QC**: Quality Control — checking everyone's work for errors, typos, etc.
 - **TLC**: Translation Check — checking the translation for accuracy.
+- **SS**: Song Styling — adding styled lyrics for the songs
+        (possibly with or without karaoke effects)
+- **OTL**: Original Translation — translation made from scratch for the project
+        (rather than editing an existing one)
