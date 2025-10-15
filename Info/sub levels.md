@@ -26,8 +26,8 @@ The sub levels are as follows:
 - **Level 4-9 (L4-L9)**: Batch releases
     - These levels are reserved for batch releases, and can only be awarded by staff.
         - To get L4+ on a release, report the torrent under the "Request Level Increase for Batch" category.
-    - Must meet L3 requirements.
-    - Contains batch fixes, such as typos, missing typesetting, etc.
+    - MUST meet L3 requirements.
+    - SHOULD contain batch fixes, such as typos, missing typesetting, etc.
     - A release can obtain a higher level than other batch releases by being higher quality.
         - Quality is slightly subjective, but it *usually* does not depend on the encode quality, as this is categorized by Video Type.
     - For movies, L4 is only used to mark upgrades in quality compared to other L3 releases.
