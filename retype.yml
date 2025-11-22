@@ -20,3 +20,6 @@ meta:
 
 footer:
   copyright: ":3"
+
+exclude:
+- README.md
