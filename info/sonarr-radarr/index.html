@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.813857804752">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.817234293186">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -30,12 +30,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=3.11.0.813857804752" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.11.0.817234293186" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.813857804752" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.817234293186" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.813857804752" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.11.0.813857804752" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.817234293186" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.11.0.817234293186" defer></script>
 
     <meta name="darkreader-lock" />
 </head>
@@ -183,7 +183,7 @@
 <li><strong>Enable RSS, Automatic Search, and Interactive Search</strong>: Keep these checked.</li>
 <li><strong>URL</strong>: <code v-pre>https://nekobt.to/api/torznab</code></li>
 <li><strong>API Key</strong>: Your API key, which can be found in your <a href="https://nekobt.to/users/@me/edit">account settings</a>.</li>
-<li><strong>Categories</strong>: <code v-pre>TV/Anime</code> (5070)</li>
+<li><strong>Categories</strong>: <code v-pre>Movies</code> (2000)</li>
 <li><strong>Anime Categories</strong>: <code v-pre>TV/Anime</code> (5070)</li>
 <li><strong>Anime Standard Format Search</strong>: Leave it unchecked.</li>
 </ul>
@@ -241,10 +241,10 @@
     ]
 }</code></pre>
 </doc-codeblock></div>
-<p>You can also use regex to specify a range of levels: <code v-pre>[2-9]</code> for levels 2 to 9.</p>
+<p>You can also use regex to specify a range of levels: <code v-pre>[2-4]</code> for levels 2 to 4.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
-    &quot;name&quot;: &quot;L2-9&quot;,
+    &quot;name&quot;: &quot;L2-4&quot;,
     &quot;includeCustomFormatWhenRenaming&quot;: false,
     &quot;specifications&quot;: [
         {
@@ -253,7 +253,7 @@
             &quot;negate&quot;: false,
             &quot;required&quot;: true,
             &quot;fields&quot;: {
-            &quot;value&quot;: &quot;{Tags:.*L[2-9];.*}&quot;
+            &quot;value&quot;: &quot;{Tags:.*L[2-4];.*}&quot;
             }
         }
     ]
@@ -268,7 +268,7 @@
 <p>Replace <code v-pre>9</code> with the corresponding ID found <a href="../metadata/#video-type">here</a>.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
-    &quot;name&quot;: &quot;WEB - Raw&quot;,
+    &quot;name&quot;: &quot;WEB-DL&quot;,
     &quot;includeCustomFormatWhenRenaming&quot;: false,
     &quot;specifications&quot;: [
         {
@@ -369,7 +369,7 @@
 </li>
 <li>Replace <code v-pre>en</code> with the language code you want to match this Custom Format against.
 <ul>
-<li>Supported language codes are: <a href="https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes">ISO 639 Set 1</a>, Filipino (<code v-pre>fil</code>), and English Weeb (<code v-pre>enm</code>).</li>
+<li>See Supported language codes on the <a href="https://nekobt.to/api/v1/langs">Language API endpoint</a>.</li>
 </ul>
 </li>
 </ul>

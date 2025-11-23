@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.813857804752">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.817234293186">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -30,11 +30,11 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=3.11.0.813857804752" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.11.0.817234293186" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.813857804752" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.817234293186" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.813857804752" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.817234293186" data-turbo-eval="false" defer></script>
 
     <meta name="darkreader-lock" />
 </head>
@@ -203,23 +203,13 @@
 <td>12</td>
 </tr>
 <tr>
-<td>BD - BDMV</td>
-<td>Blu-ray Disc in the BDMV structure.</td>
+<td>BD - Disc</td>
+<td>Blu-ray Disc.</td>
 <td>11</td>
 </tr>
 <tr>
-<td>BD - ISO</td>
-<td>Blu-ray Disc ISO image.</td>
-<td>10</td>
-</tr>
-<tr>
-<td>BD - ISO (Unpacked)</td>
-<td>An unpacked Blu-ray Disc ISO image.</td>
-<td>16</td>
-</tr>
-<tr>
-<td>WEB - Raw</td>
-<td>Direct copy from a streaming service (WEB-DL).</td>
+<td>WEB-DL</td>
+<td>Direct copy from a streaming service.</td>
 <td>9</td>
 </tr>
 <tr>
@@ -243,6 +233,11 @@
 <td>5</td>
 </tr>
 <tr>
+<td>DVD - Disc</td>
+<td>DVD Disc.</td>
+<td>16</td>
+</tr>
+<tr>
 <td>TV - Raw</td>
 <td>Direct copy of a TV broadcast.</td>
 <td>4</td>
@@ -253,8 +248,8 @@
 <td>3</td>
 </tr>
 <tr>
-<td>Laserdisc</td>
-<td>Laserdisc source in a playable format.</td>
+<td>LaserDisc</td>
+<td>LaserDisc source in a playable format.</td>
 <td>2</td>
 </tr>
 <tr>
@@ -342,7 +337,8 @@
 <li><strong>Fansub</strong>: The language of the fansub track(s).</li>
 <li><strong>Subtitle</strong>: The language of any subtitle tracks from official sources.</li>
 </ul>
-<p>You can choose any language from the <a href="https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes">ISO 639 Set 1</a> list, Filipino (<code v-pre>fil</code>) and English Weeb (<code v-pre>enm</code>).</p>
+<p>The language codes used can be found on the <a href="https://nekobt.to/api/v1/langs">Language API endpoint</a>.
+It contains a list of all supported languages and some code convertions.</p>
 <doc-anchor-target id="mtl-machine-translation">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#mtl-machine-translation">#</doc-anchor-trigger>
@@ -350,6 +346,28 @@
     </h3>
 </doc-anchor-target>
 <p>The <strong>MTL</strong> tag indicates that the release uses machine translation for their fansubs.</p>
+<doc-anchor-target id="otl-original-translation">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#otl-original-translation">#</doc-anchor-trigger>
+        <span>OTL (Original Translation)</span>
+    </h3>
+</doc-anchor-target>
+<p>The <strong>OTL</strong> tag indicates that the release uses original translation for their fansubs, rather than using an official translation source.</p>
+<doc-anchor-target id="hardsubs">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#hardsubs">#</doc-anchor-trigger>
+        <span>Hardsubs</span>
+    </h3>
+</doc-anchor-target>
+<p>The <strong>Hardsubs</strong> tag indicates that the fansubs are hardsubbed (&quot;burnt in&quot;) into the video, rather than being a separate subtitle track.</p>
+<p>Any fansub that uses even partial hardsubs (ex: for karaoke/songs) must include this tag.</p>
+<doc-anchor-target id="mediainfo">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#mediainfo">#</doc-anchor-trigger>
+        <span>Mediainfo</span>
+    </h3>
+</doc-anchor-target>
+<p>Some torrents will include a Mediainfo report, containing detailed information about the video, audio, and subtitle tracks.</p>
 <doc-anchor-target id="auto-titles">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#auto-titles">#</doc-anchor-trigger>
@@ -360,6 +378,8 @@
 <p>The possible tags that can be used in the auto title are:</p>
 <ul>
 <li><code v-pre>MTL</code>: Machine Translation</li>
+<li><code v-pre>OTL</code>: Original Translation</li>
+<li><code v-pre>HS</code>: Hardsubs</li>
 <li><code v-pre>L</code>: Sub level</li>
 <li><code v-pre>V</code>: Video type</li>
 <li><code v-pre>C</code>: Video codec</li>
