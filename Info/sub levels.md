@@ -11,26 +11,23 @@ The higher the sub level, the more extensive the work put into the subtitles.
 The keywords "SHOULD" and "MUST" below are to be interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
 
 The sub levels are as follows:
-- **Level 0 (L0)**: Official subtitles
+- **Level 0 (L0)**: Official
     - These are official subtitles taken from a source.
         - Examples: Netflix, Crunchyroll, Blu-ray, etc.
     - Edits to the main style are considered as "minor changes", and would still be L0.
-- **Level 1 (L1)**: Slight modifications
+- **Level 1 (L1)**: Slight Modifications
     - Any modified subtitles that goes further than just changing the style.
-- **Level 2 (L2)**: Small-scale fansubs
-    - SHOULD have at least two of the following: ED, TS, and SS; or
+- **Level 2 (L2)**: Small-scale Fansubs
+    - SHOULD have at least two of the following: ED, TS, and SS
+    - or
     - MUST be an original translation (OTL).
-- **Level 3 (L3)**: Full-scale fansubs
+- **Level 3 (L3)**: Full-scale Fansubs
     - SHOULD have all of the following: ED, TS, SS, fixed timing issues.
     - MUST have QC.
-- **Level 4-9 (L4-L9)**: Batch releases
-    - These levels are reserved for batch releases, and can only be awarded by staff.
-        - To get L4+ on a release, report the torrent under the "Request Level Increase for Batch" category.
+- **Level 4 (L4)**: Full-scale Batch
+    - These levels are reserved for batch releases.
     - MUST meet L3 requirements.
     - SHOULD contain batch fixes, such as typos, missing typesetting, etc.
-    - A release can obtain a higher level than other batch releases by being higher quality.
-        - Quality is slightly subjective, but it *usually* does not depend on the encode quality, as this is categorized by Video Type.
-    - For movies, L4 is only used to mark upgrades in quality compared to other L3 releases.
 
 !!!info Edge case:
 If an episode can't have a certain job done, then you can count it as being done.<br>
@@ -51,12 +48,12 @@ config:
 ---
 graph LR
     A{Are the subtitles untouched or only had a main style change from their official source?} -->|Yes| B[Level 0]
-    A -->|No| C{Have you done at least 2 of the following:<br>ED, TS, Song Styling?}
+    A -->|No| C{Have you done at least 2 of the following:<br>ED, TS, Song Styling? Or is it an OTL?}
     C -->|Yes| E{Did you do ED, TS, Song Styling,<br>fix timing issues, and done a QC pass?}
-    C -->|No| D[Level 1]
-    E -->|Yes| G{Is this a batch release? Is this a movie and it's better than the other L3s?}
+    C -->|No to both| D[Level 1]
+    E -->|Yes| G{Is this a batch release? Or is this a movie and it's ''better'' than the other L3s?}
     E -->|No| F[Level 2]
-    G -->|Yes| I[Level 3 +<br>Request Upgrade to L4+]
+    G -->|Yes| I[Level 4]
     G -->|No to both| H[Level 3]
 ```
 
@@ -66,7 +63,5 @@ graph LR
 - **TS**: Typesetting — turning foreign signs (text on screen) into your language.
 - **QC**: Quality Control — checking everyone's work for errors, typos, etc.
 - **TLC**: Translation Check — checking the translation for accuracy.
-- **SS**: Song Styling — adding styled lyrics for the songs
-        (possibly with or without karaoke effects)
-- **OTL**: Original Translation — translation made from scratch for the project
-        (rather than editing an existing one)
+- **SS**: Song Styling — adding styled lyrics for the songs (possibly with or without karaoke effects).
+- **OTL**: Original Translation — translation made from scratch for the project (rather than editing an existing one).

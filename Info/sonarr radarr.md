@@ -23,7 +23,7 @@ We won't be going through how to install Sonarr, as you shouldn't be here if you
    - **Enable RSS, Automatic Search, and Interactive Search**: Keep these checked.
    - **URL**: `https://nekobt.to/api/torznab`
    - **API Key**: Your API key, which can be found in your [account settings](https://nekobt.to/users/@me/edit).
-   - **Categories**: `TV/Anime` (5070)
+   - **Categories**: `Movies` (2000)
    - **Anime Categories**: `TV/Anime` (5070)
    - **Anime Standard Format Search**: Leave it unchecked.
 5. Press **Save**. If you did everything correctly, you should see nekoBT in the list of indexers.
@@ -59,10 +59,10 @@ Replace `0` with whatever level you want.
 }
 ```
 
-You can also use regex to specify a range of levels: `[2-9]` for levels 2 to 9.
+You can also use regex to specify a range of levels: `[2-4]` for levels 2 to 4.
 ```json
 {
-    "name": "L2-9",
+    "name": "L2-4",
     "includeCustomFormatWhenRenaming": false,
     "specifications": [
         {
@@ -71,7 +71,7 @@ You can also use regex to specify a range of levels: `[2-9]` for levels 2 to 9.
             "negate": false,
             "required": true,
             "fields": {
-            "value": "{Tags:.*L[2-9];.*}"
+            "value": "{Tags:.*L[2-4];.*}"
             }
         }
     ]
@@ -82,7 +82,7 @@ You can also use regex to specify a range of levels: `[2-9]` for levels 2 to 9.
 Replace `9` with the corresponding ID found [here](/info/metadata#video-type).
 ```json
 {
-    "name": "WEB - Raw",
+    "name": "WEB-DL",
     "includeCustomFormatWhenRenaming": false,
     "specifications": [
         {
@@ -171,7 +171,7 @@ To create your own:
     - `F` is for **F**ansub languages.
     - `S` is for **S**ubtitle languages.
 - Replace `en` with the language code you want to match this Custom Format against.
-    - Supported language codes are: [ISO 639 Set 1](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes), Filipino (`fil`), and English Weeb (`enm`).
+    - See Supported language codes on the [Language API endpoint](https://nekobt.to/api/v1/langs).
 
 ```
         |         \/  

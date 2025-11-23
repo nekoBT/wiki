@@ -19,7 +19,7 @@ Anyone with your torrent key can mess up your stats, and it could be seen as tor
 !!!
 ===
 ==- L3? L0? What does that mean? (Sub Levels)
-L0-9 refer to the sub level of a torrent, view more info [here](/info/sub-levels).
+L0-4 refer to the sub level of a torrent, view more info [here](/info/sub-levels).
 ===
 
 ## Account Questions
@@ -36,5 +36,5 @@ If you know your password, you can change it in your [account settings](https://
 If you don't know your password, you can reset it with your recovery key [here](https://nekobt.to/recovery).
 ===
 ==- What do I do if I'm locked out and don't have a recovery key?
-If you forgot your password and don't have a recovery key, you can contact staff for help. However, they may not be able to help you if they can't verify that you own the account.
+If you forgot your password and don't have a recovery key, you can contact staff for help. However, they may not be able to help you if they can't verify that you own the account. One of the easiest ways for us to verify the account is yours is by you having another social account in your profile/group description.
 ===

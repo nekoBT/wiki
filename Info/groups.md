@@ -6,7 +6,7 @@ order: 2100
 # Groups
 
 nekoBT has a group system that allows you to create release groups for easier management of releases.
-- Reserves your group name for your releases.
+- Reserves your group tag for your releases.
 - Credit users for their contributions.
 - Credit other groups when you use their work.
 - Filter releases by group.

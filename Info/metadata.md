@@ -22,17 +22,16 @@ The **Video Type** tag indicates the video's source and any encoding applied.
 | BD - Remux   | Untouched, decrypted Blu-ray Disc copy in a playable format (mkv, mp4, etc).| 14  |
 | BD - Encode  | An encode of the raw Blu-ray Disc.                                          | 13  |
 | BD - Mini    | Blu-ray Disc encode with reduced quality to save space.                     | 12  |
-| BD - BDMV    | Blu-ray Disc in the BDMV structure.                                         | 11  |
-| BD - ISO     | Blu-ray Disc ISO image.                                                     | 10  |
-| BD - ISO (Unpacked) | An unpacked Blu-ray Disc ISO image.                                  | 16  |
-| WEB - Raw    | Direct copy from a streaming service (WEB-DL).                              | 9   |
+| BD - Disc    | Blu-ray Disc.                                                               | 11  |
+| WEB-DL       | Direct copy from a streaming service.                                       | 9   |
 | WEB - Encode | Re-encode of the WEB source.                                                | 8   |
 | WEB - Mini   | WEB source encode with reduced quality to save space.                       | 7   |
 | DVD - Encode | An encode of a DVD.                                                         | 6   |
 | DVD - Remux  | Direct copy of a DVD in a playable format.                                  | 5   |
+| DVD - Disc   | DVD Disc.                                                                   | 16  |
 | TV - Raw     | Direct copy of a TV broadcast.                                              | 4   |
 | TV - Encode  | TV broadcast, re-encoded.                                                   | 3   |
-| Laserdisc    | Laserdisc source in a playable format.                                      | 2   |
+| LaserDisc    | LaserDisc source in a playable format.                                      | 2   |
 | VHS          | VHS source in a playable format.                                            | 1   |
 | Other        | Other source; see torrent description for details.                          | 0   |
 
@@ -60,12 +59,30 @@ There are 3 language tags: **Audio**, **Fansub**, and **Subtitle**.
 - **Fansub**: The language of the fansub track(s).
 - **Subtitle**: The language of any subtitle tracks from official sources.
 
-You can choose any language from the [ISO 639 Set 1](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) list, Filipino (`fil`) and English Weeb (`enm`).
+The language codes used can be found on the [Language API endpoint](https://nekobt.to/api/v1/langs).
+It contains a list of all supported languages and some code convertions.
 
 
 ### MTL (Machine Translation)
 
 The **MTL** tag indicates that the release uses machine translation for their fansubs.
+
+
+### OTL (Original Translation)
+
+The **OTL** tag indicates that the release uses original translation for their fansubs, rather than using an official translation source.
+
+
+### Hardsubs
+
+The **Hardsubs** tag indicates that the fansubs are hardsubbed ("burnt in") into the video, rather than being a separate subtitle track.
+
+Any fansub that uses even partial hardsubs (ex: for karaoke/songs) must include this tag.
+
+
+### Mediainfo
+
+Some torrents will include a Mediainfo report, containing detailed information about the video, audio, and subtitle tracks.
 
 
 ### Auto Titles
@@ -74,6 +91,8 @@ The auto title is used by automation software (Sonarr, Radarr). It contains the 
 
 The possible tags that can be used in the auto title are:
 - `MTL`: Machine Translation
+- `OTL`: Original Translation
+- `HS`: Hardsubs
 - `L`: Sub level
 - `V`: Video type
 - `C`: Video codec
