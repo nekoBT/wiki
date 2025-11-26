@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.817234293186">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.817481912877">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -30,11 +30,11 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=3.11.0.817234293186" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.11.0.817481912877" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.817234293186" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.817481912877" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.817234293186" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.817481912877" data-turbo-eval="false" defer></script>
     <script id="mermaid-js" data-cfasync="false" src="../../resources/js/mermaid.js?v=3.11.0" defer></script>
 
     <meta name="darkreader-lock" />
@@ -161,6 +161,14 @@
 <p>Sub levels is how nekoBT attempts to categorize the <strong>quality</strong> of a release&#x27;s subtitles.
 The higher the sub level, the more extensive the work put into the subtitles.</p>
 <p>The keywords &quot;SHOULD&quot; and &quot;MUST&quot; below are to be interpreted as described in <a href="https://datatracker.ietf.org/doc/html/rfc2119">RFC 2119</a>.</p>
+<ul>
+<li>&quot;MUST&quot; means it&#x27;s a hard requirement.</li>
+<li>&quot;SHOULD&quot; means it&#x27;s not a requirement, but there are very few valid reasons not to have it.
+<ul>
+<li>Example: A valid reason for not having TS would be that there are no signs in the episode.</li>
+</ul>
+</li>
+</ul>
 <p>The sub levels are as follows:</p>
 <ul>
 <li><strong>Level 0 (L0)</strong>: Official
@@ -170,19 +178,23 @@ The higher the sub level, the more extensive the work put into the subtitles.</p
 <li>Examples: Netflix, Crunchyroll, Blu-ray, etc.</li>
 </ul>
 </li>
-<li>Edits to the main style are considered as &quot;minor changes&quot;, and would still be L0.</li>
+<li>The following modifications are considered minor, and still count as L0:
+<ul>
+<li>Changing the font style/size/color.</li>
+<li>Shifting subtitle timing (this also includes removal of commercial breaks, etc).</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>Level 1 (L1)</strong>: Slight Modifications
 <ul>
-<li>Any modified subtitles that goes further than just changing the style.</li>
+<li>Any modified subtitles that goes further than the modifications stated above.</li>
 </ul>
 </li>
 <li><strong>Level 2 (L2)</strong>: Small-scale Fansubs
 <ul>
 <li>SHOULD have at least two of the following: ED, TS, and SS</li>
-<li>or</li>
-<li>MUST be an original translation (OTL).</li>
+<li><strong>or</strong> MUST be an original translation (OTL).</li>
 </ul>
 </li>
 <li><strong>Level 3 (L3)</strong>: Full-scale Fansubs
