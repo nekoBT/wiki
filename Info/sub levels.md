@@ -9,18 +9,22 @@ Sub levels is how nekoBT attempts to categorize the **quality** of a release's s
 The higher the sub level, the more extensive the work put into the subtitles.
 
 The keywords "SHOULD" and "MUST" below are to be interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
+- "MUST" means it's a hard requirement.
+- "SHOULD" means it's not a requirement, but there are very few valid reasons not to have it.
+  - Example: A valid reason for not having TS would be that there are no signs in the episode.
 
 The sub levels are as follows:
 - **Level 0 (L0)**: Official
     - These are official subtitles taken from a source.
         - Examples: Netflix, Crunchyroll, Blu-ray, etc.
-    - Edits to the main style are considered as "minor changes", and would still be L0.
+    - The following modifications are considered minor, and still count as L0:
+        - Changing the font style/size/color.
+        - Shifting subtitle timing (this also includes removal of commercial breaks, etc).
 - **Level 1 (L1)**: Slight Modifications
-    - Any modified subtitles that goes further than just changing the style.
+    - Any modified subtitles that goes further than the modifications stated above.
 - **Level 2 (L2)**: Small-scale Fansubs
     - SHOULD have at least two of the following: ED, TS, and SS
-    - or
-    - MUST be an original translation (OTL).
+    - **or** MUST be an original translation (OTL).
 - **Level 3 (L3)**: Full-scale Fansubs
     - SHOULD have all of the following: ED, TS, SS, fixed timing issues.
     - MUST have QC.
