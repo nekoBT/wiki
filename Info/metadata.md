@@ -49,6 +49,7 @@ The **Video Codec** tag indicates the codec used for the video.
 | MPEG-2  | MPEG-2                             | 5   |
 | MPEG-4  | MPEG-4, but not Part 10/H264       | 6   |
 | WMV     | Windows Media Video                | 7   |
+| VC1     | VC-1                               | 8   |
 | Other   | Other                              | 0   |
 
 
