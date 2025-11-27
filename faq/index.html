@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.817481912877">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.817572859870">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -30,13 +30,36 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../resources/css/retype.css?v=3.11.0.817481912877" rel="stylesheet">
+    <link href="../resources/css/retype.css?v=3.11.0.817572859870" rel="stylesheet">
 
-    <script data-cfasync="false" src="../resources/js/config.js?v=3.11.0.817481912877" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../resources/js/config.js?v=3.11.0.817572859870" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.11.0.817481912877" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.11.0.817572859870" data-turbo-eval="false" defer></script>
 
     <meta name="darkreader-lock" />
+    <style>
+        .height-override { /* Allow resizing of panels */
+            height: auto !important;
+        }
+        .border-badge-success-border { /* POST */
+            color: #22c55e!important;
+            border-color: #22c55e!important;
+            background: transparent!important;
+        }
+
+        .border-badge-warning-border { /* PATCH */
+            color: #da9e30!important;
+            border-color: #da9e30!important;
+            background: transparent!important;
+        }
+
+        .border-badge-danger-border { /* DELETE */
+            color: #da3030!important;
+            border-color: #da3030!important;
+            background: transparent!important;
+        }
+    </style>
+    <script src="/static/panel-fix.js"></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -165,7 +188,8 @@
 </doc-anchor-target>
 <doc-panel id="what-is-nekobt" collapsed>
     <template #title>What is nekoBT?</template>
-<p>nekoBT is a public torrent tracker for anime, with a focus on fansubs and groups. Our aim is to make it easier to organize and categorize fansub releases, while providing a platform for users to share and discover new content.</p>
+<p>nekoBT is a public torrent tracker for anime, with a focus on fansubs and groups.</p>
+<p>We want to provide a place for fansubbers, encoders, and rippers to share their work with the community, whilst making it easier for users to find and download the content they want automatically.</p>
 </doc-panel>
 <doc-panel id="public-and-private-download-links-what-does-that-mean" collapsed>
     <template #title>Public and private download links? What does that mean?</template>

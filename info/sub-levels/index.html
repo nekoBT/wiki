@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.817481912877">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.817572859870">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -30,14 +30,37 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=3.11.0.817481912877" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.11.0.817572859870" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.817481912877" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.817572859870" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.817481912877" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.817572859870" data-turbo-eval="false" defer></script>
     <script id="mermaid-js" data-cfasync="false" src="../../resources/js/mermaid.js?v=3.11.0" defer></script>
 
     <meta name="darkreader-lock" />
+    <style>
+        .height-override { /* Allow resizing of panels */
+            height: auto !important;
+        }
+        .border-badge-success-border { /* POST */
+            color: #22c55e!important;
+            border-color: #22c55e!important;
+            background: transparent!important;
+        }
+
+        .border-badge-warning-border { /* PATCH */
+            color: #da9e30!important;
+            border-color: #da9e30!important;
+            background: transparent!important;
+        }
+
+        .border-badge-danger-border { /* DELETE */
+            color: #da3030!important;
+            border-color: #da3030!important;
+            background: transparent!important;
+        }
+    </style>
+    <script src="/static/panel-fix.js"></script>
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
@@ -193,13 +216,13 @@ The higher the sub level, the more extensive the work put into the subtitles.</p
 </li>
 <li><strong>Level 2 (L2)</strong>: Small-scale Fansubs
 <ul>
-<li>SHOULD have at least two of the following: ED, TS, and SS</li>
+<li>SHOULD have at least two of the following: ED, TS, and Song Translation</li>
 <li><strong>or</strong> MUST be an original translation (OTL).</li>
 </ul>
 </li>
 <li><strong>Level 3 (L3)</strong>: Full-scale Fansubs
 <ul>
-<li>SHOULD have all of the following: ED, TS, SS, fixed timing issues.</li>
+<li>SHOULD have all of the following: ED, TS, Song Translation, fixed timing issues.</li>
 <li>MUST have QC.</li>
 </ul>
 </li>
@@ -242,8 +265,8 @@ config:
 ---
 graph LR
     A{Are the subtitles untouched or only had a main style change from their official source?} --&gt;|Yes| B[Level 0]
-    A --&gt;|No| C{Have you done at least 2 of the following:&lt;br&gt;ED, TS, Song Styling? Or is it an OTL?}
-    C --&gt;|Yes| E{Did you do ED, TS, Song Styling,&lt;br&gt;fix timing issues, and done a QC pass?}
+    A --&gt;|No| C{Have you done at least 2 of the following:&lt;br&gt;ED, TS, Song Translation? Or is it an OTL?}
+    C --&gt;|Yes| E{Did you do ED, TS, Song Translation,&lt;br&gt;fix timing issues, and done a QC pass?}
     C --&gt;|No to both| D[Level 1]
     E --&gt;|Yes| G{Is this a batch release? Or is this a movie and it's ''better'' than the other L3s?}
     E --&gt;|No| F[Level 2]
@@ -260,7 +283,7 @@ graph LR
 <li><strong>TS</strong>: Typesetting — turning foreign signs (text on screen) into your language.</li>
 <li><strong>QC</strong>: Quality Control — checking everyone&#x27;s work for errors, typos, etc.</li>
 <li><strong>TLC</strong>: Translation Check — checking the translation for accuracy.</li>
-<li><strong>SS</strong>: Song Styling — adding styled lyrics for the songs (possibly with or without karaoke effects).</li>
+<li><strong>Song Translation</strong>: Adding translated lyrics for the songs (possibly with or without karaoke effects).</li>
 <li><strong>OTL</strong>: Original Translation — translation made from scratch for the project (rather than editing an existing one).</li>
 </ul>
 

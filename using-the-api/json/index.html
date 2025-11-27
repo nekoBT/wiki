@@ -1,0 +1,3214 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.817572859870">
+
+    <!-- See retype.com -->
+    <meta name="generator" content="Retype 3.11.0">
+
+    <!-- Primary Meta Tags -->
+    <title>JSON API - nekoBT Wiki</title>
+    <meta name="title" content="JSON API - nekoBT Wiki">
+    <meta name="description" content="This is the main API for nekoBT, and is used for most requests.">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://wiki.nekobt.to/using-the-api/json/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wiki.nekobt.to/using-the-api/json/">
+    <meta property="og:title" content="JSON API - nekoBT Wiki">
+    <meta property="og:description" content="This is the main API for nekoBT, and is used for most requests.">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://wiki.nekobt.to/using-the-api/json/">
+    <meta property="twitter:title" content="JSON API - nekoBT Wiki">
+    <meta property="twitter:description" content="This is the main API for nekoBT, and is used for most requests.">
+
+    <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
+
+    <link href="../../resources/css/retype.css?v=3.11.0.817572859870" rel="stylesheet">
+
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.817572859870" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.817572859870" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.11.0.817572859870" defer></script>
+
+    <meta name="darkreader-lock" />
+    <style>
+        .height-override { /* Allow resizing of panels */
+            height: auto !important;
+        }
+        .border-badge-success-border { /* POST */
+            color: #22c55e!important;
+            border-color: #22c55e!important;
+            background: transparent!important;
+        }
+
+        .border-badge-warning-border { /* PATCH */
+            color: #da9e30!important;
+            border-color: #da9e30!important;
+            background: transparent!important;
+        }
+
+        .border-badge-danger-border { /* DELETE */
+            color: #da3030!important;
+            border-color: #da3030!important;
+            background: transparent!important;
+        }
+    </style>
+    <script src="/static/panel-fix.js"></script>
+</head>
+<body>
+    <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
+        <div class="absolute bottom-0 left-0" style="top: 5rem; right: 50%"></div>
+    
+        <header id="retype-header" class="sticky top-0 z-30 flex w-full h-16 bg-header-bg border-b border-header-border md:h-20">
+            <div class="container relative flex items-center justify-between pr-6 grow md:justify-start">
+                <!-- Mobile menu button skeleton -->
+                <button v-cloak class="skeleton retype-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+                <div v-cloak id="retype-sidebar-left-toggle-button"></div>
+        
+                <!-- Logo -->
+                <div class="flex items-center justify-between h-full py-2 md:w-75">
+                    <div class="flex items-center px-2 md:px-6">
+                        <a id="retype-branding-logo" href="../../" class="flex items-center leading-snug text-2xl">
+                            <span class="dark:text-white font-bold line-clamp-1 md:line-clamp-2">nekoBT</span>
+                        </a><span id="retype-branding-label" class="inline-flex mt-1 px-2 py-1 ml-4 text-xs font-medium leading-none items-center rounded-md bg-branding-label-bg text-branding-label-text ring-1 ring-branding-label-border ring-inset md:inline-block">Wiki</span>
+                    </div>
+        
+                    <span class="hidden h-8 border-r md:inline-block border-base-border"></span>
+                </div>
+        
+                <div class="flex justify-between md:grow">
+                    <!-- Top Nav -->
+                    <nav id="retype-header-nav" class="hidden md:flex">
+                        <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+                            
+                        </ul>
+                    </nav>
+        
+                    <!-- Header Right Skeleton -->
+                    <div v-cloak class="flex justify-end grow skeleton">
+        
+                        <!-- Search input mock -->
+                        <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
+                            <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                            </div>
+                            <input class="w-full h-10 placeholder-search-placeholder transition-colors duration-200 ease-in bg-search-bg border border-transparent rounded md:text-sm hover:border-search-border-hover focus:outline-none focus:border-search-border-focus" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
+                        </div>
+        
+                        <!-- Mobile search button -->
+                        <div class="flex items-center justify-center w-10 h-10 lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
+                        </div>
+        
+                        <!-- Dark mode switch placeholder -->
+                        <div class="w-10 h-10 lg:ml-2"></div>
+        
+                        <!-- History button -->
+                        <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
+                        </div>
+                    </div>
+        
+                    <div v-cloak class="flex justify-end grow">
+                        <div id="retype-mobile-search-button"></div>
+                        <doc-search-desktop></doc-search-desktop>
+        
+                        <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                        <doc-history></doc-history>
+                    </div>
+                </div>
+            </div>
+        </header>
+    
+    
+        <div id="retype-container" class="container relative flex bg-white">
+            <!-- Sidebar Skeleton -->
+            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-sidebar-left-bg border-sidebar-left-border sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton">
+            
+                <div class="flex items-center h-16 px-6">
+                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-filter-bg border border-filter-border rounded shadow-none text-sm focus:outline-none focus:border-filter-border-focus" type="text" placeholder="Filter">
+                </div>
+            
+                <div class="pl-6 mt-1 mb-4">
+                    <div class="w-32 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-48 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-40 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-32 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-48 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                    <div class="w-40 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                </div>
+            
+                <div class="shrink-0 mt-auto bg-transparent dark:border-base-border">
+                    <a class="flex items-center justify-center flex-nowrap h-16 text-gray-350 dark:text-dark-400 hover:text-gray-600 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                        <span class="text-xs whitespace-nowrap">Powered by</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Sidebar component -->
+            <doc-sidebar v-cloak>
+                <template #sidebar-footer>
+                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-base-border">
+            
+                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-350 dark:text-dark-400 hover:text-gray-600 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                            <span class="text-xs whitespace-nowrap">Powered by</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                        </a>
+                    </div>
+                </template>
+            </doc-sidebar>
+    
+            <div class="grow min-w-0 bg-body-bg">
+                <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+                <div class="flex">
+                    <div id="retype-main" class="min-w-0 p-4 grow md:px-16">
+                        <main class="relative pb-12 lg:pt-2">
+                            <div class="retype-markdown" id="retype-content">
+                                <!-- Rendered if sidebar right is enabled -->
+                                <div id="retype-sidebar-right-toggle"></div>
+                                <!-- Page content  -->
+<doc-anchor-target id="json-api" class="break-words">
+    <h1>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#json-api">#</doc-anchor-trigger>
+        <span>JSON API</span>
+    </h1>
+</doc-anchor-target>
+<p>This is the main API for nekoBT, and is used for most requests.</p>
+<p>The base URL for the JSON API is <code v-pre>https://nekobt.to/api/v1</code></p>
+<hr>
+<doc-anchor-target id="authorization">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#authorization">#</doc-anchor-trigger>
+        <span>Authorization</span>
+    </h2>
+</doc-anchor-target>
+<p>Most endpoints require authorization using an API key.<br>
+To authorize your requests, use the <code v-pre>ssid</code> cookie with your API key as the value.</p>
+<p>If authorization isn&#x27;t present or is invalid, you will receive a <code v-pre>401 Unauthorized</code> JSON response.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+    &quot;error&quot;: true,
+    &quot;message&quot;: &quot;Unauthorized.&quot;
+}</code></pre>
+</doc-codeblock></div>
+<hr>
+<doc-anchor-target id="schema-validation">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#schema-validation">#</doc-anchor-trigger>
+        <span>Schema Validation</span>
+    </h2>
+</doc-anchor-target>
+<p>When sending data to the API, nekoBT validates the data against a schema.<br>
+If the data is invalid, you will receive a <code v-pre>400 Bad Request</code> JSON response with details about the validation errors.</p>
+<doc-tabs>
+<doc-tab v-cloak id="missing-required-property">
+<template #title>Missing Required Property</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Data provided was invalid: must have required property 'query'.&quot;,
+  &quot;validate_errors&quot;: [
+    {
+      &quot;instancePath&quot;: &quot;&quot;,
+      &quot;schemaPath&quot;: &quot;#/required&quot;,
+      &quot;keyword&quot;: &quot;required&quot;,
+      &quot;params&quot;: {
+        &quot;missingProperty&quot;: &quot;query&quot;
+      },
+      &quot;message&quot;: &quot;must have required property 'query'&quot;
+    }
+  ]
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="range-violation-over-maximum">
+<template #title>Range Violation (over maximum)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Data provided was invalid: 'limit' must be &lt;= 100.&quot;,
+  &quot;validate_errors&quot;: [
+    {
+      &quot;instancePath&quot;: &quot;/limit&quot;,
+      &quot;schemaPath&quot;: &quot;#/properties/limit/maximum&quot;,
+      &quot;keyword&quot;: &quot;maximum&quot;,
+      &quot;params&quot;: {
+        &quot;comparison&quot;: &quot;&lt;=&quot;,
+        &quot;limit&quot;: 100
+      },
+      &quot;message&quot;: &quot;must be &lt;= 100&quot;
+    }
+  ]
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="range-violation-below-minimum">
+<template #title>Range Violation (below minimum)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Data provided was invalid: 'offset' must be &gt;= 0.&quot;,
+  &quot;validate_errors&quot;: [
+    {
+      &quot;instancePath&quot;: &quot;/offset&quot;,
+      &quot;schemaPath&quot;: &quot;#/properties/offset/minimum&quot;,
+      &quot;keyword&quot;: &quot;minimum&quot;,
+      &quot;params&quot;: {
+        &quot;comparison&quot;: &quot;&gt;=&quot;,
+        &quot;limit&quot;: 0
+      },
+      &quot;message&quot;: &quot;must be &gt;= 0&quot;
+    }
+  ]
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="invalid-type">
+<template #title>Invalid Type</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Data provided was invalid: 'offset' must be integer.&quot;,
+  &quot;validate_errors&quot;: [
+    {
+      &quot;instancePath&quot;: &quot;/offset&quot;,
+      &quot;schemaPath&quot;: &quot;#/properties/offset/type&quot;,
+      &quot;keyword&quot;: &quot;type&quot;,
+      &quot;params&quot;: {
+        &quot;type&quot;: &quot;integer&quot;
+      },
+      &quot;message&quot;: &quot;must be integer&quot;
+    }
+  ]
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+<hr>
+<doc-anchor-target id="rate-limiting">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#rate-limiting">#</doc-anchor-trigger>
+        <span>Rate Limiting</span>
+    </h2>
+</doc-anchor-target>
+<p>nekoBT enforces rate limits to prevent abuse of the API. These limits are not publicly shared.</p>
+<doc-anchor-target id="api-rate-limits">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#api-rate-limits">#</doc-anchor-trigger>
+        <span>API Rate Limits</span>
+    </h3>
+</doc-anchor-target>
+<p>API Rate Limits are enforced by nekoBT to prevent abuse of the API.<br>
+If you exceed these limits, you will receive a <code v-pre>429 Too Many Requests</code> JSON response.<br>
+Use the <code v-pre>retry_after</code> JSON field to determine how long to wait before making another request.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+    &quot;error&quot;: true,
+    &quot;message&quot;: &quot;Rate limit exceeded, try again in 12 seconds.&quot;,
+    &quot;retry_after&quot;: 11.82
+}</code></pre>
+</doc-codeblock></div>
+<doc-anchor-target id="cloudflare-rate-limits">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#cloudflare-rate-limits">#</doc-anchor-trigger>
+        <span>Cloudflare Rate Limits</span>
+    </h3>
+</doc-anchor-target>
+<p>Cloudflare Rate Limits are enforced at the edge by Cloudflare to prevent abuse of the site.<br>
+If you exceed these limits, you will receive a <code v-pre>429 Too Many Requests</code> HTML response.<br>
+Use the <code v-pre>Retry-After</code> header to determine how long to wait before making another request.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-http"><code v-pre class="language-http">HTTP/2 429
+retry-after: 4
+date: ***
+content-type: text/html; charset=UTF-8
+x-frame-options: SAMEORIGIN
+referrer-policy: same-origin</code></pre>
+</doc-codeblock></div>
+<hr>
+<doc-anchor-target id="endpoints">
+    <h2>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#endpoints">#</doc-anchor-trigger>
+        <span>Endpoints</span>
+    </h2>
+</doc-anchor-target>
+<doc-anchor-target id="get-announcements">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#get-announcements">#</doc-anchor-trigger>
+        <span>Get Announcements</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
+    <span>GET</span>
+</span> <code v-pre>/announcements</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Optional</span>
+</span></p>
+<p>Returns the latest announcements displayed on the home page from nekoBT.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;data&quot;: [
+    {
+      &quot;start_time&quot;: &quot;1763856000000&quot;,
+      &quot;end_time&quot;: &quot;1767225600000&quot;,
+      &quot;message&quot;: &quot;Welcome! This site is in open-beta, so expect issues and changes.&quot;,
+      &quot;link&quot;: &quot;&quot;,
+      &quot;new_tab&quot;: false,
+      &quot;color&quot;: &quot;grey&quot;, // info, success, warning, error, primary, grey
+      &quot;dismissible&quot;: true
+    }
+  ]
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-500">
+<template #title>Unsuccessful Response (500)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Internal Error&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="get-group">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#get-group">#</doc-anchor-trigger>
+        <span>Get Group</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
+    <span>GET</span>
+</span> <code v-pre>/groups/&lt;group_id&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Optional</span>
+</span></p>
+<p>Returns information about a specific group, including its name, description, members, and other metadata.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;data&quot;: {
+    &quot;id&quot;: &quot;1234567890&quot;,
+    &quot;name&quot;: &quot;example&quot;,
+    &quot;display_name&quot;: &quot;Example&quot;,
+    &quot;tag&quot;: &quot;example&quot;,
+    &quot;display_tag&quot;: &quot;Example&quot;,
+    &quot;pfp_hash&quot;: null,
+    &quot;tagline&quot;: &quot;Example fansub group&quot;,
+    &quot;description&quot;: &quot;This is an example fansub group.&quot;,
+    &quot;anonymous&quot;: 0,
+    &quot;members&quot;: [
+      {
+        &quot;id&quot;: &quot;1234567890&quot;,
+        &quot;username&quot;: &quot;exampleuser&quot;,
+        &quot;invite&quot;: false,
+        &quot;invite_key&quot;: null, // Only present if user is group leader/admin
+        &quot;display_name&quot;: &quot;ExampleUser&quot;,
+        &quot;pfp_hash&quot;: &quot;abcdef1234567890abcdef1234567890abcdef12&quot;,
+        &quot;leader&quot;: true,
+        &quot;admin&quot;: false,
+        &quot;regular&quot;: true,
+        &quot;torrent_count&quot;: 0
+      }
+    ],
+    &quot;relations&quot;: {
+      &quot;parents&quot;: [],
+      &quot;children&quot;: [
+        {
+          &quot;id&quot;: &quot;1234567890&quot;,
+          &quot;name&quot;: &quot;example2&quot;,
+          &quot;display_name&quot;: &quot;Example2&quot;,
+          &quot;tag&quot;: &quot;example2&quot;,
+          &quot;display_tag&quot;: &quot;Example2&quot;,
+          &quot;pfp_hash&quot;: null,
+          &quot;tagline&quot;: &quot;&quot;,
+          &quot;anonymous&quot;: 0,
+          &quot;active&quot;: true,
+          &quot;initiator&quot;: false
+        }
+      ]
+    },
+    &quot;media&quot;: [
+      {
+        &quot;episodes&quot;: [ // List of episode IDs the group/child groups have worked on for this media
+            &quot;1234&quot;
+        ],
+        &quot;torrents&quot;: [ // List of torrent IDs the group/child groups have uploaded for this media
+          &quot;1234567890&quot;
+        ],
+        &quot;groups&quot;: [ // List of group IDs (including child groups) that have worked on this media
+          &quot;1234567890&quot;
+        ],
+        &quot;media&quot;: {
+          &quot;id&quot;: &quot;m1&quot;,
+          &quot;title&quot;: &quot;Example Movie&quot;,
+          &quot;banner_url&quot;: &quot;https://image.tmdb.org/t/p/original/....jpg&quot;,
+          &quot;episodes&quot;: [ // Use this list to get episode details for the episodes worked on by this group
+            {
+              &quot;id&quot;: 1234,
+              &quot;season&quot;: 1,
+              &quot;episode&quot;: 1,
+              &quot;absolute&quot;: 1,
+              &quot;tvdbId&quot;: 1234567,
+              &quot;title&quot;: &quot;Example Episode Title&quot;
+            },
+          ]
+        }
+      }
+    ],
+    &quot;can_edit&quot;: false,
+    &quot;can_leave&quot;: false,
+    &quot;stats&quot;: {
+      &quot;uploads&quot;: 50,
+      &quot;tags&quot;: 28,
+      &quot;seeders&quot;: &quot;261&quot;,
+      &quot;leechers&quot;: &quot;2&quot;,
+      &quot;downloads&quot;: &quot;4518&quot;
+    }
+  }
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-404">
+<template #title>Unsuccessful Response (404)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Group not found.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="search-groups">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#search-groups">#</doc-anchor-trigger>
+        <span>Search Groups</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
+    <span>GET</span>
+</span> <code v-pre>/groups/search</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Optional</span>
+</span></p>
+<p>Searches for groups based on their name.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="query-parameters">
+<template #title>Query Parameters</template>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>query?</td>
+<td>string</td>
+<td>Search term for group name or tag</td>
+</tr>
+<tr>
+<td>limit?</td>
+<td>integer</td>
+<td>Number of results to return (default: 50, range: 1-100)</td>
+</tr>
+<tr>
+<td>offset?</td>
+<td>integer</td>
+<td>Number of results to skip for pagination (default: 0)</td>
+</tr>
+<tr>
+<td>sort?</td>
+<td>string</td>
+<td>Sort results by field. <em><code v-pre>created</code></em>, <code v-pre>uploads</code>, <code v-pre>members</code>, <code v-pre>downloads</code>, <code v-pre>name</code>.</td>
+</tr>
+<tr>
+<td>order?</td>
+<td>string</td>
+<td>Order of results. <code v-pre>asc</code> or <em><code v-pre>desc</code></em>.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="italics--default---optional">
+    <h6>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional">#</doc-anchor-trigger>
+        <span><em>italics</em> = default, ? = optional</span>
+    </h6>
+</doc-anchor-target>
+</doc-tab>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;data&quot;: {
+    &quot;results&quot;: [
+      {
+        &quot;id&quot;: &quot;1234567890&quot;,
+        &quot;anonymous&quot;: 0,
+        &quot;description&quot;: &quot;&quot;,
+        &quot;display_name&quot;: &quot;Example Group&quot;,
+        &quot;name&quot;: &quot;example-group&quot;,
+        &quot;tag&quot;: &quot;example-group&quot;,
+        &quot;display_tag&quot;: &quot;Example Group&quot;,
+        &quot;pfp_hash&quot;: &quot;abcdefghijklmnopqrstuvwxyz123456&quot;,
+        &quot;tagline&quot;: &quot;An example group tagline.&quot;,
+        &quot;member_count&quot;: &quot;5&quot;,
+        &quot;torrent_count&quot;: &quot;2&quot;,
+        &quot;download_count&quot;: &quot;53&quot;
+      }
+    ],
+    &quot;more&quot;: true // Whether there are more results to fetch with pagination
+  }
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-500">
+<template #title>Unsuccessful Response (500)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Internal Error&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="create-group-link">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#create-group-link">#</doc-anchor-trigger>
+        <span>Create Group Link</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+    <span>POST</span>
+</span> <code v-pre>/groups/&lt;group_id_1&gt;/links/&lt;group_id_2&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Required</span>
+</span></p>
+<p>Creates a link between two groups. If the authorized user is the leader of both groups, the link is automatically approved. Otherwise, the link will be pending approval from the other group&#x27;s leader.</p>
+<p><code v-pre>group_id_1</code> should be the group ID that the user is leader of, and <code v-pre>group_id_2</code> should be the other group ID.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="query-parameters">
+<template #title>Query Parameters</template>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>parent</td>
+<td>string</td>
+<td>Group ID of the group that will be the parent in the link.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="italics--default---optional-1">
+    <h6>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional-1">#</doc-anchor-trigger>
+        <span><em>italics</em> = default, ? = optional</span>
+    </h6>
+</doc-anchor-target>
+</doc-tab>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-400">
+<template #title>Unsuccessful Response (400)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Link is waiting for other group to approve.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="delete-group-link">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#delete-group-link">#</doc-anchor-trigger>
+        <span>Delete Group Link</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-danger-text bg-badge-danger border border-badge-danger-border h-6 px-2 text-xs rounded-md">
+    <span>DELETE</span>
+</span> <code v-pre>/groups/&lt;group_id&gt;/links/&lt;group_id_2&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Required</span>
+</span></p>
+<p>Deletes a link between two groups.</p>
+<p><code v-pre>group_id_1</code> should be the group ID that the user is leader of, and <code v-pre>group_id_2</code> should be the other group ID.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-403">
+<template #title>Unsuccessful Response (403)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Unauthorized.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="add-group-members">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#add-group-members">#</doc-anchor-trigger>
+        <span>Add Group Member(s)</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+    <span>POST</span>
+</span> <code v-pre>/groups/&lt;group_id&gt;/members</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Required</span>
+</span></p>
+<p>Creates invites for one or more users to join a group.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="json-parameters">
+<template #title>JSON Parameters</template>
+<p>Data should be formatted as a JSON Array of Objects with the following fields:</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string or null</td>
+<td>ID of the user to invite. If null, no specific user will be invited.</td>
+</tr>
+<tr>
+<td>display_name</td>
+<td>string or null</td>
+<td>Display name of the user to invite. If a user ID is provided, this field is not used, and the display name is what the user&#x27;s display name is.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="italics--default---optional-2">
+    <h6>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional-2">#</doc-anchor-trigger>
+        <span><em>italics</em> = default, ? = optional</span>
+    </h6>
+</doc-anchor-target>
+</doc-tab>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;1234567890&quot;,
+      &quot;invite_key&quot;: &quot;abcdef1234567890abcdef1234567890&quot;,
+    }
+  ]
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-400">
+<template #title>Unsuccessful Response (400)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Display name (\&quot;Example\&quot;) already taken.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="update-group-member">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#update-group-member">#</doc-anchor-trigger>
+        <span>Update Group Member</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+    <span>PATCH</span>
+</span> <code v-pre>/groups/&lt;group_id&gt;/members/&lt;user_or_invite_id&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Required</span>
+</span></p>
+<p>Updates a member in a group.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="json-parameters">
+<template #title>JSON Parameters</template>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>admin?</td>
+<td>boolean</td>
+<td>Whether the member is an admin.</td>
+</tr>
+<tr>
+<td>regular?</td>
+<td>boolean</td>
+<td>Whether the member is a regular member.</td>
+</tr>
+<tr>
+<td>display_name?</td>
+<td>string</td>
+<td>Can only be used on invites. New display name for the member/invite in the group.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="at-least-one-is-required-italics--default---optional">
+    <h6>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#at-least-one-is-required-italics--default---optional">#</doc-anchor-trigger>
+        <span>At least one is required, <em>italics</em> = default, ? = optional</span>
+    </h6>
+</doc-anchor-target>
+</doc-tab>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-403">
+<template #title>Unsuccessful Response (403)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Forbidden.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="remove-group-member">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#remove-group-member">#</doc-anchor-trigger>
+        <span>Remove Group Member</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-danger-text bg-badge-danger border border-badge-danger-border h-6 px-2 text-xs rounded-md">
+    <span>DELETE</span>
+</span> <code v-pre>/groups/&lt;group_id&gt;/members/&lt;user_or_invite_id&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Required</span>
+</span></p>
+<p>Removes a member from a group.</p>
+<p>This endpoint has a <code v-pre>destructive</code> query parameter.<br>
+To delete an invited member, <code v-pre>destructive=true</code> must be used.<br>
+The differences are as follows:</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Action</th>
+<th>destructive=<code v-pre>false</code></th>
+<th>destructive=<code v-pre>true</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User is no longer associated with the group.</td>
+<td><span class="docs-emoji">&#x2705;</span></td>
+<td><span class="docs-emoji">&#x2705;</span></td>
+</tr>
+<tr>
+<td>The member becomes an invite with a &quot;Deleted Member&quot; name.</td>
+<td><span class="docs-emoji">&#x2705;</span></td>
+<td><span class="docs-emoji">&#x274C;</span></td>
+</tr>
+<tr>
+<td>Torrent contributions are transferred to a new invite.</td>
+<td><span class="docs-emoji">&#x2705;</span></td>
+<td><span class="docs-emoji">&#x274C;</span></td>
+</tr>
+<tr>
+<td>The member is permanently removed from all torrents.</td>
+<td><span class="docs-emoji">&#x274C;</span></td>
+<td><span class="docs-emoji">&#x2705;</span></td>
+</tr>
+<tr>
+<td>Uploads by the user for the group are transferred to the leader.</td>
+<td><span class="docs-emoji">&#x2705;</span></td>
+<td><span class="docs-emoji">&#x2705;</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="query-parameters">
+<template #title>Query Parameters</template>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>destructive?</td>
+<td>boolean</td>
+<td>Defaults to <em><code v-pre>false</code></em>. Read above for more info.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="italics--default---optional-3">
+    <h6>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional-3">#</doc-anchor-trigger>
+        <span><em>italics</em> = default, ? = optional</span>
+    </h6>
+</doc-anchor-target>
+</doc-tab>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-400">
+<template #title>Unsuccessful Response (400)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Cannot soft delete an invite. Use ?destructive=true to delete an invite.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="get-invite">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#get-invite">#</doc-anchor-trigger>
+        <span>Get Invite</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
+    <span>GET</span>
+</span> <code v-pre>/invites/&lt;invite_id&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Optional</span>
+</span></p>
+<p>Returns information about an invited user, including the group it belongs to.</p>
+<p>Use <code v-pre>?key=</code> to reveal who the recipient is.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;data&quot;: {
+    &quot;id&quot;: &quot;1234567890&quot;,
+    &quot;display_name&quot;: &quot;Example Invite&quot;,
+    &quot;author&quot;: {
+      &quot;id&quot;: &quot;1234567890&quot;,
+      &quot;username&quot;: &quot;example&quot;,
+      &quot;pfp_hash&quot;: &quot;abcdef1234567890abcdef1234567890abcdef12&quot;,
+      &quot;display_name&quot;: &quot;Example&quot;
+    },
+    &quot;used&quot;: false,
+    &quot;recipient&quot;: { // Only present if ?key= is used, and the key is valid, otherwise null
+      &quot;id&quot;: &quot;1234567890&quot;,
+      &quot;display_name&quot;: &quot;ExampleUser&quot;,
+      &quot;pfp_hash&quot;: null,
+      &quot;username&quot;: &quot;exampleuser&quot;
+    },
+    &quot;group&quot;: {
+      &quot;id&quot;: &quot;1234567890&quot;,
+      &quot;display_name&quot;: &quot;Example&quot;,
+      &quot;name&quot;: &quot;example&quot;,
+      &quot;tag&quot;: &quot;example-subs&quot;,
+      &quot;display_tag&quot;: &quot;Example-subs&quot;,
+      &quot;pfp_hash&quot;: &quot;abcdef1234567890abcdef1234567890abcdef12&quot;,
+      &quot;anonymous&quot;: 0,
+      &quot;description&quot;: &quot;blah blah blah&quot;,
+      &quot;tagline&quot;: &quot;An example group tagline.&quot;
+    },
+    &quot;torrent_count&quot;: &quot;18&quot;
+  }
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-404">
+<template #title>Unsuccessful Response (404)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Invite not found.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="accept-invite">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#accept-invite">#</doc-anchor-trigger>
+        <span>Accept Invite</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+    <span>POST</span>
+</span> <code v-pre>/invites/&lt;invite_id&gt;/accept/&lt;invite_key&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Required</span>
+</span></p>
+<p>Accepts an invite to a group using the provided invite ID and key.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-400">
+<template #title>Unsuccessful Response (400)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;You are already in this group.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="get-languages">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#get-languages">#</doc-anchor-trigger>
+        <span>Get Languages</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
+    <span>GET</span>
+</span> <code v-pre>/langs</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Optional</span>
+</span></p>
+<p>Returns the list of supported languages for audio, subtitles, and fansubs.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;data&quot;: {
+    &quot;langs&quot;: {
+      &quot;ja&quot;: {
+        &quot;code&quot;: &quot;ja&quot;,
+        &quot;name&quot;: &quot;Japanese&quot;,
+        &quot;flag&quot;: &quot;https://flagcdn.com/40x30/jp.png&quot;
+      },
+      &quot;en&quot;: {
+        &quot;code&quot;: &quot;en&quot;,
+        &quot;name&quot;: &quot;English&quot;,
+        &quot;flag&quot;: &quot;https://flagcdn.com/40x30/gb.png&quot;
+      },
+      &quot;enm&quot;: {
+        &quot;code&quot;: &quot;enm&quot;,
+        &quot;name&quot;: &quot;English (Weeb)&quot;,
+        &quot;flag&quot;: &quot;/assets/img/flags/enm.png&quot;
+      }
+      // ...
+    },
+    &quot;convert&quot;: {
+      &quot;jp&quot;: &quot;ja&quot;,
+      &quot;eng&quot;: &quot;en&quot;,
+      &quot;en-jp&quot;: &quot;enm&quot;,
+      &quot;spa-419&quot;: &quot;es-419&quot;,
+      &quot;es&quot;: &quot;es-es&quot;,
+      &quot;pt&quot;: &quot;pt-pt&quot;,
+      &quot;fr&quot;: &quot;fr-fr&quot;,
+      &quot;tg&quot;: &quot;fil&quot;,
+      &quot;nb&quot;: &quot;no&quot;,
+      &quot;nn&quot;: &quot;no&quot;
+    }
+  }
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-500">
+<template #title>Unsuccessful Response (500)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Internal Error&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="get-media">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#get-media">#</doc-anchor-trigger>
+        <span>Get Media</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
+    <span>GET</span>
+</span> <code v-pre>/media/&lt;media_id&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Optional</span>
+</span></p>
+<p>Returns information about a specific media item, including its title, description, and other metadata.</p>
+<p>Use <code v-pre>?force=true</code> to get the media, even if there are no torrents for it.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;data&quot;: {
+    &quot;title&quot;: &quot;Dusk Beyond the End of the World&quot;,
+    &quot;year&quot;: 2025,
+    &quot;genres&quot;: [
+      &quot;Animation&quot;,
+      &quot;Anime&quot;,
+      &quot;Romance&quot;,
+      &quot;Science Fiction&quot;
+    ],
+    &quot;overview&quot;: &quot;When tensions around...&quot;,
+    &quot;status&quot;: &quot;continuing&quot;,
+    &quot;banner_url&quot;: &quot;https://artworks.thetvdb.com/banners/v4/series/465214/posters/685e663785276.jpg&quot;,
+    &quot;runtime&quot;: 24,
+    &quot;tvdbId&quot;: 465214,
+    &quot;tmdbId&quot;: 294867,
+    &quot;imdbId&quot;: &quot;tt37532634&quot;,
+    &quot;alternate_titles&quot;: [
+      &quot;Towa no Yuugure&quot;,
+      &quot;Towa no Yugure&quot;
+    ],
+    &quot;notes&quot;: null,
+    &quot;episodes&quot;: [
+      {
+        &quot;id&quot;: 48690,
+        &quot;title&quot;: &quot;Think Morning, Count Two&quot;,
+        &quot;season&quot;: 0,
+        &quot;episode&quot;: 1,
+        &quot;overview&quot;: &quot;Akira and Towasa's friendship...&quot;,
+        &quot;runtime&quot;: 24,
+        &quot;airDateUtc&quot;: &quot;2025-09-25T15:30:00Z&quot;,
+        &quot;tvdbId&quot;: 11307751
+      }
+    ],
+    &quot;groups&quot;: [
+      {
+        &quot;id&quot;: &quot;1234567890&quot;,
+        &quot;name&quot;: &quot;example&quot;,
+        &quot;display_name&quot;: &quot;Example&quot;,
+        &quot;tag&quot;: &quot;example&quot;,
+        &quot;display_tag&quot;: &quot;Example&quot;,
+        &quot;tagline&quot;: &quot;Example fansub group&quot;,
+        &quot;pfp_hash&quot;: null,
+        &quot;episodes&quot;: { // Episodes worked on by this group
+          &quot;48690&quot;: {
+            &quot;level&quot;: 1, // Highest sub level for this episode by this group
+            &quot;video_type&quot;: 9,
+            &quot;mtl&quot;: false
+          }
+        },
+        &quot;max_level&quot;: 1, // Highest sub level for this media by this group
+        &quot;langs&quot;: {
+          &quot;fsub&quot;: [
+            &quot;en&quot;
+          ],
+          &quot;sub&quot;: []
+        }
+      }
+    ]
+  }
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-400">
+<template #title>Unsuccessful Response (400)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;No torrents found for this media.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="search-media">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#search-media">#</doc-anchor-trigger>
+        <span>Search Media</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
+    <span>GET</span>
+</span> <code v-pre>/media/search</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Optional</span>
+</span></p>
+<p>Searches for media items based on search query.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="query-parameters">
+<template #title>Query Parameters</template>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>query</td>
+<td>string</td>
+<td>Search term for media title</td>
+</tr>
+<tr>
+<td>limit?</td>
+<td>integer</td>
+<td>Number of results to return (default: 50, range: 1-100)</td>
+</tr>
+<tr>
+<td>offset?</td>
+<td>integer</td>
+<td>Number of results to skip for pagination (default: 0)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="italics--default---optional-4">
+    <h6>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional-4">#</doc-anchor-trigger>
+        <span><em>italics</em> = default, ? = optional</span>
+    </h6>
+</doc-anchor-target>
+</doc-tab>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;data&quot;: {
+    &quot;more&quot;: true,
+    &quot;results&quot;: [
+      {
+        &quot;id&quot;: &quot;s1234&quot;,
+        &quot;title&quot;: &quot;Aria&quot;,
+        &quot;year&quot;: 2005,
+        &quot;genres&quot;: [
+          &quot;Animation&quot;,
+          &quot;Anime&quot;,
+          &quot;Comedy&quot;,
+          &quot;Drama&quot;,
+          &quot;Fantasy&quot;,
+          &quot;Science Fiction&quot;
+        ],
+        &quot;overview&quot;: &quot;On the planet Aqua lies the watery...&quot;,
+        &quot;status&quot;: &quot;ended&quot;,
+        &quot;banner_url&quot;: &quot;https://artworks.thetvdb.com/banners/posters/79839-3.jpg&quot;,
+        &quot;runtime&quot;: 25,
+        &quot;tvdbId&quot;: 79839,
+        &quot;tmdbId&quot;: 53787,
+        &quot;imdbId&quot;: &quot;tt0977907&quot;,
+        &quot;alternate_titles&quot;: [
+          &quot;Aria the Natural&quot;,
+          &quot;Aria the Origination&quot;
+        ],
+        &quot;similarity&quot;: 0.25
+      }
+    ]
+  }
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-500">
+<template #title>Unsuccessful Response (500)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Internal Error&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="get-site-statistics">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#get-site-statistics">#</doc-anchor-trigger>
+        <span>Get Site Statistics</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
+    <span>GET</span>
+</span> <code v-pre>/stats</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Optional</span>
+</span></p>
+<p>Returns various statistics about the site, such as the number of users, torrents, and groups.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;data&quot;: {
+    &quot;created_at&quot;: &quot;1764203045818&quot;,
+    &quot;top_media_1w&quot;: [ // Top media by seeders in the past week, max 10
+      {
+        &quot;id&quot;: &quot;s1539&quot;,
+        &quot;title&quot;: &quot;Dusk Beyond the End of the World&quot;,
+        &quot;banner_url&quot;: &quot;https://artworks.thetvdb.com/banners/v4/series/465214/posters/685e663785276.jpg&quot;,
+        &quot;seeders&quot;: 155
+      }
+    ],
+    &quot;users&quot;: {
+      &quot;total&quot;: 405,
+      &quot;new_1w&quot;: 254,
+      &quot;active_1m&quot;: 331
+    },
+    &quot;groups&quot;: {
+      &quot;total&quot;: 177,
+      &quot;new_1w&quot;: 77,
+      &quot;active_1m&quot;: 47
+    },
+    &quot;torrents&quot;: {
+      &quot;total&quot;: 578,
+      &quot;new_1d&quot;: 48,
+      &quot;total_downloads&quot;: 36500
+    },
+    &quot;peers&quot;: {
+      &quot;seeders&quot;: 2683,
+      &quot;leechers&quot;: 31
+    }
+  },
+  &quot;message&quot;: &quot;Cache hit, returning stats.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-500">
+<template #title>Unsuccessful Response (500)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Timed out whilst fetching stats.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="get-torrent">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#get-torrent">#</doc-anchor-trigger>
+        <span>Get Torrent</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
+    <span>GET</span>
+</span> <code v-pre>/torrents/&lt;torrent_id&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Optional</span>
+</span></p>
+<p>Returns information about a specific torrent, including its title, description, and other metadata.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;data&quot;: {
+    &quot;id&quot;: &quot;1234567890&quot;,
+    &quot;title&quot;: &quot;Torrent Title&quot;,
+    &quot;auto_title&quot;: &quot;Torrent Title {Tags:L1;V9;C1;A-ja;F-en;}&quot;,
+    &quot;description&quot;: &quot;...&quot;, // Markdown formatted description, can be null
+    &quot;mediainfo&quot;: &quot;...&quot;, // Can be null
+    &quot;category&quot;: 1,
+    &quot;deleted&quot;: null,
+    &quot;hidden&quot;: false,
+    &quot;otl&quot;: false,
+    &quot;hardsub&quot;: false,
+    &quot;level&quot;: 1,
+    &quot;mtl&quot;: false,
+    &quot;filesize&quot;: &quot;242587117&quot;,
+    &quot;media_id&quot;: &quot;s1234&quot;,
+    &quot;media_episode_ids&quot;: [
+      &quot;48665&quot;
+    ],
+    &quot;audio_lang&quot;: &quot;ja&quot;, // All languages are comma separated lists
+    &quot;sub_lang&quot;: &quot;&quot;,
+    &quot;fsub_lang&quot;: &quot;en&quot;,
+    &quot;video_codec&quot;: 1,
+    &quot;video_type&quot;: 9,
+    &quot;files&quot;: [
+      {
+        &quot;path&quot;: &quot;[SubsPlus+] Hero Without a Class - Who Even Needs Skills - S01E10 (ADN WEB-DL 1080p AVC AAC) [FAC10B8C].mkv&quot;,
+        &quot;name&quot;: &quot;[SubsPlus+] Hero Without a Class - Who Even Needs Skills - S01E10 (ADN WEB-DL 1080p AVC AAC) [FAC10B8C].mkv&quot;,
+        &quot;length&quot;: 592387117,
+        &quot;offset&quot;: 0
+      }
+    ],
+    &quot;magnet&quot;: &quot;magnet:?xt=urn:btih:bd2fb09...&quot;,
+    &quot;private_magnet&quot;: &quot;magnet:?xt=urn:btih:bd2fb09...&quot;,
+    &quot;infohash&quot;: &quot;bd2fb09...&quot;,
+    &quot;anonymous&quot;: false,
+    &quot;uploader&quot;: { // Can be null on anonymous uploads
+      &quot;id&quot;: &quot;1234567890&quot;,
+      &quot;username&quot;: &quot;example&quot;,
+      &quot;display_name&quot;: &quot;Example&quot;,
+      &quot;pfp_hash&quot;: null
+    },
+    &quot;groups&quot;: [
+      {
+        &quot;id&quot;: &quot;1234567890&quot;,
+        &quot;name&quot;: &quot;example group&quot;,
+        &quot;display_name&quot;: &quot;Example Group&quot;,
+        &quot;pfp_hash&quot;: null,
+        &quot;tagline&quot;: &quot;An example group tagline.&quot;,
+        &quot;members&quot;: [
+          {
+            &quot;id&quot;: &quot;1234567890&quot;,
+            &quot;invite&quot;: false,
+            &quot;username&quot;: &quot;exampleuser&quot;,
+            &quot;display_name&quot;: &quot;ExampleUser&quot;,
+            &quot;pfp_hash&quot;: null,
+            &quot;role&quot;: &quot;Typesetting&quot;,
+            &quot;weight&quot;: 1 // Order of members, smallest first
+          }
+        ],
+        &quot;uploading_group&quot;: true,
+        &quot;role&quot;: null
+      }
+    ],
+    &quot;imported&quot;: null, // If imported from Nyaa, the original Nyaa ID, otherwise null
+    &quot;seeders&quot;: &quot;52&quot;,
+    &quot;leechers&quot;: &quot;1&quot;,
+    &quot;completed&quot;: &quot;185&quot;,
+    &quot;activity&quot;: &quot;5557&quot;, // Estimated peer speeds in bytes/second
+    &quot;upgraded&quot;: null, // Torrent ID of the new torrent, or null
+    &quot;can_edit&quot;: false,
+    &quot;waiting_approve&quot;: false,
+    &quot;disable_comments&quot;: false,
+    &quot;lock_comments&quot;: false,
+    &quot;disable_edits&quot;: false,
+    &quot;nyaa_upload_time&quot;: null // If imported from Nyaa, the original upload time as a Unix timestamp in milliseconds, otherwise null
+  }
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-403">
+<template #title>Unsuccessful Response (403)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Torrent is waiting for approval.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="edit-torrent">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#edit-torrent">#</doc-anchor-trigger>
+        <span>Edit Torrent</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+    <span>PATCH</span>
+</span> <code v-pre>/torrents/&lt;torrent_id&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Required</span>
+</span></p>
+<p>Edit a specific torrent.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="json-data-parameters">
+<template #title>JSON Data Parameters</template>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title?</td>
+<td>string</td>
+<td>New title for the torrent (max 512 characters)</td>
+</tr>
+<tr>
+<td>upgraded?</td>
+<td>number or null</td>
+<td>Torrent ID of the new torrent that replaces this one, or null to remove upgrade</td>
+</tr>
+<tr>
+<td>description?</td>
+<td>string</td>
+<td>Markdown formatted description (max 8192 characters)</td>
+</tr>
+<tr>
+<td>mediainfo?</td>
+<td>string</td>
+<td>Mediainfo data (max 65536 characters)</td>
+</tr>
+<tr>
+<td>video_type?</td>
+<td>number or null</td>
+<td>Video type category</td>
+</tr>
+<tr>
+<td>video_codec?</td>
+<td>number or null</td>
+<td>Video codec category</td>
+</tr>
+<tr>
+<td>audio_lang?</td>
+<td>string</td>
+<td>Comma-separated list of audio languages</td>
+</tr>
+<tr>
+<td>sub_lang?</td>
+<td>string</td>
+<td>Comma-separated list of subtitle languages</td>
+</tr>
+<tr>
+<td>fsub_lang?</td>
+<td>string</td>
+<td>Comma-separated list of fansub languages</td>
+</tr>
+<tr>
+<td>anonymous?</td>
+<td>boolean</td>
+<td>Whether the upload should be anonymous</td>
+</tr>
+<tr>
+<td>hidden?</td>
+<td>boolean</td>
+<td>Whether the torrent should be hidden</td>
+</tr>
+<tr>
+<td>hardsub?</td>
+<td>boolean</td>
+<td>Whether the torrent contains hardsubbed video</td>
+</tr>
+<tr>
+<td>otl?</td>
+<td>boolean</td>
+<td>Whether the torrent&#x27;s subtitles contains an original translation</td>
+</tr>
+<tr>
+<td>primary_group?</td>
+<td>object or null</td>
+<td>Primary group information, members, etc</td>
+</tr>
+<tr>
+<td>secondary_groups?</td>
+<td>array</td>
+<td>Array of secondary groups</td>
+</tr>
+<tr>
+<td>media_episodes?</td>
+<td>array</td>
+<td>Array of episode IDs (numbers) this torrent contains</td>
+</tr>
+<tr>
+<td>deleted?</td>
+<td>boolean</td>
+<td>Whether the torrent is deleted</td>
+</tr>
+<tr>
+<td>deletion_reason?</td>
+<td>string</td>
+<td>Reason for deletion (max 256 characters)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="at-least-one-is-required-italics--default---optional-1">
+    <h6>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#at-least-one-is-required-italics--default---optional-1">#</doc-anchor-trigger>
+        <span>At least one is required, <em>italics</em> = default, ? = optional</span>
+    </h6>
+</doc-anchor-target>
+</doc-tab>
+<doc-tab v-cloak id="example-request-data">
+<template #title>Example Request Data</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;title&quot;: &quot;Torrent Title&quot;,
+  &quot;upgraded&quot;: null,
+  &quot;description&quot;: &quot;...&quot;,
+  &quot;mediainfo&quot;: &quot;...&quot;,
+  &quot;video_type&quot;: 9,
+  &quot;video_codec&quot;: 1,
+  &quot;audio_lang&quot;: &quot;ja&quot;,
+  &quot;sub_lang&quot;: &quot;&quot;,
+  &quot;fsub_lang&quot;: &quot;en&quot;,
+  &quot;anonymous&quot;: false,
+  &quot;hidden&quot;: false,
+  &quot;primary_group&quot;: {
+    &quot;id&quot;: &quot;1234567890&quot;,
+    &quot;members&quot;: [
+      {
+        &quot;id&quot;: &quot;1234567890&quot;, // Can be null for new members
+        &quot;display_name&quot;: &quot;ExampleUser&quot;, // Only used for new members
+        &quot;role&quot;: &quot;Typesetting&quot;,
+        &quot;pfp_hash&quot;: null
+      }
+    ]
+  },
+  &quot;secondary_groups&quot;: [],
+  &quot;media_episodes&quot;: [
+    48665
+  ],
+  &quot;level&quot;: 1,
+  &quot;mtl&quot;: false,
+  &quot;otl&quot;: false,
+  &quot;hardsub&quot;: false,
+  &quot;category&quot;: 1
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-400">
+<template #title>Unsuccessful Response (400)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Can't edit torrent due to parsing failures.&quot;,
+  &quot;fails&quot;: [
+    &quot;You have set sub level to \&quot;no subs\&quot;, but you have added fansub languages.&quot;
+  ],
+  &quot;warns&quot;: []
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="get-torrent-comments">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#get-torrent-comments">#</doc-anchor-trigger>
+        <span>Get Torrent Comments</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
+    <span>GET</span>
+</span> <code v-pre>/torrents/&lt;torrent_id&gt;/comments</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Optional</span>
+</span></p>
+<p>Returns comments for a specific torrent.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;1234567890&quot;,
+      &quot;deleted&quot;: false,
+      &quot;user_id&quot;: &quot;1234567890&quot;,
+      &quot;text&quot;: &quot;this is a comment&quot;,
+      &quot;replying_to&quot;: null,
+      &quot;display_name&quot;: &quot;Example&quot;,
+      &quot;pfp_hash&quot;: &quot;abcdef1234567890abcdef1234567890abcdef12&quot;,
+      &quot;positive&quot;: &quot;0&quot;,
+      &quot;negative&quot;: &quot;0&quot;,
+      &quot;pinned&quot;: false,
+      &quot;user_rating&quot;: null, // The authenticated user's rating for this comment, true (liked), false (disliked), or null (no rating)
+      &quot;last_edit&quot;: null,
+      &quot;children&quot;: [
+        {
+          &quot;id&quot;: &quot;4567890123&quot;,
+          &quot;deleted&quot;: false,
+          &quot;user_id&quot;: &quot;1234567890&quot;,
+          &quot;text&quot;: &quot;@Example and this is a reply&quot;,
+          &quot;replying_to&quot;: &quot;1234567890&quot;,
+          &quot;display_name&quot;: &quot;Example2&quot;,
+          &quot;pfp_hash&quot;: null,
+          &quot;positive&quot;: &quot;0&quot;,
+          &quot;negative&quot;: &quot;0&quot;,
+          &quot;pinned&quot;: false,
+          &quot;user_rating&quot;: null,
+          &quot;last_edit&quot;: 1764031668355 // Unix timestamp in milliseconds, or null
+        },
+        {
+          &quot;id&quot;: &quot;6789012345&quot;,
+          &quot;deleted&quot;: true, // Deleted comments replace user_id, text, and display_name
+          &quot;user_id&quot;: &quot;0&quot;,
+          &quot;text&quot;: &quot;[deleted]&quot;,
+          &quot;replying_to&quot;: &quot;1234567890&quot;,
+          &quot;display_name&quot;: &quot;[deleted]&quot;,
+          &quot;pfp_hash&quot;: null,
+          &quot;positive&quot;: &quot;0&quot;,
+          &quot;negative&quot;: &quot;0&quot;,
+          &quot;pinned&quot;: false,
+          &quot;user_rating&quot;: null,
+          &quot;last_edit&quot;: null
+        }
+      ]
+    }
+  ]
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-404">
+<template #title>Unsuccessful Response (404)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Torrent not found.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="get-torrent-file">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#get-torrent-file">#</doc-anchor-trigger>
+        <span>Get Torrent File</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
+    <span>GET</span>
+</span> <code v-pre>/torrents/&lt;torrent_id&gt;/download</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Optional</span>
+</span></p>
+<p>Returns the torrent file for a specific torrent.</p>
+<p>When authenticated, the returned torrent file will be a private torrent with the user&#x27;s passkey included in the announce URL.<br>
+You can specify <code v-pre>?public=true</code> to get the torrent file without your torrent key.</p>
+<p>This endpoint returns the raw torrent file data with a <code v-pre>application/x-bittorrent</code> content type.</p>
+<doc-anchor-target id="search-torrents">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#search-torrents">#</doc-anchor-trigger>
+        <span>Search Torrents</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
+    <span>GET</span>
+</span> <code v-pre>/torrents/search</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Optional</span>
+</span></p>
+<p>Searches for torrents, using various criteria.</p>
+<p>The search API attempts to extract meaning from the <code v-pre>query</code> parameter (called &quot;hints&quot;). Some examples are:</p>
+<ul>
+<li>Searching <code v-pre>HEVC</code>, it will automatically add the video codec filter for HEVC.</li>
+<li>Searching <code v-pre>your lie in april</code>, it will recommend the media &quot;Your Lie in April&quot;, either in <code v-pre>recommended_media</code> if &gt;=70% of results match, or in <code v-pre>similar_media</code> by title searching.</li>
+<li>Searching <code v-pre>s01</code> when a <code v-pre>media_id</code> is provided, it will add season 1 to the episode filter.</li>
+</ul>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="query-parameters">
+<template #title>Query Parameters</template>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>query?</td>
+<td>string</td>
+<td>Search term for media title</td>
+</tr>
+<tr>
+<td>limit?</td>
+<td>integer</td>
+<td>Number of results to return (default: <em><code v-pre>50</code></em>, range: <code v-pre>1</code>-<code v-pre>100</code>)</td>
+</tr>
+<tr>
+<td>offset?</td>
+<td>integer</td>
+<td>Number of results to skip for pagination (default: 0)</td>
+</tr>
+<tr>
+<td>sort_by?</td>
+<td>string</td>
+<td>Sort order: <em><code v-pre>best</code></em>, <code v-pre>latest</code>, <code v-pre>oldest</code>, <code v-pre>rss</code>, <code v-pre>seeders</code>, <code v-pre>seeders_asc</code>, <code v-pre>leechers</code>, <code v-pre>leechers_asc</code>, <code v-pre>downloads</code>, <code v-pre>downloads_asc</code>, <code v-pre>comments</code>, <code v-pre>comments_asc</code>, <code v-pre>filesize</code>, <code v-pre>filesize_asc</code>.</td>
+</tr>
+<tr>
+<td>category?</td>
+<td>number</td>
+<td>Category filter: <em><code v-pre>0</code></em>. This currently isn&#x27;t used, as there&#x27;s only one category.</td>
+</tr>
+<tr>
+<td>media_id?</td>
+<td>string</td>
+<td>Filter by specific media ID</td>
+</tr>
+<tr>
+<td>episode_ids?</td>
+<td>string</td>
+<td>Comma-separated episode IDs to filter by</td>
+</tr>
+<tr>
+<td>episode_match_any?</td>
+<td>boolean</td>
+<td>Match any episode ID instead of requiring a torrent to have all episodes: <em><code v-pre>false</code></em></td>
+</tr>
+<tr>
+<td>levels?</td>
+<td>string</td>
+<td>Comma-separated subtitle levels to filter by</td>
+</tr>
+<tr>
+<td>video_codec?</td>
+<td>string</td>
+<td>Comma-separated video codec IDs to filter by</td>
+</tr>
+<tr>
+<td>video_type?</td>
+<td>string</td>
+<td>Comma-separated video type IDs to filter by</td>
+</tr>
+<tr>
+<td>audio_lang?</td>
+<td>string</td>
+<td>Comma-separated audio languages to filter by</td>
+</tr>
+<tr>
+<td>fansub_lang?</td>
+<td>string</td>
+<td>Comma-separated fansub languages to filter by</td>
+</tr>
+<tr>
+<td>sub_lang?</td>
+<td>string</td>
+<td>Comma-separated subtitle languages to filter by</td>
+</tr>
+<tr>
+<td>hardsub?</td>
+<td>boolean</td>
+<td>Filter by hardsubbed torrents</td>
+</tr>
+<tr>
+<td>otl?</td>
+<td>boolean</td>
+<td>Filter by original translation torrents</td>
+</tr>
+<tr>
+<td>group_id?</td>
+<td>string</td>
+<td>Filter by group ID</td>
+</tr>
+<tr>
+<td>group_primary?</td>
+<td>boolean</td>
+<td>Include primary group uploads (default: true)</td>
+</tr>
+<tr>
+<td>group_secondary?</td>
+<td>boolean</td>
+<td>Include secondary group uploads (default: false)</td>
+</tr>
+<tr>
+<td>group_childs?</td>
+<td>boolean</td>
+<td>Include child group uploads (default: true)</td>
+</tr>
+<tr>
+<td>group_parents?</td>
+<td>boolean</td>
+<td>Include parent group uploads (default: false)</td>
+</tr>
+<tr>
+<td>uploader_id?</td>
+<td>string</td>
+<td>Filter by uploader ID</td>
+</tr>
+<tr>
+<td>uploader_uploads?</td>
+<td>boolean</td>
+<td>Include uploader&#x27;s uploads (default: true)</td>
+</tr>
+<tr>
+<td>uploader_contributions?</td>
+<td>boolean</td>
+<td>Include uploader&#x27;s contributions (default: false)</td>
+</tr>
+<tr>
+<td>before?</td>
+<td>string</td>
+<td>Filter torrents uploaded before this date, unix milliseconds</td>
+</tr>
+<tr>
+<td>after?</td>
+<td>string</td>
+<td>Filter torrents uploaded after this date, unix milliseconds</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="italics--default---optional-5">
+    <h6>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional-5">#</doc-anchor-trigger>
+        <span><em>italics</em> = default, ? = optional</span>
+    </h6>
+</doc-anchor-target>
+</doc-tab>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;data&quot;: {
+    &quot;results&quot;: [
+      {
+        &quot;id&quot;: &quot;1234567890&quot;,
+        &quot;title&quot;: &quot;Torrent Title&quot;,
+        &quot;infohash&quot;: &quot;abdef...&quot;,
+        &quot;magnet&quot;: &quot;magnet:?xt=urn:btih:9a4e649...&quot;,
+        &quot;private_magnet&quot;: null, // Only present if authenticated
+        &quot;media_id&quot;: &quot;s123&quot;,
+        &quot;description&quot;: &quot;...&quot;, // Can be null
+        &quot;filesize&quot;: &quot;7738622751&quot;, // In bytes
+        &quot;category&quot;: 1,
+        &quot;level&quot;: 4,
+        &quot;otl&quot;: true,
+        &quot;hardsub&quot;: false,
+        &quot;mtl&quot;: false,
+        &quot;comment_count&quot;: &quot;0&quot;,
+        &quot;deleted&quot;: null,
+        &quot;hidden&quot;: false,
+        &quot;waiting_approve&quot;: false,
+        &quot;auto_title&quot;: &quot;Torrent Title {Tags:OTL;L4;V13;C1;A-ja;F-en;}&quot;,
+        &quot;audio_lang&quot;: &quot;ja&quot;, // Comma-separated list of languages
+        &quot;sub_lang&quot;: &quot;&quot;,
+        &quot;fsub_lang&quot;: &quot;en&quot;,
+        &quot;video_codec&quot;: 1,
+        &quot;video_type&quot;: 13,
+        &quot;anonymous&quot;: false,
+        &quot;upgraded&quot;: null,
+        &quot;uploader&quot;: {
+          &quot;id&quot;: &quot;1234567890&quot;,
+          &quot;display_name&quot;: &quot;Example&quot;,
+          &quot;username&quot;: &quot;example&quot;,
+          &quot;pfp_hash&quot;: &quot;abdef...&quot;
+        },
+        &quot;seeders&quot;: &quot;0&quot;,
+        &quot;leechers&quot;: &quot;0&quot;,
+        &quot;completed&quot;: &quot;0&quot;,
+        &quot;groups&quot;: [
+          {
+            &quot;id&quot;: &quot;1234567890&quot;,
+            &quot;display_name&quot;: &quot;Example Group&quot;,
+            &quot;name&quot;: &quot;example group&quot;,
+            &quot;anonymous&quot;: 0,
+            &quot;tagline&quot;: &quot;An example group tagline.&quot;,
+            &quot;pfp_hash&quot;: &quot;abdef...&quot;,
+            &quot;uploading_group&quot;: true // Primary = true, Secondary = false
+          }
+        ],
+        &quot;imported&quot;: 123456, // If imported from Nyaa, the original Nyaa Torrent ID, otherwise null
+        &quot;user_is_seeding&quot;: null, // If the authenticated user is seeding this torrent, true/false/null
+        &quot;user_is_leeching&quot;: null, // If the authenticated user is leeching this torrent, true/false/null
+        &quot;user_download_count&quot;: null, // Number of times the authenticated user has downloaded this torrent, or null
+        &quot;has_mediainfo&quot;: false,
+        &quot;nyaa_upload_time&quot;: &quot;1573878523000&quot; // If imported from Nyaa, the original upload time as a Unix timestamp in milliseconds, otherwise null
+      }
+    ],
+    &quot;infohash_match&quot;: null, // If the query matched an infohash exactly, this field contains that torrent ID, otherwise null
+    &quot;recommended_media&quot;: null, // If the search used a query, and &gt;=70% of the results contain the same media ID, this field contains that media object, otherwise null
+    &quot;media&quot;: null, // If the search used a media_id filter, this field contains that media object, otherwise null
+    &quot;similar_media&quot;: null, // If the query was similar to a media title, this field contains a list of media objects, otherwise null
+    &quot;debug&quot;: {
+      &quot;summary&quot;: [], // Summary of applied filters extracted from the query
+      &quot;debug&quot;: [
+        &quot;no hints found&quot;,
+        &quot;hiding hidden torrents&quot;,
+        &quot;sorting by best (level desc)&quot;,
+        &quot;found 50 torrents&quot;,
+        &quot;found 67 group relations&quot;,
+        &quot;found 35 groups&quot;,
+        &quot;found 22 users&quot;
+      ]
+    },
+    &quot;more&quot;: true, // Whether there are more results to fetch with pagination
+    &quot;search&quot;: { // Returns search parameters actually used after getting hints 
+      &quot;limit&quot;: 50,
+      &quot;offset&quot;: 0,
+      &quot;sort_by&quot;: &quot;best&quot;,
+      &quot;category&quot;: 0,
+      &quot;episode_match_any&quot;: false,
+      &quot;group_primary&quot;: true,
+      &quot;group_secondary&quot;: false,
+      &quot;group_childs&quot;: true,
+      &quot;group_parents&quot;: false,
+      &quot;uploader_uploads&quot;: true,
+      &quot;uploader_contributions&quot;: false
+    }
+  }
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-500">
+<template #title>Unsuccessful Response (500)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Internal Error&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="upload-torrent">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#upload-torrent">#</doc-anchor-trigger>
+        <span>Upload Torrent</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+    <span>POST</span>
+</span> <code v-pre>/upload</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Required</span>
+</span></p>
+<p>Uploads a new torrent to the site.</p>
+<p>It&#x27;s recommended you first perform <doc-anchor-trigger to="#perform-upload-checks">upload checks</doc-anchor-trigger> before uploading a torrent, to ensure the torrent is being parsed as expected.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="json-data-parameters">
+<template #title>JSON Data Parameters</template>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>torrent</td>
+<td>string</td>
+<td>Base64 encoded torrent file</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>Title for the torrent (max 512 characters)</td>
+</tr>
+<tr>
+<td>movie</td>
+<td>boolean</td>
+<td>Whether this torrent is for a movie (true) or series (false)</td>
+</tr>
+<tr>
+<td>category</td>
+<td>number</td>
+<td>Category ID (currently only 1 is valid)</td>
+</tr>
+<tr>
+<td>video_type</td>
+<td>number or null</td>
+<td>Video type category ID</td>
+</tr>
+<tr>
+<td>video_codec</td>
+<td>number or null</td>
+<td>Video codec category ID</td>
+</tr>
+<tr>
+<td>level</td>
+<td>number</td>
+<td>Subtitle level (-1 to 4, -1 = no subs)</td>
+</tr>
+<tr>
+<td>mtl</td>
+<td>boolean</td>
+<td>Whether the torrent contains machine translated subtitles</td>
+</tr>
+<tr>
+<td>anonymous</td>
+<td>boolean</td>
+<td>Whether the upload should be anonymous</td>
+</tr>
+<tr>
+<td>hidden</td>
+<td>boolean</td>
+<td>Whether the torrent should be hidden</td>
+</tr>
+<tr>
+<td>otl</td>
+<td>boolean</td>
+<td>Whether the torrent&#x27;s subtitles contain an original translation</td>
+</tr>
+<tr>
+<td>hardsub</td>
+<td>boolean</td>
+<td>Whether the torrent contains hardsubbed video</td>
+</tr>
+<tr>
+<td>primary_group?</td>
+<td>object</td>
+<td>Primary group information (see below)</td>
+</tr>
+<tr>
+<td>secondary_groups</td>
+<td>array</td>
+<td>Array of secondary group objects (max 50 items)</td>
+</tr>
+<tr>
+<td>audio_langs</td>
+<td>string</td>
+<td>Comma-separated list of audio languages (max 256 characters)</td>
+</tr>
+<tr>
+<td>sub_langs</td>
+<td>string</td>
+<td>Comma-separated list of subtitle languages (max 256 characters)</td>
+</tr>
+<tr>
+<td>fansub_langs</td>
+<td>string</td>
+<td>Comma-separated list of fansub languages (max 256 characters)</td>
+</tr>
+<tr>
+<td>description</td>
+<td>string</td>
+<td>Markdown formatted description (max 8192 characters)</td>
+</tr>
+<tr>
+<td>mediainfo?</td>
+<td>string</td>
+<td>Mediainfo data (max 65536 characters)</td>
+</tr>
+<tr>
+<td>ignore_warnings?</td>
+<td>boolean</td>
+<td>Whether to ignore validation warnings, and proceed with the upload</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Primary Group Object:</strong></p>
+<ul>
+<li><code v-pre>id</code> (string): Group ID</li>
+<li><code v-pre>members</code> (array, max 50): Array of member objects with:
+<ul>
+<li><code v-pre>id</code> (string or null): User ID, Invite ID, or null for new invites</li>
+<li><code v-pre>role</code> (string): Role name</li>
+<li><code v-pre>display_name</code> (string, max 32): Display name (used for new invites)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Secondary Group Object:</strong></p>
+<ul>
+<li><code v-pre>id</code> (string): Group ID</li>
+<li><code v-pre>role</code> (string or null, max 64): Role name or null</li>
+</ul>
+<doc-anchor-target id="italics--default---optional-6">
+    <h6>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional-6">#</doc-anchor-trigger>
+        <span><em>italics</em> = default, ? = optional</span>
+    </h6>
+</doc-anchor-target>
+</doc-tab>
+<doc-tab v-cloak id="example-request-data">
+<template #title>Example Request Data</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;torrent&quot;: &quot;ZDg6YW5ub3VuY2....&quot;,
+  &quot;title&quot;: &quot;[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0]&quot;,
+  &quot;movie&quot;: false,
+  &quot;category&quot;: &quot;1&quot;,
+  &quot;video_codec&quot;: 2,
+  &quot;hidden&quot;: false,
+  &quot;video_type&quot;: &quot;7&quot;,
+  &quot;level&quot;: &quot;3&quot;,
+  &quot;mtl&quot;: false,
+  &quot;otl&quot;: false,
+  &quot;hardsub&quot;: false,
+  &quot;anonymous&quot;: false,
+  &quot;primary_group&quot;: {
+    &quot;id&quot;: &quot;1234567890&quot;,
+    &quot;members&quot;: [
+      {
+        &quot;id&quot;: &quot;1234567890&quot;,
+        &quot;display_name&quot;: &quot;&quot;, // Can be empty for existing members 
+        &quot;role&quot;: &quot;Typesetting&quot;
+      }
+    ]
+  },
+  &quot;secondary_groups&quot;: [
+    {
+      &quot;id&quot;: &quot;0987654321&quot;,
+      &quot;role&quot;: &quot;Encode&quot;
+    }
+  ],
+  &quot;audio_langs&quot;: &quot;jp&quot;,
+  &quot;sub_langs&quot;: &quot;&quot;,
+  &quot;fansub_langs&quot;: &quot;en&quot;,
+  &quot;description&quot;: &quot;Example description...&quot;,
+  &quot;mediainfo&quot;: &quot;&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;data&quot;: {
+    &quot;id&quot;: &quot;1234567890&quot;
+  }
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-400-warning">
+<template #title>Unsuccessful Response (400) (Warning)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Can't upload torrent due to parsing warnings.&quot;,
+  &quot;fails&quot;: [],
+  &quot;warns&quot;: [
+    &quot;You have not included our public tracker URL in your torrent. If you plan to upload this torrent to other sites, you should make sure you include it.&quot;,
+    &quot;You have not added any audio languages, please make sure to include them if you have any audio tracks.&quot;
+  ]
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-400-failure">
+<template #title>Unsuccessful Response (400) (Failure)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Can't upload torrent due to parsing failures.&quot;,
+  &quot;fails&quot;: [
+    &quot;Torrents must have at least one backup tracker.&quot;
+  ],
+  &quot;warns&quot;: [
+    &quot;You have not included our public tracker URL in your torrent. If you plan to upload this torrent to other sites, you should make sure you include it.&quot;,
+    &quot;You have not added any audio languages, please make sure to include them if you have any audio tracks.&quot;
+  ]
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="perform-upload-checks">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#perform-upload-checks">#</doc-anchor-trigger>
+        <span>Perform Upload Checks</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+    <span>POST</span>
+</span> <code v-pre>/upload/checks</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Required</span>
+</span></p>
+<p>Performs various checks for a new torrent upload, such as verifying its parsability.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="json-data-parameters">
+<template #title>JSON Data Parameters</template>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>Title for the torrent (max 512 characters)</td>
+</tr>
+<tr>
+<td>movie</td>
+<td>boolean</td>
+<td>Whether this torrent is for a movie (true) or series (false)</td>
+</tr>
+<tr>
+<td>files</td>
+<td>array of objects</td>
+<td>Array of file objects with <code v-pre>name</code> (string) that the torrent contains</td>
+</tr>
+<tr>
+<td>video_type</td>
+<td>number or null</td>
+<td>Video type category ID</td>
+</tr>
+<tr>
+<td>video_codec</td>
+<td>number or null</td>
+<td>Video codec category ID</td>
+</tr>
+<tr>
+<td>level</td>
+<td>number</td>
+<td>Subtitle level (null or -1 to 4, -1 = no subs)</td>
+</tr>
+<tr>
+<td>mtl</td>
+<td>boolean</td>
+<td>Whether the torrent contains machine translated subtitles</td>
+</tr>
+<tr>
+<td>otl</td>
+<td>boolean</td>
+<td>Whether the torrent&#x27;s subtitles contain an original translation</td>
+</tr>
+<tr>
+<td>hardsub</td>
+<td>boolean</td>
+<td>Whether the torrent contains hardsubbed video</td>
+</tr>
+<tr>
+<td>primary_group?</td>
+<td>object</td>
+<td>Primary group information (see below)</td>
+</tr>
+<tr>
+<td>audio_langs</td>
+<td>string</td>
+<td>Comma-separated list of audio languages (max 256 characters)</td>
+</tr>
+<tr>
+<td>sub_langs</td>
+<td>string</td>
+<td>Comma-separated list of subtitle languages (max 256 characters)</td>
+</tr>
+<tr>
+<td>fansub_langs</td>
+<td>string</td>
+<td>Comma-separated list of fansub languages (max 256 characters)</td>
+</tr>
+<tr>
+<td>announce_urls?</td>
+<td>array of strings</td>
+<td>Array of announce URLs in the torrent file</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Primary Group Object:</strong></p>
+<ul>
+<li><code v-pre>id</code> (string): Group ID</li>
+<li><code v-pre>tag</code> (string): Group tag</li>
+<li><code v-pre>members</code> (array, max 50): Array of member objects with:
+<ul>
+<li><code v-pre>id</code> (string or null): User ID, Invite ID, or null for new invites</li>
+<li><code v-pre>role</code> (string): Role name</li>
+<li><code v-pre>display_name</code> (string, max 32): Display name (used for new invites)</li>
+</ul>
+</li>
+</ul>
+<doc-anchor-target id="italics--default---optional-7">
+    <h6>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional-7">#</doc-anchor-trigger>
+        <span><em>italics</em> = default, ? = optional</span>
+    </h6>
+</doc-anchor-target>
+</doc-tab>
+<doc-tab v-cloak id="example-request-data">
+<template #title>Example Request Data</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;title&quot;: &quot;[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0]&quot;,
+  &quot;movie&quot;: false,
+  &quot;video_type&quot;: null,
+  &quot;video_codec&quot;: null,
+  &quot;files&quot;: [
+    {
+      &quot;name&quot;: &quot;[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0].mkv&quot;,
+    }
+  ],
+  &quot;level&quot;: &quot;&quot;,
+  &quot;mtl&quot;: false,
+  &quot;otl&quot;: false,
+  &quot;hardsub&quot;: false,
+  &quot;audio_langs&quot;: &quot;&quot;,
+  &quot;sub_langs&quot;: &quot;&quot;,
+  &quot;fansub_langs&quot;: &quot;&quot;,
+  &quot;announce_urls&quot;: [
+    &quot;udp://tracker.opentrackr.org:1337/announce&quot;,
+  ]
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;data&quot;: {
+    &quot;warns&quot;: [
+      &quot;You have not included our public tracker URL in your torrent. If you plan to upload this torrent to other sites, you should make sure you include it.&quot;,
+      &quot;You have not added any audio languages, please make sure to include them if you have any audio tracks.&quot;
+    ],
+    &quot;fails&quot;: [
+      &quot;You need to set your Primary Group to the \&quot;Release Group\&quot; found in your title.&quot;
+    ],
+    &quot;parsedData&quot;: {
+      &quot;media&quot;: {
+        &quot;torrentTitle&quot;: &quot;Media Title&quot;,
+        &quot;releaseTokens&quot;: &quot; [WEB 1080p x265][FLAC 2.0]&quot;,
+        &quot;title&quot;: &quot;Media Title&quot;,
+        &quot;genres&quot;: [
+          &quot;Action&quot;,
+          &quot;Animation&quot;,
+          &quot;Anime&quot;,
+          &quot;Comedy&quot;,
+          &quot;Fantasy&quot;,
+          &quot;Romance&quot;
+        ],
+        &quot;id&quot;: 1234
+      },
+      &quot;episodes&quot;: [
+        {
+          &quot;id&quot;: 1234567,
+          &quot;title&quot;: &quot;Episode Title&quot;,
+          &quot;season&quot;: 1,
+          &quot;episode&quot;: 1,
+          &quot;absolute&quot;: 1
+        }
+      ],
+      &quot;quality&quot;: {
+        &quot;id&quot;: 3,
+        &quot;name&quot;: &quot;WEBDL-1080p&quot;,
+        &quot;source&quot;: &quot;web&quot;,
+        &quot;resolution&quot;: 1080,
+        &quot;version&quot;: 1
+      },
+      &quot;releaseGroup&quot;: &quot;ExampleGroup&quot;
+    },
+    &quot;auto_title&quot;: &quot;[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0]&quot;,
+    &quot;upgraded_torrents&quot;: []
+  }
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-500">
+<template #title>Unsuccessful Response (500)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Internal Error&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="perform-mediainfo-extraction">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#perform-mediainfo-extraction">#</doc-anchor-trigger>
+        <span>Perform Mediainfo Extraction</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+    <span>POST</span>
+</span> <code v-pre>/upload/mediainfo</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Optional</span>
+</span></p>
+<p>Extracts metadata for a torrent using Mediainfo Text or JSON output.</p>
+<p>When providing JSON output, you must provide the data as JSON, not a JSON string.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="json-data-parameters">
+<template #title>JSON Data Parameters</template>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mediainfo</td>
+<td>string or object</td>
+<td>Mediainfo data as plain text or JSON object</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="italics--default---optional-8">
+    <h6>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional-8">#</doc-anchor-trigger>
+        <span><em>italics</em> = default, ? = optional</span>
+    </h6>
+</doc-anchor-target>
+</doc-tab>
+<doc-tab v-cloak id="example-request-data-text">
+<template #title>Example Request Data (Text)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;mediainfo&quot;: &quot;General\nComplete name                            : example.mkv\nFormat                                   : Matroska\nFile size                                : 1.46 GiB\nDuration                                 : 24 min 0 s\nOverall bit rate                         : 8 738 kb/s\n...&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="example-request-data-json">
+<template #title>Example Request Data (JSON)</template>
+<p>You can either provide the whole JSON object from Mediainfo, or just the <code v-pre>media</code> object.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;mediainfo&quot;: {
+    &quot;track&quot;: [
+      {
+        &quot;@type&quot;: &quot;General&quot;,
+        &quot;Complete_name&quot;: &quot;example.mkv&quot;,
+        &quot;Format&quot;: &quot;Matroska&quot;,
+        &quot;File_size&quot;: &quot;1.46 GiB&quot;,
+        &quot;Duration&quot;: &quot;24 min 0 s&quot;,
+        &quot;Overall_bit_rate&quot;: &quot;8 738 kb/s&quot;
+      }
+      // ...
+    ]
+  }
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;data&quot;: {
+    &quot;video_codec&quot;: 2,
+    &quot;fansub_langs&quot;: &quot;&quot;,
+    &quot;sub_langs&quot;: &quot;en&quot;,
+    &quot;audio_langs&quot;: &quot;jp&quot;
+  }
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-400">
+<template #title>Unsuccessful Response (400)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Failed to extract mediainfo text languages and codec.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="get-user">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#get-user">#</doc-anchor-trigger>
+        <span>Get User</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
+    <span>GET</span>
+</span> <code v-pre>/users/&lt;user_id|@me&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Optional</span>
+</span></p>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-info"></div>
+    <div class="flex w-full py-4 border border-l-0 rounded-tr-lg rounded-br-lg doc-callout bg-callout-base-bg border-callout-base-border" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-callout-info" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>For all endpoints starting with <code v-pre>/users/</code>, you can also use <code v-pre>@me</code> for <code v-pre>&lt;user_id&gt;</code> to refer to the currently authenticated user.</p>
+        </div>
+    </div>
+</div>
+<p>Returns information about a specific user, including their username, profile picture, and other metadata.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;data&quot;: {
+    &quot;id&quot;: &quot;1234567890&quot;,
+    &quot;username&quot;: &quot;example&quot;,
+    &quot;display_name&quot;: &quot;Example&quot;,
+    &quot;pfp_hash&quot;: &quot;abdef1234567890abcdef1234567890abcdef12&quot;,
+    &quot;description&quot;: &quot;Example user description.&quot;,
+    &quot;permissions&quot;: 0, // Only present if authenticated as this user
+    &quot;torrent_key&quot;: &quot;...&quot;, // Only present if authenticated as this user
+    &quot;torrent_count&quot;: 2,
+    &quot;contribution_count&quot;: 1,
+    &quot;groups&quot;: [
+      {
+        &quot;id&quot;: &quot;1234567890&quot;,
+        &quot;name&quot;: &quot;example group&quot;,
+        &quot;display_name&quot;: &quot;Example Group&quot;,
+        &quot;tagline&quot;: &quot;An example group tagline.&quot;,
+        &quot;anonymous&quot;: 0,
+        &quot;description&quot;: &quot;Example group description.&quot;,
+        &quot;pfp_hash&quot;: &quot;abdef1234567890abcdef1234567890abcdef12&quot;,
+        &quot;tag&quot;: &quot;examplegroup&quot;,
+        &quot;display_tag&quot;: &quot;ExampleGroup&quot;,
+        &quot;admin&quot;: false,
+        &quot;leader&quot;: false,
+        &quot;regular&quot;: false
+      }
+    ],
+    &quot;upload&quot;: &quot;50043&quot;, // Total uploaded bytes
+    &quot;download&quot;: &quot;1945&quot;, // Total downloaded bytes
+    &quot;seeding&quot;: &quot;0&quot;, // Number of torrents currently seeding
+    &quot;leeching&quot;: &quot;0&quot;, // Number of torrents currently leeching
+    &quot;disabled&quot;: false, // Whether the account is disabled
+    &quot;nyaa&quot;: [
+      {
+        &quot;username&quot;: &quot;ExampleNyaa&quot;,
+        &quot;public&quot;: true // Private links are only shown if authenticated as this user
+      }
+    ],
+    &quot;can_edit&quot;: false,
+    &quot;has_mfa&quot;: null, // Whether the user has multi-factor authentication enabled, only shown if authenticated as this user
+    &quot;can_download_recovery&quot;: null // Whether the user can still download their recovery key, only shown if authenticated as this user
+  }
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-404">
+<template #title>Unsuccessful Response (404)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Invalid user ID.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="edit-user">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#edit-user">#</doc-anchor-trigger>
+        <span>Edit User</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+    <span>PATCH</span>
+</span> <code v-pre>/users/&lt;user_id|@me&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Required</span>
+</span></p>
+<p>Perform edits on your account. This includes Nyaa links, profile picture, revoking API keys, and your description.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="json-data-parameters">
+<template #title>JSON Data Parameters</template>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>description?</td>
+<td>string</td>
+<td>Markdown formatted description (max 8192 characters)</td>
+</tr>
+<tr>
+<td>pfp?</td>
+<td>string</td>
+<td>Either <code v-pre>reset</code> to remove, <code v-pre>keep</code> to keep current, or base64 encoded image data (max 4.5MB)</td>
+</tr>
+<tr>
+<td>reset_torrent_key?</td>
+<td>boolean</td>
+<td>Whether to reset your torrent key</td>
+</tr>
+<tr>
+<td>remove_nyaa_account?</td>
+<td>string</td>
+<td>Nyaa username to remove</td>
+</tr>
+<tr>
+<td>nyaa_account_public?</td>
+<td>string</td>
+<td>Nyaa username to set public</td>
+</tr>
+<tr>
+<td>nyaa_account_private?</td>
+<td>string</td>
+<td>Nyaa username to set private</td>
+</tr>
+<tr>
+<td>revoke_api_keys?</td>
+<td>boolean</td>
+<td>Whether to revoke all API keys</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="at-least-one-is-required-italics--default---optional-2">
+    <h6>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#at-least-one-is-required-italics--default---optional-2">#</doc-anchor-trigger>
+        <span>At least one is required, <em>italics</em> = default, ? = optional</span>
+    </h6>
+</doc-anchor-target>
+</doc-tab>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;new_torrent_key&quot;: &quot;abcdef...&quot; // Only present if reset_torrent_key was true
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-403">
+<template #title>Unsuccessful Response (403)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Forbidden.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="get-user-groups">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#get-user-groups">#</doc-anchor-trigger>
+        <span>Get User Groups</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
+    <span>GET</span>
+</span> <code v-pre>/users/&lt;user_id|@me&gt;/groups</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Optional</span>
+</span></p>
+<p>Returns the groups that a user is a member of.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;1234567890&quot;,
+      &quot;name&quot;: &quot;example&quot;,
+      &quot;display_name&quot;: &quot;Example&quot;,
+      &quot;pfp_hash&quot;: &quot;abdef...&quot;,
+      &quot;tagline&quot;: &quot;An example group tagline.&quot;,
+      &quot;tag&quot;: &quot;example&quot;,
+      &quot;display_tag&quot;: &quot;Example&quot;,
+      &quot;description&quot;: &quot;Example group description.&quot;,
+      &quot;anonymous&quot;: 0,
+      &quot;admin&quot;: false, // Whether the user is an admin of the group
+      &quot;leader&quot;: false,
+      &quot;regular&quot;: false,
+      &quot;members&quot;: [
+        {
+          &quot;id&quot;: &quot;1234567890&quot;,
+          &quot;invite&quot;: false,
+          &quot;username&quot;: &quot;example&quot;,
+          &quot;display_name&quot;: &quot;Example&quot;,
+          &quot;pfp_hash&quot;: &quot;abdef...&quot;,
+          &quot;leader&quot;: false,
+          &quot;admin&quot;: false,
+          &quot;regular&quot;: false
+        }
+      ],
+      &quot;upload_count&quot;: 25
+    }
+  ]
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-404">
+<template #title>Unsuccessful Response (404)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Invalid user ID.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="get-user-notifications">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#get-user-notifications">#</doc-anchor-trigger>
+        <span>Get User Notifications</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
+    <span>GET</span>
+</span> <code v-pre>/users/&lt;user_id|@me&gt;/notifications</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Required</span>
+</span></p>
+<p>Returns notifications for a specific user.</p>
+<p>There are several tags used in notifications:</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Regex</th>
+<th>Replacement</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code v-pre>&lt;u:(\d+):([^&gt;]+)&gt;</code></td>
+<td><code v-pre>&lt;a class=&quot;link-blue&quot; href=&quot;/users/$1&quot;&gt;$2&lt;/a&gt;</code></td>
+<td>Link to User</td>
+</tr>
+<tr>
+<td><code v-pre>&lt;g:(\d+):([^&gt;]+)&gt;</code></td>
+<td><code v-pre>&lt;a class=&quot;link-blue&quot; href=&quot;/groups/$1&quot;&gt;$2&lt;/a&gt;</code></td>
+<td>Link to Grouo</td>
+</tr>
+<tr>
+<td><code v-pre>&lt;i:(\d+):([^&gt;]+)&gt;</code></td>
+<td><code v-pre>&lt;a class=&quot;link-blue&quot; href=&quot;/invites/$1/accept/$2&quot;&gt;View Invite&lt;/a&gt;</code></td>
+<td>Link to Accept Invite</td>
+</tr>
+<tr>
+<td><code v-pre>&lt;vi:(\d+):([^&gt;]+)&gt;</code></td>
+<td><code v-pre>&lt;a class=&quot;link-blue&quot; href=&quot;/invites/$1&quot;&gt;$2&lt;/a&gt;</code></td>
+<td>Link to View Invite</td>
+</tr>
+<tr>
+<td><code v-pre>&lt;ge:(\d+):([^&gt;]+)&gt;</code></td>
+<td><code v-pre>&lt;a class=&quot;link-blue&quot; href=&quot;/groups/$1/edit&quot;&gt;$2&lt;/a&gt;</code></td>
+<td>Link to Edit Group</td>
+</tr>
+<tr>
+<td><code v-pre>&lt;t:(\d+):([^&gt;]+)&gt;</code></td>
+<td><code v-pre>&lt;a class=&quot;link-blue&quot; href=&quot;/torrents/$1&quot;&gt;$2&lt;/a&gt;</code></td>
+<td>Link to Torrent</td>
+</tr>
+<tr>
+<td><code v-pre>&lt;tc:(\d+):(\d+):([^&gt;]+)&gt;</code></td>
+<td><code v-pre>&lt;a class=&quot;link-blue&quot; href=&quot;/torrents/$1#com-$2&quot;&gt;$3&lt;/a&gt;</code></td>
+<td>Link to Torrent Comment</td>
+</tr>
+<tr>
+<td><code v-pre>&lt;r:(\d+):([^&gt;]+)&gt;</code></td>
+<td><code v-pre>$2</code></td>
+<td>Used for Report IDs, not linked</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;1234567890&quot;,
+      &quot;data&quot;: &quot;Welcome to the site.&quot;,
+      &quot;seen&quot;: false
+    }
+  ]
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-403">
+<template #title>Unsuccessful Response (403)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Forbidden.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="mark-user-notifications-as-read">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#mark-user-notifications-as-read">#</doc-anchor-trigger>
+        <span>Mark User Notifications as Read</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+    <span>PUT</span>
+</span> <code v-pre>/users/&lt;user_id|@me&gt;/notifications/read</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Required</span>
+</span></p>
+<p>Marks specified notifications as read. Returns the updated list of notifications.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="json-data-parameters">
+<template #title>JSON Data Parameters</template>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ids</td>
+<td>array or string</td>
+<td>Either an array of notification IDs to mark as read, or the string <code v-pre>all</code> to mark all notifications as read.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="italics--default---optional-9">
+    <h6>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional-9">#</doc-anchor-trigger>
+        <span><em>italics</em> = default, ? = optional</span>
+    </h6>
+</doc-anchor-target>
+</doc-tab>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;1234567890&quot;,
+      &quot;data&quot;: &quot;Welcome to the site.&quot;,
+      &quot;seen&quot;: false
+    }
+  ]
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-403">
+<template #title>Unsuccessful Response (403)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Forbidden.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="get-user-peers">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#get-user-peers">#</doc-anchor-trigger>
+        <span>Get User Peers</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
+    <span>GET</span>
+</span> <code v-pre>/users/&lt;user_id|@me&gt;/peers</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Required</span>
+</span></p>
+<p>Returns a list of torrents that the user is a peer of, including their upload and download statistics.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;data&quot;: [
+    {
+      &quot;torrent_id&quot;: &quot;1234567890&quot;,
+      &quot;upload&quot;: &quot;48492&quot;, // Total uploaded bytes
+      &quot;download&quot;: &quot;0&quot;, // Total downloaded bytes
+      &quot;completed&quot;: &quot;0&quot;, // Total downloads completed
+      &quot;down_time&quot;: &quot;0&quot;, // Seconds spent downloading
+      &quot;up_time&quot;: &quot;74859&quot;, // Seconds spent uploading
+      &quot;created_at&quot;: &quot;1764178764012&quot;, // First connection for this torrent, Unix timestamp in milliseconds
+      &quot;updated_at&quot;: &quot;1764253690054&quot;, // Last seen seeding/leeching, Unix timestamp in milliseconds
+      &quot;last_completed&quot;: &quot;0&quot;, // Last completed download time, Unix timestamp in milliseconds
+      &quot;torrent_title&quot;: &quot;[Example] Media Title - 01 [WEB 1080p x265][FLAC 2.0]&quot;,
+      &quot;torrent_infohash&quot;: &quot;abcdef...&quot;,
+      &quot;torrent_filesize&quot;: &quot;148129345&quot;, // In bytes
+      &quot;peers&quot;: [
+        {
+          &quot;torrent_id&quot;: &quot;1234567890&quot;,
+          &quot;peer_id&quot;: &quot;-qb-69420-&quot;, // Peer ID from the torrent client
+          &quot;upload&quot;: &quot;63093967893&quot;, // Total uploaded bytes in this session
+          &quot;download&quot;: &quot;0&quot;, // Total downloaded bytes in this session
+          &quot;left&quot;: &quot;0&quot;, // Bytes left to download
+          &quot;first_seen&quot;: &quot;1764178764012&quot;, // Unix timestamp in milliseconds
+          &quot;last_seen&quot;: &quot;1764253690054&quot;, // Unix timestamp in milliseconds
+          &quot;user_agent&quot;: &quot;qBittorrent/69&quot;, // Peer user agent string
+          &quot;est_upload_speed&quot;: 3911, // Estimated upload speed in bytes/second
+          &quot;est_download_speed&quot;: 0,
+          &quot;ip&quot;: &quot;x.x.x.x&quot;, // IP address of the peer
+          &quot;port&quot;: 58071 // Port of the peer
+        }
+      ]
+    }
+  ]
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-403">
+<template #title>Unsuccessful Response (403)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Forbidden.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="search-users">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#search-users">#</doc-anchor-trigger>
+        <span>Search Users</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
+    <span>GET</span>
+</span> <code v-pre>/users/search</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Required</span>
+</span></p>
+<p>Searches for users based on their username.</p>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-warning"></div>
+    <div class="flex w-full py-4 border border-l-0 rounded-tr-lg rounded-br-lg doc-callout bg-callout-base-bg border-callout-base-border" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-callout-warning" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M22.48 15.59L14.01 1.45A2.968 2.968 0 0012.16.09c-.78-.19-1.58-.07-2.27.35-.41.25-.76.6-1.01 1.01v.01L.4 15.6c-.83 1.43-.33 3.27 1.1 4.1.45.26.95.4 1.48.4h16.95c.8-.01 1.55-.33 2.11-.9.56-.57.87-1.33.86-2.13a3.04 3.04 0 00-.42-1.48zm-1.87 2.21c-.19.19-.44.3-.69.3H2.99c-.17 0-.34-.05-.49-.13a.992.992 0 01-.37-1.35L10.6 2.48c.08-.14.2-.25.34-.33a.992.992 0 011.37.33l8.46 14.13c.09.15.13.32.13.49 0 .26-.1.51-.29.7z"></path>
+                    <path d="M11.45 12.1c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1s-1 .45-1 1v4c0 .56.45 1 1 1zM11.46 14.1c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>To keep users who don&#x27;t want to be known private, this endpoint only returns a user when the search query is an exact match of the username.</p>
+        </div>
+    </div>
+</div>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="query-parameters">
+<template #title>Query Parameters</template>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>query</td>
+<td>string</td>
+<td>Exact username to search for.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="italics--default---optional-10">
+    <h6>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional-10">#</doc-anchor-trigger>
+        <span><em>italics</em> = default, ? = optional</span>
+    </h6>
+</doc-anchor-target>
+</doc-tab>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;data&quot;: {
+    &quot;more&quot;: false,
+    &quot;results&quot;: [
+      {
+        &quot;id&quot;: &quot;1234567890&quot;,
+        &quot;username&quot;: &quot;example&quot;,
+        &quot;display_name&quot;: &quot;Example&quot;,
+        &quot;pfp_hash&quot;: null
+      }
+    ]
+  }
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-401">
+<template #title>Unsuccessful Response (401)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Unauthorized.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+
+                                
+                                <!-- Required only on API pages -->
+                                <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
+                            </div>
+                            <footer id="retype-content-footer" class="clear-both">
+                            
+                                <nav id="retype-nextprev" class="print:hidden flex mt-14">
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../using-the-api/api-keys/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                            <span>
+                                                <span class="block text-xs font-normal text-base-text-muted">Previous</span>
+                                                <span class="block mt-1">API Keys</span>
+                                            </span>
+                                        </a>
+                                    </div>
+                            
+                                    <div class="w-1/2">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../using-the-api/torznab/">
+                                            <span>
+                                                <span class="block text-xs font-normal text-right text-base-text-muted">Next</span>
+                                                <span class="block mt-1">Torznab & RSS</span>
+                                            </span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                                        </a>
+                                    </div>
+                                </nav>
+                            </footer>
+                        </main>
+                
+                        <div id="retype-page-footer" class="print:border-none border-t border-base-border pt-6 mb-8">
+                            <footer class="flex flex-wrap items-center justify-between print:justify-center">
+                                <div id="retype-footer-links" class="print:hidden">
+                                    <ul class="flex flex-wrap items-center text-sm">
+                                    </ul>
+                                </div>
+                                <div id="retype-copyright" class="print:justify-center py-2 text-footer-text font-footer-link-weight text-sm leading-relaxed"><p>:3</p></div>
+                            </footer>
+                        </div>
+                    </div>
+                
+                    <!-- Rendered if sidebar right is enabled -->
+                    <!-- Sidebar right skeleton-->
+                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-sidebar-right-bg border-sidebar-right-border lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton">
+                        <div class="pl-5">
+                            <div class="w-32 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                            <div class="w-48 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                            <div class="w-40 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                        </div>
+                    </div>
+                
+                    <!-- User should be able to hide sidebar right -->
+                    <doc-sidebar-right v-cloak></doc-sidebar-right>
+                </div>
+
+            </div>
+        </div>
+    
+        <doc-search-mobile></doc-search-mobile>
+        <doc-back-to-top></doc-back-to-top>
+    </div>
+
+
+    <div id="retype-overlay-target"></div>
+
+    <script data-cfasync="false">window.__DOCS__ = { "title": "JSON API", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+</body>
+</html>
