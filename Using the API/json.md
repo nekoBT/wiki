@@ -259,8 +259,10 @@ Returns information about a specific group, including its name, description, mem
     ],
     "can_edit": false,
     "can_leave": false,
+    "can_delete": null, // Only present if user is group leader
     "stats": {
       "uploads": 50,
+      "hidden_uploads": 5, // Only present if user is group leader
       "tags": 28,
       "seeders": "261",
       "leechers": "2",
