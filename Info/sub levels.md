@@ -23,10 +23,10 @@ The sub levels are as follows:
 - **Level 1 (L1)**: Slight Modifications
     - Any modified subtitles that goes further than the modifications stated above.
 - **Level 2 (L2)**: Small-scale Fansubs
-    - SHOULD have at least two of the following: ED, TS, and SS
+    - SHOULD have at least two of the following: ED, TS, and Song Translation
     - **or** MUST be an original translation (OTL).
 - **Level 3 (L3)**: Full-scale Fansubs
-    - SHOULD have all of the following: ED, TS, SS, fixed timing issues.
+    - SHOULD have all of the following: ED, TS, Song Translation, fixed timing issues.
     - MUST have QC.
 - **Level 4 (L4)**: Full-scale Batch
     - These levels are reserved for batch releases.
@@ -52,8 +52,8 @@ config:
 ---
 graph LR
     A{Are the subtitles untouched or only had a main style change from their official source?} -->|Yes| B[Level 0]
-    A -->|No| C{Have you done at least 2 of the following:<br>ED, TS, Song Styling? Or is it an OTL?}
-    C -->|Yes| E{Did you do ED, TS, Song Styling,<br>fix timing issues, and done a QC pass?}
+    A -->|No| C{Have you done at least 2 of the following:<br>ED, TS, Song Translation? Or is it an OTL?}
+    C -->|Yes| E{Did you do ED, TS, Song Translation,<br>fix timing issues, and done a QC pass?}
     C -->|No to both| D[Level 1]
     E -->|Yes| G{Is this a batch release? Or is this a movie and it's ''better'' than the other L3s?}
     E -->|No| F[Level 2]
@@ -67,5 +67,5 @@ graph LR
 - **TS**: Typesetting — turning foreign signs (text on screen) into your language.
 - **QC**: Quality Control — checking everyone's work for errors, typos, etc.
 - **TLC**: Translation Check — checking the translation for accuracy.
-- **SS**: Song Styling — adding styled lyrics for the songs (possibly with or without karaoke effects).
+- **Song Translation**: Adding translated lyrics for the songs (possibly with or without karaoke effects).
 - **OTL**: Original Translation — translation made from scratch for the project (rather than editing an existing one).

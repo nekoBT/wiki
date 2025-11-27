@@ -7,7 +7,9 @@ order: 2000
 
 ## General Questions
 ==- What is nekoBT?
-nekoBT is a public torrent tracker for anime, with a focus on fansubs and groups. Our aim is to make it easier to organize and categorize fansub releases, while providing a platform for users to share and discover new content.
+nekoBT is a public torrent tracker for anime, with a focus on fansubs and groups.
+
+We want to provide a place for fansubbers, encoders, and rippers to share their work with the community, whilst making it easier for users to find and download the content they want automatically.
 ===
 ==- Public and private download links? What does that mean?
 If you are logged in, you will see two download options: public (blue) and private (purple).

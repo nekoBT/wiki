@@ -1,11 +1,9 @@
 ---
-label: "Authorization"
-icon: person
+label: "API Keys"
+icon: key
 order: 2000
 ---
-# Authorization
-
-nekoBT authorizes users and bots with cookies, more specifically, the `ssid` cookie.
+# API Keys
 
 !!!danger
 **Do not share your cookie or API key with people/programs/websites you don't trust.** It is a secret key that allows access to your account.
