@@ -29,9 +29,12 @@ The sub levels are as follows:
     - SHOULD have all of the following: ED, TS, Song Translation, fixed timing issues.
     - MUST have QC.
 - **Level 4 (L4)**: Full-scale Batch
-    - These levels are reserved for batch releases.
-    - MUST meet L3 requirements for all episodes.
-    - MUST contain all episodes in a season.
+    - For content with multiple episodes (e.g., TV series):
+        - MUST meet L3 requirements for all episodes.
+        - MUST contain all episodes in a season.
+    - For movies or single-episode content:
+        - MUST meet L3 requirements.
+        - MUST be an improvement over other L3 releases of the same content.
     - SHOULD contain batch fixes, such as typos, missing typesetting, etc.
 
 !!!info Edge case:
@@ -56,10 +59,14 @@ graph LR
     A -->|No| C{Have you done at least 2 of the following:<br>ED, TS, Song Translation? Or is it an OTL?}
     C -->|Yes| E{Did you do ED, TS, Song Translation,<br>fix timing issues, and done a QC pass?}
     C -->|No to both| D[Level 1]
-    E -->|Yes| G{Is this a batch release? Or is this a movie and it's ''better'' than the other L3s?}
+    E -->|Yes| G{Is this a release for TV or a movie?}
     E -->|No| F[Level 2]
-    G -->|Yes| I[Level 4]
-    G -->|No to both| H[Level 3]
+    G -->|TV| I{Do all episodes have the same quality, and it contains all episodes in a season?}
+    I -->|Yes| K[Level 4]
+    I -->|No| J[Level 3]
+    G -->|Movie| H{Does this release improve upon other L3 releases of the same content?}
+    H -->|Yes| L[Level 4]
+    H -->|No| M[Level 3]
 ```
 
 
