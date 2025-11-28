@@ -37,4 +37,4 @@ Method | Description | Can Import Anonymous & Hidden Torrents
 ------ | ----------- | ----------------------
 Linked Account | Uses your linked Nyaa account to import all torrents from that account. | ❌
 Cookie Verification | You will need to provide your Nyaa `session` cookie. nekoBT will use this to import all torrents from that account. | ✅
-Staff Key | Allows you to import torrents based on an account or search query. Contact staff to obtain a staff key. | ✅
+Staff Key | Allows you to import torrents based on an account or search query. Contact staff to obtain a staff key. | 🟠 (anon only)
