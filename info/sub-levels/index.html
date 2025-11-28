@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.817664395380">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.817668703523">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -30,11 +30,11 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=3.11.0.817664395380" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.11.0.817668703523" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.817664395380" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.817668703523" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.817664395380" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.817668703523" data-turbo-eval="false" defer></script>
     <script id="mermaid-js" data-cfasync="false" src="../../resources/js/mermaid.js?v=3.11.0" defer></script>
 
     <meta name="darkreader-lock" />
@@ -228,9 +228,18 @@ The higher the sub level, the more extensive the work put into the subtitles.</p
 </li>
 <li><strong>Level 4 (L4)</strong>: Full-scale Batch
 <ul>
-<li>These levels are reserved for batch releases.</li>
+<li>For content with multiple episodes (e.g., TV series):
+<ul>
 <li>MUST meet L3 requirements for all episodes.</li>
 <li>MUST contain all episodes in a season.</li>
+</ul>
+</li>
+<li>For movies or single-episode content:
+<ul>
+<li>MUST meet L3 requirements.</li>
+<li>MUST be an improvement over other L3 releases of the same content.</li>
+</ul>
+</li>
 <li>SHOULD contain batch fixes, such as typos, missing typesetting, etc.</li>
 </ul>
 </li>
@@ -269,10 +278,14 @@ graph LR
     A --&gt;|No| C{Have you done at least 2 of the following:&lt;br&gt;ED, TS, Song Translation? Or is it an OTL?}
     C --&gt;|Yes| E{Did you do ED, TS, Song Translation,&lt;br&gt;fix timing issues, and done a QC pass?}
     C --&gt;|No to both| D[Level 1]
-    E --&gt;|Yes| G{Is this a batch release? Or is this a movie and it's ''better'' than the other L3s?}
+    E --&gt;|Yes| G{Is this a release for TV or a movie?}
     E --&gt;|No| F[Level 2]
-    G --&gt;|Yes| I[Level 4]
-    G --&gt;|No to both| H[Level 3]</pre></div>
+    G --&gt;|TV| I{Do all episodes have the same quality, and it contains all episodes in a season?}
+    I --&gt;|Yes| K[Level 4]
+    I --&gt;|No| J[Level 3]
+    G --&gt;|Movie| H{Does this release improve upon other L3 releases of the same content?}
+    H --&gt;|Yes| L[Level 4]
+    H --&gt;|No| M[Level 3]</pre></div>
 <doc-anchor-target id="appendix">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#appendix">#</doc-anchor-trigger>
