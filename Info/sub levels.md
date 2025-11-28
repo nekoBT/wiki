@@ -30,7 +30,8 @@ The sub levels are as follows:
     - MUST have QC.
 - **Level 4 (L4)**: Full-scale Batch
     - These levels are reserved for batch releases.
-    - MUST meet L3 requirements.
+    - MUST meet L3 requirements for all episodes.
+    - MUST contain all episodes in a season.
     - SHOULD contain batch fixes, such as typos, missing typesetting, etc.
 
 !!!info Edge case:
