@@ -1380,7 +1380,7 @@ ignore_warnings? | boolean | Whether to ignore validation warnings, and proceed 
 
 
 ### Perform Upload Checks
-[!badge variant="success" text="POST"] `/upload/checks` [!badge variant="warning" text="Auth Required"]
+[!badge variant="warning" text="PUT"] `/upload/checks` [!badge variant="warning" text="Auth Required"]
 
 Performs various checks for a new torrent upload, such as verifying its parsability.
 
@@ -1500,7 +1500,7 @@ announce_urls? | array of strings | Array of announce URLs in the torrent file
 
 
 ### Perform Mediainfo Extraction
-[!badge variant="success" text="POST"] `/upload/mediainfo` [!badge variant="success" text="Auth Optional"]
+[!badge variant="warning" text="PUT"] `/upload/mediainfo` [!badge variant="success" text="Auth Optional"]
 
 Extracts metadata for a torrent using Mediainfo Text or JSON output.
 
