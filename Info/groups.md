@@ -17,7 +17,8 @@ If you want to have a release group in your torrent titles, you must have a grou
 
 !!!danger
 You are not allowed to snipe or impersonate other active groups, even if they aren't registered on nekoBT.<br>
-Doing so could result in your group name being revoked.
+Doing so could result in your group name being revoked.<br>
+However, if a group is inactive and/or not contactable, you may create a group with their tag and request a Staff Key to import their old torrents. See more on [Rule 11](https://wiki.nekobt.to/rules).
 !!!
 
 ### Creating a Group

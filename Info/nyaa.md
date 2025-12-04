@@ -31,6 +31,10 @@ Before you can import, you must have uploaded at least one torrent to nekoBT, an
 This is to ensure that you understand how uploading works on nekoBT.
 !!!
 
+!!!tip Inactive Groups
+If a group is inactive and/or not contactable, you may make a group with their tag and request a Staff Key to import their old torrents. See more on [Rule 11](https://wiki.nekobt.to/rules).
+!!!
+
 Importing can be done in three ways:
 
 Method | Description | Can Import Anonymous & Hidden Torrents

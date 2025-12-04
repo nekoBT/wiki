@@ -6,7 +6,7 @@ order: 4000
 ---
 # Site Rules
 
-Last Updated: 20 July 2025
+Last Updated: 4 December 2025
 
 !!!warning
 This list is not exhaustive. Staff may decide that your actions negatively affect the site, without necessarily breaking a listed rule, and will punish your account accordingly.
@@ -37,7 +37,9 @@ This list is not exhaustive. Staff may decide that your actions negatively affec
     - Secondary Groups are included if applicable.
     - The MTL tag is used if the main subtitles are machine-translated.
 10. **Torrent titles (except Romaji) must be in English**.
-11. **No impersonation**. Impersonating another user or group (even if they aren't registered on the site), or claiming to be a staff member is not allowed.
+11. **No impersonation**. You aren't allowed to impersonate staff members, claim to be a staff member, or use well-known group names without permission of the group (even if they aren't registered on the site).
+    - **Exception:** If a group is inactive and/or not contactable, you may use their tag and request a Staff Key to import their old torrents. You are not allowed to upload your own torrents under their tag. Staff may refuse and delete the group if they believe you have bad intent or don't have significant history on the site.
+    - If the group becomes active again, you must transfer ownership of the group. Staff will assist with this process if needed (ex: hard to verify the real owner).  
 12. **"Bad" video or audio quality is not allowed.** This is subjective. Torrents where the video or audio quality has been significantly degraded, due to poor encoding, are not allowed. Generally, don't do these, *just for the sake of it*:
     - No AI upscaling (like 1080p->4k, downscaling and rescaling is fine if you know what you're doing).
     - No Frame interpolation (increasing FPS. Exceptions are made for field interpolation required to properly deinterlace interlaced material).
