@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.817939990691">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.818198096773">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -30,11 +30,11 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=3.11.0.817939990691" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.11.0.818198096773" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.817939990691" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.818198096773" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.817939990691" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.818198096773" data-turbo-eval="false" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -250,92 +250,97 @@
 <td>Can be <code v-pre>search</code>, <code v-pre>tv-search</code> or <code v-pre>movie-search</code>.</td>
 </tr>
 <tr>
-<td>q</td>
+<td>q?</td>
 <td>string</td>
 <td>The search query. If this is an empty string or null, it will return the latest torrents added.</td>
 </tr>
 <tr>
-<td>tvdbid</td>
+<td>tvdbid?</td>
 <td>integer</td>
 <td>The TVDB ID of the series to search for.</td>
 </tr>
 <tr>
-<td>levels</td>
+<td>levels?</td>
 <td>string</td>
 <td>Comma-separated list of <a href="/info/sub-levels">sub levels</a> to filter for.</td>
 </tr>
 <tr>
-<td>video_codec</td>
+<td>video_codec?</td>
 <td>string</td>
 <td>Comma-separated list of video codecs to filter for.</td>
 </tr>
 <tr>
-<td>video_type</td>
+<td>video_type?</td>
 <td>string</td>
 <td>Comma-separated list of video types to filter for.</td>
 </tr>
 <tr>
-<td>audio_lang</td>
+<td>audio_lang?</td>
 <td>string</td>
 <td>Comma-separated list of audio languages to filter for.</td>
 </tr>
 <tr>
-<td>fansub_lang</td>
+<td>fansub_lang?</td>
 <td>string</td>
 <td>Comma-separated list of fansub languages to filter for.</td>
 </tr>
 <tr>
-<td>sub_lang</td>
+<td>sub_lang?</td>
 <td>string</td>
 <td>Comma-separated list of subtitle languages to filter for.</td>
 </tr>
 <tr>
-<td>hardsub</td>
+<td>hardsub?</td>
 <td>boolean</td>
 <td>Set to <code v-pre>true</code> to only return torrents with hardcoded subtitles or <code v-pre>false</code> to exclude them.</td>
 </tr>
 <tr>
-<td>otl</td>
+<td>otl?</td>
 <td>boolean</td>
 <td>Set to <code v-pre>true</code> to only return torrents with OTL subtitles or <code v-pre>false</code> to exclude them.</td>
 </tr>
 <tr>
-<td>group_id</td>
+<td>mtl?</td>
+<td>boolean</td>
+<td>Set to <code v-pre>true</code> to only return torrents with machine translated subtitles or <code v-pre>false</code> to exclude them.</td>
+</tr>
+<tr>
+<td>group_id?</td>
 <td>string</td>
 <td>Group ID to filter for.</td>
 </tr>
 <tr>
-<td>group_primary</td>
+<td>group_primary?</td>
 <td>boolean</td>
 <td>Set to <em><code v-pre>true</code></em> to return torrents where the group is the uploader or <code v-pre>false</code> to exclude them.</td>
 </tr>
 <tr>
-<td>group_secondary</td>
+<td>group_secondary?</td>
 <td>boolean</td>
 <td>Set to <code v-pre>true</code> to return torrents where the group is not the uploader or <em><code v-pre>false</code></em> to exclude them.</td>
 </tr>
 <tr>
-<td>group_childs</td>
+<td>group_childs?</td>
 <td>boolean</td>
 <td>Set to <code v-pre>true</code> to include torrents from child groups or <em><code v-pre>false</code></em> to exclude them.</td>
 </tr>
 <tr>
-<td>group_parents</td>
+<td>group_parents?</td>
 <td>boolean</td>
 <td>Set to <code v-pre>true</code> to include torrents from parent groups or <em><code v-pre>false</code></em> to exclude them.</td>
 </tr>
 <tr>
-<td>uploader_id</td>
+<td>uploader_id?</td>
 <td>string</td>
 <td>Uploader ID to filter for.</td>
 </tr>
 <tr>
-<td>uploader_uploads</td>
+<td>uploader_uploads?</td>
 <td>boolean</td>
 <td>Set to <em><code v-pre>true</code></em> to return torrents where the uploader is the uploader or <code v-pre>false</code> to exclude them.</td>
 </tr>
 <tr>
-<td>uploader_contributions</td>
+<td>uploader_contributions?</td>
 <td>boolean</td>
 <td>Set to <code v-pre>true</code> to return torrents where the uploader is not the uploader or <em><code v-pre>false</code></em> to exclude them.</td>
 </tr>
