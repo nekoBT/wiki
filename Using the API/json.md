@@ -1735,7 +1735,7 @@ Regex | Replacement | Usage
 `<ge:(\d+):([^>]+)>` | `<a class="link-blue" href="/groups/$1/edit">$2</a>` | Link to Edit Group
 `<t:(\d+):([^>]+)>` | `<a class="link-blue" href="/torrents/$1">$2</a>` | Link to Torrent
 `<tc:(\d+):(\d+):([^>]+)>` | `<a class="link-blue" href="/torrents/$1#com-$2">$3</a>` | Link to Torrent Comment
-`<r:(\d+):([^>]+)>` | `$2` | Used for Report IDs, not linked
+`<r:(\d+):([^>]+)>` | `<a class="link-blue" href="/reports/$1">$2</a>` | Used to view/redirect to Report
 
 
 
