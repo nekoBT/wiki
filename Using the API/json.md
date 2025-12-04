@@ -1141,6 +1141,7 @@ fansub_lang? | string | Comma-separated fansub languages to filter by
 sub_lang? | string | Comma-separated subtitle languages to filter by
 hardsub? | boolean | Filter by hardsubbed torrents
 otl? | boolean | Filter by original translation torrents
+mtl? | boolean | Filter by machine translation torrents
 group_id? | string | Filter by group ID
 group_primary? | boolean | Include primary group uploads (default: true)
 group_secondary? | boolean | Include secondary group uploads (default: false)

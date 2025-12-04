@@ -68,6 +68,8 @@ It contains a list of all supported languages and some code convertions.
 
 The **MTL** tag indicates that the release uses machine translation for their fansubs.
 
+This includes edited versions of machine translated subtitles. If the translation source was machine translation at any point, the release must include this tag.
+
 
 ### OTL (Original Translation)
 
