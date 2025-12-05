@@ -224,8 +224,8 @@ Returns information about a specific group, including its name, description, mem
           "pfp_hash": null,
           "tagline": "",
           "anonymous": 0,
-          "active": true,
-          "initiator": false
+          "active": true, // Whether the link has been approved by both groups
+          "initiator": false // Whether the child group was the one to initiate the link
         }
       ]
     },
