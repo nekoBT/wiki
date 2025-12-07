@@ -16,41 +16,41 @@ See the [Sub Levels](/info/sub-levels) page for details.
 
 The **Video Type** tag indicates the video's source and any encoding applied.
 
-| Type         | Description                                                                 | ID  |
-|--------------|-----------------------------------------------------------------------------|-----|
-| Hybrid       | An encode using various sources, most commonly WEB and BD.                  | 15  |
-| BD - Remux   | Untouched, decrypted Blu-ray Disc copy in a playable format (mkv, mp4, etc).| 14  |
-| BD - Encode  | An encode of the raw Blu-ray Disc.                                          | 13  |
-| BD - Mini    | Blu-ray Disc encode with reduced quality to save space.                     | 12  |
-| BD - Disc    | Blu-ray Disc.                                                               | 11  |
-| WEB-DL       | Direct copy from a streaming service.                                       | 9   |
-| WEB - Encode | Re-encode of the WEB source.                                                | 8   |
-| WEB - Mini   | WEB source encode with reduced quality to save space.                       | 7   |
-| DVD - Encode | An encode of a DVD.                                                         | 6   |
-| DVD - Remux  | Direct copy of a DVD in a playable format.                                  | 5   |
-| DVD - Disc   | DVD Disc.                                                                   | 16  |
-| TV - Raw     | Direct copy of a TV broadcast.                                              | 4   |
-| TV - Encode  | TV broadcast, re-encoded.                                                   | 3   |
-| LaserDisc    | LaserDisc source in a playable format.                                      | 2   |
-| VHS          | VHS source in a playable format.                                            | 1   |
-| Other        | Other source; see torrent description for details.                          | 0   |
+| Type | Description | ID |
+|------|-------------|----|
+| Hybrid | An encode using various sources, most commonly WEB and BD. | 15 |
+| BD - Remux | Untouched, decrypted Blu-ray Disc copy in a playable format (mkv, mp4, etc). | 14 |
+| BD - Encode | An encode of the raw Blu-ray Disc. | 13 |
+| BD - Mini | Blu-ray Disc encode with reduced quality to save space. This also includes videos re-encoded from another unofficial source. | 12 |
+| BD - Disc | Blu-ray Disc. | 11 |
+| WEB-DL | Direct copy from a streaming service. | 9 |
+| WEB - Encode | Re-encode of the WEB source. | 8 |
+| WEB - Mini | WEB source encode with reduced quality to save space. This also includes videos re-encoded from another unofficial source. | 7 |
+| DVD - Encode | An encode of a DVD. | 6 |
+| DVD - Remux | Direct copy of a DVD in a playable format. | 5 |
+| DVD - Disc | DVD Disc. | 16 |
+| TV - Raw | Direct copy of a TV broadcast. | 4 |
+| TV - Encode | TV broadcast, re-encoded. | 3 |
+| LaserDisc | LaserDisc source in a playable format. | 2 |
+| VHS | VHS source in a playable format. | 1 |
+| Other | Other source; see torrent description for details. | 0 |
 
 
 ### Video Codec
 
 The **Video Codec** tag indicates the codec used for the video.
 
-| Codec   | Description                        | ID  |
-|---------|------------------------------------|-----|
-| H264    | AVC, x264                          | 1   |
-| H265    | HEVC, x265                         | 2   |
-| AV1     | AV1                                | 3   |
-| VP9     | VP9                                | 4   |
-| MPEG-2  | MPEG-2                             | 5   |
-| MPEG-4  | MPEG-4, but not Part 10/H264       | 6   |
-| WMV     | Windows Media Video                | 7   |
-| VC1     | VC-1                               | 8   |
-| Other   | Other                              | 0   |
+| Codec | Description | ID |
+|-------|-------------|----|
+| H264 | AVC, x264 | 1 |
+| H265 | HEVC, x265 | 2 |
+| AV1 | AV1 | 3 |
+| VP9 | VP9 | 4 |
+| MPEG-2 | MPEG-2 | 5 |
+| MPEG-4 | MPEG-4, but not Part 10/H264 | 6 |
+| WMV | Windows Media Video | 7 |
+| VC1 | VC-1 | 8 |
+| Other | Other | 0 |
 
 
 ### Languages
