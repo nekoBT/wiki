@@ -1109,6 +1109,154 @@ This endpoint returns the raw torrent file data with a `application/x-bittorrent
 
 
 
+### Bulk Download Torrents
+[!badge variant="success" text="GET"] `/torrents/bulk/download` [!badge variant="success" text="Auth Optional"]
+
+[!badge variant="warning" text="PATCH"] `/torrents/bulk/download` [!badge variant="success" text="Auth Optional"]
+
+Download a group of .torrent files as a ZIP archive. Maximum 500 torrents per request.
+
+You can either use a `GET` request with query parameters, or a `PATCH` request with a JSON body.<br>
+The `PATCH` method is recommended for larger requests, as the `GET` method may hit URL length limits.
+
+When authenticated, the returned torrent files will be private torrents with the user's passkey included in the announce URL.<br>
+You can specify `public=true` to get the torrent files without your torrent key.
+
+==- Examples
++++ Query Parameters (GET)
+Name | Type | Description
+---- | ---- | -----------
+ids | string | Comma-separated list of torrent IDs to download
+public? | boolean | Whether to download torrents without your passkey (default: *`false`*)
+###### *italics* = default, ? = optional
++++ JSON Data Parameters (PATCH)
+Name | Type | Description
+---- | ---- | -----------
+ids | array | Array of torrent IDs to download
+public? | boolean | Whether to download torrents without your passkey (default: *`false`*)
+###### *italics* = default, ? = optional
++++ Example Request Data
+```json
+{
+  "ids": [
+    "1234567890",
+    "0987654321"
+  ],
+  "public": false
+}
+```
++++ Successful Response (200)
+Will return a ZIP file containing the requested .torrent files.
++++ Unsuccessful Response (400)
+```json
+{
+  "error": true,
+  "message": "No accessible torrents found."
+}
+```
++++
+==-
+
+
+
+### Bulk Edit Torrents
+[!badge variant="warning" text="PATCH"] `/torrents/bulk/edit` [!badge variant="warning" text="Auth Required"]
+
+Edit a group of torrents. You must have permission to edit all specified torrents. Maximum 250 torrents per request.
+
+This endpoint will return a `bad_torrents` field in the response if any of the specified torrents could not be edited.
+
+==- Examples
++++ JSON Data Parameters
+Name | Type | Description
+---- | ---- | -----------
+ids | array | Array of torrent IDs to edit (min 1, max 250)
+title? | array | Array of find/replace objects to modify titles. Each object has `find` (string, max 256) and `replace` (string, max 256) properties (max 5 replacements)
+upgraded? | number or null | Torrent ID of the new torrent that replaces these, or null to remove upgrade
+description? | string | Markdown formatted description (max 8192 characters)
+video_type? | number or null | Video type category
+video_codec? | number or null | Video codec category
+audio_lang? | string | Comma-separated list of audio languages (max 256 characters)
+sub_lang? | string | Comma-separated list of subtitle languages (max 256 characters)
+fsub_lang? | string | Comma-separated list of fansub languages (max 256 characters)
+anonymous? | boolean | Whether the uploads should be anonymous
+hidden? | boolean | Whether the torrents should be hidden
+hardsub? | boolean | Whether the torrents contain hardsubbed video
+mtl? | boolean | Whether the torrents contain machine translated subtitles
+otl? | boolean | Whether the torrents' subtitles contain an original translation
+primary_group? | object or null | Primary group information, members, etc (admin only)
+secondary_groups? | array | Array of secondary group objects with `id` (string) and `role` (string or null, max 64)
+deleted? | boolean | Whether the torrents are deleted
+deletion_reason? | string | Reason for deletion (max 256 characters)
+disable_comments? | boolean | Whether to disable comments (admin only)
+level? | number | Subtitle level (admin only)
+category? | number | Category ID (admin only)
+lock_comments? | boolean | Whether to lock comments (admin only)
+disable_edits? | boolean | Whether to disable further edits (admin only)
+###### At least one is required, *italics* = default, ? = optional
++++ Example Request Data
+```json
+{
+  "ids": [
+    "1234567890",
+    "0987654321"
+  ],
+  "title": [
+    {
+      "find": "x264",
+      "replace": "x265"
+    }
+  ],
+  "upgraded": null,
+  "description": "...",
+  "video_type": 9,
+  "video_codec": 1,
+  "audio_lang": "ja",
+  "sub_lang": "",
+  "fsub_lang": "en",
+  "anonymous": false,
+  "hidden": false,
+  "primary_group": {
+    "id": "1234567890",
+    "members": [
+      {
+        "id": "1234567890", // Can be null for new members
+        "display_name": "ExampleUser", // Only used for new members
+        "role": "Typesetting",
+        "pfp_hash": null
+      }
+    ]
+  },
+  "secondary_groups": [],
+  "mtl": false,
+  "otl": false,
+  "hardsub": false
+}
+```
++++ Successful Response (200)
+```json
+{
+  "error": false
+}
+```
++++ Unsuccessful Response (400)
+```json
+{
+  "error": true,
+  "message": "Can't edit torrent due to parsing failures.",
+  "fails": [
+    "You have set sub level to \"no subs\", but you have added fansub languages."
+  ],
+  "bad_torrents": [
+    "0987654321"
+  ],
+  "warns": []
+}
+```
++++
+==-
+
+
 
 ### Search Torrents
 [!badge variant="info" text="GET"] `/torrents/search` [!badge variant="success" text="Auth Optional"]
