@@ -964,6 +964,7 @@ anonymous? | boolean | Whether the upload should be anonymous
 hidden? | boolean | Whether the torrent should be hidden
 hardsub? | boolean | Whether the torrent contains hardsubbed video
 otl? | boolean | Whether the torrent's subtitles contains an original translation
+mtl? | boolean | Whether the torrent's subtitles contains machine translation
 primary_group? | object or null | Primary group information, members, etc
 secondary_groups? | array | Array of secondary groups
 media_episodes? | array | Array of episode IDs (numbers) this torrent contains
@@ -999,11 +1000,9 @@ deletion_reason? | string | Reason for deletion (max 256 characters)
   "media_episodes": [
     48665
   ],
-  "level": 1,
   "mtl": false,
   "otl": false,
-  "hardsub": false,
-  "category": 1
+  "hardsub": false
 }
 ```
 +++ Successful Response (200)
