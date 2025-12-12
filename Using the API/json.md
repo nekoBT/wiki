@@ -1187,11 +1187,6 @@ primary_group? | object or null | Primary group information, members, etc (admin
 secondary_groups? | array | Array of secondary group objects with `id` (string) and `role` (string or null, max 64)
 deleted? | boolean | Whether the torrents are deleted
 deletion_reason? | string | Reason for deletion (max 256 characters)
-disable_comments? | boolean | Whether to disable comments (admin only)
-level? | number | Subtitle level (admin only)
-category? | number | Category ID (admin only)
-lock_comments? | boolean | Whether to lock comments (admin only)
-disable_edits? | boolean | Whether to disable further edits (admin only)
 ###### At least one is required, *italics* = default, ? = optional
 +++ Example Request Data
 ```json
@@ -1250,6 +1245,44 @@ disable_edits? | boolean | Whether to disable further edits (admin only)
     "0987654321"
   ],
   "warns": []
+}
+```
++++
+==-
+
+
+
+
+### Check Torrent(s) Permissions
+[!badge variant="warning" text="PATCH"] `/torrents/bulk/edit/perms` [!badge variant="warning" text="Auth Required"]
+
+Checks whether you have permission to edit the torrents provided. Maximum 250 torrents per request.
+
+This endpoint will return a `bad_torrents` field in the response if any of the specified torrents can not be edited.
+
+This request is done before attempting a bulk edit on the website. You don't have to call this endpoint before calling the bulk edit endpoint.
+You will receive the same `bad_torrents` field in the bulk edit response.
+
+==- Examples
++++ JSON Data Parameters
+Name | Type | Description
+---- | ---- | -----------
+ids | array | Array of torrent IDs to edit (min 1, max 250)
+###### *italics* = default, ? = optional
++++ Successful Response (200)
+```json
+{
+  "error": false
+}
+```
++++ Unsuccessful Response (400)
+```json
+{
+  "error": true,
+  "message": "You do not have permission to edit one or more torrents.",
+  "bad_torrents": [
+    "0987654321"
+  ]
 }
 ```
 +++
