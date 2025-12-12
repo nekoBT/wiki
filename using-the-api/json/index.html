@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.818723100591">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.818882222694">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -30,12 +30,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=3.11.0.818723100591" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.11.0.818882222694" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.818723100591" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.818882222694" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.818723100591" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.11.0.818723100591" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.818882222694" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.11.0.818882222694" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -1996,31 +1996,6 @@ You can specify <code v-pre>public=true</code> to get the torrent files without 
 <td>string</td>
 <td>Reason for deletion (max 256 characters)</td>
 </tr>
-<tr>
-<td>disable_comments?</td>
-<td>boolean</td>
-<td>Whether to disable comments (admin only)</td>
-</tr>
-<tr>
-<td>level?</td>
-<td>number</td>
-<td>Subtitle level (admin only)</td>
-</tr>
-<tr>
-<td>category?</td>
-<td>number</td>
-<td>Category ID (admin only)</td>
-</tr>
-<tr>
-<td>lock_comments?</td>
-<td>boolean</td>
-<td>Whether to lock comments (admin only)</td>
-</tr>
-<tr>
-<td>disable_edits?</td>
-<td>boolean</td>
-<td>Whether to disable further edits (admin only)</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -2093,6 +2068,73 @@ You can specify <code v-pre>public=true</code> to get the torrent files without 
     &quot;0987654321&quot;
   ],
   &quot;warns&quot;: []
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="check-torrents-permissions">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#check-torrents-permissions">#</doc-anchor-trigger>
+        <span>Check Torrent(s) Permissions</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+    <span>PATCH</span>
+</span> <code v-pre>/torrents/bulk/edit/perms</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Required</span>
+</span></p>
+<p>Checks whether you have permission to edit the torrents provided. Maximum 250 torrents per request.</p>
+<p>This endpoint will return a <code v-pre>bad_torrents</code> field in the response if any of the specified torrents can not be edited.</p>
+<p>This request is done before attempting a bulk edit on the website. You don&#x27;t have to call this endpoint before calling the bulk edit endpoint.
+You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit response.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="json-data-parameters">
+<template #title>JSON Data Parameters</template>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ids</td>
+<td>array</td>
+<td>Array of torrent IDs to edit (min 1, max 250)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="italics--default---optional-7">
+    <h6>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional-7">#</doc-anchor-trigger>
+        <span><em>italics</em> = default, ? = optional</span>
+    </h6>
+</doc-anchor-target>
+</doc-tab>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-400">
+<template #title>Unsuccessful Response (400)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;You do not have permission to edit one or more torrents.&quot;,
+  &quot;bad_torrents&quot;: [
+    &quot;0987654321&quot;
+  ]
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
@@ -2269,9 +2311,9 @@ You can specify <code v-pre>public=true</code> to get the torrent files without 
 </tbody>
 </table>
 </div>
-<doc-anchor-target id="italics--default---optional-7">
+<doc-anchor-target id="italics--default---optional-8">
     <h6>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional-7">#</doc-anchor-trigger>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional-8">#</doc-anchor-trigger>
         <span><em>italics</em> = default, ? = optional</span>
     </h6>
 </doc-anchor-target>
@@ -2529,9 +2571,9 @@ You can specify <code v-pre>public=true</code> to get the torrent files without 
 <li><code v-pre>id</code> (string): Group ID</li>
 <li><code v-pre>role</code> (string or null, max 64): Role name or null</li>
 </ul>
-<doc-anchor-target id="italics--default---optional-8">
+<doc-anchor-target id="italics--default---optional-9">
     <h6>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional-8">#</doc-anchor-trigger>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional-9">#</doc-anchor-trigger>
         <span><em>italics</em> = default, ? = optional</span>
     </h6>
 </doc-anchor-target>
@@ -2731,9 +2773,9 @@ You can specify <code v-pre>public=true</code> to get the torrent files without 
 </ul>
 </li>
 </ul>
-<doc-anchor-target id="italics--default---optional-9">
+<doc-anchor-target id="italics--default---optional-10">
     <h6>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional-9">#</doc-anchor-trigger>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional-10">#</doc-anchor-trigger>
         <span><em>italics</em> = default, ? = optional</span>
     </h6>
 </doc-anchor-target>
@@ -2863,9 +2905,9 @@ You can specify <code v-pre>public=true</code> to get the torrent files without 
 </tbody>
 </table>
 </div>
-<doc-anchor-target id="italics--default---optional-10">
+<doc-anchor-target id="italics--default---optional-11">
     <h6>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional-10">#</doc-anchor-trigger>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional-11">#</doc-anchor-trigger>
         <span><em>italics</em> = default, ? = optional</span>
     </h6>
 </doc-anchor-target>
@@ -3301,9 +3343,9 @@ You can specify <code v-pre>public=true</code> to get the torrent files without 
 </tbody>
 </table>
 </div>
-<doc-anchor-target id="italics--default---optional-11">
+<doc-anchor-target id="italics--default---optional-12">
     <h6>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional-11">#</doc-anchor-trigger>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional-12">#</doc-anchor-trigger>
         <span><em>italics</em> = default, ? = optional</span>
     </h6>
 </doc-anchor-target>
@@ -3451,9 +3493,9 @@ You can specify <code v-pre>public=true</code> to get the torrent files without 
 </tbody>
 </table>
 </div>
-<doc-anchor-target id="italics--default---optional-12">
+<doc-anchor-target id="italics--default---optional-13">
     <h6>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional-12">#</doc-anchor-trigger>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional-13">#</doc-anchor-trigger>
         <span><em>italics</em> = default, ? = optional</span>
     </h6>
 </doc-anchor-target>
