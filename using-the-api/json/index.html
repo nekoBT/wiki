@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.818882222694">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.821303122853">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -30,12 +30,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=3.11.0.818882222694" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.11.0.821303122853" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.818882222694" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.821303122853" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.818882222694" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.11.0.818882222694" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.821303122853" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.11.0.821303122853" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -1456,6 +1456,43 @@ The differences are as follows:</p>
     &quot;completed&quot;: &quot;185&quot;,
     &quot;activity&quot;: &quot;5557&quot;, // Estimated peer speeds in bytes/second
     &quot;upgraded&quot;: null, // Torrent ID of the new torrent, or null
+    &quot;animetosho&quot;: [ // Can be null, array, or 'skipped', 'processing', 'not_found', 'error', 'no_media'
+      {
+        &quot;file_id&quot;: 1234,
+        &quot;filename&quot;: &quot;....mkv&quot;,
+        &quot;filesize&quot;: 937007977,
+        &quot;subs&quot;: [
+          {
+            &quot;id&quot;: 5678,
+            &quot;codec&quot;: &quot;SRT&quot;,
+            &quot;lang&quot;: &quot;jpn&quot;,
+            &quot;name&quot;: &quot;SDH&quot;,
+            &quot;default&quot;: false,
+            &quot;enabled&quot;: true,
+            &quot;forced&quot;: false,
+            &quot;trackid&quot;: 4,
+            &quot;tracknum&quot;: 5
+          }
+        ],
+        &quot;mediainfo&quot;: &quot;General\nUniqu...&quot;,
+        &quot;screenshot_id&quot;: &quot;00000000&quot;, // You can use this ID and timings to reconstruct the screenshot URLs
+        &quot;screenshot_timings&quot;: [
+          13980,
+          366330,
+          718680,
+          1069030,
+          1421380
+        ]
+      }
+    ],
+    &quot;animetosho_fetch_time&quot;: &quot;1767984097784&quot;, // Unix timestamp in milliseconds of when the AnimeTosho data was fetched, or null
+    &quot;screenshots&quot;: [ // Array of screenshot URLs, can be empty. If AnimeTosho data is present, it is highly likely screenshots has data. Max 5 screenshots.
+      &quot;https://storage.animetosho.org/sframes/00000000_13980.png&quot;,
+      &quot;https://storage.animetosho.org/sframes/00000000_366330.png&quot;,
+      &quot;https://storage.animetosho.org/sframes/00000000_718680.png&quot;,
+      &quot;https://storage.animetosho.org/sframes/00000000_1069030.png&quot;,
+      &quot;https://storage.animetosho.org/sframes/00000000_1421380.png&quot;
+    ],
     &quot;can_edit&quot;: false,
     &quot;waiting_approve&quot;: false,
     &quot;disable_comments&quot;: false,
@@ -1663,6 +1700,124 @@ The differences are as follows:</p>
     &quot;You have set sub level to \&quot;no subs\&quot;, but you have added fansub languages.&quot;
   ],
   &quot;warns&quot;: []
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
+<doc-anchor-target id="get-torrents-animetosho-data">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#get-torrents-animetosho-data">#</doc-anchor-trigger>
+        <span>Get Torrent&#x27;s AnimeTosho Data</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
+    <span>GET</span>
+</span> <code v-pre>/torrents/&lt;torrent_id&gt;/animetosho</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Optional</span>
+</span></p>
+<p>Returns the AnimeTosho data for a specific torrent. <strong>You should handle for long request times on this endpoint.</strong> If data is not yet available, the request may take up to 60 seconds to complete while the site fetches all data from AnimeTosho.</p>
+<p>AnimeTosho data is not fetched automatically for torrents. A client must request it using this endpoint before the site will fetch it from AnimeTosho. The site&#x27;s frontend will automatically call this endpoint when viewing a torrent that does not have final AnimeTosho data yet.</p>
+<p>If another user is already fetching the data for this torrent, your request will be halted until the other user&#x27;s fetch is complete, to prevent multiple simultaneous fetches for the same torrent.</p>
+<p>Even if the request is cancelled by the client, the site will continue fetching the data in the background.</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Status</th>
+<th>Description</th>
+<th>Retry Later?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code v-pre>skipped</code></td>
+<td>The torrent was skipped by AnimeTosho.</td>
+<td><span class="docs-emoji">&#x274C;</span></td>
+</tr>
+<tr>
+<td><code v-pre>processing</code></td>
+<td>The torrent is still being processed on AnimeTosho.</td>
+<td><span class="docs-emoji">&#x1F7E0;</span> (Retry if last attempt was more than 3 minutes ago)</td>
+</tr>
+<tr>
+<td><code v-pre>not_found</code></td>
+<td>The torrent was not found on AnimeTosho.</td>
+<td><span class="docs-emoji">&#x1F7E0;</span> (No retry if last attempt was 1hr after upload)</td>
+</tr>
+<tr>
+<td><code v-pre>no_media</code></td>
+<td>The torrent was found, but no media file was found on AnimeTosho.</td>
+<td><span class="docs-emoji">&#x274C;</span></td>
+</tr>
+<tr>
+<td><code v-pre>error</code></td>
+<td>AnimeTosho returned an unexpected status.</td>
+<td><span class="docs-emoji">&#x274C;</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="successful-response-200-201">
+<template #title>Successful Response (200, 201)</template>
+<p><code v-pre>200</code> if data was already present, <code v-pre>201</code> if the data was just fetched.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;data&quot;: [
+    {
+      &quot;file_id&quot;: 1234,
+      &quot;filename&quot;: &quot;....mkv&quot;,
+      &quot;filesize&quot;: 937007977,
+      &quot;subs&quot;: [
+        {
+          &quot;id&quot;: 5678,
+          &quot;codec&quot;: &quot;SRT&quot;,
+          &quot;lang&quot;: &quot;jpn&quot;,
+          &quot;name&quot;: &quot;SDH&quot;,
+          &quot;default&quot;: false,
+          &quot;enabled&quot;: true,
+          &quot;forced&quot;: false,
+          &quot;trackid&quot;: 4,
+          &quot;tracknum&quot;: 5
+        }
+      ],
+      &quot;mediainfo&quot;: &quot;General\nUniqu...&quot;,
+      &quot;screenshot_id&quot;: &quot;00000000&quot;, // You can use this ID and timings to reconstruct the screenshot URLs
+      &quot;screenshot_timings&quot;: [
+        13980,
+        366330,
+        718680,
+        1069030,
+        1421380
+      ]
+    }
+  ],
+  &quot;retry&quot;: false
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="semi-successful-response-202">
+<template #title>Semi-Successful Response (202)</template>
+<p>The server sent a request to AnimeTosho, received a <code v-pre>processing</code> status, and is still waiting for the data to be ready.</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;message&quot;: &quot;Torrent is still being processed on AnimeTosho.&quot;,
+  &quot;retry&quot;: true
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-400-403-404-500">
+<template #title>Unsuccessful Response (400, 403, 404, 500)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Torrent was skipped on AnimeTosho.&quot;,
+  &quot;retry&quot;: false
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
