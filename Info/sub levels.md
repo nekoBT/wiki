@@ -70,10 +70,27 @@ graph LR
 ```
 
 
-### Appendix
+#### Appendix
 - **ED**: Editing — making changes to the script to make it read well.
 - **TS**: Typesetting — turning foreign signs (text on screen) into your language.
 - **QC**: Quality Control — checking everyone's work for errors, typos, etc.
 - **TLC**: Translation Check — checking the translation for accuracy.
 - **Song Translation**: Adding translated lyrics for the songs (possibly with or without karaoke effects).
 - **OTL**: Original Translation — translation made from scratch for the project (rather than editing an existing one).
+
+
+### Dealing with multiple fansubs in one release
+
+If a release contains multiple fansubs, you should take the highest sub level for each language, and use the lowest sub level among them.
+
+For example:
+- This should be L4 (both same):
+    - English: L4
+    - Spanish: L4
+- This should be L3 (lower level takes precedence):
+    - English: L4
+    - French: L3
+- This should be L2 (Group A takes precedence over Group B):
+    - English (Group A): L2
+    - English (Group B): L1
+    - German: L2
