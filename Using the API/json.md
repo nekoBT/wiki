@@ -921,6 +921,43 @@ Returns information about a specific torrent, including its title, description, 
     "completed": "185",
     "activity": "5557", // Estimated peer speeds in bytes/second
     "upgraded": null, // Torrent ID of the new torrent, or null
+    "animetosho": [ // Can be null, array, or 'skipped', 'processing', 'not_found', 'error', 'no_media'
+      {
+        "file_id": 1234,
+        "filename": "....mkv",
+        "filesize": 937007977,
+        "subs": [
+          {
+            "id": 5678,
+            "codec": "SRT",
+            "lang": "jpn",
+            "name": "SDH",
+            "default": false,
+            "enabled": true,
+            "forced": false,
+            "trackid": 4,
+            "tracknum": 5
+          }
+        ],
+        "mediainfo": "General\nUniqu...",
+        "screenshot_id": "00000000", // You can use this ID and timings to reconstruct the screenshot URLs
+        "screenshot_timings": [
+          13980,
+          366330,
+          718680,
+          1069030,
+          1421380
+        ]
+      }
+    ],
+    "animetosho_fetch_time": "1767984097784", // Unix timestamp in milliseconds of when the AnimeTosho data was fetched, or null
+    "screenshots": [ // Array of screenshot URLs, can be empty. If AnimeTosho data is present, it is highly likely screenshots has data. Max 5 screenshots.
+      "https://storage.animetosho.org/sframes/00000000_13980.png",
+      "https://storage.animetosho.org/sframes/00000000_366330.png",
+      "https://storage.animetosho.org/sframes/00000000_718680.png",
+      "https://storage.animetosho.org/sframes/00000000_1069030.png",
+      "https://storage.animetosho.org/sframes/00000000_1421380.png"
+    ],
     "can_edit": false,
     "waiting_approve": false,
     "disable_comments": false,
@@ -1020,6 +1057,85 @@ deletion_reason? | string | Reason for deletion (max 256 characters)
     "You have set sub level to \"no subs\", but you have added fansub languages."
   ],
   "warns": []
+}
+```
++++
+==-
+
+
+
+### Get Torrent's AnimeTosho Data
+[!badge variant="info" text="GET"] `/torrents/<torrent_id>/animetosho` [!badge variant="success" text="Auth Optional"]
+
+Returns the AnimeTosho data for a specific torrent. **You should handle for long request times on this endpoint.** If data is not yet available, the request may take up to 60 seconds to complete while the site fetches all data from AnimeTosho.
+
+AnimeTosho data is not fetched automatically for torrents. A client must request it using this endpoint before the site will fetch it from AnimeTosho. The site's frontend will automatically call this endpoint when viewing a torrent that does not have final AnimeTosho data yet.
+
+If another user is already fetching the data for this torrent, your request will be halted until the other user's fetch is complete, to prevent multiple simultaneous fetches for the same torrent.
+
+Even if the request is cancelled by the client, the site will continue fetching the data in the background.
+
+| Status | Description | Retry Later? | 
+|--------|-------------|--------------|
+| `skipped` | The torrent was skipped by AnimeTosho. | ❌ |
+| `processing` | The torrent is still being processed on AnimeTosho. | 🟠 (Retry if last attempt was more than 3 minutes ago) |
+| `not_found` | The torrent was not found on AnimeTosho. | 🟠 (No retry if last attempt was 1hr after upload) |
+| `no_media` | The torrent was found, but no media file was found on AnimeTosho. | ❌ |
+| `error` | AnimeTosho returned an unexpected status. | ❌ |
+
+==- Examples
++++ Successful Response (200, 201)
+`200` if data was already present, `201` if the data was just fetched.
+```json
+{
+  "error": false,
+  "data": [
+    {
+      "file_id": 1234,
+      "filename": "....mkv",
+      "filesize": 937007977,
+      "subs": [
+        {
+          "id": 5678,
+          "codec": "SRT",
+          "lang": "jpn",
+          "name": "SDH",
+          "default": false,
+          "enabled": true,
+          "forced": false,
+          "trackid": 4,
+          "tracknum": 5
+        }
+      ],
+      "mediainfo": "General\nUniqu...",
+      "screenshot_id": "00000000", // You can use this ID and timings to reconstruct the screenshot URLs
+      "screenshot_timings": [
+        13980,
+        366330,
+        718680,
+        1069030,
+        1421380
+      ]
+    }
+  ],
+  "retry": false
+}
+```
++++ Semi-Successful Response (202)
+The server sent a request to AnimeTosho, received a `processing` status, and is still waiting for the data to be ready.
+```json
+{
+  "error": false,
+  "message": "Torrent is still being processed on AnimeTosho.",
+  "retry": true
+}
+```
++++ Unsuccessful Response (400, 403, 404, 500)
+```json
+{
+  "error": true,
+  "message": "Torrent was skipped on AnimeTosho.",
+  "retry": false
 }
 ```
 +++
