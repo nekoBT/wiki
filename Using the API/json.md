@@ -847,6 +847,21 @@ Returns various statistics about the site, such as the number of users, torrents
 
 Returns information about a specific torrent, including its title, description, and other metadata.
 
+Torrent IDs use a snowflake system, which contains the torrent's type, time and increment, the bits 8 and above are the time with an offset of `Jan 01 2024 00:00:00`, bits 4-7 are the type, and bits 0-3 are the snowflake increment.<br>
+An example script to parse them would look like this:
+
+```ts
+const offset = 1735689600000n // Wed Jan 01 2025 00:00:00
+function idToInfo (id: string) {
+  const base = BigInt(id)
+  return {
+    time: (base >> 8n) + offset, // bits 8 and above are time
+    type: base >> 4n & 15n, // bits 4-7 are type
+    increment: base & 15n // bits 0-3 are increment
+  }
+}
+```
+
 ==- Examples
 +++ Successful Response (200)
 ```json
@@ -1415,6 +1430,7 @@ The search API attempts to extract meaning from the `query` parameter (called "h
 - Searching `HEVC`, it will automatically add the video codec filter for HEVC.
 - Searching `your lie in april`, it will recommend the media "Your Lie in April", either in `recommended_media` if >=70% of results match, or in `similar_media` by title searching.
 - Searching `s01` when a `media_id` is provided, it will add season 1 to the episode filter.  
+- Searching `aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa` will assume it's an info hash, and search for the torrent directly, and return a torrent ID for in the `infohash_match` data field if a torrent is found.
 
 
 ==- Examples
