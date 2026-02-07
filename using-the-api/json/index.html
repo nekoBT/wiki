@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.821303122853">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.823807086659">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -30,12 +30,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=3.11.0.821303122853" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.11.0.823807086659" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.821303122853" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.823807086659" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.821303122853" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.11.0.821303122853" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.823807086659" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.11.0.823807086659" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -1379,6 +1379,19 @@ The differences are as follows:</p>
     <span>Auth Optional</span>
 </span></p>
 <p>Returns information about a specific torrent, including its title, description, and other metadata.</p>
+<p>Torrent IDs use a snowflake system, which contains the torrent&#x27;s type, time and increment, the bits 8 and above are the time with an offset of <code v-pre>Jan 01 2024 00:00:00</code>, bits 4-7 are the type, and bits 0-3 are the snowflake increment.<br>
+An example script to parse them would look like this:</p>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-typescript"><code v-pre class="language-typescript">const offset = 1735689600000n // Wed Jan 01 2025 00:00:00
+function idToInfo (id: string) {
+  const base = BigInt(id)
+  return {
+    time: (base &gt;&gt; 8n) + offset, // bits 8 and above are time
+    type: base &gt;&gt; 4n &amp; 15n, // bits 4-7 are type
+    increment: base &amp; 15n // bits 0-3 are increment
+  }
+}</code></pre>
+</doc-codeblock></div>
 <doc-panel id="examples" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
@@ -2312,6 +2325,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 <li>Searching <code v-pre>HEVC</code>, it will automatically add the video codec filter for HEVC.</li>
 <li>Searching <code v-pre>your lie in april</code>, it will recommend the media &quot;Your Lie in April&quot;, either in <code v-pre>recommended_media</code> if &gt;=70% of results match, or in <code v-pre>similar_media</code> by title searching.</li>
 <li>Searching <code v-pre>s01</code> when a <code v-pre>media_id</code> is provided, it will add season 1 to the episode filter.</li>
+<li>Searching <code v-pre>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</code> will assume it&#x27;s an info hash, and search for the torrent directly, and return a torrent ID for in the <code v-pre>infohash_match</code> data field if a torrent is found.</li>
 </ul>
 <doc-panel id="examples" collapsed>
     <template #title>Examples</template>
