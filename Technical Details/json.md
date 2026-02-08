@@ -204,6 +204,7 @@ Returns information about a specific group, including its name, description, mem
         "username": "exampleuser",
         "invite": false,
         "invite_key": null, // Only present if user is group leader/admin
+        "invite_has_recipient": null, // Only present if user is group leader/admin
         "display_name": "ExampleUser",
         "pfp_hash": "abcdef1234567890abcdef1234567890abcdef12",
         "leader": true,
@@ -563,6 +564,40 @@ Use `?key=` to reveal who the recipient is.
 
 
 
+### Assign Invite
+[!badge variant="warning" text="PATCH"] `/invites/<invite_id>` [!badge variant="warning" text="Auth Required"]
+
+Assign an orphaned invite to a user. This is only used for group leaders/admins to assign invites that don't have a recipient. The user will receive a notification about the invite.
+
+Orphaned invites are created when a member is invited without specifying a user ID (commonly on torrent upload page), or when a member is removed from the group without being deleted.
+
+==- Examples
++++ Successful Response (200)
+```json
+{
+  "error": false
+}
+```
++++ Unsuccessful Response (403)
+```json
+{
+  "error": true,
+  "message": "Only group leaders and admins can edit invites."
+}
+```
++++
++++ Unsuccessful Response (404)
+```json
+{
+  "error": true,
+  "message": "Invite not found."
+}
+```
++++
+==-
+
+
+
 ### Accept Invite
 [!badge variant="success" text="POST"] `/invites/<invite_id>/accept/<invite_key>` [!badge variant="warning" text="Auth Required"]
 
@@ -847,21 +882,6 @@ Returns various statistics about the site, such as the number of users, torrents
 
 Returns information about a specific torrent, including its title, description, and other metadata.
 
-Torrent IDs use a snowflake system, which contains the torrent's type, time and increment, the bits 8 and above are the time with an offset of `Jan 01 2024 00:00:00`, bits 4-7 are the type, and bits 0-3 are the snowflake increment.<br>
-An example script to parse them would look like this:
-
-```ts
-const offset = 1735689600000n // Wed Jan 01 2025 00:00:00
-function idToInfo (id: string) {
-  const base = BigInt(id)
-  return {
-    time: (base >> 8n) + offset, // bits 8 and above are time
-    type: base >> 4n & 15n, // bits 4-7 are type
-    increment: base & 15n // bits 0-3 are increment
-  }
-}
-```
-
 ==- Examples
 +++ Successful Response (200)
 ```json
@@ -869,6 +889,7 @@ function idToInfo (id: string) {
   "error": false,
   "data": {
     "id": "1234567890",
+    "uploaded_at": "1765432000000", // Unix timestamp in milliseconds
     "title": "Torrent Title",
     "auto_title": "Torrent Title {Tags:L1;V9;C1;A-ja;F-en;}",
     "description": "...", // Markdown formatted description, can be null
@@ -935,6 +956,7 @@ function idToInfo (id: string) {
     "leechers": "1",
     "completed": "185",
     "activity": "5557", // Estimated peer speeds in bytes/second
+    "torrent_health": "100%", // Estimated health of the torrent (P75 of peers progress)
     "upgraded": null, // Torrent ID of the new torrent, or null
     "animetosho": [ // Can be null, array, or 'skipped', 'processing', 'not_found', 'error', 'no_media'
       {
@@ -1473,6 +1495,7 @@ after? | string | Filter torrents uploaded after this date, unix milliseconds
     "results": [
       {
         "id": "1234567890",
+        "uploaded_at": "1765432000000", // Unix timestamp in milliseconds
         "title": "Torrent Title",
         "infohash": "abdef...",
         "magnet": "magnet:?xt=urn:btih:9a4e649...",
@@ -1703,7 +1726,7 @@ Name | Type | Description
 ---- | ---- | -----------
 title | string | Title for the torrent (max 512 characters)
 movie | boolean | Whether this torrent is for a movie (true) or series (false)
-files | array of objects | Array of file objects with `name` (string) that the torrent contains
+files | array of objects | Array of file objects with `path` (string) that the torrent contains
 video_type | number or null | Video type category ID
 video_codec | number or null | Video codec category ID
 level | number | Subtitle level (null or -1 to 4, -1 = no subs)
@@ -1715,6 +1738,7 @@ audio_langs | string | Comma-separated list of audio languages (max 256 characte
 sub_langs | string | Comma-separated list of subtitle languages (max 256 characters)
 fansub_langs | string | Comma-separated list of fansub languages (max 256 characters)
 announce_urls? | array of strings | Array of announce URLs in the torrent file
+raw_announce_urls? | array of arrays of strings | Tiered announce URLs in the torrent file
 
 **Primary Group Object:**
 - `id` (string): Group ID
@@ -1733,7 +1757,7 @@ announce_urls? | array of strings | Array of announce URLs in the torrent file
   "video_codec": null,
   "files": [
     {
-      "name": "[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0].mkv",
+      "path": "[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0].mkv",
     }
   ],
   "level": "",
@@ -1745,6 +1769,11 @@ announce_urls? | array of strings | Array of announce URLs in the torrent file
   "fansub_langs": "",
   "announce_urls": [
     "udp://tracker.opentrackr.org:1337/announce",
+  ],
+  "raw_announce_urls": [
+    [
+      "udp://tracker.opentrackr.org:1337/announce",
+    ]
   ]
 }
 ```
