@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.823900152134">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.823906640123">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -30,12 +30,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=3.11.0.823900152134" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.11.0.823906640123" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.823900152134" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.823906640123" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.823900152134" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.11.0.823900152134" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.823906640123" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.11.0.823906640123" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -3226,6 +3226,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
     &quot;pfp_hash&quot;: &quot;abdef1234567890abcdef1234567890abcdef12&quot;,
     &quot;description&quot;: &quot;Example user description.&quot;,
     &quot;permissions&quot;: 0, // Only present if authenticated as this user
+    &quot;preferences&quot;: 0, // Only present if authenticated as this user
     &quot;torrent_key&quot;: &quot;...&quot;, // Only present if authenticated as this user
     &quot;torrent_count&quot;: 2,
     &quot;contribution_count&quot;: 1,
@@ -3245,10 +3246,10 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
         &quot;regular&quot;: false
       }
     ],
-    &quot;upload&quot;: &quot;50043&quot;, // Total uploaded bytes
-    &quot;download&quot;: &quot;1945&quot;, // Total downloaded bytes
-    &quot;seeding&quot;: &quot;0&quot;, // Number of torrents currently seeding
-    &quot;leeching&quot;: &quot;0&quot;, // Number of torrents currently leeching
+    &quot;upload&quot;: &quot;50043&quot;, // Total uploaded bytes, can be null if hidden
+    &quot;download&quot;: &quot;1945&quot;, // Total downloaded bytes, can be null if hidden
+    &quot;seeding&quot;: &quot;0&quot;, // Number of torrents currently seeding, can be null if hidden
+    &quot;leeching&quot;: &quot;0&quot;, // Number of torrents currently leeching, can be null if hidden
     &quot;disabled&quot;: false, // Whether the account is disabled
     &quot;nyaa&quot;: [
       {
@@ -3335,6 +3336,16 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 <td>revoke_api_keys?</td>
 <td>boolean</td>
 <td>Whether to revoke all API keys</td>
+</tr>
+<tr>
+<td>hide_peer_count?</td>
+<td>boolean</td>
+<td>Whether to hide how many torrents you&#x27;re seeding and leeching from other users</td>
+</tr>
+<tr>
+<td>hide_peer_amount?</td>
+<td>boolean</td>
+<td>Whether to hide the exact amount of data you&#x27;ve uploaded and downloaded from other users</td>
 </tr>
 </tbody>
 </table>
