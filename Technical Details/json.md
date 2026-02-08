@@ -956,7 +956,7 @@ Returns information about a specific torrent, including its title, description, 
     "leechers": "1",
     "completed": "185",
     "activity": "5557", // Estimated peer speeds in bytes/second
-    "torrent_health": "100%", // Estimated health of the torrent (P75 of peers progress)
+    "torrent_health": "100", // Estimated health of the torrent (P75 of peers progress)
     "upgraded": null, // Torrent ID of the new torrent, or null
     "animetosho": [ // Can be null, array, or 'skipped', 'processing', 'not_found', 'error', 'no_media'
       {
