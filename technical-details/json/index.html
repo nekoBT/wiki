@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.823807086659">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.823900024953">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 3.11.0">
@@ -14,28 +14,28 @@
     <meta name="description" content="This is the main API for nekoBT, and is used for most requests.">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://wiki.nekobt.to/using-the-api/json/">
+    <link rel="canonical" href="https://wiki.nekobt.to/technical-details/json/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://wiki.nekobt.to/using-the-api/json/">
+    <meta property="og:url" content="https://wiki.nekobt.to/technical-details/json/">
     <meta property="og:title" content="JSON API - nekoBT Wiki">
     <meta property="og:description" content="This is the main API for nekoBT, and is used for most requests.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://wiki.nekobt.to/using-the-api/json/">
+    <meta property="twitter:url" content="https://wiki.nekobt.to/technical-details/json/">
     <meta property="twitter:title" content="JSON API - nekoBT Wiki">
     <meta property="twitter:description" content="This is the main API for nekoBT, and is used for most requests.">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=3.11.0.823807086659" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.11.0.823900024953" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.823807086659" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.823900024953" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.823807086659" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.11.0.823807086659" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.823900024953" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.11.0.823900024953" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -421,6 +421,7 @@ referrer-policy: same-origin</code></pre>
         &quot;username&quot;: &quot;exampleuser&quot;,
         &quot;invite&quot;: false,
         &quot;invite_key&quot;: null, // Only present if user is group leader/admin
+        &quot;invite_has_recipient&quot;: null, // Only present if user is group leader/admin
         &quot;display_name&quot;: &quot;ExampleUser&quot;,
         &quot;pfp_hash&quot;: &quot;abcdef1234567890abcdef1234567890abcdef12&quot;,
         &quot;leader&quot;: true,
@@ -1007,6 +1008,52 @@ The differences are as follows:</p>
 </doc-tab>
 </doc-tabs>
 </doc-panel>
+<doc-anchor-target id="assign-invite">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#assign-invite">#</doc-anchor-trigger>
+        <span>Assign Invite</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+    <span>PATCH</span>
+</span> <code v-pre>/invites/&lt;invite_id&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Required</span>
+</span></p>
+<p>Assign an orphaned invite to a user. This is only used for group leaders/admins to assign invites that don&#x27;t have a recipient. The user will receive a notification about the invite.</p>
+<p>Orphaned invites are created when a member is invited without specifying a user ID (commonly on torrent upload page), or when a member is removed from the group without being deleted.</p>
+<doc-panel id="examples" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="successful-response-200">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-403">
+<template #title>Unsuccessful Response (403)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Only group leaders and admins can edit invites.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+<doc-tabs>
+<doc-tab v-cloak id="unsuccessful-response-404">
+<template #title>Unsuccessful Response (404)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Invite not found.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
 <doc-anchor-target id="accept-invite">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#accept-invite">#</doc-anchor-trigger>
@@ -1379,19 +1426,6 @@ The differences are as follows:</p>
     <span>Auth Optional</span>
 </span></p>
 <p>Returns information about a specific torrent, including its title, description, and other metadata.</p>
-<p>Torrent IDs use a snowflake system, which contains the torrent&#x27;s type, time and increment, the bits 8 and above are the time with an offset of <code v-pre>Jan 01 2024 00:00:00</code>, bits 4-7 are the type, and bits 0-3 are the snowflake increment.<br>
-An example script to parse them would look like this:</p>
-<div class="codeblock-wrapper"><doc-codeblock>
-<pre translate="no" class="language-typescript"><code v-pre class="language-typescript">const offset = 1735689600000n // Wed Jan 01 2025 00:00:00
-function idToInfo (id: string) {
-  const base = BigInt(id)
-  return {
-    time: (base &gt;&gt; 8n) + offset, // bits 8 and above are time
-    type: base &gt;&gt; 4n &amp; 15n, // bits 4-7 are type
-    increment: base &amp; 15n // bits 0-3 are increment
-  }
-}</code></pre>
-</doc-codeblock></div>
 <doc-panel id="examples" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
@@ -1402,6 +1436,7 @@ function idToInfo (id: string) {
   &quot;error&quot;: false,
   &quot;data&quot;: {
     &quot;id&quot;: &quot;1234567890&quot;,
+    &quot;uploaded_at&quot;: &quot;1765432000000&quot;, // Unix timestamp in milliseconds
     &quot;title&quot;: &quot;Torrent Title&quot;,
     &quot;auto_title&quot;: &quot;Torrent Title {Tags:L1;V9;C1;A-ja;F-en;}&quot;,
     &quot;description&quot;: &quot;...&quot;, // Markdown formatted description, can be null
@@ -1468,6 +1503,7 @@ function idToInfo (id: string) {
     &quot;leechers&quot;: &quot;1&quot;,
     &quot;completed&quot;: &quot;185&quot;,
     &quot;activity&quot;: &quot;5557&quot;, // Estimated peer speeds in bytes/second
+    &quot;torrent_health&quot;: &quot;100%&quot;, // Estimated health of the torrent (P75 of peers progress)
     &quot;upgraded&quot;: null, // Torrent ID of the new torrent, or null
     &quot;animetosho&quot;: [ // Can be null, array, or 'skipped', 'processing', 'not_found', 'error', 'no_media'
       {
@@ -2496,6 +2532,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
     &quot;results&quot;: [
       {
         &quot;id&quot;: &quot;1234567890&quot;,
+        &quot;uploaded_at&quot;: &quot;1765432000000&quot;, // Unix timestamp in milliseconds
         &quot;title&quot;: &quot;Torrent Title&quot;,
         &quot;infohash&quot;: &quot;abdef...&quot;,
         &quot;magnet&quot;: &quot;magnet:?xt=urn:btih:9a4e649...&quot;,
@@ -2870,7 +2907,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 <tr>
 <td>files</td>
 <td>array of objects</td>
-<td>Array of file objects with <code v-pre>name</code> (string) that the torrent contains</td>
+<td>Array of file objects with <code v-pre>path</code> (string) that the torrent contains</td>
 </tr>
 <tr>
 <td>video_type</td>
@@ -2927,6 +2964,11 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 <td>array of strings</td>
 <td>Array of announce URLs in the torrent file</td>
 </tr>
+<tr>
+<td>raw_announce_urls?</td>
+<td>array of arrays of strings</td>
+<td>Tiered announce URLs in the torrent file</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2959,7 +3001,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
   &quot;video_codec&quot;: null,
   &quot;files&quot;: [
     {
-      &quot;name&quot;: &quot;[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0].mkv&quot;,
+      &quot;path&quot;: &quot;[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0].mkv&quot;,
     }
   ],
   &quot;level&quot;: &quot;&quot;,
@@ -2971,6 +3013,11 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
   &quot;fansub_langs&quot;: &quot;&quot;,
   &quot;announce_urls&quot;: [
     &quot;udp://tracker.opentrackr.org:1337/announce&quot;,
+  ],
+  &quot;raw_announce_urls&quot;: [
+    [
+      &quot;udp://tracker.opentrackr.org:1337/announce&quot;,
+    ]
   ]
 }</code></pre>
 </doc-codeblock></div>
@@ -3708,7 +3755,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
                             
                                 <nav id="retype-nextprev" class="print:hidden flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../using-the-api/api-keys/">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../technical-details/api-keys/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-base-text-muted">Previous</span>
@@ -3718,7 +3765,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../using-the-api/torznab/">
+                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../technical-details/torznab/">
                                             <span>
                                                 <span class="block text-xs font-normal text-right text-base-text-muted">Next</span>
                                                 <span class="block mt-1">Torznab & RSS</span>

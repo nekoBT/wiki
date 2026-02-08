@@ -9,32 +9,32 @@
     <meta name="generator" content="Retype 3.11.0">
 
     <!-- Primary Meta Tags -->
-    <title>Rules - nekoBT Wiki</title>
-    <meta name="title" content="Rules - nekoBT Wiki">
-    <meta name="description" content="Last Updated: 4 December 2025">
+    <title>Torznab &amp; RSS - nekoBT Wiki</title>
+    <meta name="title" content="Torznab & RSS - nekoBT Wiki">
+    <meta name="description" content="To access the Torznab API, you should instead specify your API key as the apikey query parameter.">
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://wiki.nekobt.to/rules/">
+    <link rel="canonical" href="https://wiki.nekobt.to/technical-details/torznab/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://wiki.nekobt.to/rules/">
-    <meta property="og:title" content="Rules - nekoBT Wiki">
-    <meta property="og:description" content="Last Updated: 4 December 2025">
+    <meta property="og:url" content="https://wiki.nekobt.to/technical-details/torznab/">
+    <meta property="og:title" content="Torznab & RSS - nekoBT Wiki">
+    <meta property="og:description" content="To access the Torznab API, you should instead specify your API key as the apikey query parameter.">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://wiki.nekobt.to/rules/">
-    <meta property="twitter:title" content="Rules - nekoBT Wiki">
-    <meta property="twitter:description" content="Last Updated: 4 December 2025">
+    <meta property="twitter:url" content="https://wiki.nekobt.to/technical-details/torznab/">
+    <meta property="twitter:title" content="Torznab & RSS - nekoBT Wiki">
+    <meta property="twitter:description" content="To access the Torznab API, you should instead specify your API key as the apikey query parameter.">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../resources/css/retype.css?v=3.11.0.823900024953" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=3.11.0.823900024953" rel="stylesheet">
 
-    <script data-cfasync="false" src="../resources/js/config.js?v=3.11.0.823900024953" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../resources/js/lunr.js?v=3.11.0.823900024953" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.823900024953" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.823900024953" data-turbo-eval="false" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -74,7 +74,7 @@
                 <!-- Logo -->
                 <div class="flex items-center justify-between h-full py-2 md:w-75">
                     <div class="flex items-center px-2 md:px-6">
-                        <a id="retype-branding-logo" href="../" class="flex items-center leading-snug text-2xl">
+                        <a id="retype-branding-logo" href="../../" class="flex items-center leading-snug text-2xl">
                             <span class="dark:text-white font-bold line-clamp-1 md:line-clamp-2">nekoBT</span>
                         </a><span id="retype-branding-label" class="inline-flex mt-1 px-2 py-1 ml-4 text-xs font-medium leading-none items-center rounded-md bg-branding-label-bg text-branding-label-text ring-1 ring-branding-label-border ring-inset md:inline-block">Wiki</span>
                     </div>
@@ -174,13 +174,29 @@
                                 <!-- Rendered if sidebar right is enabled -->
                                 <div id="retype-sidebar-right-toggle"></div>
                                 <!-- Page content  -->
-<doc-anchor-target id="site-rules" class="break-words">
+<doc-anchor-target id="torznab--rss" class="break-words">
     <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#site-rules">#</doc-anchor-trigger>
-        <span>Site Rules</span>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#torznab--rss">#</doc-anchor-trigger>
+        <span>Torznab &amp; RSS</span>
     </h1>
 </doc-anchor-target>
-<p>Last Updated: 4 December 2025</p>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-info"></div>
+    <div class="flex w-full py-4 border border-l-0 rounded-tr-lg rounded-br-lg doc-callout bg-callout-base-bg border-callout-base-border" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-callout-info" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>To access the Torznab API, you should instead specify your API key as the <code v-pre>apikey</code> query parameter.</p>
+        </div>
+    </div>
+</div>
 <div class="flex mb-6">
     <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-warning"></div>
     <div class="flex w-full py-4 border border-l-0 rounded-tr-lg rounded-br-lg doc-callout bg-callout-base-bg border-callout-base-border" role="alert">
@@ -193,74 +209,168 @@
             </svg>
         </div>
         <div class="pr-5 ml-3 w-full">
-<p>This list is not exhaustive. Staff may decide that your actions negatively affect the site, without necessarily breaking a listed rule, and will punish your account accordingly.</p>
+<p>The Torznab API is only meant to be used by automation software, such as Sonarr or Radarr. If you want more rich data, use the JSON API instead.</p>
         </div>
     </div>
 </div>
-<ol>
-<li>No <strong>spam, advertising, hateful content, harassment or trolling</strong>. This includes but is not limited to:
-<ul>
-<li>Posting the same comment multiple times.</li>
-<li>Excessive self-promotion.</li>
-<li>Re-posting/bumping torrents.</li>
-<li>Using slurs or derogatory language.</li>
-<li>Harassing or bullying other users. (Criticism is allowed, but it must be constructive.)</li>
-<li>Using the API to spam the site.</li>
-<li>Automating actions without using an API key.</li>
-</ul>
-</li>
-<li><strong>Multiple accounts are strictly not allowed.</strong></li>
-<li>No <strong>malware, phishing or other malicious content</strong>.</li>
-<li>No <strong>torrent hijacking</strong>. Don&#x27;t upload torrents that you didn&#x27;t create, or that you don&#x27;t have permission to upload. Always ask the original uploader first.</li>
-<li>No <strong>pornography, hentai or other NSFW content</strong>. This includes NSFW links in comments, descriptions, etc, NSFW torrents, NSFW profile pictures. There is an exception for shows/movies that contains an uncensored version that is otherwise censored. <strong>You must clearly mark the torrent as <code v-pre>UNCENSORED</code> in the title.</strong></li>
-<li>Torrents should contain <strong>anime only</strong>. Live-action content is currently not allowed.
-<ul>
-<li>Anime is defined as having an entry on <a href="https://anidb.net/">AniDB</a>, <a href="https://anilist.co/">AniList</a>, or <a href="https://myanimelist.net/">MAL</a>.</li>
-</ul>
-</li>
-<li>Torrents <strong>mustn&#x27;t be zipped, or compressed in any way</strong>.</li>
-<li>No <strong>watermarked content</strong>, including ads, logos, or other branding. Crediting your fansub group is allowed, but it must be done in a way that doesn&#x27;t obstruct the content.</li>
-<li>Torrents must contain <strong>accurate metadata</strong> when uploading. You must ensure that:
-<ul>
-<li>The series/title matches the content.</li>
-<li>The episode numbers are as correct as possible. If you are struggling to match the correct episode numbers, get as close as you can, and then edit the torrent to change what episodes are included.</li>
-<li>The Video Type and Codec are correct.</li>
-<li>The Sub Level is correct.</li>
-<li>The Languages are correct.</li>
-<li>Secondary Groups are included if applicable.</li>
-<li>The MTL tag is used if the main subtitles are machine-translated.</li>
-</ul>
-</li>
-<li><strong>Torrent titles (except Romaji) must be in English</strong>.</li>
-<li><strong>No impersonation</strong>. You aren&#x27;t allowed to impersonate staff members, claim to be a staff member, or use well-known group names without permission of the group (even if they aren&#x27;t registered on the site).
-<ul>
-<li><strong>Exception:</strong> If a group is inactive and/or not contactable, you may use their tag and request a Staff Key to import their old torrents. You are not allowed to upload your own torrents under their tag. Staff may refuse and delete the group if they believe you have bad intent or don&#x27;t have significant history on the site.</li>
-<li>If the group becomes active again, you must transfer ownership of the group. Staff will assist with this process if needed (ex: hard to verify the real owner).</li>
-</ul>
-</li>
-<li><strong>&quot;Bad&quot; video or audio quality is not allowed.</strong> This is subjective. Torrents where the video or audio quality has been significantly degraded, due to poor encoding, are not allowed. Generally, don&#x27;t do these, <em>just for the sake of it</em>:
-<ul>
-<li>No AI upscaling (like 1080p-&gt;4k, downscaling and rescaling is fine if you know what you&#x27;re doing).</li>
-<li>No Frame interpolation (increasing FPS. Exceptions are made for field interpolation required to properly deinterlace interlaced material).</li>
-<li>No super-low-bitrate encodes (mini&#x27;s are allowed, but don&#x27;t cook it too hard).</li>
-</ul>
-</li>
-<li><strong>No leaked content.</strong> Content that isn&#x27;t officially released is not allowed. This also means <strong>no CAM or Telesync releases.</strong></li>
-<li><strong>No tracker cheating.</strong> You are not allowed to manipulate your tracker stats in any way. This includes:
-<ul>
-<li>Using bots to download torrents you&#x27;re seeding.</li>
-<li>Sending fake upload/download stats to the tracker.</li>
-<li>Using hacked torrent clients to manipulate your stats.</li>
-<li>Using scripts to manipulate your stats.</li>
-<li>Distributing your torrent key to others, or using someone else&#x27;s torrent key.</li>
-</ul>
-</li>
-<li><strong>Multi-season/complete packs</strong> are allowed, if the series has been completed, and there is no indication that the series will continue.
-<ul>
-<li>Packs containing both TV anime and movies are allowed, as long as you include all relevant content related to the series.</li>
-</ul>
-</li>
-</ol>
+<p>The base URL for the Torznab API is <code v-pre>https://nekobt.to/api/torznab</code></p>
+<doc-anchor-target id="get-torznab-capabilities">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#get-torznab-capabilities">#</doc-anchor-trigger>
+        <span>Get Torznab Capabilities</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
+    <span>GET</span>
+</span> <code v-pre>/api?t=caps</code></p>
+<p>Returns the capabilities of the Torznab API, such as supported search types and metadata formats.</p>
+<doc-anchor-target id="search-torrents-rss-feed">
+    <h3>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#search-torrents-rss-feed">#</doc-anchor-trigger>
+        <span>Search Torrents (RSS Feed)</span>
+    </h3>
+</doc-anchor-target>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
+    <span>GET</span>
+</span> <code v-pre>/api?t=search</code></p>
+<p>Searches for torrents. The following query parameters are supported:</p>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>t</td>
+<td>string</td>
+<td>Can be <code v-pre>search</code>, <code v-pre>tv-search</code> or <code v-pre>movie-search</code>.</td>
+</tr>
+<tr>
+<td>q?</td>
+<td>string</td>
+<td>The search query. If this is an empty string or null, it will return the latest torrents added.</td>
+</tr>
+<tr>
+<td>tvdbid?</td>
+<td>integer</td>
+<td>The TVDB ID of the series to search for.</td>
+</tr>
+<tr>
+<td>levels?</td>
+<td>string</td>
+<td>Comma-separated list of <a href="/info/sub-levels">sub levels</a> to filter for.</td>
+</tr>
+<tr>
+<td>video_codec?</td>
+<td>string</td>
+<td>Comma-separated list of video codecs to filter for.</td>
+</tr>
+<tr>
+<td>video_type?</td>
+<td>string</td>
+<td>Comma-separated list of video types to filter for.</td>
+</tr>
+<tr>
+<td>audio_lang?</td>
+<td>string</td>
+<td>Comma-separated list of audio languages to filter for.</td>
+</tr>
+<tr>
+<td>fansub_lang?</td>
+<td>string</td>
+<td>Comma-separated list of fansub languages to filter for.</td>
+</tr>
+<tr>
+<td>sub_lang?</td>
+<td>string</td>
+<td>Comma-separated list of subtitle languages to filter for.</td>
+</tr>
+<tr>
+<td>hardsub?</td>
+<td>boolean</td>
+<td>Set to <code v-pre>true</code> to only return torrents with hardcoded subtitles or <code v-pre>false</code> to exclude them.</td>
+</tr>
+<tr>
+<td>otl?</td>
+<td>boolean</td>
+<td>Set to <code v-pre>true</code> to only return torrents with OTL subtitles or <code v-pre>false</code> to exclude them.</td>
+</tr>
+<tr>
+<td>mtl?</td>
+<td>boolean</td>
+<td>Set to <code v-pre>true</code> to only return torrents with machine translated subtitles or <code v-pre>false</code> to exclude them.</td>
+</tr>
+<tr>
+<td>group_id?</td>
+<td>string</td>
+<td>Group ID to filter for.</td>
+</tr>
+<tr>
+<td>group_primary?</td>
+<td>boolean</td>
+<td>Set to <em><code v-pre>true</code></em> to return torrents where the group is the uploader or <code v-pre>false</code> to exclude them.</td>
+</tr>
+<tr>
+<td>group_secondary?</td>
+<td>boolean</td>
+<td>Set to <code v-pre>true</code> to return torrents where the group is not the uploader or <em><code v-pre>false</code></em> to exclude them.</td>
+</tr>
+<tr>
+<td>group_childs?</td>
+<td>boolean</td>
+<td>Set to <code v-pre>true</code> to include torrents from child groups or <em><code v-pre>false</code></em> to exclude them.</td>
+</tr>
+<tr>
+<td>group_parents?</td>
+<td>boolean</td>
+<td>Set to <code v-pre>true</code> to include torrents from parent groups or <em><code v-pre>false</code></em> to exclude them.</td>
+</tr>
+<tr>
+<td>uploader_id?</td>
+<td>string</td>
+<td>Uploader ID to filter for.</td>
+</tr>
+<tr>
+<td>uploader_uploads?</td>
+<td>boolean</td>
+<td>Set to <em><code v-pre>true</code></em> to return torrents where the uploader is the uploader or <code v-pre>false</code> to exclude them.</td>
+</tr>
+<tr>
+<td>uploader_contributions?</td>
+<td>boolean</td>
+<td>Set to <code v-pre>true</code> to return torrents where the uploader is not the uploader or <em><code v-pre>false</code></em> to exclude them.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<doc-anchor-target id="italics--default---optional">
+    <h6>
+        <doc-anchor-trigger class="header-anchor-trigger" to="#italics--default---optional">#</doc-anchor-trigger>
+        <span><em>italics</em> = default, ? = optional</span>
+    </h6>
+</doc-anchor-target>
+<br>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-info"></div>
+    <div class="flex w-full py-4 border border-l-0 rounded-tr-lg rounded-br-lg doc-callout bg-callout-base-bg border-callout-base-border" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="mb-px text-callout-info" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M12 1C5.93 1 1 5.93 1 12s4.93 11 11 11 11-4.93 11-11S18.07 1 12 1zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9z"></path>
+                    <path d="M12 11c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1s1-.45 1-1v-4c0-.55-.45-1-1-1zM12.01 7c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>The Torznab API only provides magnet links, not torrent files, to ensure torrent clients use the auto title, and not the torrent title (important for tag matching).</p>
+        </div>
+    </div>
+</div>
 
                                 
                                 <!-- Required only on API pages -->
@@ -270,23 +380,16 @@
                             
                                 <nav id="retype-nextprev" class="print:hidden flex mt-14">
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../">
+                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../technical-details/json/">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                                             <span>
                                                 <span class="block text-xs font-normal text-base-text-muted">Previous</span>
-                                                <span class="block mt-1">Home</span>
+                                                <span class="block mt-1">JSON API</span>
                                             </span>
                                         </a>
                                     </div>
                             
                                     <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../privacy/">
-                                            <span>
-                                                <span class="block text-xs font-normal text-right text-base-text-muted">Next</span>
-                                                <span class="block mt-1">Privacy Policy</span>
-                                            </span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
-                                        </a>
                                     </div>
                                 </nav>
                             </footer>
@@ -327,6 +430,6 @@
 
     <div id="retype-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Rules", level: 1, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+    <script data-cfasync="false">window.__DOCS__ = { "title": "Torznab & RSS", level: 2, icon: "file", hasPrism: false, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
 </body>
 </html>
