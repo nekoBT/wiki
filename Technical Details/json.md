@@ -1923,6 +1923,7 @@ Returns information about a specific user, including their username, profile pic
     "pfp_hash": "abdef1234567890abcdef1234567890abcdef12",
     "description": "Example user description.",
     "permissions": 0, // Only present if authenticated as this user
+    "preferences": 0, // Only present if authenticated as this user
     "torrent_key": "...", // Only present if authenticated as this user
     "torrent_count": 2,
     "contribution_count": 1,
@@ -1942,10 +1943,10 @@ Returns information about a specific user, including their username, profile pic
         "regular": false
       }
     ],
-    "upload": "50043", // Total uploaded bytes
-    "download": "1945", // Total downloaded bytes
-    "seeding": "0", // Number of torrents currently seeding
-    "leeching": "0", // Number of torrents currently leeching
+    "upload": "50043", // Total uploaded bytes, can be null if hidden
+    "download": "1945", // Total downloaded bytes, can be null if hidden
+    "seeding": "0", // Number of torrents currently seeding, can be null if hidden
+    "leeching": "0", // Number of torrents currently leeching, can be null if hidden
     "disabled": false, // Whether the account is disabled
     "nyaa": [
       {
@@ -1987,6 +1988,8 @@ remove_nyaa_account? | string | Nyaa username to remove
 nyaa_account_public? | string | Nyaa username to set public
 nyaa_account_private? | string | Nyaa username to set private
 revoke_api_keys? | boolean | Whether to revoke all API keys
+hide_peer_count? | boolean | Whether to hide how many torrents you're seeding and leeching from other users
+hide_peer_amount? | boolean | Whether to hide the exact amount of data you've uploaded and downloaded from other users
 ###### At least one is required, *italics* = default, ? = optional
 +++ Successful Response (200)
 ```json
