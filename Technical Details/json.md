@@ -585,7 +585,6 @@ Orphaned invites are created when a member is invited without specifying a user 
   "message": "Only group leaders and admins can edit invites."
 }
 ```
-+++
 +++ Unsuccessful Response (404)
 ```json
 {
