@@ -146,3 +146,5 @@ We can create a Custom Format with the following rules:
 - Release Title matches the regex: `{Tags:.*F=[^;]*\b(en)\b[^;]*\b.*}` (Fansub tag contains "en")
 
 These regex's might look complicated, but we have a guide you can follow [here](/info/sonarr-radarr#3-optional-add-custom-formats) to help you out.
+
+Note: Language codes are stripped of any dashes (`-`) in the auto title. For example, `fr-ca` becomes `frca`.

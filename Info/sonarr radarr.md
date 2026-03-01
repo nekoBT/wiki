@@ -172,6 +172,7 @@ To create your own:
     - `S` is for **S**ubtitle languages.
 - Replace `en` with the language code you want to match this Custom Format against.
     - See Supported language codes on the [Language API endpoint](https://nekobt.to/api/v1/langs).
+    - **Note:** Remove any dashes (`-`) from the language code. For example, `fr-ca` becomes `frca`.
 
 ```
         |         \/  
