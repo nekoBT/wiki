@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="3.11.0.824068157959">
+    <meta name="color-scheme" content="light dark">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.0.1.825699875779">
 
     <!-- See retype.com -->
-    <meta name="generator" content="Retype 3.11.0">
+    <meta name="generator" content="Retype 4.0.1">
 
     <!-- Primary Meta Tags -->
     <title>JSON API - nekoBT Wiki</title>
@@ -16,26 +17,22 @@
     <!-- Canonical -->
     <link rel="canonical" href="https://wiki.nekobt.to/technical-details/json/">
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wiki.nekobt.to/technical-details/json/">
     <meta property="og:title" content="JSON API - nekoBT Wiki">
     <meta property="og:description" content="This is the main API for nekoBT, and is used for most requests.">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://wiki.nekobt.to/technical-details/json/">
-    <meta property="twitter:title" content="JSON API - nekoBT Wiki">
-    <meta property="twitter:description" content="This is the main API for nekoBT, and is used for most requests.">
+    <meta property="og:site_name" content="nekoBT">
+    <meta property="og:locale" content="en_US">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=3.11.0.824068157959" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.0.1.825699875779" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=3.11.0.824068157959" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../resources/js/retype.js?v=3.11.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=3.11.0.824068157959" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=3.11.0.824068157959" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.0.1.825699875779" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=4.0.1" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.0.1.825699875779" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.0.1.825699875779" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -64,117 +61,92 @@
 </head>
 <body>
     <div id="retype-app" class="relative text-base antialiased text-base-text bg-base-bg font-body">
-        <div class="absolute bottom-0 left-0" style="top: 5rem; right: 50%"></div>
+    <div class="absolute bottom-0 left-0" style="top: 5rem; right: 50%"></div>
+
+    <header id="retype-header" class="sticky top-0 z-30 flex w-full h-16 bg-header-bg border-b border-header-border md:h-20">
+        <div class="container relative flex items-center justify-between pr-6 grow md:justify-start">
+            <!-- Mobile menu button skeleton -->
+            <button v-cloak class="skeleton retype-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-hidden rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
+            <div v-cloak id="retype-sidebar-left-toggle-button"></div>
     
-        <header id="retype-header" class="sticky top-0 z-30 flex w-full h-16 bg-header-bg border-b border-header-border md:h-20">
-            <div class="container relative flex items-center justify-between pr-6 grow md:justify-start">
-                <!-- Mobile menu button skeleton -->
-                <button v-cloak class="skeleton retype-mobile-menu-button flex items-center justify-center shrink-0 overflow-hidden dark:text-white focus:outline-none rounded-full w-10 h-10 ml-3.5 md:hidden"><svg xmlns="http://www.w3.org/2000/svg" class="mb-px shrink-0" width="24" height="24" viewBox="0 0 24 24" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor"><path d="M2 4h20v2H2zM2 11h20v2H2zM2 18h20v2H2z"></path></g></svg></button>
-                <div v-cloak id="retype-sidebar-left-toggle-button"></div>
-        
-                <!-- Logo -->
-                <div class="flex items-center justify-between h-full py-2 md:w-75">
-                    <div class="flex items-center px-2 md:px-6">
-                        <a id="retype-branding-logo" href="../../" class="flex items-center leading-snug text-2xl">
-                            <span class="dark:text-white font-bold line-clamp-1 md:line-clamp-2">nekoBT</span>
-                        </a><span id="retype-branding-label" class="inline-flex mt-1 px-2 py-1 ml-4 text-xs font-medium leading-none items-center rounded-md bg-branding-label-bg text-branding-label-text ring-1 ring-branding-label-border ring-inset md:inline-block">Wiki</span>
-                    </div>
-        
-                    <span class="hidden h-8 border-r md:inline-block border-base-border"></span>
+            <!-- Logo -->
+            <div class="flex items-center justify-between h-full py-2 md:w-75">
+                <div class="flex items-center px-2 md:px-6">
+                    <a id="retype-branding-logo" href="../../" class="flex items-center leading-snug text-2xl">
+                        <span class="dark:text-white font-bold line-clamp-1 md:line-clamp-2">nekoBT</span>
+                    </a><span id="retype-branding-label" class="inline-flex mt-1 px-2 py-1 ml-4 text-xs font-medium leading-none items-center rounded-md bg-branding-label-bg text-branding-label-text ring-1 ring-branding-label-border ring-inset md:inline-block">Wiki</span>
                 </div>
-        
-                <div class="flex justify-between md:grow">
-                    <!-- Top Nav -->
-                    <nav id="retype-header-nav" class="hidden md:flex">
-                        <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
-                            
-                        </ul>
-                    </nav>
-        
-                    <!-- Header Right Skeleton -->
-                    <div v-cloak class="flex justify-end grow skeleton">
-        
-                        <!-- Search input mock -->
-                        <div class="relative hidden w-40 lg:block lg:max-w-sm lg:ml-auto">
-                            <div class="absolute flex items-center justify-center h-full pl-3 dark:text-dark-300">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon-base" width="16" height="16" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 1px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
-                            </div>
-                            <input class="w-full h-10 placeholder-search-placeholder transition-colors duration-200 ease-in bg-search-bg border border-transparent rounded md:text-sm hover:border-search-border-hover focus:outline-none focus:border-search-border-focus" style="padding: 0.625rem 0.75rem 0.625rem 2rem" type="text" placeholder="Search">
-                        </div>
-        
-                        <!-- Mobile search button -->
-                        <div class="flex items-center justify-center w-10 h-10 lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="20" height="20" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><path d="M21.71 20.29l-3.68-3.68A8.963 8.963 0 0020 11c0-4.96-4.04-9-9-9s-9 4.04-9 9 4.04 9 9 9c2.12 0 4.07-.74 5.61-1.97l3.68 3.68c.2.19.45.29.71.29s.51-.1.71-.29c.39-.39.39-1.03 0-1.42zM4 11c0-3.86 3.14-7 7-7s7 3.14 7 7c0 1.92-.78 3.66-2.04 4.93-.01.01-.02.01-.02.01-.01.01-.01.01-.01.02A6.98 6.98 0 0111 18c-3.86 0-7-3.14-7-7z" ></path></g></svg>
-                        </div>
-        
-                        <!-- Dark mode switch placeholder -->
-                        <div class="w-10 h-10 lg:ml-2"></div>
-        
-                        <!-- History button -->
-                        <div class="flex items-center justify-center w-10 h-10" style="margin-right: -0.625rem;">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 icon-base" width="22" height="22" viewBox="0 0 24 24" aria-labelledby="icon" role="presentation" style="margin-bottom: 0px;"><g fill="currentColor" ><g ><path d="M12.01 6.01c-.55 0-1 .45-1 1V12a1 1 0 00.4.8l3 2.22a.985.985 0 001.39-.2.996.996 0 00-.21-1.4l-2.6-1.92V7.01c.02-.55-.43-1-.98-1z"></path><path d="M12.01 1.91c-5.33 0-9.69 4.16-10.05 9.4l-.29-.26a.997.997 0 10-1.34 1.48l1.97 1.79c.19.17.43.26.67.26s.48-.09.67-.26l1.97-1.79a.997.997 0 10-1.34-1.48l-.31.28c.34-4.14 3.82-7.41 8.05-7.41 4.46 0 8.08 3.63 8.08 8.09s-3.63 8.08-8.08 8.08c-2.18 0-4.22-.85-5.75-2.4a.996.996 0 10-1.42 1.4 10.02 10.02 0 007.17 2.99c5.56 0 10.08-4.52 10.08-10.08.01-5.56-4.52-10.09-10.08-10.09z"></path></g></g></svg>
-                        </div>
-                    </div>
-        
-                    <div v-cloak class="flex justify-end grow">
-                        <div id="retype-mobile-search-button"></div>
-                        <doc-search-desktop></doc-search-desktop>
-        
-                        <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
-                        <doc-history></doc-history>
-                    </div>
+    
+                <span class="hidden h-8 border-r md:inline-block border-base-border"></span>
+            </div>
+    
+            <div class="flex justify-between md:grow">
+                <!-- Top Nav -->
+                <nav id="retype-header-nav" class="hidden md:flex">
+                    <ul class="flex flex-col mb-4 md:pl-16 md:mb-0 md:flex-row md:items-center">
+                        
+                    </ul>
+                </nav>
+    
+                <div v-cloak class="flex justify-end grow">
+                    <div id="retype-mobile-search-button"></div>
+                    <doc-search-desktop></doc-search-desktop>
+    
+                    <doc-theme-switch class="lg:ml-2"></doc-theme-switch>
+                    <doc-history></doc-history>
                 </div>
             </div>
-        </header>
-    
-    
-        <div id="retype-container" class="container relative flex bg-white">
-            <!-- Sidebar Skeleton -->
-            <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-sidebar-left-bg border-sidebar-left-border sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton">
-            
-                <div class="flex items-center h-16 px-6">
-                    <input class="w-full h-8 px-3 py-2 transition-colors duration-200 ease-linear bg-filter-bg border border-filter-border rounded shadow-none text-sm focus:outline-none focus:border-filter-border-focus" type="text" placeholder="Filter">
-                </div>
-            
-                <div class="pl-6 mt-1 mb-4">
-                    <div class="w-32 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
-                    <div class="w-48 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
-                    <div class="w-40 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
-                    <div class="w-32 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
-                    <div class="w-48 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
-                    <div class="w-40 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
-                </div>
-            
-                <div class="shrink-0 mt-auto bg-transparent dark:border-base-border">
+        </div>
+    </header>
+
+
+    <div id="retype-container" class="container relative flex bg-white">
+        <!-- Sidebar Skeleton -->
+        <div v-cloak class="fixed flex flex-col shrink-0 duration-300 ease-in-out bg-sidebar-left-bg border-sidebar-left-border sidebar top-20 w-75 border-r h-screen md:sticky transition-transform skeleton">
+        
+            <div class="flex items-center h-16 px-6">
+                <input id="retype-filter-input-mock" class="w-full h-10 pl-8 px-3 py-2 transition-colors duration-200 ease-linear bg-filter-bg border border-filter-border rounded-lg shadow-none md:text-sm hover:border-filter-border-hover focus:outline-hidden focus:border-filter-border-focus placeholder-filter-placeholder" type="text">
+            </div>
+        
+            <div class="pl-6 mt-1 mb-4">
+                <div class="w-32 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                <div class="w-48 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                <div class="w-40 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                <div class="w-32 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                <div class="w-48 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+                <div class="w-40 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+            </div>
+        
+            <div class="shrink-0 mt-auto bg-transparent dark:border-base-border">
+                <a class="flex items-center justify-center flex-nowrap h-16 text-gray-350 dark:text-dark-400 hover:text-gray-600 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
+                    <span class="text-xs whitespace-nowrap">Powered by</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Sidebar component -->
+        <doc-sidebar v-cloak>
+            <template #sidebar-footer>
+                <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-base-border">
+        
                     <a class="flex items-center justify-center flex-nowrap h-16 text-gray-350 dark:text-dark-400 hover:text-gray-600 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
                         <span class="text-xs whitespace-nowrap">Powered by</span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
                     </a>
                 </div>
-            </div>
-            
-            <!-- Sidebar component -->
-            <doc-sidebar v-cloak>
-                <template #sidebar-footer>
-                    <div class="shrink-0 mt-auto border-t md:bg-transparent md:border-none dark:border-base-border">
-            
-                        <a class="flex items-center justify-center flex-nowrap h-16 text-gray-350 dark:text-dark-400 hover:text-gray-600 dark:hover:text-dark-300 transition-colors duration-150 ease-in docs-powered-by" target="_blank" href="https://retype.com/" rel="noopener">
-                            <span class="text-xs whitespace-nowrap">Powered by</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-2" fill="currentColor" width="96" height="20" overflow="visible"><path d="M0 0v20h13.59V0H0zm11.15 17.54H2.44V2.46h8.71v15.08zM15.8 20h2.44V4.67L15.8 2.22zM20.45 6.89V20h2.44V9.34z"/><g><path d="M40.16 8.44c0 1.49-.59 2.45-1.75 2.88l2.34 3.32h-2.53l-2.04-2.96h-1.43v2.96h-2.06V5.36h3.5c1.43 0 2.46.24 3.07.73s.9 1.27.9 2.35zm-2.48 1.1c.26-.23.38-.59.38-1.09 0-.5-.13-.84-.4-1.03s-.73-.28-1.39-.28h-1.54v2.75h1.5c.72 0 1.2-.12 1.45-.35zM51.56 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92h4.74v1.83h-6.79V5.36h6.64zM60.09 7.15v7.48h-2.06V7.15h-2.61V5.36h7.28v1.79h-2.61zM70.81 14.64h-2.06v-3.66l-3.19-5.61h2.23l1.99 3.45 1.99-3.45H74l-3.19 5.61v3.66zM83.99 6.19c.65.55.97 1.4.97 2.55s-.33 1.98-1 2.51-1.68.8-3.04.8h-1.23v2.59h-2.06V5.36h3.26c1.42 0 2.45.28 3.1.83zm-1.51 3.65c.25-.28.37-.69.37-1.22s-.16-.92-.48-1.14c-.32-.23-.82-.34-1.5-.34H79.7v3.12h1.38c.68 0 1.15-.14 1.4-.42zM95.85 5.36V7.2h-4.59v1.91h4.13v1.76h-4.13v1.92H96v1.83h-6.79V5.36h6.64z"/></g></svg>
-                        </a>
-                    </div>
-                </template>
-            </doc-sidebar>
-    
-            <div class="grow min-w-0 bg-body-bg">
-                <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
-                <div class="flex">
-                    <div id="retype-main" class="min-w-0 p-4 grow md:px-16">
-                        <main class="relative pb-12 lg:pt-2">
-                            <div class="retype-markdown" id="retype-content">
-                                <!-- Rendered if sidebar right is enabled -->
-                                <div id="retype-sidebar-right-toggle"></div>
-                                <!-- Page content  -->
+            </template>
+        </doc-sidebar>
+
+        <div class="grow min-w-0 bg-body-bg">
+            <!-- Render "toolbar" template here on api pages --><!-- Render page content -->
+<div class="flex">
+    <div id="retype-main" class="min-w-0 p-4 grow md:px-16">
+        <main class="relative pb-12 lg:pt-2">
+            <div class="retype-markdown" id="retype-content">
+                <!-- Rendered if sidebar right is enabled -->
+                <div id="retype-sidebar-right-toggle"></div>
+                <!-- Page content  -->
 <doc-anchor-target id="json-api" class="break-words">
     <h1>
         <doc-anchor-trigger class="header-anchor-trigger" to="#json-api">#</doc-anchor-trigger>
@@ -182,7 +154,7 @@
     </h1>
 </doc-anchor-target>
 <p>This is the main API for nekoBT, and is used for most requests.</p>
-<p>The base URL for the JSON API is <code v-pre>https://nekobt.to/api/v1</code></p>
+<p>The base URL for the JSON API is <code translate="no" v-pre>https://nekobt.to/api/v1</code></p>
 <hr>
 <doc-anchor-target id="authorization">
     <h2>
@@ -191,8 +163,8 @@
     </h2>
 </doc-anchor-target>
 <p>Most endpoints require authorization using an API key.<br>
-To authorize your requests, use the <code v-pre>ssid</code> cookie with your API key as the value.</p>
-<p>If authorization isn&#x27;t present or is invalid, you will receive a <code v-pre>401 Unauthorized</code> JSON response.</p>
+To authorize your requests, use the <code translate="no" v-pre>ssid</code> cookie with your API key as the value.</p>
+<p>If authorization isn&#x27;t present or is invalid, you will receive a <code translate="no" v-pre>401 Unauthorized</code> JSON response.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
     &quot;error&quot;: true,
@@ -207,7 +179,7 @@ To authorize your requests, use the <code v-pre>ssid</code> cookie with your API
     </h2>
 </doc-anchor-target>
 <p>When sending data to the API, nekoBT validates the data against a schema.<br>
-If the data is invalid, you will receive a <code v-pre>400 Bad Request</code> JSON response with details about the validation errors.</p>
+If the data is invalid, you will receive a <code translate="no" v-pre>400 Bad Request</code> JSON response with details about the validation errors.</p>
 <doc-tabs>
 <doc-tab v-cloak id="missing-required-property">
 <template #title>Missing Required Property</template>
@@ -307,8 +279,8 @@ If the data is invalid, you will receive a <code v-pre>400 Bad Request</code> JS
     </h3>
 </doc-anchor-target>
 <p>API Rate Limits are enforced by nekoBT to prevent abuse of the API.<br>
-If you exceed these limits, you will receive a <code v-pre>429 Too Many Requests</code> JSON response.<br>
-Use the <code v-pre>retry_after</code> JSON field to determine how long to wait before making another request.</p>
+If you exceed these limits, you will receive a <code translate="no" v-pre>429 Too Many Requests</code> JSON response.<br>
+Use the <code translate="no" v-pre>retry_after</code> JSON field to determine how long to wait before making another request.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
     &quot;error&quot;: true,
@@ -323,8 +295,8 @@ Use the <code v-pre>retry_after</code> JSON field to determine how long to wait 
     </h3>
 </doc-anchor-target>
 <p>Cloudflare Rate Limits are enforced at the edge by Cloudflare to prevent abuse of the site.<br>
-If you exceed these limits, you will receive a <code v-pre>429 Too Many Requests</code> HTML response.<br>
-Use the <code v-pre>Retry-After</code> header to determine how long to wait before making another request.</p>
+If you exceed these limits, you will receive a <code translate="no" v-pre>429 Too Many Requests</code> HTML response.<br>
+Use the <code translate="no" v-pre>Retry-After</code> header to determine how long to wait before making another request.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-http"><code v-pre class="language-http">HTTP/2 429
 retry-after: 4
@@ -348,7 +320,7 @@ referrer-policy: same-origin</code></pre>
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
     <span>GET</span>
-</span> <code v-pre>/announcements</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/announcements</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
     <span>Auth Optional</span>
 </span></p>
 <p>Returns the latest announcements displayed on the home page from nekoBT.</p>
@@ -393,7 +365,7 @@ referrer-policy: same-origin</code></pre>
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
     <span>GET</span>
-</span> <code v-pre>/groups/&lt;group_id&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/groups/&lt;group_id&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
     <span>Auth Optional</span>
 </span></p>
 <p>Returns information about a specific group, including its name, description, members, and other metadata.</p>
@@ -509,7 +481,7 @@ referrer-policy: same-origin</code></pre>
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
     <span>GET</span>
-</span> <code v-pre>/groups/search</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/groups/search</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
     <span>Auth Optional</span>
 </span></p>
 <p>Searches for groups based on their name.</p>
@@ -546,12 +518,12 @@ referrer-policy: same-origin</code></pre>
 <tr>
 <td>sort?</td>
 <td>string</td>
-<td>Sort results by field. <em><code v-pre>created</code></em>, <code v-pre>uploads</code>, <code v-pre>members</code>, <code v-pre>downloads</code>, <code v-pre>name</code>.</td>
+<td>Sort results by field. <em><code translate="no" v-pre>created</code></em>, <code translate="no" v-pre>uploads</code>, <code translate="no" v-pre>members</code>, <code translate="no" v-pre>downloads</code>, <code translate="no" v-pre>name</code>.</td>
 </tr>
 <tr>
 <td>order?</td>
 <td>string</td>
-<td>Order of results. <code v-pre>asc</code> or <em><code v-pre>desc</code></em>.</td>
+<td>Order of results. <code translate="no" v-pre>asc</code> or <em><code translate="no" v-pre>desc</code></em>.</td>
 </tr>
 </tbody>
 </table>
@@ -609,11 +581,11 @@ referrer-policy: same-origin</code></pre>
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
     <span>POST</span>
-</span> <code v-pre>/groups/&lt;group_id_1&gt;/links/&lt;group_id_2&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/groups/&lt;group_id_1&gt;/links/&lt;group_id_2&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>Auth Required</span>
 </span></p>
 <p>Creates a link between two groups. If the authorized user is the leader of both groups, the link is automatically approved. Otherwise, the link will be pending approval from the other group&#x27;s leader.</p>
-<p><code v-pre>group_id_1</code> should be the group ID that the user is leader of, and <code v-pre>group_id_2</code> should be the other group ID.</p>
+<p><code translate="no" v-pre>group_id_1</code> should be the group ID that the user is leader of, and <code translate="no" v-pre>group_id_2</code> should be the other group ID.</p>
 <doc-panel id="examples" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
@@ -671,11 +643,11 @@ referrer-policy: same-origin</code></pre>
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-danger-text bg-badge-danger border border-badge-danger-border h-6 px-2 text-xs rounded-md">
     <span>DELETE</span>
-</span> <code v-pre>/groups/&lt;group_id&gt;/links/&lt;group_id_2&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/groups/&lt;group_id&gt;/links/&lt;group_id_2&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>Auth Required</span>
 </span></p>
 <p>Deletes a link between two groups.</p>
-<p><code v-pre>group_id_1</code> should be the group ID that the user is leader of, and <code v-pre>group_id_2</code> should be the other group ID.</p>
+<p><code translate="no" v-pre>group_id_1</code> should be the group ID that the user is leader of, and <code translate="no" v-pre>group_id_2</code> should be the other group ID.</p>
 <doc-panel id="examples" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
@@ -706,7 +678,7 @@ referrer-policy: same-origin</code></pre>
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
     <span>POST</span>
-</span> <code v-pre>/groups/&lt;group_id&gt;/members</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/groups/&lt;group_id&gt;/members</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>Auth Required</span>
 </span></p>
 <p>Creates invites for one or more users to join a group.</p>
@@ -779,7 +751,7 @@ referrer-policy: same-origin</code></pre>
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>PATCH</span>
-</span> <code v-pre>/groups/&lt;group_id&gt;/members/&lt;user_or_invite_id&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/groups/&lt;group_id&gt;/members/&lt;user_or_invite_id&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>Auth Required</span>
 </span></p>
 <p>Updates a member in a group.</p>
@@ -850,20 +822,20 @@ referrer-policy: same-origin</code></pre>
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-danger-text bg-badge-danger border border-badge-danger-border h-6 px-2 text-xs rounded-md">
     <span>DELETE</span>
-</span> <code v-pre>/groups/&lt;group_id&gt;/members/&lt;user_or_invite_id&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/groups/&lt;group_id&gt;/members/&lt;user_or_invite_id&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>Auth Required</span>
 </span></p>
 <p>Removes a member from a group.</p>
-<p>This endpoint has a <code v-pre>destructive</code> query parameter.<br>
-To delete an invited member, <code v-pre>destructive=true</code> must be used.<br>
+<p>This endpoint has a <code translate="no" v-pre>destructive</code> query parameter.<br>
+To delete an invited member, <code translate="no" v-pre>destructive=true</code> must be used.<br>
 The differences are as follows:</p>
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
 <tr>
 <th>Action</th>
-<th>destructive=<code v-pre>false</code></th>
-<th>destructive=<code v-pre>true</code></th>
+<th>destructive=<code translate="no" v-pre>false</code></th>
+<th>destructive=<code translate="no" v-pre>true</code></th>
 </tr>
 </thead>
 <tbody>
@@ -913,7 +885,7 @@ The differences are as follows:</p>
 <tr>
 <td>destructive?</td>
 <td>boolean</td>
-<td>Defaults to <em><code v-pre>false</code></em>. Read above for more info.</td>
+<td>Defaults to <em><code translate="no" v-pre>false</code></em>. Read above for more info.</td>
 </tr>
 </tbody>
 </table>
@@ -952,11 +924,11 @@ The differences are as follows:</p>
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
     <span>GET</span>
-</span> <code v-pre>/invites/&lt;invite_id&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/invites/&lt;invite_id&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
     <span>Auth Optional</span>
 </span></p>
 <p>Returns information about an invited user, including the group it belongs to.</p>
-<p>Use <code v-pre>?key=</code> to reveal who the recipient is.</p>
+<p>Use <code translate="no" v-pre>?key=</code> to reveal who the recipient is.</p>
 <doc-panel id="examples" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
@@ -1016,7 +988,7 @@ The differences are as follows:</p>
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>PATCH</span>
-</span> <code v-pre>/invites/&lt;invite_id&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/invites/&lt;invite_id&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>Auth Required</span>
 </span></p>
 <p>Assign an orphaned invite to a user. This is only used for group leaders/admins to assign invites that don&#x27;t have a recipient. The user will receive a notification about the invite.</p>
@@ -1060,7 +1032,7 @@ The differences are as follows:</p>
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
     <span>POST</span>
-</span> <code v-pre>/invites/&lt;invite_id&gt;/accept/&lt;invite_key&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/invites/&lt;invite_id&gt;/accept/&lt;invite_key&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>Auth Required</span>
 </span></p>
 <p>Accepts an invite to a group using the provided invite ID and key.</p>
@@ -1094,7 +1066,7 @@ The differences are as follows:</p>
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
     <span>GET</span>
-</span> <code v-pre>/langs</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/langs</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
     <span>Auth Optional</span>
 </span></p>
 <p>Returns the list of supported languages for audio, subtitles, and fansubs.</p>
@@ -1160,11 +1132,11 @@ The differences are as follows:</p>
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
     <span>GET</span>
-</span> <code v-pre>/media/&lt;media_id&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/media/&lt;media_id&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
     <span>Auth Optional</span>
 </span></p>
 <p>Returns information about a specific media item, including its title, description, and other metadata.</p>
-<p>Use <code v-pre>?force=true</code> to get the media, even if there are no torrents for it.</p>
+<p>Use <code translate="no" v-pre>?force=true</code> to get the media, even if there are no torrents for it.</p>
 <doc-panel id="examples" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
@@ -1254,7 +1226,7 @@ The differences are as follows:</p>
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
     <span>GET</span>
-</span> <code v-pre>/media/search</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/media/search</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
     <span>Auth Optional</span>
 </span></p>
 <p>Searches for media items based on search query.</p>
@@ -1355,7 +1327,7 @@ The differences are as follows:</p>
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
     <span>GET</span>
-</span> <code v-pre>/stats</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/stats</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
     <span>Auth Optional</span>
 </span></p>
 <p>Returns various statistics about the site, such as the number of users, torrents, and groups.</p>
@@ -1420,7 +1392,7 @@ The differences are as follows:</p>
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
     <span>GET</span>
-</span> <code v-pre>/torrents/&lt;torrent_id&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/torrents/&lt;torrent_id&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
     <span>Auth Optional</span>
 </span></p>
 <p>Returns information about a specific torrent, including its title, description, and other metadata.</p>
@@ -1436,7 +1408,7 @@ The differences are as follows:</p>
     &quot;id&quot;: &quot;1234567890&quot;,
     &quot;uploaded_at&quot;: &quot;1765432000000&quot;, // Unix timestamp in milliseconds
     &quot;title&quot;: &quot;Torrent Title&quot;,
-    &quot;auto_title&quot;: &quot;Torrent Title {Tags:L1;V9;C1;A-ja;F-en;}&quot;,
+    &quot;auto_title&quot;: &quot;Torrent Title {Tags:L1;V9;C1;A=ja;F=en;}&quot;,
     &quot;description&quot;: &quot;...&quot;, // Markdown formatted description, can be null
     &quot;mediainfo&quot;: &quot;...&quot;, // Can be null
     &quot;category&quot;: 1,
@@ -1444,6 +1416,7 @@ The differences are as follows:</p>
     &quot;hidden&quot;: false,
     &quot;otl&quot;: false,
     &quot;hardsub&quot;: false,
+    &quot;batch&quot;: false,
     &quot;level&quot;: 1,
     &quot;mtl&quot;: false,
     &quot;filesize&quot;: &quot;242587117&quot;,
@@ -1569,7 +1542,7 @@ The differences are as follows:</p>
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>PATCH</span>
-</span> <code v-pre>/torrents/&lt;torrent_id&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/torrents/&lt;torrent_id&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>Auth Required</span>
 </span></p>
 <p>Edit a specific torrent.</p>
@@ -1659,6 +1632,11 @@ The differences are as follows:</p>
 <td>Whether the torrent&#x27;s subtitles contains machine translation</td>
 </tr>
 <tr>
+<td>batch?</td>
+<td>boolean</td>
+<td>Whether the torrent is a batch</td>
+</tr>
+<tr>
 <td>primary_group?</td>
 <td>object or null</td>
 <td>Primary group information, members, etc</td>
@@ -1725,7 +1703,8 @@ The differences are as follows:</p>
   ],
   &quot;mtl&quot;: false,
   &quot;otl&quot;: false,
-  &quot;hardsub&quot;: false
+  &quot;hardsub&quot;: false,
+  &quot;batch&quot;: false
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
@@ -1760,7 +1739,7 @@ The differences are as follows:</p>
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
     <span>GET</span>
-</span> <code v-pre>/torrents/&lt;torrent_id&gt;/animetosho</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/torrents/&lt;torrent_id&gt;/animetosho</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
     <span>Auth Optional</span>
 </span></p>
 <p>Returns the AnimeTosho data for a specific torrent. <strong>You should handle for long request times on this endpoint.</strong> If data is not yet available, the request may take up to 60 seconds to complete while the site fetches all data from AnimeTosho.</p>
@@ -1778,27 +1757,27 @@ The differences are as follows:</p>
 </thead>
 <tbody>
 <tr>
-<td><code v-pre>skipped</code></td>
+<td><code translate="no" v-pre>skipped</code></td>
 <td>The torrent was skipped by AnimeTosho.</td>
 <td><span class="docs-emoji">&#x274C;</span></td>
 </tr>
 <tr>
-<td><code v-pre>processing</code></td>
+<td><code translate="no" v-pre>processing</code></td>
 <td>The torrent is still being processed on AnimeTosho.</td>
 <td><span class="docs-emoji">&#x1F7E0;</span> (Retry if last attempt was more than 3 minutes ago)</td>
 </tr>
 <tr>
-<td><code v-pre>not_found</code></td>
+<td><code translate="no" v-pre>not_found</code></td>
 <td>The torrent was not found on AnimeTosho.</td>
 <td><span class="docs-emoji">&#x1F7E0;</span> (No retry if last attempt was 1hr after upload)</td>
 </tr>
 <tr>
-<td><code v-pre>no_media</code></td>
+<td><code translate="no" v-pre>no_media</code></td>
 <td>The torrent was found, but no media file was found on AnimeTosho.</td>
 <td><span class="docs-emoji">&#x274C;</span></td>
 </tr>
 <tr>
-<td><code v-pre>error</code></td>
+<td><code translate="no" v-pre>error</code></td>
 <td>AnimeTosho returned an unexpected status.</td>
 <td><span class="docs-emoji">&#x274C;</span></td>
 </tr>
@@ -1810,7 +1789,7 @@ The differences are as follows:</p>
 <doc-tabs>
 <doc-tab v-cloak id="successful-response-200-201">
 <template #title>Successful Response (200, 201)</template>
-<p><code v-pre>200</code> if data was already present, <code v-pre>201</code> if the data was just fetched.</p>
+<p><code translate="no" v-pre>200</code> if data was already present, <code translate="no" v-pre>201</code> if the data was just fetched.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
   &quot;error&quot;: false,
@@ -1849,7 +1828,7 @@ The differences are as follows:</p>
 </doc-tab>
 <doc-tab v-cloak id="semi-successful-response-202">
 <template #title>Semi-Successful Response (202)</template>
-<p>The server sent a request to AnimeTosho, received a <code v-pre>processing</code> status, and is still waiting for the data to be ready.</p>
+<p>The server sent a request to AnimeTosho, received a <code translate="no" v-pre>processing</code> status, and is still waiting for the data to be ready.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
   &quot;error&quot;: false,
@@ -1878,7 +1857,7 @@ The differences are as follows:</p>
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
     <span>GET</span>
-</span> <code v-pre>/torrents/&lt;torrent_id&gt;/comments</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/torrents/&lt;torrent_id&gt;/comments</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
     <span>Auth Optional</span>
 </span></p>
 <p>Returns comments for a specific torrent.</p>
@@ -1958,13 +1937,13 @@ The differences are as follows:</p>
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
     <span>GET</span>
-</span> <code v-pre>/torrents/&lt;torrent_id&gt;/download</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/torrents/&lt;torrent_id&gt;/download</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
     <span>Auth Optional</span>
 </span></p>
 <p>Returns the torrent file for a specific torrent.</p>
 <p>When authenticated, the returned torrent file will be a private torrent with the user&#x27;s passkey included in the announce URL.<br>
-You can specify <code v-pre>?public=true</code> to get the torrent file without your torrent key.</p>
-<p>This endpoint returns the raw torrent file data with a <code v-pre>application/x-bittorrent</code> content type.</p>
+You can specify <code translate="no" v-pre>?public=true</code> to get the torrent file without your torrent key.</p>
+<p>This endpoint returns the raw torrent file data with a <code translate="no" v-pre>application/x-bittorrent</code> content type.</p>
 <doc-anchor-target id="bulk-download-torrents">
     <h3>
         <doc-anchor-trigger class="header-anchor-trigger" to="#bulk-download-torrents">#</doc-anchor-trigger>
@@ -1973,19 +1952,19 @@ You can specify <code v-pre>?public=true</code> to get the torrent file without 
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
     <span>GET</span>
-</span> <code v-pre>/torrents/bulk/download</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/torrents/bulk/download</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
     <span>Auth Optional</span>
 </span></p>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>PATCH</span>
-</span> <code v-pre>/torrents/bulk/download</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/torrents/bulk/download</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
     <span>Auth Optional</span>
 </span></p>
 <p>Download a group of .torrent files as a ZIP archive. Maximum 500 torrents per request.</p>
-<p>You can either use a <code v-pre>GET</code> request with query parameters, or a <code v-pre>PATCH</code> request with a JSON body.<br>
-The <code v-pre>PATCH</code> method is recommended for larger requests, as the <code v-pre>GET</code> method may hit URL length limits.</p>
+<p>You can either use a <code translate="no" v-pre>GET</code> request with query parameters, or a <code translate="no" v-pre>PATCH</code> request with a JSON body.<br>
+The <code translate="no" v-pre>PATCH</code> method is recommended for larger requests, as the <code translate="no" v-pre>GET</code> method may hit URL length limits.</p>
 <p>When authenticated, the returned torrent files will be private torrents with the user&#x27;s passkey included in the announce URL.<br>
-You can specify <code v-pre>public=true</code> to get the torrent files without your torrent key.</p>
+You can specify <code translate="no" v-pre>public=true</code> to get the torrent files without your torrent key.</p>
 <doc-panel id="examples" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
@@ -2009,7 +1988,7 @@ You can specify <code v-pre>public=true</code> to get the torrent files without 
 <tr>
 <td>public?</td>
 <td>boolean</td>
-<td>Whether to download torrents without your passkey (default: <em><code v-pre>false</code></em>)</td>
+<td>Whether to download torrents without your passkey (default: <em><code translate="no" v-pre>false</code></em>)</td>
 </tr>
 </tbody>
 </table>
@@ -2041,7 +2020,7 @@ You can specify <code v-pre>public=true</code> to get the torrent files without 
 <tr>
 <td>public?</td>
 <td>boolean</td>
-<td>Whether to download torrents without your passkey (default: <em><code v-pre>false</code></em>)</td>
+<td>Whether to download torrents without your passkey (default: <em><code translate="no" v-pre>false</code></em>)</td>
 </tr>
 </tbody>
 </table>
@@ -2088,11 +2067,11 @@ You can specify <code v-pre>public=true</code> to get the torrent files without 
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>PATCH</span>
-</span> <code v-pre>/torrents/bulk/edit</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/torrents/bulk/edit</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>Auth Required</span>
 </span></p>
 <p>Edit a group of torrents. You must have permission to edit all specified torrents. Maximum 250 torrents per request.</p>
-<p>This endpoint will return a <code v-pre>bad_torrents</code> field in the response if any of the specified torrents could not be edited.</p>
+<p>This endpoint will return a <code translate="no" v-pre>bad_torrents</code> field in the response if any of the specified torrents could not be edited.</p>
 <doc-panel id="examples" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
@@ -2116,7 +2095,7 @@ You can specify <code v-pre>public=true</code> to get the torrent files without 
 <tr>
 <td>title?</td>
 <td>array</td>
-<td>Array of find/replace objects to modify titles. Each object has <code v-pre>find</code> (string, max 256) and <code v-pre>replace</code> (string, max 256) properties (max 5 replacements)</td>
+<td>Array of find/replace objects to modify titles. Each object has <code translate="no" v-pre>find</code> (string, max 256) and <code translate="no" v-pre>replace</code> (string, max 256) properties (max 5 replacements)</td>
 </tr>
 <tr>
 <td>upgraded?</td>
@@ -2179,6 +2158,11 @@ You can specify <code v-pre>public=true</code> to get the torrent files without 
 <td>Whether the torrents&#x27; subtitles contain an original translation</td>
 </tr>
 <tr>
+<td>batch?</td>
+<td>boolean</td>
+<td>Whether the torrents are batches</td>
+</tr>
+<tr>
 <td>primary_group?</td>
 <td>object or null</td>
 <td>Primary group information, members, etc (admin only)</td>
@@ -2186,7 +2170,7 @@ You can specify <code v-pre>public=true</code> to get the torrent files without 
 <tr>
 <td>secondary_groups?</td>
 <td>array</td>
-<td>Array of secondary group objects with <code v-pre>id</code> (string) and <code v-pre>role</code> (string or null, max 64)</td>
+<td>Array of secondary group objects with <code translate="no" v-pre>id</code> (string) and <code translate="no" v-pre>role</code> (string or null, max 64)</td>
 </tr>
 <tr>
 <td>deleted?</td>
@@ -2283,13 +2267,13 @@ You can specify <code v-pre>public=true</code> to get the torrent files without 
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>PATCH</span>
-</span> <code v-pre>/torrents/bulk/edit/perms</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/torrents/bulk/edit/perms</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>Auth Required</span>
 </span></p>
 <p>Checks whether you have permission to edit the torrents provided. Maximum 250 torrents per request.</p>
-<p>This endpoint will return a <code v-pre>bad_torrents</code> field in the response if any of the specified torrents can not be edited.</p>
+<p>This endpoint will return a <code translate="no" v-pre>bad_torrents</code> field in the response if any of the specified torrents can not be edited.</p>
 <p>This request is done before attempting a bulk edit on the website. You don&#x27;t have to call this endpoint before calling the bulk edit endpoint.
-You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit response.</p>
+You will receive the same <code translate="no" v-pre>bad_torrents</code> field in the bulk edit response.</p>
 <doc-panel id="examples" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
@@ -2350,16 +2334,16 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
     <span>GET</span>
-</span> <code v-pre>/torrents/search</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/torrents/search</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
     <span>Auth Optional</span>
 </span></p>
 <p>Searches for torrents, using various criteria.</p>
-<p>The search API attempts to extract meaning from the <code v-pre>query</code> parameter (called &quot;hints&quot;). Some examples are:</p>
+<p>The search API attempts to extract meaning from the <code translate="no" v-pre>query</code> parameter (called &quot;hints&quot;). Some examples are:</p>
 <ul>
-<li>Searching <code v-pre>HEVC</code>, it will automatically add the video codec filter for HEVC.</li>
-<li>Searching <code v-pre>your lie in april</code>, it will recommend the media &quot;Your Lie in April&quot;, either in <code v-pre>recommended_media</code> if &gt;=70% of results match, or in <code v-pre>similar_media</code> by title searching.</li>
-<li>Searching <code v-pre>s01</code> when a <code v-pre>media_id</code> is provided, it will add season 1 to the episode filter.</li>
-<li>Searching <code v-pre>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</code> will assume it&#x27;s an info hash, and search for the torrent directly, and return a torrent ID for in the <code v-pre>infohash_match</code> data field if a torrent is found.</li>
+<li>Searching <code translate="no" v-pre>HEVC</code>, it will automatically add the video codec filter for HEVC.</li>
+<li>Searching <code translate="no" v-pre>your lie in april</code>, it will recommend the media &quot;Your Lie in April&quot;, either in <code translate="no" v-pre>recommended_media</code> if &gt;=70% of results match, or in <code translate="no" v-pre>similar_media</code> by title searching.</li>
+<li>Searching <code translate="no" v-pre>s01</code> when a <code translate="no" v-pre>media_id</code> is provided, it will add season 1 to the episode filter.</li>
+<li>Searching <code translate="no" v-pre>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</code> will assume it&#x27;s an info hash, and search for the torrent directly, and return a torrent ID for in the <code translate="no" v-pre>infohash_match</code> data field if a torrent is found.</li>
 </ul>
 <doc-panel id="examples" collapsed>
     <template #title>Examples</template>
@@ -2384,7 +2368,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 <tr>
 <td>limit?</td>
 <td>integer</td>
-<td>Number of results to return (default: <em><code v-pre>50</code></em>, range: <code v-pre>1</code>-<code v-pre>100</code>)</td>
+<td>Number of results to return (default: <em><code translate="no" v-pre>50</code></em>, range: <code translate="no" v-pre>1</code>-<code translate="no" v-pre>100</code>)</td>
 </tr>
 <tr>
 <td>offset?</td>
@@ -2394,12 +2378,12 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 <tr>
 <td>sort_by?</td>
 <td>string</td>
-<td>Sort order: <em><code v-pre>best</code></em>, <code v-pre>latest</code>, <code v-pre>oldest</code>, <code v-pre>rss</code>, <code v-pre>seeders</code>, <code v-pre>seeders_asc</code>, <code v-pre>leechers</code>, <code v-pre>leechers_asc</code>, <code v-pre>downloads</code>, <code v-pre>downloads_asc</code>, <code v-pre>comments</code>, <code v-pre>comments_asc</code>, <code v-pre>filesize</code>, <code v-pre>filesize_asc</code>.</td>
+<td>Sort order: <em><code translate="no" v-pre>best</code></em>, <code translate="no" v-pre>latest</code>, <code translate="no" v-pre>oldest</code>, <code translate="no" v-pre>rss</code>, <code translate="no" v-pre>seeders</code>, <code translate="no" v-pre>seeders_asc</code>, <code translate="no" v-pre>leechers</code>, <code translate="no" v-pre>leechers_asc</code>, <code translate="no" v-pre>downloads</code>, <code translate="no" v-pre>downloads_asc</code>, <code translate="no" v-pre>comments</code>, <code translate="no" v-pre>comments_asc</code>, <code translate="no" v-pre>filesize</code>, <code translate="no" v-pre>filesize_asc</code>.</td>
 </tr>
 <tr>
 <td>category?</td>
 <td>number</td>
-<td>Category filter: <em><code v-pre>0</code></em>. This currently isn&#x27;t used, as there&#x27;s only one category.</td>
+<td>Category filter: <em><code translate="no" v-pre>0</code></em>. This currently isn&#x27;t used, as there&#x27;s only one category.</td>
 </tr>
 <tr>
 <td>media_id?</td>
@@ -2414,7 +2398,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 <tr>
 <td>episode_match_any?</td>
 <td>boolean</td>
-<td>Match any episode ID instead of requiring a torrent to have all episodes: <em><code v-pre>false</code></em></td>
+<td>Match any episode ID instead of requiring a torrent to have all episodes: <em><code translate="no" v-pre>false</code></em></td>
 </tr>
 <tr>
 <td>levels?</td>
@@ -2547,7 +2531,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
         &quot;deleted&quot;: null,
         &quot;hidden&quot;: false,
         &quot;waiting_approve&quot;: false,
-        &quot;auto_title&quot;: &quot;Torrent Title {Tags:OTL;L4;V13;C1;A-ja;F-en;}&quot;,
+        &quot;auto_title&quot;: &quot;Torrent Title {Tags:OTL;L4;V13;C1;A=ja;F=en;}&quot;,
         &quot;audio_lang&quot;: &quot;ja&quot;, // Comma-separated list of languages
         &quot;sub_lang&quot;: &quot;&quot;,
         &quot;fsub_lang&quot;: &quot;en&quot;,
@@ -2580,7 +2564,8 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
         &quot;user_is_leeching&quot;: null, // If the authenticated user is leeching this torrent, true/false/null
         &quot;user_download_count&quot;: null, // Number of times the authenticated user has downloaded this torrent, or null
         &quot;has_mediainfo&quot;: false,
-        &quot;nyaa_upload_time&quot;: &quot;1573878523000&quot; // If imported from Nyaa, the original upload time as a Unix timestamp in milliseconds, otherwise null
+        &quot;nyaa_upload_time&quot;: &quot;1573878523000&quot;, // If imported from Nyaa, the original upload time as a Unix timestamp in milliseconds, otherwise null
+        &quot;batch&quot;: false
       }
     ],
     &quot;infohash_match&quot;: null, // If the query matched an infohash exactly, this field contains that torrent ID, otherwise null
@@ -2636,7 +2621,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
     <span>POST</span>
-</span> <code v-pre>/upload</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/upload</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>Auth Required</span>
 </span></p>
 <p>Uploads a new torrent to the site.</p>
@@ -2761,19 +2746,19 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 </div>
 <p><strong>Primary Group Object:</strong></p>
 <ul>
-<li><code v-pre>id</code> (string): Group ID</li>
-<li><code v-pre>members</code> (array, max 50): Array of member objects with:
+<li><code translate="no" v-pre>id</code> (string): Group ID</li>
+<li><code translate="no" v-pre>members</code> (array, max 50): Array of member objects with:
 <ul>
-<li><code v-pre>id</code> (string or null): User ID, Invite ID, or null for new invites</li>
-<li><code v-pre>role</code> (string): Role name</li>
-<li><code v-pre>display_name</code> (string, max 32): Display name (used for new invites)</li>
+<li><code translate="no" v-pre>id</code> (string or null): User ID, Invite ID, or null for new invites</li>
+<li><code translate="no" v-pre>role</code> (string): Role name</li>
+<li><code translate="no" v-pre>display_name</code> (string, max 32): Display name (used for new invites)</li>
 </ul>
 </li>
 </ul>
 <p><strong>Secondary Group Object:</strong></p>
 <ul>
-<li><code v-pre>id</code> (string): Group ID</li>
-<li><code v-pre>role</code> (string or null, max 64): Role name or null</li>
+<li><code translate="no" v-pre>id</code> (string): Group ID</li>
+<li><code translate="no" v-pre>role</code> (string or null, max 64): Role name or null</li>
 </ul>
 <doc-anchor-target id="italics--default---optional-9">
     <h6>
@@ -2873,7 +2858,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>PUT</span>
-</span> <code v-pre>/upload/checks</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/upload/checks</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>Auth Required</span>
 </span></p>
 <p>Performs various checks for a new torrent upload, such as verifying its parsability.</p>
@@ -2905,7 +2890,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 <tr>
 <td>files</td>
 <td>array of objects</td>
-<td>Array of file objects with <code v-pre>path</code> (string) that the torrent contains</td>
+<td>Array of file objects with <code translate="no" v-pre>path</code> (string) that the torrent contains</td>
 </tr>
 <tr>
 <td>video_type</td>
@@ -2972,13 +2957,13 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 </div>
 <p><strong>Primary Group Object:</strong></p>
 <ul>
-<li><code v-pre>id</code> (string): Group ID</li>
-<li><code v-pre>tag</code> (string): Group tag</li>
-<li><code v-pre>members</code> (array, max 50): Array of member objects with:
+<li><code translate="no" v-pre>id</code> (string): Group ID</li>
+<li><code translate="no" v-pre>tag</code> (string): Group tag</li>
+<li><code translate="no" v-pre>members</code> (array, max 50): Array of member objects with:
 <ul>
-<li><code v-pre>id</code> (string or null): User ID, Invite ID, or null for new invites</li>
-<li><code v-pre>role</code> (string): Role name</li>
-<li><code v-pre>display_name</code> (string, max 32): Display name (used for new invites)</li>
+<li><code translate="no" v-pre>id</code> (string or null): User ID, Invite ID, or null for new invites</li>
+<li><code translate="no" v-pre>role</code> (string): Role name</li>
+<li><code translate="no" v-pre>display_name</code> (string, max 32): Display name (used for new invites)</li>
 </ul>
 </li>
 </ul>
@@ -3091,7 +3076,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>PUT</span>
-</span> <code v-pre>/upload/mediainfo</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/upload/mediainfo</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
     <span>Auth Optional</span>
 </span></p>
 <p>Extracts metadata for a torrent using Mediainfo Text or JSON output.</p>
@@ -3136,7 +3121,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 </doc-tab>
 <doc-tab v-cloak id="example-request-data-json">
 <template #title>Example Request Data (JSON)</template>
-<p>You can either provide the whole JSON object from Mediainfo, or just the <code v-pre>media</code> object.</p>
+<p>You can either provide the whole JSON object from Mediainfo, or just the <code translate="no" v-pre>media</code> object.</p>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
   &quot;mediainfo&quot;: {
@@ -3188,7 +3173,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
     <span>GET</span>
-</span> <code v-pre>/users/&lt;user_id|@me&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/users/&lt;user_id|@me&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
     <span>Auth Optional</span>
 </span></p>
 <div class="flex mb-6">
@@ -3204,7 +3189,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
             </svg>
         </div>
         <div class="pr-5 ml-3 w-full">
-<p>For all endpoints starting with <code v-pre>/users/</code>, you can also use <code v-pre>@me</code> for <code v-pre>&lt;user_id&gt;</code> to refer to the currently authenticated user.</p>
+<p>For all endpoints starting with <code translate="no" v-pre>/users/</code>, you can also use <code translate="no" v-pre>@me</code> for <code translate="no" v-pre>&lt;user_id&gt;</code> to refer to the currently authenticated user.</p>
         </div>
     </div>
 </div>
@@ -3281,7 +3266,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>PATCH</span>
-</span> <code v-pre>/users/&lt;user_id|@me&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/users/&lt;user_id|@me&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>Auth Required</span>
 </span></p>
 <p>Perform edits on your account. This includes Nyaa links, profile picture, revoking API keys, and your description.</p>
@@ -3308,7 +3293,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 <tr>
 <td>pfp?</td>
 <td>string</td>
-<td>Either <code v-pre>reset</code> to remove, <code v-pre>keep</code> to keep current, or base64 encoded image data (max 4.5MB)</td>
+<td>Either <code translate="no" v-pre>reset</code> to remove, <code translate="no" v-pre>keep</code> to keep current, or base64 encoded image data (max 4.5MB)</td>
 </tr>
 <tr>
 <td>reset_torrent_key?</td>
@@ -3383,7 +3368,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
     <span>GET</span>
-</span> <code v-pre>/users/&lt;user_id|@me&gt;/groups</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/users/&lt;user_id|@me&gt;/groups</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
     <span>Auth Optional</span>
 </span></p>
 <p>Returns the groups that a user is a member of.</p>
@@ -3446,7 +3431,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
     <span>GET</span>
-</span> <code v-pre>/users/&lt;user_id|@me&gt;/notifications</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/users/&lt;user_id|@me&gt;/notifications</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>Auth Required</span>
 </span></p>
 <p>Returns notifications for a specific user.</p>
@@ -3462,43 +3447,43 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 </thead>
 <tbody>
 <tr>
-<td><code v-pre>&lt;u:(\d+):([^&gt;]+)&gt;</code></td>
-<td><code v-pre>&lt;a class=&quot;link-blue&quot; href=&quot;/users/$1&quot;&gt;$2&lt;/a&gt;</code></td>
+<td><code translate="no" v-pre>&lt;u:(\d+):([^&gt;]+)&gt;</code></td>
+<td><code translate="no" v-pre>&lt;a class=&quot;link-blue&quot; href=&quot;/users/$1&quot;&gt;$2&lt;/a&gt;</code></td>
 <td>Link to User</td>
 </tr>
 <tr>
-<td><code v-pre>&lt;g:(\d+):([^&gt;]+)&gt;</code></td>
-<td><code v-pre>&lt;a class=&quot;link-blue&quot; href=&quot;/groups/$1&quot;&gt;$2&lt;/a&gt;</code></td>
+<td><code translate="no" v-pre>&lt;g:(\d+):([^&gt;]+)&gt;</code></td>
+<td><code translate="no" v-pre>&lt;a class=&quot;link-blue&quot; href=&quot;/groups/$1&quot;&gt;$2&lt;/a&gt;</code></td>
 <td>Link to Grouo</td>
 </tr>
 <tr>
-<td><code v-pre>&lt;i:(\d+):([^&gt;]+)&gt;</code></td>
-<td><code v-pre>&lt;a class=&quot;link-blue&quot; href=&quot;/invites/$1/accept/$2&quot;&gt;View Invite&lt;/a&gt;</code></td>
+<td><code translate="no" v-pre>&lt;i:(\d+):([^&gt;]+)&gt;</code></td>
+<td><code translate="no" v-pre>&lt;a class=&quot;link-blue&quot; href=&quot;/invites/$1/accept/$2&quot;&gt;View Invite&lt;/a&gt;</code></td>
 <td>Link to Accept Invite</td>
 </tr>
 <tr>
-<td><code v-pre>&lt;vi:(\d+):([^&gt;]+)&gt;</code></td>
-<td><code v-pre>&lt;a class=&quot;link-blue&quot; href=&quot;/invites/$1&quot;&gt;$2&lt;/a&gt;</code></td>
+<td><code translate="no" v-pre>&lt;vi:(\d+):([^&gt;]+)&gt;</code></td>
+<td><code translate="no" v-pre>&lt;a class=&quot;link-blue&quot; href=&quot;/invites/$1&quot;&gt;$2&lt;/a&gt;</code></td>
 <td>Link to View Invite</td>
 </tr>
 <tr>
-<td><code v-pre>&lt;ge:(\d+):([^&gt;]+)&gt;</code></td>
-<td><code v-pre>&lt;a class=&quot;link-blue&quot; href=&quot;/groups/$1/edit&quot;&gt;$2&lt;/a&gt;</code></td>
+<td><code translate="no" v-pre>&lt;ge:(\d+):([^&gt;]+)&gt;</code></td>
+<td><code translate="no" v-pre>&lt;a class=&quot;link-blue&quot; href=&quot;/groups/$1/edit&quot;&gt;$2&lt;/a&gt;</code></td>
 <td>Link to Edit Group</td>
 </tr>
 <tr>
-<td><code v-pre>&lt;t:(\d+):([^&gt;]+)&gt;</code></td>
-<td><code v-pre>&lt;a class=&quot;link-blue&quot; href=&quot;/torrents/$1&quot;&gt;$2&lt;/a&gt;</code></td>
+<td><code translate="no" v-pre>&lt;t:(\d+):([^&gt;]+)&gt;</code></td>
+<td><code translate="no" v-pre>&lt;a class=&quot;link-blue&quot; href=&quot;/torrents/$1&quot;&gt;$2&lt;/a&gt;</code></td>
 <td>Link to Torrent</td>
 </tr>
 <tr>
-<td><code v-pre>&lt;tc:(\d+):(\d+):([^&gt;]+)&gt;</code></td>
-<td><code v-pre>&lt;a class=&quot;link-blue&quot; href=&quot;/torrents/$1#com-$2&quot;&gt;$3&lt;/a&gt;</code></td>
+<td><code translate="no" v-pre>&lt;tc:(\d+):(\d+):([^&gt;]+)&gt;</code></td>
+<td><code translate="no" v-pre>&lt;a class=&quot;link-blue&quot; href=&quot;/torrents/$1#com-$2&quot;&gt;$3&lt;/a&gt;</code></td>
 <td>Link to Torrent Comment</td>
 </tr>
 <tr>
-<td><code v-pre>&lt;r:(\d+):([^&gt;]+)&gt;</code></td>
-<td><code v-pre>&lt;a class=&quot;link-blue&quot; href=&quot;/reports/$1&quot;&gt;$2&lt;/a&gt;</code></td>
+<td><code translate="no" v-pre>&lt;r:(\d+):([^&gt;]+)&gt;</code></td>
+<td><code translate="no" v-pre>&lt;a class=&quot;link-blue&quot; href=&quot;/reports/$1&quot;&gt;$2&lt;/a&gt;</code></td>
 <td>Used to view/redirect to Report</td>
 </tr>
 </tbody>
@@ -3541,7 +3526,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>PUT</span>
-</span> <code v-pre>/users/&lt;user_id|@me&gt;/notifications/read</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/users/&lt;user_id|@me&gt;/notifications/read</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>Auth Required</span>
 </span></p>
 <p>Marks specified notifications as read. Returns the updated list of notifications.</p>
@@ -3563,7 +3548,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 <tr>
 <td>ids</td>
 <td>array or string</td>
-<td>Either an array of notification IDs to mark as read, or the string <code v-pre>all</code> to mark all notifications as read.</td>
+<td>Either an array of notification IDs to mark as read, or the string <code translate="no" v-pre>all</code> to mark all notifications as read.</td>
 </tr>
 </tbody>
 </table>
@@ -3609,7 +3594,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
     <span>GET</span>
-</span> <code v-pre>/users/&lt;user_id|@me&gt;/peers</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/users/&lt;user_id|@me&gt;/peers</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>Auth Required</span>
 </span></p>
 <p>Returns a list of torrents that the user is a peer of, including their upload and download statistics.</p>
@@ -3675,7 +3660,7 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 </doc-anchor-target>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
     <span>GET</span>
-</span> <code v-pre>/users/search</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/users/search</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>Auth Required</span>
 </span></p>
 <p>Searches for users based on their username.</p>
@@ -3756,67 +3741,67 @@ You will receive the same <code v-pre>bad_torrents</code> field in the bulk edit
 </doc-tabs>
 </doc-panel>
 
-                                
-                                <!-- Required only on API pages -->
-                                <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
-                            </div>
-                            <footer id="retype-content-footer" class="clear-both">
-                            
-                                <nav id="retype-nextprev" class="print:hidden flex mt-14">
-                                    <div class="w-1/2">
-                                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../technical-details/api-keys/">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
-                                            <span>
-                                                <span class="block text-xs font-normal text-base-text-muted">Previous</span>
-                                                <span class="block mt-1">API Keys</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                            
-                                    <div class="w-1/2">
-                                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../technical-details/torznab/">
-                                            <span>
-                                                <span class="block text-xs font-normal text-right text-base-text-muted">Next</span>
-                                                <span class="block mt-1">Torznab & RSS</span>
-                                            </span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
-                                        </a>
-                                    </div>
-                                </nav>
-                            </footer>
-                        </main>
                 
-                        <div id="retype-page-footer" class="print:border-none border-t border-base-border pt-6 mb-8">
-                            <footer class="flex flex-wrap items-center justify-between print:justify-center">
-                                <div id="retype-footer-links" class="print:hidden">
-                                    <ul class="flex flex-wrap items-center text-sm">
-                                    </ul>
-                                </div>
-                                <div id="retype-copyright" class="print:justify-center py-2 text-footer-text font-footer-link-weight text-sm leading-relaxed"><p>:3</p></div>
-                            </footer>
-                        </div>
-                    </div>
-                
-                    <!-- Rendered if sidebar right is enabled -->
-                    <!-- Sidebar right skeleton-->
-                    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-sidebar-right-bg border-sidebar-right-border lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:transform-none sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton">
-                        <div class="pl-5">
-                            <div class="w-32 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
-                            <div class="w-48 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
-                            <div class="w-40 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
-                        </div>
-                    </div>
-                
-                    <!-- User should be able to hide sidebar right -->
-                    <doc-sidebar-right v-cloak></doc-sidebar-right>
-                </div>
-
+                <!-- Required only on API pages -->
+                <doc-toolbar-member-filter-no-results></doc-toolbar-member-filter-no-results>
             </div>
+            <footer id="retype-content-footer" class="clear-both">
+            
+                <nav id="retype-nextprev" class="print:hidden flex mt-14">
+                    <div class="w-1/2">
+                        <a class="px-5 py-4 h-full flex items-center break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-l-lg transition-colors duration-150 relative hover:z-5" href="../../technical-details/api-keys/">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                            <span>
+                                <span class="block text-xs font-normal text-base-text-muted">Previous</span>
+                                <span class="block mt-1">API Keys</span>
+                            </span>
+                        </a>
+                    </div>
+            
+                    <div class="w-1/2">
+                        <a class="px-5 py-4 -mx-px h-full flex items-center justify-end break-normal font-medium text-body-link border border-base-border hover:border-base-border-hover rounded-r-lg transition-colors duration-150 relative hover:z-5" href="../../technical-details/torznab/">
+                            <span>
+                                <span class="block text-xs font-normal text-right text-base-text-muted">Next</span>
+                                <span class="block mt-1">Torznab & RSS</span>
+                            </span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ml-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19.92 12.38a1 1 0 00-.22-1.09l-7-7a.996.996 0 10-1.41 1.41l5.3 5.3H5c-.55 0-1 .45-1 1s.45 1 1 1h11.59l-5.29 5.29a.996.996 0 000 1.41c.19.2.44.3.7.3s.51-.1.71-.29l7-7c.09-.09.16-.21.21-.33z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
+                        </a>
+                    </div>
+                </nav>
+            </footer>
+        </main>
+
+        <div id="retype-page-footer" class="print:border-none border-t border-base-border pt-6 mb-8">
+            <footer class="flex flex-wrap items-center justify-between print:justify-center">
+                <div id="retype-footer-links" class="print:hidden">
+                    <ul class="flex flex-wrap items-center text-sm">
+                    </ul>
+                </div>
+                <div id="retype-copyright" class="print:justify-center py-2 text-footer-text font-footer-link text-sm leading-relaxed"><p>:3</p></div>
+            </footer>
         </div>
-    
-        <doc-search-mobile></doc-search-mobile>
-        <doc-back-to-top></doc-back-to-top>
     </div>
+
+    <!-- Rendered if sidebar right is enabled -->
+    <!-- Sidebar right skeleton-->
+    <div v-cloak class="fixed top-0 bottom-0 right-0 translate-x-full bg-sidebar-right-bg border-sidebar-right-border lg:sticky lg:border-l lg:shrink-0 lg:pt-6 lg:translate-x-0 sm:w-1/2 lg:w-64 lg:z-0 md:w-104 sidebar-right skeleton">
+        <div class="pl-5">
+            <div class="w-32 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+            <div class="w-48 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+            <div class="w-40 h-3 mb-4 bg-skeleton-bg rounded-full loading"></div>
+        </div>
+    </div>
+
+    <!-- User should be able to hide sidebar right -->
+    <doc-sidebar-right v-cloak></doc-sidebar-right>
+</div>
+
+        </div>
+    </div>
+
+    <doc-search-mobile></doc-search-mobile>
+    <doc-back-to-top></doc-back-to-top>
+</div>
 
 
     <div id="retype-overlay-target"></div>
