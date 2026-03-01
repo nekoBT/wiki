@@ -28,14 +28,6 @@ The sub levels are as follows:
 - **Level 3 (L3)**: Full-scale Fansubs
     - SHOULD have all of the following: ED, TS, Song Translation, fixed timing issues.
     - MUST have QC.
-- **Level 4 (L4)**: Full-scale Batch
-    - For content with multiple episodes (e.g., TV series):
-        - MUST meet L3 requirements for all episodes.
-        - MUST contain all episodes in a season.
-    - For movies or single-episode content:
-        - MUST meet L3 requirements.
-        - MUST be an improvement over other L3 releases of the same content.
-    - SHOULD contain batch fixes, such as typos, missing typesetting, etc.
 
 !!!info Edge case:
 If an episode can't have a certain job done, then you can count it as being done.<br>
@@ -59,14 +51,8 @@ graph LR
     A -->|No| C{Have you done at least 2 of the following:<br>ED, TS, Song Translation? Or is it an OTL?}
     C -->|Yes| E{Did you do ED, TS, Song Translation,<br>fix timing issues, and done a QC pass?}
     C -->|No to both| D[Level 1]
-    E -->|Yes| G{Is this a release for TV or a movie?}
+    E -->|Yes| G[Level 3]
     E -->|No| F[Level 2]
-    G -->|TV| I{Do all episodes have the same quality, and it contains all episodes in a season?}
-    I -->|Yes| K[Level 4]
-    I -->|No| J[Level 3]
-    G -->|Movie| H{Does this release improve upon other L3 releases of the same content?}
-    H -->|Yes| L[Level 4]
-    H -->|No| M[Level 3]
 ```
 
 
@@ -84,12 +70,12 @@ graph LR
 If a release contains multiple fansubs, you should take the highest sub level for each language, and use the lowest sub level among them.
 
 For example:
-- This should be L4 (both same):
-    - English: L4
-    - Spanish: L4
-- This should be L3 (lower level takes precedence):
-    - English: L4
-    - French: L3
+- This should be L3 (both same):
+    - English: L3
+    - Spanish: L3
+- This should be L2 (lower level takes precedence):
+    - English: L3
+    - French: L2
 - This should be L2 (Group A takes precedence over Group B):
     - English (Group A): L2
     - English (Group B): L1

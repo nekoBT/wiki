@@ -131,7 +131,7 @@ You can also filter by audio, fansub and subtitle languages, but this is a bit m
             "negate": false,
             "required": true,
             "fields": {
-                "value": "{Tags:.*A-[^;]*\b(en)\b[^;]*\b.*}"
+                "value": "{Tags:.*A=[^;]*\b(en)\b[^;]*\b.*}"
             }
         }
     ]
@@ -150,7 +150,7 @@ Here's an example to match for Dual Audio releases (English + Japanese):
             "negate": false,
             "required": true,
             "fields": {
-                "value": "{Tags:.*A-[^;]*\b(en)\b[^;]*\b.*}"
+                "value": "{Tags:.*A=[^;]*\b(en)\b[^;]*\b.*}"
             }
         },
         {
@@ -159,7 +159,7 @@ Here's an example to match for Dual Audio releases (English + Japanese):
             "negate": false,
             "required": true,
             "fields": {
-                "value": "{Tags:.*A-[^;]*\b(ja)\b[^;]*\b.*}"
+                "value": "{Tags:.*A=[^;]*\b(ja)\b[^;]*\b.*}"
             }
         }
     ]
@@ -175,7 +175,7 @@ To create your own:
 
 ```
         |         \/  
-{Tags:.*A-[^;]*\b(en)\b[^;]*\b.*}
+{Tags:.*A=[^;]*\b(en)\b[^;]*\b.*}
 ```
 
 

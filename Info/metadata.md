@@ -12,6 +12,18 @@ Torrents must include specific metadata, such as sub level, video type, codec, a
 
 See the [Sub Levels](/info/sub-levels) page for details.
 
+### Batches
+
+A batch, on nekoBT, is a release that contains all episodes in a season. Season can be defined as:
+- A season as defined by TheTVDB
+- An entry on AniDB
+- An entry on AniList
+- An entry on MAL
+
+As long as you have all episodes that one of these sources considers to be a season/entry, you can mark it a batch, even if the other sources don't consider it a full season.
+
+You should still follow season and episode numbering from TheTVDB, and edit the torrent to change the episode matching if you can't get the title to match the correct episodes.
+
 ### Video Type
 
 The **Video Type** tag indicates the video's source and any encoding applied.
@@ -107,7 +119,7 @@ The possible tags that can be used in the auto title are:
 
 Here is an example of an auto title:
 ```
-[RandomGroup] Sousou no Frieren - 01-16 (WEB 1080p) {Tags:L3;V8;C2;A-ja;F-en;S-en,fr,es;}
+[RandomGroup] Sousou no Frieren - 01-16 (WEB 1080p) {Tags:L3;V8;C2;A=ja;F=en;S=en,fr,es;}
 ``` 
 
 Lets break it down:
@@ -130,7 +142,7 @@ Now, in Sonarr/Radarr, we can create Custom Formats to prioritize releases based
 
 Let's say we only want to download releases containing English fansubs that are at least Sub Level 2.<br>
 We can create a Custom Format with the following rules:
-- Release Title matches the regex: `{Tags:.*L[2-9];.*}` (Sub Level 2 or higher)
-- Release Title matches the regex: `{Tags:.*F-[^;]*\b(en)\b[^;]*\b.*}` (Fansub tag contains "en")
+- Release Title matches the regex: `{Tags:.*L[2-3];.*}` (Sub Level 2 or 3)
+- Release Title matches the regex: `{Tags:.*F=[^;]*\b(en)\b[^;]*\b.*}` (Fansub tag contains "en")
 
 These regex's might look complicated, but we have a guide you can follow [here](/info/sonarr-radarr#3-optional-add-custom-formats) to help you out.

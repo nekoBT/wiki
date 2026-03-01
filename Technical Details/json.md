@@ -890,7 +890,7 @@ Returns information about a specific torrent, including its title, description, 
     "id": "1234567890",
     "uploaded_at": "1765432000000", // Unix timestamp in milliseconds
     "title": "Torrent Title",
-    "auto_title": "Torrent Title {Tags:L1;V9;C1;A-ja;F-en;}",
+    "auto_title": "Torrent Title {Tags:L1;V9;C1;A=ja;F=en;}",
     "description": "...", // Markdown formatted description, can be null
     "mediainfo": "...", // Can be null
     "category": 1,
@@ -898,6 +898,7 @@ Returns information about a specific torrent, including its title, description, 
     "hidden": false,
     "otl": false,
     "hardsub": false,
+    "batch": false,
     "level": 1,
     "mtl": false,
     "filesize": "242587117",
@@ -1038,6 +1039,7 @@ hidden? | boolean | Whether the torrent should be hidden
 hardsub? | boolean | Whether the torrent contains hardsubbed video
 otl? | boolean | Whether the torrent's subtitles contains an original translation
 mtl? | boolean | Whether the torrent's subtitles contains machine translation
+batch? | boolean | Whether the torrent is a batch
 primary_group? | object or null | Primary group information, members, etc
 secondary_groups? | array | Array of secondary groups
 media_episodes? | array | Array of episode IDs (numbers) this torrent contains
@@ -1075,7 +1077,8 @@ deletion_reason? | string | Reason for deletion (max 256 characters)
   ],
   "mtl": false,
   "otl": false,
-  "hardsub": false
+  "hardsub": false,
+  "batch": false
 }
 ```
 +++ Successful Response (200)
@@ -1335,6 +1338,7 @@ hidden? | boolean | Whether the torrents should be hidden
 hardsub? | boolean | Whether the torrents contain hardsubbed video
 mtl? | boolean | Whether the torrents contain machine translated subtitles
 otl? | boolean | Whether the torrents' subtitles contain an original translation
+batch? | boolean | Whether the torrents are batches
 primary_group? | object or null | Primary group information, members, etc (admin only)
 secondary_groups? | array | Array of secondary group objects with `id` (string) and `role` (string or null, max 64)
 deleted? | boolean | Whether the torrents are deleted
@@ -1511,7 +1515,7 @@ after? | string | Filter torrents uploaded after this date, unix milliseconds
         "deleted": null,
         "hidden": false,
         "waiting_approve": false,
-        "auto_title": "Torrent Title {Tags:OTL;L4;V13;C1;A-ja;F-en;}",
+        "auto_title": "Torrent Title {Tags:OTL;L4;V13;C1;A=ja;F=en;}",
         "audio_lang": "ja", // Comma-separated list of languages
         "sub_lang": "",
         "fsub_lang": "en",
@@ -1544,7 +1548,8 @@ after? | string | Filter torrents uploaded after this date, unix milliseconds
         "user_is_leeching": null, // If the authenticated user is leeching this torrent, true/false/null
         "user_download_count": null, // Number of times the authenticated user has downloaded this torrent, or null
         "has_mediainfo": false,
-        "nyaa_upload_time": "1573878523000" // If imported from Nyaa, the original upload time as a Unix timestamp in milliseconds, otherwise null
+        "nyaa_upload_time": "1573878523000", // If imported from Nyaa, the original upload time as a Unix timestamp in milliseconds, otherwise null
+        "batch": false
       }
     ],
     "infohash_match": null, // If the query matched an infohash exactly, this field contains that torrent ID, otherwise null
