@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.0.1.825699875779">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.0.1.825701124727">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.0.1">
@@ -27,11 +27,11 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.0.1.825699875779" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.0.1.825701124727" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.0.1.825699875779" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.0.1.825701124727" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.0.1" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.0.1.825699875779" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.0.1.825701124727" data-turbo-eval="false" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -446,6 +446,7 @@ We can create a Custom Format with the following rules:</p>
 <li>Release Title matches the regex: <code translate="no" v-pre>{Tags:.*F=[^;]*\b(en)\b[^;]*\b.*}</code> (Fansub tag contains &quot;en&quot;)</li>
 </ul>
 <p>These regex&#x27;s might look complicated, but we have a guide you can follow <a href="/info/sonarr-radarr#3-optional-add-custom-formats">here</a> to help you out.</p>
+<p>Note: Language codes are stripped of any dashes (<code translate="no" v-pre>-</code>) in the auto title. For example, <code translate="no" v-pre>fr-ca</code> becomes <code translate="no" v-pre>frca</code>.</p>
 
                 
                 <!-- Required only on API pages -->
