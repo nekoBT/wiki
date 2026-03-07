@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.0.1.825701124727">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.1.0.826157578885">
 
     <!-- See retype.com -->
-    <meta name="generator" content="Retype 4.0.1">
+    <meta name="generator" content="Retype 4.1.0">
 
     <!-- Primary Meta Tags -->
     <title>Sonarr &amp; Radarr - nekoBT Wiki</title>
@@ -27,12 +27,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.0.1.825701124727" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.1.0.826157578885" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.0.1.825701124727" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../resources/js/retype.js?v=4.0.1" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.0.1.825701124727" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.0.1.825701124727" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.1.0.826157578885" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=4.1.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.1.0.826157578885" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.1.0.826157578885" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -219,7 +219,7 @@
     </h3>
 </doc-anchor-target>
 <p>Replace <code translate="no" v-pre>0</code> with whatever level you want.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
+<div id="sub-level-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
     &quot;name&quot;: &quot;L0&quot;,
     &quot;includeCustomFormatWhenRenaming&quot;: false,
@@ -237,7 +237,7 @@
 }</code></pre>
 </doc-codeblock></div>
 <p>You can also use regex to specify a range of levels: <code translate="no" v-pre>[2-4]</code> for levels 2 to 4.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
+<div id="sub-level-code-2" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
     &quot;name&quot;: &quot;L2-4&quot;,
     &quot;includeCustomFormatWhenRenaming&quot;: false,
@@ -261,7 +261,7 @@
     </h3>
 </doc-anchor-target>
 <p>Replace <code translate="no" v-pre>9</code> with the corresponding ID found <a href="../metadata/#video-type">here</a>.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
+<div id="video-type-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
     &quot;name&quot;: &quot;WEB-DL&quot;,
     &quot;includeCustomFormatWhenRenaming&quot;: false,
@@ -285,7 +285,7 @@
     </h3>
 </doc-anchor-target>
 <p>Replace <code translate="no" v-pre>2</code> with the corresponding ID found <a href="../metadata/#video-codec">here</a>.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
+<div id="video-codec-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
     &quot;name&quot;: &quot;HEVC&quot;,
     &quot;includeCustomFormatWhenRenaming&quot;: false,
@@ -309,7 +309,7 @@
     </h3>
 </doc-anchor-target>
 <p>You can also filter by audio, fansub and subtitle languages, but this is a bit more complicated if you don&#x27;t understand regex.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
+<div id="languages-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
     &quot;name&quot;: &quot;Audio - English&quot;,
     &quot;includeCustomFormatWhenRenaming&quot;: false,
@@ -327,7 +327,7 @@
 }</code></pre>
 </doc-codeblock></div>
 <p>Here&#x27;s an example to match for Dual Audio releases (English + Japanese):</p>
-<div class="codeblock-wrapper"><doc-codeblock>
+<div id="languages-code-2" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
     &quot;name&quot;: &quot;Dual Audio (en,ja)&quot;,
     &quot;includeCustomFormatWhenRenaming&quot;: false,
@@ -369,7 +369,7 @@
 </ul>
 </li>
 </ul>
-<div class="codeblock-wrapper"><doc-codeblock>
+<div id="languages-code-3" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-none"><code v-pre class="language-none">        |         \/  
 {Tags:.*A=[^;]*\b(en)\b[^;]*\b.*}</code></pre>
 </doc-codeblock></div>
@@ -380,7 +380,7 @@
     </h3>
 </doc-anchor-target>
 <p>You can also filter for MTL releases, which are releases that use machine translation for their fansubs.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
+<div id="mtl-machine-translation-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
     &quot;name&quot;: &quot;MTL&quot;,
     &quot;includeCustomFormatWhenRenaming&quot;: false,

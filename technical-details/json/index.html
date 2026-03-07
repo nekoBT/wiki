@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.0.1.825701124727">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.1.0.826157578885">
 
     <!-- See retype.com -->
-    <meta name="generator" content="Retype 4.0.1">
+    <meta name="generator" content="Retype 4.1.0">
 
     <!-- Primary Meta Tags -->
     <title>JSON API - nekoBT Wiki</title>
@@ -27,12 +27,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.0.1.825701124727" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.1.0.826157578885" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.0.1.825701124727" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../resources/js/retype.js?v=4.0.1" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.0.1.825701124727" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.0.1.825701124727" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.1.0.826157578885" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=4.1.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.1.0.826157578885" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.1.0.826157578885" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -165,7 +165,7 @@
 <p>Most endpoints require authorization using an API key.<br>
 To authorize your requests, use the <code translate="no" v-pre>ssid</code> cookie with your API key as the value.</p>
 <p>If authorization isn&#x27;t present or is invalid, you will receive a <code translate="no" v-pre>401 Unauthorized</code> JSON response.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
+<div id="authorization-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
     &quot;error&quot;: true,
     &quot;message&quot;: &quot;Unauthorized.&quot;
@@ -281,7 +281,7 @@ If the data is invalid, you will receive a <code translate="no" v-pre>400 Bad Re
 <p>API Rate Limits are enforced by nekoBT to prevent abuse of the API.<br>
 If you exceed these limits, you will receive a <code translate="no" v-pre>429 Too Many Requests</code> JSON response.<br>
 Use the <code translate="no" v-pre>retry_after</code> JSON field to determine how long to wait before making another request.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
+<div id="api-rate-limits-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
     &quot;error&quot;: true,
     &quot;message&quot;: &quot;Rate limit exceeded, try again in 12 seconds.&quot;,
@@ -297,7 +297,7 @@ Use the <code translate="no" v-pre>retry_after</code> JSON field to determine ho
 <p>Cloudflare Rate Limits are enforced at the edge by Cloudflare to prevent abuse of the site.<br>
 If you exceed these limits, you will receive a <code translate="no" v-pre>429 Too Many Requests</code> HTML response.<br>
 Use the <code translate="no" v-pre>Retry-After</code> header to determine how long to wait before making another request.</p>
-<div class="codeblock-wrapper"><doc-codeblock>
+<div id="cloudflare-rate-limits-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-http"><code v-pre class="language-http">HTTP/2 429
 retry-after: 4
 date: ***
