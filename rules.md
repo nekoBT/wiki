@@ -6,7 +6,9 @@ order: 4000
 ---
 # Site Rules
 
-Last Updated: 4 December 2025
+Last Updated: 6 March 2026
+
+You can view all changes to the rules [here](https://github.com/nekoBT/wiki/commits/main/rules.md).
 
 !!!warning
 This list is not exhaustive. Staff may decide that your actions negatively affect the site, without necessarily breaking a listed rule, and will punish your account accordingly.
@@ -40,10 +42,12 @@ This list is not exhaustive. Staff may decide that your actions negatively affec
 11. **No impersonation**. You aren't allowed to impersonate staff members, claim to be a staff member, or use well-known group names without permission of the group (even if they aren't registered on the site).
     - **Exception:** If a group is inactive and/or not contactable, you may use their tag and request a Staff Key to import their old torrents. You are not allowed to upload your own torrents under their tag. Staff may refuse and delete the group if they believe you have bad intent or don't have significant history on the site.
     - If the group becomes active again, you must transfer ownership of the group. Staff will assist with this process if needed (ex: hard to verify the real owner).  
-12. **"Bad" video or audio quality is not allowed.** This is subjective. Torrents where the video or audio quality has been significantly degraded, due to poor encoding, are not allowed. Generally, don't do these, *just for the sake of it*:
+12. **"Bad" video or audio quality is not allowed.** This is subjective, but use common sense. Torrents where the video or audio quality has been significantly degraded, due to poor encoding, are not allowed. Generally, don't do these, *just for the sake of it*:
     - No AI upscaling (like 1080p->4k, downscaling and rescaling is fine if you know what you're doing).
+    - No increasing resolution from the original source (like 720p->1080p, or 1080p->4k), unless you have a good reason to do so.
     - No Frame interpolation (increasing FPS. Exceptions are made for field interpolation required to properly deinterlace interlaced material).
     - No super-low-bitrate encodes (mini's are allowed, but don't cook it too hard).
+    - No machine generated audio (like TTS).
 13. **No leaked content.** Content that isn't officially released is not allowed. This also means **no CAM or Telesync releases.**
 14. **No tracker cheating.** You are not allowed to manipulate your tracker stats in any way. This includes:
     - Using bots to download torrents you're seeding.
@@ -51,5 +55,5 @@ This list is not exhaustive. Staff may decide that your actions negatively affec
     - Using hacked torrent clients to manipulate your stats.
     - Using scripts to manipulate your stats.
     - Distributing your torrent key to others, or using someone else's torrent key.
-15. **Multi-season/complete packs** are allowed, if the series has been completed, and there is no indication that the series will continue.
+15. **Multi-season/complete packs** are allowed, if the series has been completed, and there is no current indication that the series will continue.
     - Packs containing both TV anime and movies are allowed, as long as you include all relevant content related to the series.
