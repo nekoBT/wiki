@@ -14,7 +14,7 @@ We want to provide a place for fansubbers, encoders, and rippers to share their 
 ==- Public and private download links? What does that mean?
 If you are logged in, you will see two download options: public (blue) and private (purple).
 - Public can be shared with anyone, and they will be able to access the torrent without needing an account.
-- Private are only to be used by you, and are used to track your upload/download stats.
+- Private links are only to be used by you, and they are used to track your upload/download stats.
 !!!danger
 Do not share private links with anyone, as these contain your torrent key.<br>
 Anyone with your torrent key can mess up your stats, and it could be seen as torrent cheating, which is a bannable offense.

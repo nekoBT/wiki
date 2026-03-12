@@ -25,7 +25,7 @@ This list is not exhaustive. Staff may decide that your actions negatively affec
 2. **Multiple accounts are strictly not allowed.**
 3. No **malware, phishing or other malicious content**.
 4. No **torrent hijacking**. Don't upload torrents that you didn't create, or that you don't have permission to upload. Always ask the original uploader first.
-5. No **pornography, hentai or other NSFW content**. This includes NSFW links in comments, descriptions, etc, NSFW torrents, NSFW profile pictures. There is an exception for shows/movies that contains an uncensored version that is otherwise censored. **You must clearly mark the torrent as `UNCENSORED` in the title.**
+5. No **pornography, hentai or other NSFW content**. This includes NSFW links in comments, descriptions, etc, NSFW torrents, NSFW profile pictures. There is an exception for shows/movies that contain an uncensored version that is otherwise censored. **You must clearly mark the torrent as `UNCENSORED` in the title.**
 6. Torrents should contain **anime only**. Live-action content is currently not allowed.
     - Anime is defined as having an entry on [AniDB](https://anidb.net/), [AniList](https://anilist.co/), or [MAL](https://myanimelist.net/).
 7. Torrents **mustn't be zipped, or compressed in any way**.
