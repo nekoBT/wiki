@@ -17,10 +17,10 @@ In order to function, we might collect/store the following information:
 - When you create an account:
     - Username
     - Password (hashed and salted)
-    - Sign up date
+    - Signup date
     - Recovery key
     - Notifications we send you
-- When you login:
+- When you log in:
     - Last login date
 - When you enable 2FA:
     - 2FA token
@@ -40,7 +40,7 @@ In order to function, we might collect/store the following information:
 - When you report content:
     - Report data (report reason, content ID, category, and other data provided to us by you)
 - When you upload a profile picture:
-    - Profile Pictures
+    - Profile pictures
 - When you connect to our tracker:
     - IP address and Port
     - User agent (Your torrent client name and version)
@@ -58,10 +58,10 @@ In order to function, we might collect/store the following information:
 
 We also might collect data on your usage of the site in the form of logs, in order to improve our service and debug issues. These logs will not be held for more than 90 days, and will not contain any personally identifiable information.
 
-We may store your IP address on certain actions that are considered sensitive, due to anti-abuse measures. These will be deleted after 30 days, and will not be used for any other purpose.
+We may store your IP address for certain actions that are considered sensitive, due to anti-abuse measures. These will be deleted after 30 days, and will not be used for any other purpose.
 
 ## How we use your data
-All information we collect is used to provide our services to you. We do not sell your information with third parties. We do not share any private information with third parties.
+All information we collect is used to provide our services to you. We do not sell your information to third parties. We do not share any private information with third parties.
 
 Your public information may be obtained and/or used by third-parties via our API or web-scraping.
 
