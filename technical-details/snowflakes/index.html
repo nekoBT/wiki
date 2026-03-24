@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.1.0.826157578885">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.4.0.827702432173">
 
     <!-- See retype.com -->
-    <meta name="generator" content="Retype 4.1.0">
+    <meta name="generator" content="Retype 4.4.0">
 
     <!-- Primary Meta Tags -->
     <title>Snowflakes - nekoBT Wiki</title>
@@ -25,14 +25,20 @@
     <meta property="og:site_name" content="nekoBT">
     <meta property="og:locale" content="en_US">
 
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://wiki.nekobt.to/technical-details/snowflakes/">
+    <meta name="twitter:title" content="Snowflakes - nekoBT Wiki">
+    <meta name="twitter:description" content="nekoBT uses a form of snowflakes as unique identifiers for various entities, such as torrents, groups, users, etc. You may want to decode snowflakes for">
+
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.1.0.826157578885" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.4.0.827702432173" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.1.0.826157578885" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../resources/js/retype.js?v=4.1.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.1.0.826157578885" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.1.0.826157578885" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.4.0.827702432173" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=4.4.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.4.0.827702432173" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.4.0.827702432173" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -72,7 +78,7 @@
             <!-- Logo -->
             <div class="flex items-center justify-between h-full py-2 md:w-75">
                 <div class="flex items-center px-2 md:px-6">
-                    <a id="retype-branding-logo" href="../../" class="flex items-center leading-snug text-2xl">
+                    <a id="retype-branding-logo" href="https://wiki.nekobt.to/" class="flex items-center leading-snug text-2xl">
                         <span class="dark:text-white font-bold line-clamp-1 md:line-clamp-2">nekoBT</span>
                     </a><span id="retype-branding-label" class="inline-flex mt-1 px-2 py-1 ml-4 text-xs font-medium leading-none items-center rounded-md bg-branding-label-bg text-branding-label-text ring-1 ring-branding-label-border ring-inset md:inline-block">Wiki</span>
                 </div>
@@ -147,12 +153,7 @@
                 <!-- Rendered if sidebar right is enabled -->
                 <div id="retype-sidebar-right-toggle"></div>
                 <!-- Page content  -->
-<doc-anchor-target id="snowflakes" class="break-words">
-    <h1>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#snowflakes">#</doc-anchor-trigger>
-        <span>Snowflakes</span>
-    </h1>
-</doc-anchor-target>
+<h1 id="snowflakes">Snowflakes</h1>
 <p>nekoBT uses a form of <a href="https://en.wikipedia.org/wiki/Snowflake_ID">snowflakes</a> as unique identifiers for various entities, such as torrents, groups, users, etc. You may want to decode snowflakes for various reasons, such as to get the timestamp of when an entity was created, or to get the type of entity it is.</p>
 <p>Our snowflakes consist of 3 sections, in the following order:</p>
 <ol>
@@ -182,18 +183,8 @@
 </ol>
 <img src="/static/snowflake_conversion.png" alt="Snowflakes diagram">
 <hr>
-<doc-anchor-target id="code-examples">
-    <h2>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#code-examples">#</doc-anchor-trigger>
-        <span>Code Examples</span>
-    </h2>
-</doc-anchor-target>
-<doc-anchor-target id="javascript">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#javascript">#</doc-anchor-trigger>
-        <span>JavaScript</span>
-    </h3>
-</doc-anchor-target>
+<h2 id="code-examples">Code Examples</h2>
+<h3 id="javascript">JavaScript</h3>
 <div id="javascript-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-javascript"><code v-pre class="language-javascript">const EPOCH = BigInt(&quot;1735689600000&quot;); // 2025-01-01T00:00:00.000Z
 
@@ -223,12 +214,7 @@ function extractSnowflake(snowflake) {
 }
 </code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="typescript">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#typescript">#</doc-anchor-trigger>
-        <span>Typescript</span>
-    </h3>
-</doc-anchor-target>
+<h3 id="typescript">Typescript</h3>
 <div id="typescript-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-typescript"><code v-pre class="language-typescript">const EPOCH = BigInt(&quot;1735689600000&quot;); // 2025-01-01T00:00:00.000Z
 
@@ -268,12 +254,7 @@ function extractSnowflake(snowflake: string) {
     };
 }</code></pre>
 </doc-codeblock></div>
-<doc-anchor-target id="python">
-    <h3>
-        <doc-anchor-trigger class="header-anchor-trigger" to="#python">#</doc-anchor-trigger>
-        <span>Python</span>
-    </h3>
-</doc-anchor-target>
+<h3 id="python">Python</h3>
 <div id="python-code-1" class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-python"><code v-pre class="language-python">EPOCH = 1735689600000  # 2025-01-01T00:00:00.000Z
 
