@@ -297,7 +297,7 @@ Name | Type | Description
 query? | string | Search term for group name or tag
 limit? | integer | Number of results to return (default: 50, range: 1-100)
 offset? | integer | Number of results to skip for pagination (default: 0)
-sort? | string | Sort results by field. *`created`*, `uploads`, `members`, `downloads`, `name`.
+sort? | string | Sort results by field. *`created`*, `uploads`, `members`, `downloads`, `name`, `last_upload`.
 order? | string | Order of results. `asc` or *`desc`*.
 ###### *italics* = default, ? = optional
 +++ Successful Response (200)
@@ -318,7 +318,8 @@ order? | string | Order of results. `asc` or *`desc`*.
         "tagline": "An example group tagline.",
         "member_count": "5",
         "torrent_count": "2",
-        "download_count": "53"
+        "download_count": "53",
+        "most_recent_torrent_id": "1234567890" // Can be null if no torrents, otherwise the torrent ID of the most recent torrent uploaded by this group
       }
     ],
     "more": true // Whether there are more results to fetch with pagination
@@ -371,7 +372,7 @@ parent | string | Group ID of the group that will be the parent in the link.
 
 
 ### Delete Group Link
-[!badge variant="danger" text="DELETE"] `/groups/<group_id>/links/<group_id_2>` [!badge variant="warning" text="Auth Required"]
+[!badge variant="danger" text="DELETE"] `/groups/<group_id_1>/links/<group_id_2>` [!badge variant="warning" text="Auth Required"]
 
 Deletes a link between two groups.
 
@@ -572,6 +573,10 @@ Assign an orphaned invite to a user. This is only used for group leaders/admins 
 Orphaned invites are created when a member is invited without specifying a user ID (commonly on torrent upload page), or when a member is removed from the group without being deleted.
 
 ==- Examples
++++ JSON Parameters
+Name | Type | Description
+---- | ---- | -----------
+assign_user_id | string | User ID of the user to assign this invite to
 +++ Successful Response (200)
 ```json
 {
@@ -862,7 +867,7 @@ Returns various statistics about the site, such as the number of users, torrents
       "leechers": 31
     }
   },
-  "message": "Cache hit, returning stats."
+  "message": "Cache hit, returning stats." // Varies: "Cache hit, returning stats." | "Cache miss, fetching new stats." | "Cache refreshed, serving new stats." | "Cache expired, serving old stats."
 }
 ```
 +++ Unsuccessful Response (500)
@@ -1477,6 +1482,7 @@ audio_lang? | string | Comma-separated audio languages to filter by
 fansub_lang? | string | Comma-separated fansub languages to filter by
 sub_lang? | string | Comma-separated subtitle languages to filter by
 hardsub? | boolean | Filter by hardsubbed torrents
+batch? | boolean | Filter by batch torrents
 otl? | boolean | Filter by original translation torrents
 mtl? | boolean | Filter by machine translation torrents
 group_id? | string | Filter by group ID
@@ -1737,6 +1743,7 @@ level | number | Subtitle level (null or -1 to 4, -1 = no subs)
 mtl | boolean | Whether the torrent contains machine translated subtitles
 otl | boolean | Whether the torrent's subtitles contain an original translation
 hardsub | boolean | Whether the torrent contains hardsubbed video
+batch | boolean | Whether the torrent is a batch (default: false)
 primary_group? | object | Primary group information (see below)
 audio_langs | string | Comma-separated list of audio languages (max 256 characters)
 sub_langs | string | Comma-separated list of subtitle languages (max 256 characters)
@@ -1960,7 +1967,8 @@ Returns information about a specific user, including their username, profile pic
     ],
     "can_edit": false,
     "has_mfa": null, // Whether the user has multi-factor authentication enabled, only shown if authenticated as this user
-    "can_download_recovery": null // Whether the user can still download their recovery key, only shown if authenticated as this user
+    "can_download_recovery": null, // Whether the user can still download their recovery key, only shown if authenticated as this user
+    "notifications": 3 // Number of unread notifications, only present when authenticated as this user
   }
 }
 ```
