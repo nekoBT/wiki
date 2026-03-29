@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.4.0.827702432173">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.4.0.828108935154">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.4.0">
@@ -33,12 +33,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.4.0.827702432173" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.4.0.828108935154" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.4.0.827702432173" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.4.0.828108935154" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.4.0.827702432173" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.4.0.827702432173" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.4.0.828108935154" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.4.0.828108935154" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -474,7 +474,7 @@ referrer-policy: same-origin</code></pre>
 <tr>
 <td>sort?</td>
 <td>string</td>
-<td>Sort results by field. <em><code translate="no" v-pre>created</code></em>, <code translate="no" v-pre>uploads</code>, <code translate="no" v-pre>members</code>, <code translate="no" v-pre>downloads</code>, <code translate="no" v-pre>name</code>.</td>
+<td>Sort results by field. <em><code translate="no" v-pre>created</code></em>, <code translate="no" v-pre>uploads</code>, <code translate="no" v-pre>members</code>, <code translate="no" v-pre>downloads</code>, <code translate="no" v-pre>name</code>, <code translate="no" v-pre>last_upload</code>.</td>
 </tr>
 <tr>
 <td>order?</td>
@@ -505,7 +505,8 @@ referrer-policy: same-origin</code></pre>
         &quot;tagline&quot;: &quot;An example group tagline.&quot;,
         &quot;member_count&quot;: &quot;5&quot;,
         &quot;torrent_count&quot;: &quot;2&quot;,
-        &quot;download_count&quot;: &quot;53&quot;
+        &quot;download_count&quot;: &quot;53&quot;,
+        &quot;most_recent_torrent_id&quot;: &quot;1234567890&quot; // Can be null if no torrents, otherwise the torrent ID of the most recent torrent uploaded by this group
       }
     ],
     &quot;more&quot;: true // Whether there are more results to fetch with pagination
@@ -579,7 +580,7 @@ referrer-policy: same-origin</code></pre>
 <h3 id="delete-group-link">Delete Group Link</h3>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-danger-text bg-badge-danger border border-badge-danger-border h-6 px-2 text-xs rounded-md">
     <span>DELETE</span>
-</span> <code translate="no" v-pre>/groups/&lt;group_id&gt;/links/&lt;group_id_2&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
+</span> <code translate="no" v-pre>/groups/&lt;group_id_1&gt;/links/&lt;group_id_2&gt;</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-warning-text bg-badge-warning border border-badge-warning-border h-6 px-2 text-xs rounded-md">
     <span>Auth Required</span>
 </span></p>
 <p>Deletes a link between two groups.</p>
@@ -892,6 +893,27 @@ The differences are as follows:</p>
 <doc-panel id="examples-9" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
+<doc-tab v-cloak id="json-parameters-2">
+<template #title>JSON Parameters</template>
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>assign_user_id</td>
+<td>string</td>
+<td>User ID of the user to assign this invite to</td>
+</tr>
+</tbody>
+</table>
+</div>
+</doc-tab>
 <doc-tab v-cloak id="successful-response-200-9">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
@@ -1235,7 +1257,7 @@ The differences are as follows:</p>
       &quot;leechers&quot;: 31
     }
   },
-  &quot;message&quot;: &quot;Cache hit, returning stats.&quot;
+  &quot;message&quot;: &quot;Cache hit, returning stats.&quot; // Varies: &quot;Cache hit, returning stats.&quot; | &quot;Cache miss, fetching new stats.&quot; | &quot;Cache refreshed, serving new stats.&quot; | &quot;Cache expired, serving old stats.&quot;
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
@@ -2232,6 +2254,11 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 <td>Filter by hardsubbed torrents</td>
 </tr>
 <tr>
+<td>batch?</td>
+<td>boolean</td>
+<td>Filter by batch torrents</td>
+</tr>
+<tr>
 <td>otl?</td>
 <td>boolean</td>
 <td>Filter by original translation torrents</td>
@@ -2699,6 +2726,11 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 <td>Whether the torrent contains hardsubbed video</td>
 </tr>
 <tr>
+<td>batch</td>
+<td>boolean</td>
+<td>Whether the torrent is a batch (default: false)</td>
+</tr>
+<tr>
 <td>primary_group?</td>
 <td>object</td>
 <td>Primary group information (see below)</td>
@@ -2998,7 +3030,8 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
     ],
     &quot;can_edit&quot;: false,
     &quot;has_mfa&quot;: null, // Whether the user has multi-factor authentication enabled, only shown if authenticated as this user
-    &quot;can_download_recovery&quot;: null // Whether the user can still download their recovery key, only shown if authenticated as this user
+    &quot;can_download_recovery&quot;: null, // Whether the user can still download their recovery key, only shown if authenticated as this user
+    &quot;notifications&quot;: 3 // Number of unread notifications, only present when authenticated as this user
   }
 }</code></pre>
 </doc-codeblock></div>
