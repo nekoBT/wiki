@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.4.0.828108935154">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.4.0.828225730106">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.4.0">
@@ -33,12 +33,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.4.0.828108935154" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.4.0.828225730106" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.4.0.828108935154" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.4.0.828225730106" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.4.0.828108935154" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.4.0.828108935154" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.4.0.828225730106" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.4.0.828225730106" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -2341,7 +2341,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
         &quot;description&quot;: &quot;...&quot;, // Can be null
         &quot;filesize&quot;: &quot;7738622751&quot;, // In bytes
         &quot;category&quot;: 1,
-        &quot;level&quot;: 4,
+        &quot;level&quot;: 3,
         &quot;otl&quot;: true,
         &quot;hardsub&quot;: false,
         &quot;mtl&quot;: false,
@@ -2349,7 +2349,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
         &quot;deleted&quot;: null,
         &quot;hidden&quot;: false,
         &quot;waiting_approve&quot;: false,
-        &quot;auto_title&quot;: &quot;Torrent Title {Tags:OTL;L4;V13;C1;A=ja;F=en;}&quot;,
+        &quot;auto_title&quot;: &quot;Torrent Title {Tags:OTL;L3;V13;C1;A=ja;F=en;}&quot;,
         &quot;audio_lang&quot;: &quot;ja&quot;, // Comma-separated list of languages
         &quot;sub_lang&quot;: &quot;&quot;,
         &quot;fsub_lang&quot;: &quot;en&quot;,
@@ -2487,7 +2487,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 <tr>
 <td>level</td>
 <td>number</td>
-<td>Subtitle level (-1 to 4, -1 = no subs)</td>
+<td>Subtitle level (-1 to 3, -1 = no subs)</td>
 </tr>
 <tr>
 <td>mtl</td>
@@ -2513,6 +2513,11 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 <td>hardsub</td>
 <td>boolean</td>
 <td>Whether the torrent contains hardsubbed video</td>
+</tr>
+<tr>
+<td>batch</td>
+<td>boolean</td>
+<td>Whether the torrent is a batch release (default: false)</td>
 </tr>
 <tr>
 <td>primary_group?</td>
@@ -2590,6 +2595,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
   &quot;mtl&quot;: false,
   &quot;otl&quot;: false,
   &quot;hardsub&quot;: false,
+  &quot;batch&quot;: false,
   &quot;anonymous&quot;: false,
   &quot;primary_group&quot;: {
     &quot;id&quot;: &quot;1234567890&quot;,
@@ -2708,7 +2714,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 <tr>
 <td>level</td>
 <td>number</td>
-<td>Subtitle level (null or -1 to 4, -1 = no subs)</td>
+<td>Subtitle level (null or -1 to 3, -1 = no subs)</td>
 </tr>
 <tr>
 <td>mtl</td>
