@@ -1513,7 +1513,7 @@ after? | string | Filter torrents uploaded after this date, unix milliseconds
         "description": "...", // Can be null
         "filesize": "7738622751", // In bytes
         "category": 1,
-        "level": 4,
+        "level": 3,
         "otl": true,
         "hardsub": false,
         "mtl": false,
@@ -1521,7 +1521,7 @@ after? | string | Filter torrents uploaded after this date, unix milliseconds
         "deleted": null,
         "hidden": false,
         "waiting_approve": false,
-        "auto_title": "Torrent Title {Tags:OTL;L4;V13;C1;A=ja;F=en;}",
+        "auto_title": "Torrent Title {Tags:OTL;L3;V13;C1;A=ja;F=en;}",
         "audio_lang": "ja", // Comma-separated list of languages
         "sub_lang": "",
         "fsub_lang": "en",
@@ -1620,12 +1620,13 @@ movie | boolean | Whether this torrent is for a movie (true) or series (false)
 category | number | Category ID (currently only 1 is valid)
 video_type | number or null | Video type category ID
 video_codec | number or null | Video codec category ID
-level | number | Subtitle level (-1 to 4, -1 = no subs)
+level | number | Subtitle level (-1 to 3, -1 = no subs)
 mtl | boolean | Whether the torrent contains machine translated subtitles
 anonymous | boolean | Whether the upload should be anonymous
 hidden | boolean | Whether the torrent should be hidden
 otl | boolean | Whether the torrent's subtitles contain an original translation
 hardsub | boolean | Whether the torrent contains hardsubbed video
+batch | boolean | Whether the torrent is a batch release (default: false)
 primary_group? | object | Primary group information (see below)
 secondary_groups | array | Array of secondary group objects (max 50 items)
 audio_langs | string | Comma-separated list of audio languages (max 256 characters)
@@ -1660,6 +1661,7 @@ ignore_warnings? | boolean | Whether to ignore validation warnings, and proceed 
   "mtl": false,
   "otl": false,
   "hardsub": false,
+  "batch": false,
   "anonymous": false,
   "primary_group": {
     "id": "1234567890",
@@ -1739,7 +1741,7 @@ movie | boolean | Whether this torrent is for a movie (true) or series (false)
 files | array of objects | Array of file objects with `path` (string) that the torrent contains
 video_type | number or null | Video type category ID
 video_codec | number or null | Video codec category ID
-level | number | Subtitle level (null or -1 to 4, -1 = no subs)
+level | number | Subtitle level (null or -1 to 3, -1 = no subs)
 mtl | boolean | Whether the torrent contains machine translated subtitles
 otl | boolean | Whether the torrent's subtitles contain an original translation
 hardsub | boolean | Whether the torrent contains hardsubbed video

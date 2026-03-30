@@ -21,7 +21,7 @@ Anyone with your torrent key can mess up your stats, and it could be seen as tor
 !!!
 ===
 ==- L3? L0? What does that mean? (Sub Levels)
-L0-4 refer to the sub level of a torrent, view more info [here](/info/sub-levels).
+L0-3 refer to the sub level of a torrent, view more info [here](/info/sub-levels).
 ===
 
 ## Account Questions
