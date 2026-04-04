@@ -1472,7 +1472,7 @@ limit? | integer | Number of results to return (default: *`50`*, range: `1`-`100
 offset? | integer | Number of results to skip for pagination (default: 0)
 sort_by? | string | Sort order: *`best`*, `latest`, `oldest`, `rss`, `seeders`, `seeders_asc`, `leechers`, `leechers_asc`, `downloads`, `downloads_asc`, `comments`, `comments_asc`, `filesize`, `filesize_asc`.
 category? | number | Category filter: *`0`*. This currently isn't used, as there's only one category.
-media_id? | string | Filter by specific media ID
+media_id? | string | Comma-separated media IDs to filter by
 episode_ids? | string | Comma-separated episode IDs to filter by
 episode_match_any? | boolean | Match any episode ID instead of requiring a torrent to have all episodes: *`false`*
 levels? | string | Comma-separated subtitle levels to filter by
@@ -1485,12 +1485,12 @@ hardsub? | boolean | Filter by hardsubbed torrents
 batch? | boolean | Filter by batch torrents
 otl? | boolean | Filter by original translation torrents
 mtl? | boolean | Filter by machine translation torrents
-group_id? | string | Filter by group ID
+group_id? | string | Comma-separated group IDs to filter by
 group_primary? | boolean | Include primary group uploads (default: true)
 group_secondary? | boolean | Include secondary group uploads (default: false)
 group_childs? | boolean | Include child group uploads (default: true)
 group_parents? | boolean | Include parent group uploads (default: false)
-uploader_id? | string | Filter by uploader ID
+uploader_id? | string | Comma-separated uploader IDs to filter by
 uploader_uploads? | boolean | Include uploader's uploads (default: true)
 uploader_contributions? | boolean | Include uploader's contributions (default: false)
 before? | string | Filter torrents uploaded before this date, unix milliseconds
@@ -1560,7 +1560,7 @@ after? | string | Filter torrents uploaded after this date, unix milliseconds
     ],
     "infohash_match": null, // If the query matched an infohash exactly, this field contains that torrent ID, otherwise null
     "recommended_media": null, // If the search used a query, and >=70% of the results contain the same media ID, this field contains that media object, otherwise null
-    "media": null, // If the search used a media_id filter, this field contains that media object, otherwise null
+    "media": null, // If the search used a single media_id filter, this field contains that media object, otherwise null
     "similar_media": null, // If the query was similar to a media title, this field contains a list of media objects, otherwise null
     "debug": {
       "summary": [], // Summary of applied filters extracted from the query
