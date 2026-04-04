@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.4.0.828225730106">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.4.0.828632196482">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.4.0">
@@ -33,12 +33,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.4.0.828225730106" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.4.0.828632196482" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.4.0.828225730106" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.4.0.828632196482" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.4.0.828225730106" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.4.0.828225730106" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.4.0.828632196482" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.4.0.828632196482" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -2206,7 +2206,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 <tr>
 <td>media_id?</td>
 <td>string</td>
-<td>Filter by specific media ID</td>
+<td>Comma-separated media IDs to filter by</td>
 </tr>
 <tr>
 <td>episode_ids?</td>
@@ -2271,7 +2271,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 <tr>
 <td>group_id?</td>
 <td>string</td>
-<td>Filter by group ID</td>
+<td>Comma-separated group IDs to filter by</td>
 </tr>
 <tr>
 <td>group_primary?</td>
@@ -2296,7 +2296,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 <tr>
 <td>uploader_id?</td>
 <td>string</td>
-<td>Filter by uploader ID</td>
+<td>Comma-separated uploader IDs to filter by</td>
 </tr>
 <tr>
 <td>uploader_uploads?</td>
@@ -2388,7 +2388,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
     ],
     &quot;infohash_match&quot;: null, // If the query matched an infohash exactly, this field contains that torrent ID, otherwise null
     &quot;recommended_media&quot;: null, // If the search used a query, and &gt;=70% of the results contain the same media ID, this field contains that media object, otherwise null
-    &quot;media&quot;: null, // If the search used a media_id filter, this field contains that media object, otherwise null
+    &quot;media&quot;: null, // If the search used a single media_id filter, this field contains that media object, otherwise null
     &quot;similar_media&quot;: null, // If the query was similar to a media title, this field contains a list of media objects, otherwise null
     &quot;debug&quot;: {
       &quot;summary&quot;: [], // Summary of applied filters extracted from the query
