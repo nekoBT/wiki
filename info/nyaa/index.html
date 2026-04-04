@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.4.0.828632196482">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.4.0.828644511753">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.4.0">
@@ -33,11 +33,11 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.4.0.828632196482" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.4.0.828644511753" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.4.0.828632196482" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.4.0.828644511753" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.4.0.828632196482" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.4.0.828644511753" data-turbo-eval="false" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -260,6 +260,15 @@ This is to ensure that you understand how uploading works on nekoBT.</p>
 </tbody>
 </table>
 </div>
+<h3 id="cookie-privacy--security">Cookie Privacy &amp; Security</h3>
+<p>When you provide your Nyaa <code translate="no" v-pre>session</code> cookie, it is <strong>never stored</strong> in nekoBT&#x27;s database or cache.</p>
+<p>Here is exactly what happens with your cookie:</p>
+<ul>
+<li><strong>Linking</strong>: Your cookie is sent to nekoBT&#x27;s servers, used in a single request to <code translate="no" v-pre>nyaa.si</code> to confirm you are logged in as the account you claim to own, then immediately discarded. It is never written to the database, cache, or logs. It exists in server memory only for the duration of that one verification request. We only store your Nyaa username (not ID) in our database, which can be hidden from other users if you choose to hide your linked Nyaa account.</li>
+<li><strong>Importing</strong>: Your cookie is verified and packaged into a signed, short-lived JWT that is returned directly to your browser and stored only there. Each time you request a page of torrents, your browser sends this JWT back to the server. The server unpacks the cookie from it, makes a request to <code translate="no" v-pre>nyaa.si</code> to fetch that page, then discards the cookie again. It is never re-stored or logged between requests. After closing your browser, the JWT is removed from your browser&#x27;s memory.</li>
+</ul>
+<p>You can verify this yourself by inspecting the network requests made when linking or importing.</p>
+<p>Your cookie is only ever used to verify your identity or fetch your torrent list from Nyaa. It is never stored on our servers, in our logs, or used for any other requests to Nyaa.</p>
 
                 
                 <!-- Required only on API pages -->
