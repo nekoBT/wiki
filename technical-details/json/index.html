@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.4.0.828644511753">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.4.0.828651166608">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.4.0">
@@ -33,12 +33,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.4.0.828644511753" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.4.0.828651166608" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.4.0.828644511753" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.4.0.828651166608" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.4.0.828644511753" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.4.0.828644511753" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.4.0.828651166608" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.4.0.828651166608" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -380,33 +380,9 @@ referrer-policy: same-origin</code></pre>
         }
       ]
     },
-    &quot;media&quot;: [
-      {
-        &quot;episodes&quot;: [ // List of episode IDs the group/child groups have worked on for this media
-            &quot;1234&quot;
-        ],
-        &quot;torrents&quot;: [ // List of torrent IDs the group/child groups have uploaded for this media
-          &quot;1234567890&quot;
-        ],
-        &quot;groups&quot;: [ // List of group IDs (including child groups) that have worked on this media
-          &quot;1234567890&quot;
-        ],
-        &quot;media&quot;: {
-          &quot;id&quot;: &quot;m1&quot;,
-          &quot;title&quot;: &quot;Example Movie&quot;,
-          &quot;banner_url&quot;: &quot;https://image.tmdb.org/t/p/original/....jpg&quot;,
-          &quot;episodes&quot;: [ // Use this list to get episode details for the episodes worked on by this group
-            {
-              &quot;id&quot;: 1234,
-              &quot;season&quot;: 1,
-              &quot;episode&quot;: 1,
-              &quot;absolute&quot;: 1,
-              &quot;tvdbId&quot;: 1234567,
-              &quot;title&quot;: &quot;Example Episode Title&quot;
-            },
-          ]
-        }
-      }
+    &quot;media_ids&quot;: [ // List of media IDs (movies/series) this group and its children have contributed to
+      &quot;m1&quot;,
+      &quot;s2&quot;
     ],
     &quot;can_edit&quot;: false,
     &quot;can_leave&quot;: false,
@@ -434,6 +410,63 @@ referrer-policy: same-origin</code></pre>
 </doc-tab>
 </doc-tabs>
 </doc-panel>
+<h3 id="get-group-media">Get Group Media</h3>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
+    <span>GET</span>
+</span> <code translate="no" v-pre>/groups/&lt;group_id&gt;/media</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Optional</span>
+</span></p>
+<p>Returns full media details for all movies and series the group (and its children) have contributed to.</p>
+<doc-panel id="examples-2" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="successful-response-200-2">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;data&quot;: [
+    {
+      &quot;episodes&quot;: [ // List of episode IDs the group/child groups have worked on for this media
+        &quot;1234&quot;
+      ],
+      &quot;torrents&quot;: [ // List of torrent IDs the group/child groups have uploaded for this media
+        &quot;1234567890&quot;
+      ],
+      &quot;groups&quot;: [ // List of group IDs (including child groups) that have worked on this media
+        &quot;1234567890&quot;
+      ],
+      &quot;media&quot;: {
+        &quot;id&quot;: &quot;m1&quot;,
+        &quot;title&quot;: &quot;Example Movie&quot;,
+        &quot;banner_url&quot;: &quot;https://image.tmdb.org/t/p/original/....jpg&quot;,
+        &quot;episodes&quot;: [ // Use this list to get episode details for the episodes worked on by this group
+          {
+            &quot;id&quot;: 1234,
+            &quot;season&quot;: 1,
+            &quot;episode&quot;: 1,
+            &quot;absolute&quot;: 1,
+            &quot;tvdbId&quot;: 1234567,
+            &quot;title&quot;: &quot;Example Episode Title&quot;
+          }
+        ]
+      }
+    }
+  ]
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-404-1">
+<template #title>Unsuccessful Response (404)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Group not found.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
 <h3 id="search-groups">Search Groups</h3>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
     <span>GET</span>
@@ -441,7 +474,7 @@ referrer-policy: same-origin</code></pre>
     <span>Auth Optional</span>
 </span></p>
 <p>Searches for groups based on their name.</p>
-<doc-panel id="examples-2" collapsed>
+<doc-panel id="examples-3" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="query-parameters">
@@ -486,7 +519,7 @@ referrer-policy: same-origin</code></pre>
 </div>
 <h6 id="italics--default---optional"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-2">
+<doc-tab v-cloak id="successful-response-200-3">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -533,7 +566,7 @@ referrer-policy: same-origin</code></pre>
 </span></p>
 <p>Creates a link between two groups. If the authorized user is the leader of both groups, the link is automatically approved. Otherwise, the link will be pending approval from the other group&#x27;s leader.</p>
 <p><code translate="no" v-pre>group_id_1</code> should be the group ID that the user is leader of, and <code translate="no" v-pre>group_id_2</code> should be the other group ID.</p>
-<doc-panel id="examples-3" collapsed>
+<doc-panel id="examples-4" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="query-parameters-1">
@@ -558,7 +591,7 @@ referrer-policy: same-origin</code></pre>
 </div>
 <h6 id="italics--default---optional-1"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-3">
+<doc-tab v-cloak id="successful-response-200-4">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -585,10 +618,10 @@ referrer-policy: same-origin</code></pre>
 </span></p>
 <p>Deletes a link between two groups.</p>
 <p><code translate="no" v-pre>group_id_1</code> should be the group ID that the user is leader of, and <code translate="no" v-pre>group_id_2</code> should be the other group ID.</p>
-<doc-panel id="examples-4" collapsed>
+<doc-panel id="examples-5" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
-<doc-tab v-cloak id="successful-response-200-4">
+<doc-tab v-cloak id="successful-response-200-5">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -614,7 +647,7 @@ referrer-policy: same-origin</code></pre>
     <span>Auth Required</span>
 </span></p>
 <p>Creates invites for one or more users to join a group.</p>
-<doc-panel id="examples-5" collapsed>
+<doc-panel id="examples-6" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="json-parameters">
@@ -645,7 +678,7 @@ referrer-policy: same-origin</code></pre>
 </div>
 <h6 id="italics--default---optional-2"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-5">
+<doc-tab v-cloak id="successful-response-200-6">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -677,7 +710,7 @@ referrer-policy: same-origin</code></pre>
     <span>Auth Required</span>
 </span></p>
 <p>Updates a member in a group.</p>
-<doc-panel id="examples-6" collapsed>
+<doc-panel id="examples-7" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="json-parameters-1">
@@ -712,7 +745,7 @@ referrer-policy: same-origin</code></pre>
 </div>
 <h6 id="at-least-one-is-required-italics--default---optional">At least one is required, <em>italics</em> = default, ? = optional</h6>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-6">
+<doc-tab v-cloak id="successful-response-200-7">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -779,7 +812,7 @@ The differences are as follows:</p>
 </tbody>
 </table>
 </div>
-<doc-panel id="examples-7" collapsed>
+<doc-panel id="examples-8" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="query-parameters-2">
@@ -804,7 +837,7 @@ The differences are as follows:</p>
 </div>
 <h6 id="italics--default---optional-3"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-7">
+<doc-tab v-cloak id="successful-response-200-8">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -831,10 +864,10 @@ The differences are as follows:</p>
 </span></p>
 <p>Returns information about an invited user, including the group it belongs to.</p>
 <p>Use <code translate="no" v-pre>?key=</code> to reveal who the recipient is.</p>
-<doc-panel id="examples-8" collapsed>
+<doc-panel id="examples-9" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
-<doc-tab v-cloak id="successful-response-200-8">
+<doc-tab v-cloak id="successful-response-200-9">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -871,7 +904,7 @@ The differences are as follows:</p>
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="unsuccessful-response-404-1">
+<doc-tab v-cloak id="unsuccessful-response-404-2">
 <template #title>Unsuccessful Response (404)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -890,7 +923,7 @@ The differences are as follows:</p>
 </span></p>
 <p>Assign an orphaned invite to a user. This is only used for group leaders/admins to assign invites that don&#x27;t have a recipient. The user will receive a notification about the invite.</p>
 <p>Orphaned invites are created when a member is invited without specifying a user ID (commonly on torrent upload page), or when a member is removed from the group without being deleted.</p>
-<doc-panel id="examples-9" collapsed>
+<doc-panel id="examples-10" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="json-parameters-2">
@@ -914,7 +947,7 @@ The differences are as follows:</p>
 </table>
 </div>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-9">
+<doc-tab v-cloak id="successful-response-200-10">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -931,7 +964,7 @@ The differences are as follows:</p>
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="unsuccessful-response-404-2">
+<doc-tab v-cloak id="unsuccessful-response-404-3">
 <template #title>Unsuccessful Response (404)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -949,10 +982,10 @@ The differences are as follows:</p>
     <span>Auth Required</span>
 </span></p>
 <p>Accepts an invite to a group using the provided invite ID and key.</p>
-<doc-panel id="examples-10" collapsed>
+<doc-panel id="examples-11" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
-<doc-tab v-cloak id="successful-response-200-10">
+<doc-tab v-cloak id="successful-response-200-11">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -978,10 +1011,10 @@ The differences are as follows:</p>
     <span>Auth Optional</span>
 </span></p>
 <p>Returns the list of supported languages for audio, subtitles, and fansubs.</p>
-<doc-panel id="examples-11" collapsed>
+<doc-panel id="examples-12" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
-<doc-tab v-cloak id="successful-response-200-11">
+<doc-tab v-cloak id="successful-response-200-12">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -1040,10 +1073,10 @@ The differences are as follows:</p>
 </span></p>
 <p>Returns information about a specific media item, including its title, description, and other metadata.</p>
 <p>Use <code translate="no" v-pre>?force=true</code> to get the media, even if there are no torrents for it.</p>
-<doc-panel id="examples-12" collapsed>
+<doc-panel id="examples-13" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
-<doc-tab v-cloak id="successful-response-200-12">
+<doc-tab v-cloak id="successful-response-200-13">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -1128,7 +1161,7 @@ The differences are as follows:</p>
     <span>Auth Optional</span>
 </span></p>
 <p>Searches for media items based on search query.</p>
-<doc-panel id="examples-13" collapsed>
+<doc-panel id="examples-14" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="query-parameters-3">
@@ -1163,7 +1196,7 @@ The differences are as follows:</p>
 </div>
 <h6 id="italics--default---optional-4"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-13">
+<doc-tab v-cloak id="successful-response-200-14">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -1219,10 +1252,10 @@ The differences are as follows:</p>
     <span>Auth Optional</span>
 </span></p>
 <p>Returns various statistics about the site, such as the number of users, torrents, and groups.</p>
-<doc-panel id="examples-14" collapsed>
+<doc-panel id="examples-15" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
-<doc-tab v-cloak id="successful-response-200-14">
+<doc-tab v-cloak id="successful-response-200-15">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -1279,10 +1312,10 @@ The differences are as follows:</p>
     <span>Auth Optional</span>
 </span></p>
 <p>Returns information about a specific torrent, including its title, description, and other metadata.</p>
-<doc-panel id="examples-15" collapsed>
+<doc-panel id="examples-16" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
-<doc-tab v-cloak id="successful-response-200-15">
+<doc-tab v-cloak id="successful-response-200-16">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -1424,7 +1457,7 @@ The differences are as follows:</p>
     <span>Auth Required</span>
 </span></p>
 <p>Edit a specific torrent.</p>
-<doc-panel id="examples-16" collapsed>
+<doc-panel id="examples-17" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="json-data-parameters">
@@ -1581,7 +1614,7 @@ The differences are as follows:</p>
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-16">
+<doc-tab v-cloak id="successful-response-200-17">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -1652,7 +1685,7 @@ The differences are as follows:</p>
 </tbody>
 </table>
 </div>
-<doc-panel id="examples-17" collapsed>
+<doc-panel id="examples-18" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="successful-response-200-201">
@@ -1724,10 +1757,10 @@ The differences are as follows:</p>
     <span>Auth Optional</span>
 </span></p>
 <p>Returns comments for a specific torrent.</p>
-<doc-panel id="examples-18" collapsed>
+<doc-panel id="examples-19" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
-<doc-tab v-cloak id="successful-response-200-17">
+<doc-tab v-cloak id="successful-response-200-18">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -1781,7 +1814,7 @@ The differences are as follows:</p>
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="unsuccessful-response-404-3">
+<doc-tab v-cloak id="unsuccessful-response-404-4">
 <template #title>Unsuccessful Response (404)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -1818,7 +1851,7 @@ You can specify <code translate="no" v-pre>?public=true</code> to get the torren
 The <code translate="no" v-pre>PATCH</code> method is recommended for larger requests, as the <code translate="no" v-pre>GET</code> method may hit URL length limits.</p>
 <p>When authenticated, the returned torrent files will be private torrents with the user&#x27;s passkey included in the announce URL.<br>
 You can specify <code translate="no" v-pre>public=true</code> to get the torrent files without your torrent key.</p>
-<doc-panel id="examples-19" collapsed>
+<doc-panel id="examples-20" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="query-parameters-get">
@@ -1887,7 +1920,7 @@ You can specify <code translate="no" v-pre>public=true</code> to get the torrent
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-18">
+<doc-tab v-cloak id="successful-response-200-19">
 <template #title>Successful Response (200)</template>
 <p>Will return a ZIP file containing the requested .torrent files.</p>
 </doc-tab>
@@ -1910,7 +1943,7 @@ You can specify <code translate="no" v-pre>public=true</code> to get the torrent
 </span></p>
 <p>Edit a group of torrents. You must have permission to edit all specified torrents. Maximum 250 torrents per request.</p>
 <p>This endpoint will return a <code translate="no" v-pre>bad_torrents</code> field in the response if any of the specified torrents could not be edited.</p>
-<doc-panel id="examples-20" collapsed>
+<doc-panel id="examples-21" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="json-data-parameters-1">
@@ -2066,7 +2099,7 @@ You can specify <code translate="no" v-pre>public=true</code> to get the torrent
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-19">
+<doc-tab v-cloak id="successful-response-200-20">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -2102,7 +2135,7 @@ You can specify <code translate="no" v-pre>public=true</code> to get the torrent
 <p>This endpoint will return a <code translate="no" v-pre>bad_torrents</code> field in the response if any of the specified torrents can not be edited.</p>
 <p>This request is done before attempting a bulk edit on the website. You don&#x27;t have to call this endpoint before calling the bulk edit endpoint.
 You will receive the same <code translate="no" v-pre>bad_torrents</code> field in the bulk edit response.</p>
-<doc-panel id="examples-21" collapsed>
+<doc-panel id="examples-22" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="json-data-parameters-2">
@@ -2127,7 +2160,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 </div>
 <h6 id="italics--default---optional-7"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-20">
+<doc-tab v-cloak id="successful-response-200-21">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -2163,7 +2196,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 <li>Searching <code translate="no" v-pre>s01</code> when a <code translate="no" v-pre>media_id</code> is provided, it will add season 1 to the episode filter.</li>
 <li>Searching <code translate="no" v-pre>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</code> will assume it&#x27;s an info hash, and search for the torrent directly, and return a torrent ID for in the <code translate="no" v-pre>infohash_match</code> data field if a torrent is found.</li>
 </ul>
-<doc-panel id="examples-22" collapsed>
+<doc-panel id="examples-23" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="query-parameters-4">
@@ -2323,7 +2356,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 </div>
 <h6 id="italics--default---optional-8"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-21">
+<doc-tab v-cloak id="successful-response-200-22">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -2439,7 +2472,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 </span></p>
 <p>Uploads a new torrent to the site.</p>
 <p>It&#x27;s recommended you first perform <doc-anchor-trigger to="#perform-upload-checks">upload checks</doc-anchor-trigger> before uploading a torrent, to ensure the torrent is being parsed as expected.</p>
-<doc-panel id="examples-23" collapsed>
+<doc-panel id="examples-24" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="json-data-parameters-3">
@@ -2621,7 +2654,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-22">
+<doc-tab v-cloak id="successful-response-200-23">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -2671,7 +2704,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
     <span>Auth Required</span>
 </span></p>
 <p>Performs various checks for a new torrent upload, such as verifying its parsability.</p>
-<doc-panel id="examples-24" collapsed>
+<doc-panel id="examples-25" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="json-data-parameters-4">
@@ -2814,7 +2847,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-23">
+<doc-tab v-cloak id="successful-response-200-24">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -2885,7 +2918,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 </span></p>
 <p>Extracts metadata for a torrent using Mediainfo Text or JSON output.</p>
 <p>When providing JSON output, you must provide the data as JSON, not a JSON string.</p>
-<doc-panel id="examples-25" collapsed>
+<doc-panel id="examples-26" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="json-data-parameters-5">
@@ -2939,7 +2972,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-24">
+<doc-tab v-cloak id="successful-response-200-25">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -2988,10 +3021,10 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
     </div>
 </div>
 <p>Returns information about a specific user, including their username, profile picture, and other metadata.</p>
-<doc-panel id="examples-26" collapsed>
+<doc-panel id="examples-27" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
-<doc-tab v-cloak id="successful-response-200-25">
+<doc-tab v-cloak id="successful-response-200-26">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -3042,7 +3075,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="unsuccessful-response-404-4">
+<doc-tab v-cloak id="unsuccessful-response-404-5">
 <template #title>Unsuccessful Response (404)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -3060,7 +3093,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
     <span>Auth Required</span>
 </span></p>
 <p>Perform edits on your account. This includes Nyaa links, profile picture, revoking API keys, and your description.</p>
-<doc-panel id="examples-27" collapsed>
+<doc-panel id="examples-28" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="json-data-parameters-6">
@@ -3125,7 +3158,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 </div>
 <h6 id="at-least-one-is-required-italics--default---optional-3">At least one is required, <em>italics</em> = default, ? = optional</h6>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-26">
+<doc-tab v-cloak id="successful-response-200-27">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -3152,10 +3185,10 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
     <span>Auth Optional</span>
 </span></p>
 <p>Returns the groups that a user is a member of.</p>
-<doc-panel id="examples-28" collapsed>
+<doc-panel id="examples-29" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
-<doc-tab v-cloak id="successful-response-200-27">
+<doc-tab v-cloak id="successful-response-200-28">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -3192,7 +3225,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="unsuccessful-response-404-5">
+<doc-tab v-cloak id="unsuccessful-response-404-6">
 <template #title>Unsuccessful Response (404)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -3264,10 +3297,10 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 </tbody>
 </table>
 </div>
-<doc-panel id="examples-29" collapsed>
+<doc-panel id="examples-30" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
-<doc-tab v-cloak id="successful-response-200-28">
+<doc-tab v-cloak id="successful-response-200-29">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -3300,7 +3333,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
     <span>Auth Required</span>
 </span></p>
 <p>Marks specified notifications as read. Returns the updated list of notifications.</p>
-<doc-panel id="examples-30" collapsed>
+<doc-panel id="examples-31" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="json-data-parameters-7">
@@ -3325,7 +3358,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 </div>
 <h6 id="italics--default---optional-12"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-29">
+<doc-tab v-cloak id="successful-response-200-30">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -3358,10 +3391,10 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
     <span>Auth Required</span>
 </span></p>
 <p>Returns a list of torrents that the user is a peer of, including their upload and download statistics.</p>
-<doc-panel id="examples-31" collapsed>
+<doc-panel id="examples-32" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
-<doc-tab v-cloak id="successful-response-200-30">
+<doc-tab v-cloak id="successful-response-200-31">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -3435,7 +3468,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
         </div>
     </div>
 </div>
-<doc-panel id="examples-32" collapsed>
+<doc-panel id="examples-33" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="query-parameters-5">
@@ -3460,7 +3493,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 </div>
 <h6 id="italics--default---optional-13"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-31">
+<doc-tab v-cloak id="successful-response-200-32">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
