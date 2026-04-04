@@ -230,33 +230,9 @@ Returns information about a specific group, including its name, description, mem
         }
       ]
     },
-    "media": [
-      {
-        "episodes": [ // List of episode IDs the group/child groups have worked on for this media
-            "1234"
-        ],
-        "torrents": [ // List of torrent IDs the group/child groups have uploaded for this media
-          "1234567890"
-        ],
-        "groups": [ // List of group IDs (including child groups) that have worked on this media
-          "1234567890"
-        ],
-        "media": {
-          "id": "m1",
-          "title": "Example Movie",
-          "banner_url": "https://image.tmdb.org/t/p/original/....jpg",
-          "episodes": [ // Use this list to get episode details for the episodes worked on by this group
-            {
-              "id": 1234,
-              "season": 1,
-              "episode": 1,
-              "absolute": 1,
-              "tvdbId": 1234567,
-              "title": "Example Episode Title"
-            },
-          ]
-        }
-      }
+    "media_ids": [ // List of media IDs (movies/series) this group and its children have contributed to
+      "m1",
+      "s2"
     ],
     "can_edit": false,
     "can_leave": false,
@@ -282,6 +258,56 @@ Returns information about a specific group, including its name, description, mem
 +++
 ==-
 
+
+### Get Group Media
+[!badge variant="info" text="GET"] `/groups/<group_id>/media` [!badge variant="success" text="Auth Optional"]
+
+Returns full media details for all movies and series the group (and its children) have contributed to.
+
+==- Examples
++++ Successful Response (200)
+```json
+{
+  "error": false,
+  "data": [
+    {
+      "episodes": [ // List of episode IDs the group/child groups have worked on for this media
+        "1234"
+      ],
+      "torrents": [ // List of torrent IDs the group/child groups have uploaded for this media
+        "1234567890"
+      ],
+      "groups": [ // List of group IDs (including child groups) that have worked on this media
+        "1234567890"
+      ],
+      "media": {
+        "id": "m1",
+        "title": "Example Movie",
+        "banner_url": "https://image.tmdb.org/t/p/original/....jpg",
+        "episodes": [ // Use this list to get episode details for the episodes worked on by this group
+          {
+            "id": 1234,
+            "season": 1,
+            "episode": 1,
+            "absolute": 1,
+            "tvdbId": 1234567,
+            "title": "Example Episode Title"
+          }
+        ]
+      }
+    }
+  ]
+}
+```
++++ Unsuccessful Response (404)
+```json
+{
+  "error": true,
+  "message": "Group not found."
+}
+```
++++
+==-
 
 
 
