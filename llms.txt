@@ -1,0 +1,25 @@
+﻿#  - nekoBT Wiki
+
+> This is the place you'll find all information about nekoBT.
+
+- [Home](https://wiki.nekobt.to/index.md): Home
+- [Rules](https://wiki.nekobt.to/rules.md): Last Updated: 6 March 2026
+- [Privacy Policy](https://wiki.nekobt.to/privacy.md): Last Updated: 6 August 2025
+- [Contact Staff](https://wiki.nekobt.to/contact.md): If you need to contact staff, please send an email to us.
+- [FAQ](https://wiki.nekobt.to/faq.md): nekoBT is a public torrent tracker for anime, with a focus on fansubs and groups.
+
+## Info
+
+- [Groups](https://wiki.nekobt.to/info/groups.md): nekoBT has a group system that allows you to create release groups for easier management of releases.
+- [Sub Levels](https://wiki.nekobt.to/info/sub-levels.md): Sub levels are how nekoBT attempts to categorize the quality of a release's subtitles. The higher the sub level, the more extensive the work put into the subtitles.
+- [Uploading](https://wiki.nekobt.to/info/uploading.md): Let's pretend this is your first time uploading a torrent to nekoBT. Here's a step-by-step guide on how to do it.
+- [Metadata](https://wiki.nekobt.to/info/metadata.md): Torrents must include specific metadata, such as sub level, video type, codec, and languages.
+- [Sonarr & Radarr](https://wiki.nekobt.to/info/sonarr-radarr.md): On this page, you'll learn how to setup Sonarr/Radarr with nekoBT.
+- [Nyaa Linking & Importing](https://wiki.nekobt.to/info/nyaa.md): You can link you Nyaa account to your nekoBT account to prove ownership of your account, or to import old torrents from Nyaa.
+
+## Technical Details
+
+- [Snowflakes](https://wiki.nekobt.to/technical-details/snowflakes.md): nekoBT uses a form of snowflakes as unique identifiers for various entities, such as torrents, groups, users, etc. You may want to decode snowflakes for various reasons, such as to get the timestamp of when an entity was created, or to get the type of entity it is.
+- [API Keys](https://wiki.nekobt.to/technical-details/api-keys.md): Do not share your cookie or API key with people/programs/websites you don't trust. It is a secret key that allows access to your account. If you believe your API key has been compromised, you can revoke all API keys in your account settings.
+- [JSON API](https://wiki.nekobt.to/technical-details/json.md): This is the main API for nekoBT, and is used for most requests.
+- [Torznab & RSS](https://wiki.nekobt.to/technical-details/torznab.md): To access the Torznab API, you should instead specify your API key as the apikey query parameter.

@@ -4,24 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.4.0.828651166608">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.2.828992563165">
 
     <!-- See retype.com -->
-    <meta name="generator" content="Retype 4.4.0">
+    <meta name="generator" content="Retype 4.5.2">
 
     <!-- Primary Meta Tags -->
     <title>Snowflakes - nekoBT Wiki</title>
     <meta name="title" content="Snowflakes - nekoBT Wiki">
-    <meta name="description" content="nekoBT uses a form of snowflakes as unique identifiers for various entities, such as torrents, groups, users, etc. You may want to decode snowflakes for">
+    <meta name="description" content="nekoBT uses a form of snowflakes as unique identifiers for various entities, such as torrents, groups, users, etc. You may want to decode snowflakes for various reasons, such as to get the timestamp of when an entity was created, or to get the type of entity it is.">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://wiki.nekobt.to/technical-details/snowflakes/">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="https://wiki.nekobt.to/sitemap.xml">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wiki.nekobt.to/technical-details/snowflakes/">
     <meta property="og:title" content="Snowflakes - nekoBT Wiki">
-    <meta property="og:description" content="nekoBT uses a form of snowflakes as unique identifiers for various entities, such as torrents, groups, users, etc. You may want to decode snowflakes for">
+    <meta property="og:description" content="nekoBT uses a form of snowflakes as unique identifiers for various entities, such as torrents, groups, users, etc. You may want to decode snowflakes for various reasons, such as to get the timestamp of when an entity was created, or to get the type of entity it is.">
     <meta property="og:site_name" content="nekoBT">
     <meta property="og:locale" content="en_US">
 
@@ -29,16 +30,19 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://wiki.nekobt.to/technical-details/snowflakes/">
     <meta name="twitter:title" content="Snowflakes - nekoBT Wiki">
-    <meta name="twitter:description" content="nekoBT uses a form of snowflakes as unique identifiers for various entities, such as torrents, groups, users, etc. You may want to decode snowflakes for">
+    <meta name="twitter:description" content="nekoBT uses a form of snowflakes as unique identifiers for various entities, such as torrents, groups, users, etc. You may want to decode snowflakes for various reasons, such as to get the timestamp of when an entity was created, or to get the type of entity it is.">
+
+    <!-- Alternate Markdown -->
+    <link rel="alternate" type="text/markdown" href="https://wiki.nekobt.to/technical-details/snowflakes.md">
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.4.0.828651166608" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.2.828992563165" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.4.0.828651166608" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../resources/js/retype.js?v=4.4.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.4.0.828651166608" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.4.0.828651166608" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.2.828992563165" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.2" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.2.828992563165" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.2.828992563165" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -149,9 +153,11 @@
 <div class="flex">
     <div id="retype-main" class="min-w-0 p-4 grow md:px-16">
         <main class="relative pb-12 lg:pt-2">
-            <div class="retype-markdown" id="retype-content">
+            <div class="relative retype-markdown" id="retype-content">
                 <!-- Rendered if sidebar right is enabled -->
                 <div id="retype-sidebar-right-toggle"></div>
+                <doc-page-actions></doc-page-actions>
+
                 <!-- Page content  -->
 <h1 id="snowflakes">Snowflakes</h1>
 <p>nekoBT uses a form of <a href="https://en.wikipedia.org/wiki/Snowflake_ID">snowflakes</a> as unique identifiers for various entities, such as torrents, groups, users, etc. You may want to decode snowflakes for various reasons, such as to get the timestamp of when an entity was created, or to get the type of entity it is.</p>
@@ -295,7 +301,7 @@ def extract_snowflake(snowflake):
                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-3" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" overflow="visible"><path d="M19 11H7.41l5.29-5.29a.996.996 0 10-1.41-1.41l-7 7a1 1 0 000 1.42l7 7a1.024 1.024 0 001.42-.01.996.996 0 000-1.41L7.41 13H19c.55 0 1-.45 1-1s-.45-1-1-1z" /><path fill="none" d="M0 0h24v24H0z" /></svg>
                             <span>
                                 <span class="block text-xs font-normal text-base-text-muted">Previous</span>
-                                <span class="block mt-1">Nyaa Linking & Importing</span>
+                                <span class="block mt-1">Nyaa Linking &amp; Importing</span>
                             </span>
                         </a>
                     </div>
@@ -348,6 +354,6 @@ def extract_snowflake(snowflake):
 
     <div id="retype-overlay-target"></div>
 
-    <script data-cfasync="false">window.__DOCS__ = { "title": "Snowflakes (IDs)", level: 2, icon: "file", hasPrism: true, hasMermaid: false, hasMath: false, tocDepth: 23 }</script>
+        <script data-cfasync="false">window.__DOCS__ = { "title": "Snowflakes (IDs)", level: 2, icon: "file", hasPrism: true, hasInstagram: false, hasMermaid: false, hasMath: false, tocDepth: 23, "md": "/technical-details/snowflakes.md" }</script>
 </body>
 </html>

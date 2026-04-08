@@ -1,0 +1,75 @@
+# Sub Levels
+
+Sub levels are how nekoBT attempts to categorize the **quality** of a release's subtitles.
+The higher the sub level, the more extensive the work put into the subtitles.
+
+The keywords "SHOULD" and "MUST" below are to be interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
+- "MUST" means it's a hard requirement.
+- "SHOULD" means it's not a requirement, but there are very few valid reasons not to have it.
+  - Example: A valid reason for not having TS would be that there are no signs in the episode.
+
+The sub levels are as follows:
+- **Level 0 (L0)**: Official
+    - These are official subtitles taken from a source.
+        - Examples: Netflix, Crunchyroll, Blu-ray, etc.
+    - The following modifications are considered minor, and still count as L0:
+        - Changing the font style/size/color.
+        - Shifting subtitle timing (this also includes removal of commercial breaks, etc).
+- **Level 1 (L1)**: Slight Modifications
+    - Any modified subtitles that go further than the modifications stated above.
+- **Level 2 (L2)**: Small-scale Fansubs
+    - SHOULD have at least two of the following: ED, TS, and Song Translation
+    - **or** MUST be an original translation (OTL).
+- **Level 3 (L3)**: Full-scale Fansubs
+    - SHOULD have all of the following: ED, TS, Song Translation, fixed timing issues.
+    - MUST have QC.
+
+!!!info Edge case:
+If an episode can't have a certain job done, then you can count it as being done.<br>
+Example 1: If an episode has no songs, then you can count Song Styling as being done.<br>
+Example 2: If an episode has no signs, then you can count TS as being done.<br>
+However, just because an episode has no songs or signs, doesn't automatically make it L2.<br>
+If you have done other jobs (TLC, QC, etc), then you can make it L2.
+!!!
+
+Here's a flow chart to help you categorize your release's sub level:
+
+```mermaid
+---
+config:
+    themeVariables:
+        fontSize: '24px'
+        backgroundColor: 'transparent'
+---
+graph LR
+    A{Are the subtitles untouched or have only had a main style change from their official source?} -->|Yes| B[Level 0]
+    A -->|No| C{Have you done at least 2 of the following:<br>ED, TS, Song Translation? Or is it an OTL?}
+    C -->|Yes| E{Did you do ED, TS, Song Translation,<br>fix timing issues, and perform a QC pass?}
+    C -->|No to both| D[Level 1]
+    E -->|Yes| G[Level 3]
+    E -->|No| F[Level 2]
+```
+
+#### Appendix
+- **ED**: Editing — making changes to the script to make it read well.
+- **TS**: Typesetting — turning foreign signs (text on screen) into your language.
+- **QC**: Quality Control — checking everyone's work for errors, typos, etc.
+- **TLC**: Translation Check — checking the translation for accuracy.
+- **Song Translation**: Adding translated lyrics for the songs (possibly with or without karaoke effects).
+- **OTL**: Original Translation — translation made from scratch for the project (rather than editing an existing one).
+
+### Dealing with multiple fansubs in one release
+
+If a release contains multiple fansubs, you should take the highest sub level for each language, and use the lowest sub level among them.
+
+For example:
+- This should be L3 (both same):
+    - English: L3
+    - Spanish: L3
+- This should be L2 (lower level takes precedence):
+    - English: L3
+    - French: L2
+- This should be L2 (Group A takes precedence over Group B):
+    - English (Group A): L2
+    - English (Group B): L1
+    - German: L2
