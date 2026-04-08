@@ -32,11 +32,11 @@ The **Video Type** tag indicates the video's source and any encoding applied.
 |------|-------------|----|
 | Hybrid | An encode using various sources, most commonly WEB and BD. | 15 |
 | BD - Remux | Untouched, decrypted Blu-ray Disc copy in a playable format (mkv, mp4, etc). | 14 |
-| BD - Encode | An encode of the raw Blu-ray Disc. | 13 |
+| BD - Encode | An encode of the raw Blu-ray Disc. The aim of the encode must be to improve quality, or achieve transparency. | 13 |
 | BD - Mini | Blu-ray Disc encode with reduced quality to save space. This also includes videos re-encoded from another unofficial source. | 12 |
 | BD - Disc | Blu-ray Disc. | 11 |
 | WEB-DL | Direct copy from a streaming service. | 9 |
-| WEB - Encode | Re-encode of the WEB source. | 8 |
+| WEB - Encode | Re-encode of the WEB source. The aim of the encode must be to improve quality, or achieve transparency. | 8 |
 | WEB - Mini | WEB source encode with reduced quality to save space. This also includes videos re-encoded from another unofficial source. | 7 |
 | DVD - Encode | An encode of a DVD. | 6 |
 | DVD - Remux | Direct copy of a DVD in a playable format. | 5 |
