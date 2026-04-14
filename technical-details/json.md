@@ -850,7 +850,8 @@ Returns various statistics about the site, such as the number of users, torrents
     },
     "peers": {
       "seeders": 2683,
-      "leechers": 31
+      "leechers": 31,
+      "bandwidth": 123 // Estimated total bandwidth in bytes/second from all peers, not double counted. If one peer was downloading 1 Mbit/s, and another was uploading 1 Mbit/s, the bandwidth would be 1 Mbit/s in bytes/s. 
     }
   },
   "message": "Cache hit, returning stats." // Varies: "Cache hit, returning stats." | "Cache miss, fetching new stats." | "Cache refreshed, serving new stats." | "Cache expired, serving old stats."
