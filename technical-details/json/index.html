@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829504697013">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.829594382878">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -37,12 +37,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.829504697013" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.829594382878" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829504697013" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.829594382878" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829504697013" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829504697013" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.829594382878" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.829594382878" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -2378,6 +2378,9 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
         &quot;magnet&quot;: &quot;magnet:?xt=urn:btih:9a4e649...&quot;,
         &quot;private_magnet&quot;: null, // Only present if authenticated
         &quot;media_id&quot;: &quot;s123&quot;,
+        &quot;media_episode_ids&quot;: [
+          &quot;12345&quot; // IDs match the ones returned in the media endpoint
+        ],
         &quot;description&quot;: &quot;...&quot;, // Can be null
         &quot;filesize&quot;: &quot;7738622751&quot;, // In bytes
         &quot;category&quot;: 1,
@@ -2653,7 +2656,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
       &quot;role&quot;: &quot;Encode&quot;
     }
   ],
-  &quot;audio_langs&quot;: &quot;jp&quot;,
+  &quot;audio_langs&quot;: &quot;ja&quot;,
   &quot;sub_langs&quot;: &quot;&quot;,
   &quot;fansub_langs&quot;: &quot;en&quot;,
   &quot;description&quot;: &quot;Example description...&quot;,
@@ -2737,9 +2740,14 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 <td>Whether this torrent is for a movie (true) or series (false)</td>
 </tr>
 <tr>
-<td>files</td>
-<td>array of objects</td>
-<td>Array of file objects with <code translate="no" v-pre>path</code> (string) that the torrent contains</td>
+<td>torrent?</td>
+<td>string</td>
+<td>Base64-encoded <code translate="no" v-pre>.torrent</code> file. If provided, <code translate="no" v-pre>files</code>, <code translate="no" v-pre>announce_urls</code>, and <code translate="no" v-pre>raw_announce_urls</code> are extracted from it and any values supplied for those fields are ignored.</td>
+</tr>
+<tr>
+<td>files?</td>
+<td>array</td>
+<td>Array of file objects (<code translate="no" v-pre>{ path: string }</code>) or plain path strings. Ignored if <code translate="no" v-pre>torrent</code> is provided.</td>
 </tr>
 <tr>
 <td>video_type</td>
@@ -2799,12 +2807,12 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 <tr>
 <td>announce_urls?</td>
 <td>array of strings</td>
-<td>Array of announce URLs in the torrent file</td>
+<td>Array of announce URLs. Ignored if <code translate="no" v-pre>torrent</code> is provided.</td>
 </tr>
 <tr>
 <td>raw_announce_urls?</td>
 <td>array of arrays of strings</td>
-<td>Tiered announce URLs in the torrent file</td>
+<td>Tiered announce URLs. Ignored if <code translate="no" v-pre>torrent</code> is provided.</td>
 </tr>
 </tbody>
 </table>
@@ -2823,8 +2831,27 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 </ul>
 <h6 id="italics--default---optional-10"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
-<doc-tab v-cloak id="example-request-data-4">
-<template #title>Example Request Data</template>
+<doc-tab v-cloak id="example-request-data-with-torrent-file">
+<template #title>Example Request Data (with torrent file)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;title&quot;: &quot;[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0]&quot;,
+  &quot;movie&quot;: false,
+  &quot;torrent&quot;: &quot;ZDg6YW5ub3VuY2....&quot;,
+  &quot;video_type&quot;: null,
+  &quot;video_codec&quot;: null,
+  &quot;level&quot;: &quot;&quot;,
+  &quot;mtl&quot;: false,
+  &quot;otl&quot;: false,
+  &quot;hardsub&quot;: false,
+  &quot;audio_langs&quot;: &quot;&quot;,
+  &quot;sub_langs&quot;: &quot;&quot;,
+  &quot;fansub_langs&quot;: &quot;&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="example-request-data-with-explicit-files">
+<template #title>Example Request Data (with explicit files)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
   &quot;title&quot;: &quot;[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0]&quot;,
@@ -2833,7 +2860,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
   &quot;video_codec&quot;: null,
   &quot;files&quot;: [
     {
-      &quot;path&quot;: &quot;[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0].mkv&quot;,
+      &quot;path&quot;: &quot;[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0].mkv&quot;
     }
   ],
   &quot;level&quot;: &quot;&quot;,
@@ -2844,11 +2871,11 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
   &quot;sub_langs&quot;: &quot;&quot;,
   &quot;fansub_langs&quot;: &quot;&quot;,
   &quot;announce_urls&quot;: [
-    &quot;udp://tracker.opentrackr.org:1337/announce&quot;,
+    &quot;udp://tracker.opentrackr.org:1337/announce&quot;
   ],
   &quot;raw_announce_urls&quot;: [
     [
-      &quot;udp://tracker.opentrackr.org:1337/announce&quot;,
+      &quot;udp://tracker.opentrackr.org:1337/announce&quot;
     ]
   ]
 }</code></pre>
@@ -2988,7 +3015,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
     &quot;video_codec&quot;: 2,
     &quot;fansub_langs&quot;: &quot;&quot;,
     &quot;sub_langs&quot;: &quot;en&quot;,
-    &quot;audio_langs&quot;: &quot;jp&quot;
+    &quot;audio_langs&quot;: &quot;ja&quot;
   }
 }</code></pre>
 </doc-codeblock></div>
