@@ -1537,6 +1537,9 @@ after? | string | Filter torrents uploaded after this date, unix milliseconds
         "magnet": "magnet:?xt=urn:btih:9a4e649...",
         "private_magnet": null, // Only present if authenticated
         "media_id": "s123",
+        "media_episode_ids": [
+          "12345" // IDs match the ones returned in the media endpoint
+        ],
         "description": "...", // Can be null
         "filesize": "7738622751", // In bytes
         "category": 1,
@@ -1706,7 +1709,7 @@ ignore_warnings? | boolean | Whether to ignore validation warnings, and proceed 
       "role": "Encode"
     }
   ],
-  "audio_langs": "jp",
+  "audio_langs": "ja",
   "sub_langs": "",
   "fansub_langs": "en",
   "description": "Example description...",
@@ -1765,7 +1768,8 @@ Name | Type | Description
 ---- | ---- | -----------
 title | string | Title for the torrent (max 512 characters)
 movie | boolean | Whether this torrent is for a movie (true) or series (false)
-files | array of objects | Array of file objects with `path` (string) that the torrent contains
+torrent? | string | Base64-encoded `.torrent` file. If provided, `files`, `announce_urls`, and `raw_announce_urls` are extracted from it and any values supplied for those fields are ignored.
+files? | array | Array of file objects (`{ path: string }`) or plain path strings. Ignored if `torrent` is provided.
 video_type | number or null | Video type category ID
 video_codec | number or null | Video codec category ID
 level | number | Subtitle level (null or -1 to 3, -1 = no subs)
@@ -1777,8 +1781,8 @@ primary_group? | object | Primary group information (see below)
 audio_langs | string | Comma-separated list of audio languages (max 256 characters)
 sub_langs | string | Comma-separated list of subtitle languages (max 256 characters)
 fansub_langs | string | Comma-separated list of fansub languages (max 256 characters)
-announce_urls? | array of strings | Array of announce URLs in the torrent file
-raw_announce_urls? | array of arrays of strings | Tiered announce URLs in the torrent file
+announce_urls? | array of strings | Array of announce URLs. Ignored if `torrent` is provided.
+raw_announce_urls? | array of arrays of strings | Tiered announce URLs. Ignored if `torrent` is provided.
 
 **Primary Group Object:**
 - `id` (string): Group ID
@@ -1788,7 +1792,24 @@ raw_announce_urls? | array of arrays of strings | Tiered announce URLs in the to
   - `role` (string): Role name
   - `display_name` (string, max 32): Display name (used for new invites)
 ###### *italics* = default, ? = optional
-+++ Example Request Data
++++ Example Request Data (with torrent file)
+```json
+{
+  "title": "[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0]",
+  "movie": false,
+  "torrent": "ZDg6YW5ub3VuY2....",
+  "video_type": null,
+  "video_codec": null,
+  "level": "",
+  "mtl": false,
+  "otl": false,
+  "hardsub": false,
+  "audio_langs": "",
+  "sub_langs": "",
+  "fansub_langs": ""
+}
+```
++++ Example Request Data (with explicit files)
 ```json
 {
   "title": "[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0]",
@@ -1797,7 +1818,7 @@ raw_announce_urls? | array of arrays of strings | Tiered announce URLs in the to
   "video_codec": null,
   "files": [
     {
-      "path": "[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0].mkv",
+      "path": "[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0].mkv"
     }
   ],
   "level": "",
@@ -1808,11 +1829,11 @@ raw_announce_urls? | array of arrays of strings | Tiered announce URLs in the to
   "sub_langs": "",
   "fansub_langs": "",
   "announce_urls": [
-    "udp://tracker.opentrackr.org:1337/announce",
+    "udp://tracker.opentrackr.org:1337/announce"
   ],
   "raw_announce_urls": [
     [
-      "udp://tracker.opentrackr.org:1337/announce",
+      "udp://tracker.opentrackr.org:1337/announce"
     ]
   ]
 }
@@ -1926,7 +1947,7 @@ You can either provide the whole JSON object from Mediainfo, or just the `media`
     "video_codec": 2,
     "fansub_langs": "",
     "sub_langs": "en",
-    "audio_langs": "jp"
+    "audio_langs": "ja"
   }
 }
 ```
