@@ -81,9 +81,8 @@ Sometimes, your upload will have to be approved by a staff member before it is v
 
 Your upload may be held for approval if:
 - It's your first time uploading.
-- You haven't uploaded this sub level before.
 
-Please be patient while staff reviews your upload.
+Please be patient while staff reviews your upload. This can take anywhere from a few minutes to up to 24 hours, depending on how busy the staff are. You will receive a notification when your upload is approved or rejected.
 
 !!!info
 It's important to seed your torrent whilst it is waiting for approval, as staff may need to download it and check it.

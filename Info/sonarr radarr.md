@@ -28,8 +28,8 @@ We won't be going through how to install Sonarr, as you shouldn't be here if you
    - **Anime Standard Format Search**: Leave it unchecked.
 5. Press **Save**. If you did everything correctly, you should see nekoBT in the list of indexers.
 
-!!!info Using Prowlarr
-If you're using Prowlarr, you can add nekoBT as an indexer under `Generic Torznab`. Follow similar steps above.
+!!!info Using Prowlarr or Jackett
+If you're using Prowlarr or Jackett, you can now add nekoBT as an indexer directly. Search for `nekoBT` on the indexer list.
 !!!
 
 ## 3. (Optional) Add Custom Formats
