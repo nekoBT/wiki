@@ -5,7 +5,7 @@ order: 1500
 ---
 # Nyaa Linking & Importing
 
-You can link you Nyaa account to your nekoBT account to prove ownership of your account, or to import old torrents from Nyaa.
+You can link your Nyaa account to your nekoBT account to prove ownership of your account, or to import old torrents from Nyaa.
 
 ### Linking Your Nyaa Account
 You can link your Nyaa account to your nekoBT account [here](https://nekobt.to/nyaa/link).
