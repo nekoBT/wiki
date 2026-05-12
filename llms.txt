@@ -15,7 +15,7 @@
 - [Uploading](https://wiki.nekobt.to/info/uploading.md): Let's pretend this is your first time uploading a torrent to nekoBT. Here's a step-by-step guide on how to do it.
 - [Metadata](https://wiki.nekobt.to/info/metadata.md): Torrents must include specific metadata, such as sub level, video type, codec, and languages.
 - [Sonarr & Radarr](https://wiki.nekobt.to/info/sonarr-radarr.md): On this page, you'll learn how to setup Sonarr/Radarr with nekoBT.
-- [Nyaa Linking & Importing](https://wiki.nekobt.to/info/nyaa.md): You can link you Nyaa account to your nekoBT account to prove ownership of your account, or to import old torrents from Nyaa.
+- [Nyaa Linking & Importing](https://wiki.nekobt.to/info/nyaa.md): You can link your Nyaa account to your nekoBT account to prove ownership of your account, or to import old torrents from Nyaa.
 
 ## Technical Details
 
