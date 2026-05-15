@@ -3,7 +3,7 @@
 > This is the place you'll find all information about nekoBT.
 
 - [Home](https://wiki.nekobt.to/index.md): Home
-- [Rules](https://wiki.nekobt.to/rules.md): Last Updated: 6 March 2026
+- [Rules](https://wiki.nekobt.to/rules.md): Last Updated: 15 May 2026
 - [Privacy Policy](https://wiki.nekobt.to/privacy.md): Last Updated: 6 August 2025
 - [Contact Staff](https://wiki.nekobt.to/contact.md): If you need to contact staff, please send an email to us.
 - [FAQ](https://wiki.nekobt.to/faq.md): nekoBT is a public torrent tracker for anime, with a focus on fansubs and groups.
