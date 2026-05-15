@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.831888873593">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.832178521229">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.5.3">
@@ -37,12 +37,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.831888873593" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.5.3.832178521229" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.831888873593" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.832178521229" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.831888873593" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.831888873593" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.832178521229" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.832178521229" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -2249,6 +2249,11 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 <td>Comma-separated media IDs to filter by</td>
 </tr>
 <tr>
+<td>tvdbid?</td>
+<td>string</td>
+<td>Comma-separated TVDB series IDs to filter by</td>
+</tr>
+<tr>
 <td>episode_ids?</td>
 <td>string</td>
 <td>Comma-separated episode IDs to filter by</td>
@@ -2457,7 +2462,8 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
       &quot;group_childs&quot;: true,
       &quot;group_parents&quot;: false,
       &quot;uploader_uploads&quot;: true,
-      &quot;uploader_contributions&quot;: false
+      &quot;uploader_contributions&quot;: false,
+      &quot;tvdbid&quot;: null // Returns only the resolved TVDB IDs, or undefined if not provided
     }
   }
 }</code></pre>

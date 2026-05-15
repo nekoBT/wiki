@@ -1442,6 +1442,7 @@ offset? | integer | Number of results to skip for pagination (default: 0)
 sort_by? | string | Sort order: *`best`*, `latest`, `oldest`, `rss`, `seeders`, `seeders_asc`, `leechers`, `leechers_asc`, `downloads`, `downloads_asc`, `comments`, `comments_asc`, `filesize`, `filesize_asc`.
 category? | number | Category filter: *`0`*. This currently isn't used, as there's only one category.
 media_id? | string | Comma-separated media IDs to filter by
+tvdbid? | string | Comma-separated TVDB series IDs to filter by
 episode_ids? | string | Comma-separated episode IDs to filter by
 episode_match_any? | boolean | Match any episode ID instead of requiring a torrent to have all episodes: *`false`*
 levels? | string | Comma-separated subtitle levels to filter by
@@ -1558,7 +1559,8 @@ after? | string | Filter torrents uploaded after this date, unix milliseconds
       "group_childs": true,
       "group_parents": false,
       "uploader_uploads": true,
-      "uploader_contributions": false
+      "uploader_contributions": false,
+      "tvdbid": null // Returns only the resolved TVDB IDs, or undefined if not provided
     }
   }
 }
