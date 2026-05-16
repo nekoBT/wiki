@@ -1443,6 +1443,7 @@ sort_by? | string | Sort order: *`best`*, `latest`, `oldest`, `rss`, `seeders`, 
 category? | number | Category filter: *`0`*. This currently isn't used, as there's only one category.
 media_id? | string | Comma-separated media IDs to filter by
 tvdbid? | string | Comma-separated TVDB series IDs to filter by
+tmdbid? | string | Comma-separated TMDB movie IDs to filter by
 episode_ids? | string | Comma-separated episode IDs to filter by
 episode_match_any? | boolean | Match any episode ID instead of requiring a torrent to have all episodes: *`false`*
 levels? | string | Comma-separated subtitle levels to filter by
@@ -1560,7 +1561,8 @@ after? | string | Filter torrents uploaded after this date, unix milliseconds
       "group_parents": false,
       "uploader_uploads": true,
       "uploader_contributions": false,
-      "tvdbid": null // Returns only the resolved TVDB IDs, or undefined if not provided
+      "tvdbid": null, // Returns only the resolved TVDB IDs, or undefined if not provided
+      "tmdbid": null, // Returns only the resolved TMDB IDs, or undefined if not provided
     }
   }
 }
