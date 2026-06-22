@@ -42,6 +42,7 @@ This list is not exhaustive. Staff may decide that your actions negatively affec
     - No Frame interpolation (increasing FPS. Exceptions are made for field interpolation required to properly deinterlace interlaced material).
     - No super-low-bitrate encodes (mini's are allowed, but don't cook it too hard).
     - No machine generated audio (like TTS).
+    - No hardware encoding (NVENC, QuickSync).
 13. **No leaked content.** Content that isn't officially released is not allowed. This also means **no CAM or Telesync releases.**
 14. **No tracker cheating.** You are not allowed to manipulate your tracker stats in any way. This includes:
     - Using bots to download torrents you're seeding.

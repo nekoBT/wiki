@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.832262206997">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.6.0.835471243567">
 
     <!-- See retype.com -->
-    <meta name="generator" content="Retype 4.5.3">
+    <meta name="generator" content="Retype 4.6.0">
 
     <!-- Primary Meta Tags -->
     <title>JSON API - nekoBT Wiki</title>
@@ -37,12 +37,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.832262206997" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.6.0.835471243567" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.832262206997" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.832262206997" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.5.3.832262206997" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.6.0.835471243567" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=4.6.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.6.0.835471243567" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.6.0.835471243567" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -485,6 +485,13 @@ referrer-policy: same-origin</code></pre>
 <doc-tabs>
 <doc-tab v-cloak id="query-parameters">
 <template #title>Query Parameters</template>
+<retype-table copy-text="Name | Type | Description
+---- | ---- | -----------
+query? | string | Search term for group name or tag
+limit? | integer | Number of results to return (default: 50, range: 1-100)
+offset? | integer | Number of results to skip for pagination (default: 0)
+sort? | string | Sort results by field. *`created`*, `uploads`, `members`, `downloads`, `name`, `last_upload`.
+order? | string | Order of results. `asc` or *`desc`*.">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -523,6 +530,7 @@ referrer-policy: same-origin</code></pre>
 </tbody>
 </table>
 </div>
+</retype-table>
 <h6 id="italics--default---optional"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
 <doc-tab v-cloak id="successful-response-200-3">
@@ -577,6 +585,9 @@ referrer-policy: same-origin</code></pre>
 <doc-tabs>
 <doc-tab v-cloak id="query-parameters-1">
 <template #title>Query Parameters</template>
+<retype-table copy-text="Name | Type | Description
+---- | ---- | -----------
+parent | string | Group ID of the group that will be the parent in the link.">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -595,6 +606,7 @@ referrer-policy: same-origin</code></pre>
 </tbody>
 </table>
 </div>
+</retype-table>
 <h6 id="italics--default---optional-1"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
 <doc-tab v-cloak id="successful-response-200-4">
@@ -659,6 +671,10 @@ referrer-policy: same-origin</code></pre>
 <doc-tab v-cloak id="json-parameters">
 <template #title>JSON Parameters</template>
 <p>Data should be formatted as a JSON Array of Objects with the following fields:</p>
+<retype-table copy-text="Name | Type | Description
+---- | ---- | -----------
+id | string or null | ID of the user to invite. If null, no specific user will be invited.
+display_name | string or null | Display name of the user to invite. If a user ID is provided, this field is not used, and the display name is what the user's display name is.">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -682,6 +698,7 @@ referrer-policy: same-origin</code></pre>
 </tbody>
 </table>
 </div>
+</retype-table>
 <h6 id="italics--default---optional-2"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
 <doc-tab v-cloak id="successful-response-200-6">
@@ -721,6 +738,11 @@ referrer-policy: same-origin</code></pre>
 <doc-tabs>
 <doc-tab v-cloak id="json-parameters-1">
 <template #title>JSON Parameters</template>
+<retype-table copy-text="Name | Type | Description
+---- | ---- | -----------
+admin? | boolean | Whether the member is an admin.
+regular? | boolean | Whether the member is a regular member.
+display_name? | string | Can only be used on invites. New display name for the member/invite in the group.">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -749,6 +771,7 @@ referrer-policy: same-origin</code></pre>
 </tbody>
 </table>
 </div>
+</retype-table>
 <h6 id="at-least-one-is-required-italics--default---optional">At least one is required, <em>italics</em> = default, ? = optional</h6>
 </doc-tab>
 <doc-tab v-cloak id="successful-response-200-7">
@@ -780,6 +803,13 @@ referrer-policy: same-origin</code></pre>
 <p>This endpoint has a <code translate="no" v-pre>destructive</code> query parameter.<br>
 To delete an invited member, <code translate="no" v-pre>destructive=true</code> must be used.<br>
 The differences are as follows:</p>
+<retype-table copy-text="Action | destructive=`false` | destructive=`true`
+------ | ------------------- | -------------------
+User is no longer associated with the group. | ✅ | ✅
+The member becomes an invite with a &quot;Deleted Member&quot; name. | ✅ | ❌
+Torrent contributions are transferred to a new invite. | ✅ | ❌
+The member is permanently removed from all torrents. | ❌ | ✅
+Uploads by the user for the group are transferred to the leader. | ✅ | ✅">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -818,11 +848,15 @@ The differences are as follows:</p>
 </tbody>
 </table>
 </div>
+</retype-table>
 <doc-panel id="examples-8" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="query-parameters-2">
 <template #title>Query Parameters</template>
+<retype-table copy-text="Name | Type | Description
+---- | ---- | -----------
+destructive? | boolean | Defaults to *`false`*. Read above for more info.">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -841,6 +875,7 @@ The differences are as follows:</p>
 </tbody>
 </table>
 </div>
+</retype-table>
 <h6 id="italics--default---optional-3"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
 <doc-tab v-cloak id="successful-response-200-8">
@@ -934,6 +969,9 @@ The differences are as follows:</p>
 <doc-tabs>
 <doc-tab v-cloak id="json-parameters-2">
 <template #title>JSON Parameters</template>
+<retype-table copy-text="Name | Type | Description
+---- | ---- | -----------
+assign_user_id | string | User ID of the user to assign this invite to">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -952,6 +990,7 @@ The differences are as follows:</p>
 </tbody>
 </table>
 </div>
+</retype-table>
 </doc-tab>
 <doc-tab v-cloak id="successful-response-200-10">
 <template #title>Successful Response (200)</template>
@@ -1172,6 +1211,11 @@ The differences are as follows:</p>
 <doc-tabs>
 <doc-tab v-cloak id="query-parameters-3">
 <template #title>Query Parameters</template>
+<retype-table copy-text="Name | Type | Description
+---- | ---- | -----------
+query | string | Search term for media title
+limit? | integer | Number of results to return (default: 50, range: 1-100)
+offset? | integer | Number of results to skip for pagination (default: 0)">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -1200,6 +1244,7 @@ The differences are as follows:</p>
 </tbody>
 </table>
 </div>
+</retype-table>
 <h6 id="italics--default---optional-4"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
 <doc-tab v-cloak id="successful-response-200-14">
@@ -1469,6 +1514,28 @@ The differences are as follows:</p>
 <doc-tabs>
 <doc-tab v-cloak id="json-data-parameters">
 <template #title>JSON Data Parameters</template>
+<retype-table copy-text="Name | Type | Description
+---- | ---- | -----------
+title? | string | New title for the torrent (max 512 characters)
+upgraded? | number or null | Torrent ID of the new torrent that replaces this one, or null to remove upgrade
+description? | string | Markdown formatted description (max 8192 characters)
+mediainfo? | string | Mediainfo data (max 65536 characters)
+video_type? | number or null | Video type category
+video_codec? | number or null | Video codec category
+audio_lang? | string | Comma-separated list of audio languages
+sub_lang? | string | Comma-separated list of subtitle languages
+fsub_lang? | string | Comma-separated list of fansub languages
+anonymous? | boolean | Whether the upload should be anonymous
+hidden? | boolean | Whether the torrent should be hidden
+hardsub? | boolean | Whether the torrent contains hardsubbed video
+otl? | boolean | Whether the torrent's subtitles contains an original translation
+mtl? | boolean | Whether the torrent's subtitles contains machine translation
+batch? | boolean | Whether the torrent is a batch
+primary_group? | object or null | Primary group information, members, etc
+secondary_groups? | array | Array of secondary groups
+media_episodes? | array | Array of episode IDs (numbers) this torrent contains
+deleted? | boolean | Whether the torrent is deleted
+deletion_reason? | string | Reason for deletion (max 256 characters)">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -1582,6 +1649,7 @@ The differences are as follows:</p>
 </tbody>
 </table>
 </div>
+</retype-table>
 <h6 id="at-least-one-is-required-italics--default---optional-1">At least one is required, <em>italics</em> = default, ? = optional</h6>
 </doc-tab>
 <doc-tab v-cloak id="example-request-data">
@@ -1654,6 +1722,13 @@ The differences are as follows:</p>
 <p>AnimeTosho data is not fetched automatically for torrents. A client must request it using this endpoint before the site will fetch it from AnimeTosho. The site&#x27;s frontend will automatically call this endpoint when viewing a torrent that does not have final AnimeTosho data yet.</p>
 <p>If another user is already fetching the data for this torrent, your request will be halted until the other user&#x27;s fetch is complete, to prevent multiple simultaneous fetches for the same torrent.</p>
 <p>Even if the request is cancelled by the client, the site will continue fetching the data in the background.</p>
+<retype-table copy-text="| Status | Description | Retry Later? | 
+|--------|-------------|--------------|
+| `skipped` | The torrent was skipped by AnimeTosho. | ❌ |
+| `processing` | The torrent is still being processed on AnimeTosho. | 🟠 (Retry if last attempt was more than 3 minutes ago) |
+| `not_found` | The torrent was not found on AnimeTosho. | 🟠 (No retry if last attempt was 1hr after upload) |
+| `no_media` | The torrent was found, but no media file was found on AnimeTosho. | ❌ |
+| `error` | AnimeTosho returned an unexpected status. | ❌ |">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -1692,6 +1767,7 @@ The differences are as follows:</p>
 </tbody>
 </table>
 </div>
+</retype-table>
 <doc-panel id="examples-18" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
@@ -1863,6 +1939,10 @@ You can specify <code translate="no" v-pre>public=true</code> to get the torrent
 <doc-tabs>
 <doc-tab v-cloak id="query-parameters-get">
 <template #title>Query Parameters (GET)</template>
+<retype-table copy-text="Name | Type | Description
+---- | ---- | -----------
+ids | string | Comma-separated list of torrent IDs to download
+public? | boolean | Whether to download torrents without your passkey (default: *`false`*)">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -1886,10 +1966,15 @@ You can specify <code translate="no" v-pre>public=true</code> to get the torrent
 </tbody>
 </table>
 </div>
+</retype-table>
 <h6 id="italics--default---optional-5"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
 <doc-tab v-cloak id="json-data-parameters-patch">
 <template #title>JSON Data Parameters (PATCH)</template>
+<retype-table copy-text="Name | Type | Description
+---- | ---- | -----------
+ids | array | Array of torrent IDs to download
+public? | boolean | Whether to download torrents without your passkey (default: *`false`*)">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -1913,6 +1998,7 @@ You can specify <code translate="no" v-pre>public=true</code> to get the torrent
 </tbody>
 </table>
 </div>
+</retype-table>
 <h6 id="italics--default---optional-6"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
 <doc-tab v-cloak id="example-request-data-1">
@@ -1955,6 +2041,27 @@ You can specify <code translate="no" v-pre>public=true</code> to get the torrent
 <doc-tabs>
 <doc-tab v-cloak id="json-data-parameters-1">
 <template #title>JSON Data Parameters</template>
+<retype-table copy-text="Name | Type | Description
+---- | ---- | -----------
+ids | array | Array of torrent IDs to edit (min 1, max 250)
+title? | array | Array of find/replace objects to modify titles. Each object has `find` (string, max 256) and `replace` (string, max 256) properties (max 5 replacements)
+upgraded? | number or null | Torrent ID of the new torrent that replaces these, or null to remove upgrade
+description? | string | Markdown formatted description (max 8192 characters)
+video_type? | number or null | Video type category
+video_codec? | number or null | Video codec category
+audio_lang? | string | Comma-separated list of audio languages (max 256 characters)
+sub_lang? | string | Comma-separated list of subtitle languages (max 256 characters)
+fsub_lang? | string | Comma-separated list of fansub languages (max 256 characters)
+anonymous? | boolean | Whether the uploads should be anonymous
+hidden? | boolean | Whether the torrents should be hidden
+hardsub? | boolean | Whether the torrents contain hardsubbed video
+mtl? | boolean | Whether the torrents contain machine translated subtitles
+otl? | boolean | Whether the torrents' subtitles contain an original translation
+batch? | boolean | Whether the torrents are batches
+primary_group? | object or null | Primary group information, members, etc (admin only)
+secondary_groups? | array | Array of secondary group objects with `id` (string) and `role` (string or null, max 64)
+deleted? | boolean | Whether the torrents are deleted
+deletion_reason? | string | Reason for deletion (max 256 characters)">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -2063,6 +2170,7 @@ You can specify <code translate="no" v-pre>public=true</code> to get the torrent
 </tbody>
 </table>
 </div>
+</retype-table>
 <h6 id="at-least-one-is-required-italics--default---optional-2">At least one is required, <em>italics</em> = default, ? = optional</h6>
 </doc-tab>
 <doc-tab v-cloak id="example-request-data-2">
@@ -2147,6 +2255,9 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 <doc-tabs>
 <doc-tab v-cloak id="json-data-parameters-2">
 <template #title>JSON Data Parameters</template>
+<retype-table copy-text="Name | Type | Description
+---- | ---- | -----------
+ids | array | Array of torrent IDs to edit (min 1, max 250)">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -2165,6 +2276,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 </tbody>
 </table>
 </div>
+</retype-table>
 <h6 id="italics--default---optional-7"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
 <doc-tab v-cloak id="successful-response-200-21">
@@ -2208,6 +2320,38 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 <doc-tabs>
 <doc-tab v-cloak id="query-parameters-4">
 <template #title>Query Parameters</template>
+<retype-table copy-text="Name | Type | Description
+---- | ---- | -----------
+query? | string | Search term for media title
+limit? | integer | Number of results to return (default: *`50`*, range: `1`-`100`)
+offset? | integer | Number of results to skip for pagination (default: 0)
+sort_by? | string | Sort order: *`best`*, `latest`, `oldest`, `rss`, `seeders`, `seeders_asc`, `leechers`, `leechers_asc`, `downloads`, `downloads_asc`, `comments`, `comments_asc`, `filesize`, `filesize_asc`.
+category? | number | Category filter: *`0`*. This currently isn't used, as there's only one category.
+media_id? | string | Comma-separated media IDs to filter by
+tvdbid? | string | Comma-separated TVDB series IDs to filter by
+tmdbid? | string | Comma-separated TMDB movie IDs to filter by
+episode_ids? | string | Comma-separated episode IDs to filter by
+episode_match_any? | boolean | Match any episode ID instead of requiring a torrent to have all episodes: *`false`*
+levels? | string | Comma-separated subtitle levels to filter by
+video_codec? | string | Comma-separated video codec IDs to filter by
+video_type? | string | Comma-separated video type IDs to filter by
+audio_lang? | string | Comma-separated audio languages to filter by
+fansub_lang? | string | Comma-separated fansub languages to filter by
+sub_lang? | string | Comma-separated subtitle languages to filter by
+hardsub? | boolean | Filter by hardsubbed torrents
+batch? | boolean | Filter by batch torrents
+otl? | boolean | Filter by original translation torrents
+mtl? | boolean | Filter by machine translation torrents
+group_id? | string | Comma-separated group IDs to filter by
+group_primary? | boolean | Include primary group uploads (default: true)
+group_secondary? | boolean | Include secondary group uploads (default: false)
+group_childs? | boolean | Include child group uploads (default: true)
+group_parents? | boolean | Include parent group uploads (default: false)
+uploader_id? | string | Comma-separated uploader IDs to filter by
+uploader_uploads? | boolean | Include uploader's uploads (default: true)
+uploader_contributions? | boolean | Include uploader's contributions (default: false)
+before? | string | Filter torrents uploaded before this date, unix milliseconds
+after? | string | Filter torrents uploaded after this date, unix milliseconds">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -2371,6 +2515,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 </tbody>
 </table>
 </div>
+</retype-table>
 <h6 id="italics--default---optional-8"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
 <doc-tab v-cloak id="successful-response-200-22">
@@ -2499,6 +2644,29 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 <doc-tabs>
 <doc-tab v-cloak id="json-data-parameters-3">
 <template #title>JSON Data Parameters</template>
+<retype-table copy-text="Name | Type | Description
+---- | ---- | -----------
+torrent | string | Base64 encoded torrent file
+title | string | Title for the torrent (max 512 characters)
+movie | boolean | Whether this torrent is for a movie (true) or series (false)
+category | number | Category ID (currently only 1 is valid)
+video_type | number or null | Video type category ID
+video_codec | number or null | Video codec category ID
+level | number | Subtitle level (-1 to 3, -1 = no subs)
+mtl | boolean | Whether the torrent contains machine translated subtitles
+anonymous | boolean | Whether the upload should be anonymous
+hidden | boolean | Whether the torrent should be hidden
+otl | boolean | Whether the torrent's subtitles contain an original translation
+hardsub | boolean | Whether the torrent contains hardsubbed video
+batch | boolean | Whether the torrent is a batch release (default: false)
+primary_group? | object | Primary group information (see below)
+secondary_groups | array | Array of secondary group objects (max 50 items)
+audio_langs | string | Comma-separated list of audio languages (max 256 characters)
+sub_langs | string | Comma-separated list of subtitle languages (max 256 characters)
+fansub_langs | string | Comma-separated list of fansub languages (max 256 characters)
+description | string | Markdown formatted description (max 8192 characters)
+mediainfo? | string | Mediainfo data (max 65536 characters)
+ignore_warnings? | boolean | Whether to ignore validation warnings, and proceed with the upload">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -2617,6 +2785,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 </tbody>
 </table>
 </div>
+</retype-table>
 <p><strong>Primary Group Object:</strong></p>
 <ul>
 <li><code translate="no" v-pre>id</code> (string): Group ID</li>
@@ -2731,6 +2900,25 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 <doc-tabs>
 <doc-tab v-cloak id="json-data-parameters-4">
 <template #title>JSON Data Parameters</template>
+<retype-table copy-text="Name | Type | Description
+---- | ---- | -----------
+title | string | Title for the torrent (max 512 characters)
+movie | boolean | Whether this torrent is for a movie (true) or series (false)
+torrent? | string | Base64-encoded `.torrent` file. If provided, `files`, `announce_urls`, and `raw_announce_urls` are extracted from it and any values supplied for those fields are ignored.
+files? | array | Array of file objects (`{ path: string }`) or plain path strings. Ignored if `torrent` is provided.
+video_type | number or null | Video type category ID
+video_codec | number or null | Video codec category ID
+level | number | Subtitle level (null or -1 to 3, -1 = no subs)
+mtl | boolean | Whether the torrent contains machine translated subtitles
+otl | boolean | Whether the torrent's subtitles contain an original translation
+hardsub | boolean | Whether the torrent contains hardsubbed video
+batch | boolean | Whether the torrent is a batch (default: false)
+primary_group? | object | Primary group information (see below)
+audio_langs | string | Comma-separated list of audio languages (max 256 characters)
+sub_langs | string | Comma-separated list of subtitle languages (max 256 characters)
+fansub_langs | string | Comma-separated list of fansub languages (max 256 characters)
+announce_urls? | array of strings | Array of announce URLs. Ignored if `torrent` is provided.
+raw_announce_urls? | array of arrays of strings | Tiered announce URLs. Ignored if `torrent` is provided.">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -2829,6 +3017,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 </tbody>
 </table>
 </div>
+</retype-table>
 <p><strong>Primary Group Object:</strong></p>
 <ul>
 <li><code translate="no" v-pre>id</code> (string): Group ID</li>
@@ -2969,6 +3158,9 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 <doc-tabs>
 <doc-tab v-cloak id="json-data-parameters-5">
 <template #title>JSON Data Parameters</template>
+<retype-table copy-text="Name | Type | Description
+---- | ---- | -----------
+mediainfo | string or object | Mediainfo data as plain text or JSON object">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -2987,6 +3179,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 </tbody>
 </table>
 </div>
+</retype-table>
 <h6 id="italics--default---optional-11"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
 <doc-tab v-cloak id="example-request-data-text">
@@ -3144,6 +3337,17 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 <doc-tabs>
 <doc-tab v-cloak id="json-data-parameters-6">
 <template #title>JSON Data Parameters</template>
+<retype-table copy-text="Name | Type | Description
+---- | ---- | -----------
+description? | string | Markdown formatted description (max 8192 characters)
+pfp? | string | Either `reset` to remove, `keep` to keep current, or base64 encoded image data (max 4.5MB)
+reset_torrent_key? | boolean | Whether to reset your torrent key
+remove_nyaa_account? | string | Nyaa username to remove
+nyaa_account_public? | string | Nyaa username to set public
+nyaa_account_private? | string | Nyaa username to set private
+revoke_api_keys? | boolean | Whether to revoke all API keys
+hide_peer_count? | boolean | Whether to hide how many torrents you're seeding and leeching from other users
+hide_peer_amount? | boolean | Whether to hide the exact amount of data you've uploaded and downloaded from other users">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -3202,6 +3406,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 </tbody>
 </table>
 </div>
+</retype-table>
 <h6 id="at-least-one-is-required-italics--default---optional-3">At least one is required, <em>italics</em> = default, ? = optional</h6>
 </doc-tab>
 <doc-tab v-cloak id="successful-response-200-27">
@@ -3290,6 +3495,16 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 </span></p>
 <p>Returns notifications for a specific user.</p>
 <p>There are several tags used in notifications:</p>
+<retype-table copy-text="Regex | Replacement | Usage
+----- | ----------- | -----
+`&lt;u:(\d+):([^&gt;]+)&gt;` | `&lt;a class=&quot;link-blue&quot; href=&quot;/users/$1&quot;&gt;$2&lt;/a&gt;` | Link to User
+`&lt;g:(\d+):([^&gt;]+)&gt;` | `&lt;a class=&quot;link-blue&quot; href=&quot;/groups/$1&quot;&gt;$2&lt;/a&gt;` | Link to Grouo
+`&lt;i:(\d+):([^&gt;]+)&gt;` | `&lt;a class=&quot;link-blue&quot; href=&quot;/invites/$1/accept/$2&quot;&gt;View Invite&lt;/a&gt;` | Link to Accept Invite
+`&lt;vi:(\d+):([^&gt;]+)&gt;` | `&lt;a class=&quot;link-blue&quot; href=&quot;/invites/$1&quot;&gt;$2&lt;/a&gt;` | Link to View Invite
+`&lt;ge:(\d+):([^&gt;]+)&gt;` | `&lt;a class=&quot;link-blue&quot; href=&quot;/groups/$1/edit&quot;&gt;$2&lt;/a&gt;` | Link to Edit Group
+`&lt;t:(\d+):([^&gt;]+)&gt;` | `&lt;a class=&quot;link-blue&quot; href=&quot;/torrents/$1&quot;&gt;$2&lt;/a&gt;` | Link to Torrent
+`&lt;tc:(\d+):(\d+):([^&gt;]+)&gt;` | `&lt;a class=&quot;link-blue&quot; href=&quot;/torrents/$1#com-$2&quot;&gt;$3&lt;/a&gt;` | Link to Torrent Comment
+`&lt;r:(\d+):([^&gt;]+)&gt;` | `&lt;a class=&quot;link-blue&quot; href=&quot;/reports/$1&quot;&gt;$2&lt;/a&gt;` | Used to view/redirect to Report">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -3343,6 +3558,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 </tbody>
 </table>
 </div>
+</retype-table>
 <doc-panel id="examples-30" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
@@ -3384,6 +3600,9 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 <doc-tabs>
 <doc-tab v-cloak id="json-data-parameters-7">
 <template #title>JSON Data Parameters</template>
+<retype-table copy-text="Name | Type | Description
+---- | ---- | -----------
+ids | array or string | Either an array of notification IDs to mark as read, or the string `all` to mark all notifications as read.">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -3402,6 +3621,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 </tbody>
 </table>
 </div>
+</retype-table>
 <h6 id="italics--default---optional-12"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
 <doc-tab v-cloak id="successful-response-200-30">
@@ -3519,6 +3739,9 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 <doc-tabs>
 <doc-tab v-cloak id="query-parameters-5">
 <template #title>Query Parameters</template>
+<retype-table copy-text="Name | Type | Description
+---- | ---- | -----------
+query | string | Exact username to search for.">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -3537,6 +3760,7 @@ You will receive the same <code translate="no" v-pre>bad_torrents</code> field i
 </tbody>
 </table>
 </div>
+</retype-table>
 <h6 id="italics--default---optional-13"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
 <doc-tab v-cloak id="successful-response-200-32">

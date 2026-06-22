@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.5.3.832262206997">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.6.0.835471243567">
 
     <!-- See retype.com -->
-    <meta name="generator" content="Retype 4.5.3">
+    <meta name="generator" content="Retype 4.6.0">
 
     <!-- Primary Meta Tags -->
     <title>Metadata - nekoBT Wiki</title>
@@ -37,11 +37,11 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.5.3.832262206997" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.6.0.835471243567" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.5.3.832262206997" data-turbo-eval="false" defer></script>
-    <script data-cfasync="false" src="../../resources/js/retype.js?v=4.5.3" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.5.3.832262206997" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.6.0.835471243567" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/retype.js?v=4.6.0" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.6.0.835471243567" data-turbo-eval="false" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -174,6 +174,24 @@
 <p>You should still follow season and episode numbering from TheTVDB, and edit the torrent to change the episode matching if you can&#x27;t get the title to match the correct episodes.</p>
 <h3 id="video-type">Video Type</h3>
 <p>The <strong>Video Type</strong> tag indicates the video&#x27;s source and any encoding applied.</p>
+<retype-table copy-text="| Type | Description | ID |
+|------|-------------|----|
+| Hybrid | An encode using various sources, most commonly WEB and BD. | 15 |
+| BD - Remux | Untouched, decrypted Blu-ray Disc copy in a playable format (mkv, mp4, etc). | 14 |
+| BD - Encode | An encode of the raw Blu-ray Disc. The aim of the encode must be to improve quality, or achieve transparency. | 13 |
+| BD - Mini | Blu-ray Disc encode with reduced quality to save space. This also includes videos re-encoded from another unofficial source. | 12 |
+| BD - Disc | Blu-ray Disc. | 11 |
+| WEB-DL | Direct copy from a streaming service. | 9 |
+| WEB - Encode | Re-encode of the WEB source. The aim of the encode must be to improve quality, or achieve transparency. | 8 |
+| WEB - Mini | WEB source encode with reduced quality to save space. This also includes videos re-encoded from another unofficial source. | 7 |
+| DVD - Encode | An encode of a DVD. | 6 |
+| DVD - Remux | Direct copy of a DVD in a playable format. | 5 |
+| DVD - Disc | DVD Disc. | 16 |
+| TV - Raw | Direct copy of a TV broadcast. | 4 |
+| TV - Encode | TV broadcast, re-encoded. | 3 |
+| LaserDisc | LaserDisc source in a playable format. | 2 |
+| VHS | VHS source in a playable format. | 1 |
+| Other | Other source; see torrent description for details. | 0 |">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -267,8 +285,20 @@
 </tbody>
 </table>
 </div>
+</retype-table>
 <h3 id="video-codec">Video Codec</h3>
 <p>The <strong>Video Codec</strong> tag indicates the codec used for the video.</p>
+<retype-table copy-text="| Codec | Description | ID |
+|-------|-------------|----|
+| H264 | AVC, x264 | 1 |
+| H265 | HEVC, x265 | 2 |
+| AV1 | AV1 | 3 |
+| VP9 | VP9 | 4 |
+| MPEG-2 | MPEG-2 | 5 |
+| MPEG-4 | MPEG-4, but not Part 10/H264 | 6 |
+| WMV | Windows Media Video | 7 |
+| VC1 | VC-1 | 8 |
+| Other | Other | 0 |">
 <div class="table-wrapper scrollbar overflow-hidden">
 <table class="comfortable">
 <thead>
@@ -327,6 +357,7 @@
 </tbody>
 </table>
 </div>
+</retype-table>
 <h3 id="languages">Languages</h3>
 <p>There are 3 language tags: <strong>Audio</strong>, <strong>Fansub</strong>, and <strong>Subtitle</strong>.</p>
 <ul>
