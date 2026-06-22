@@ -1,6 +1,6 @@
 # Site Rules
 
-Last Updated: 15 May 2026
+Last Updated: 22 June 2026
 
 You can view all changes to the rules [here](https://github.com/nekoBT/wiki/commits/main/rules.md).
 
