@@ -22,7 +22,9 @@ Name | Type | Description
 t | string | Can be `search`, `tv-search` or `movie-search`.
 q? | string | The search query. If this is an empty string or null, it will return the latest torrents added.
 tvdbid? | integer | The TVDB ID of the series to search for.
+tmdbid? | string | Comma-separated TMDB IDs to filter for.
 media_id? | string | Comma-separated media IDs to filter for.
+batch? | boolean | Set to `true` to only return batch torrents or `false` to exclude them.
 levels? | string | Comma-separated list of [sub levels](/info/sub-levels) to filter for.
 video_codec? | string | Comma-separated list of video codecs to filter for.
 video_type? | string | Comma-separated list of video types to filter for.

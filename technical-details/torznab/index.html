@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.6.0.835471282738">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.6.0.836326771600">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.6.0">
@@ -37,11 +37,11 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.6.0.835471282738" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.6.0.836326771600" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.6.0.835471282738" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.6.0.836326771600" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.6.0.835471282738" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.6.0.836326771600" data-turbo-eval="false" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -208,7 +208,9 @@
 t | string | Can be `search`, `tv-search` or `movie-search`.
 q? | string | The search query. If this is an empty string or null, it will return the latest torrents added.
 tvdbid? | integer | The TVDB ID of the series to search for.
+tmdbid? | string | Comma-separated TMDB IDs to filter for.
 media_id? | string | Comma-separated media IDs to filter for.
+batch? | boolean | Set to `true` to only return batch torrents or `false` to exclude them.
 levels? | string | Comma-separated list of [sub levels](/info/sub-levels) to filter for.
 video_codec? | string | Comma-separated list of video codecs to filter for.
 video_type? | string | Comma-separated list of video types to filter for.
@@ -252,9 +254,19 @@ uploader_contributions? | boolean | Set to `true` to return torrents where the u
 <td>The TVDB ID of the series to search for.</td>
 </tr>
 <tr>
+<td>tmdbid?</td>
+<td>string</td>
+<td>Comma-separated TMDB IDs to filter for.</td>
+</tr>
+<tr>
 <td>media_id?</td>
 <td>string</td>
 <td>Comma-separated media IDs to filter for.</td>
+</tr>
+<tr>
+<td>batch?</td>
+<td>boolean</td>
+<td>Set to <code translate="no" v-pre>true</code> to only return batch torrents or <code translate="no" v-pre>false</code> to exclude them.</td>
 </tr>
 <tr>
 <td>levels?</td>
