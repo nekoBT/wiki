@@ -1514,6 +1514,7 @@ hardsub? | boolean | Filter by hardsubbed torrents
 batch? | boolean | Filter by batch torrents
 otl? | boolean | Filter by original translation torrents
 mtl? | boolean | Filter by machine translation torrents
+upgraded? | boolean | Filter by upgraded torrents
 group_id? | string | Comma-separated group IDs to filter by
 group_primary? | boolean | Include primary group uploads (default: true)
 group_secondary? | boolean | Include secondary group uploads (default: false)

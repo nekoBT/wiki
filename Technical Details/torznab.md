@@ -42,6 +42,7 @@ sub_lang? | string | Comma-separated list of subtitle languages to filter for.
 hardsub? | boolean | Set to `true` to only return torrents with hardcoded subtitles or `false` to exclude them.
 otl? | boolean | Set to `true` to only return torrents with OTL subtitles or `false` to exclude them.
 mtl? | boolean | Set to `true` to only return torrents with machine translated subtitles or `false` to exclude them.
+upgraded? | boolean | Set to `true` to only return upgraded torrents, *`false`* to exclude them, or `null` to include all torrents.
 group_id? | string | Comma-separated group IDs to filter for.
 group_primary? | boolean | Set to *`true`* to return torrents where the group is the uploader or `false` to exclude them.
 group_secondary? | boolean | Set to `true` to return torrents where the group is not the uploader or *`false`* to exclude them.
