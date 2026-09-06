@@ -14,9 +14,7 @@ A batch, on nekoBT, is a release that contains all episodes in a season. Season 
 - An entry on AniList
 - An entry on MAL
 
-As long as you have all episodes that one of these sources considers to be a season/entry, you can mark it a batch, even if the other sources don't consider it a full season.
-
-You should still follow season and episode numbering from TheTVDB, and edit the torrent to change the episode matching if you can't get the title to match the correct episodes.
+This will be applied automatically, based on the episodes associated with the release.
 
 ### Video Type
 

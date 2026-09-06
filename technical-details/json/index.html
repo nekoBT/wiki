@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.6.0.839452645228">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.6.0.842043384697">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.6.0">
@@ -37,12 +37,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.6.0.839452645228" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.6.0.842043384697" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.6.0.839452645228" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.6.0.842043384697" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.6.0.839452645228" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.6.0.839452645228" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.6.0.842043384697" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.6.0.842043384697" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -1118,6 +1118,12 @@ assign_user_id | string | User ID of the user to assign this invite to">
 </span></p>
 <p>Returns information about a specific media item, including its title, description, and other metadata.</p>
 <p>Use <code translate="no" v-pre>?force=true</code> to get the media, even if there are no torrents for it.</p>
+<p>&quot;No torrents&quot; counts releases filed under an equivalent media as well. A film
+is regularly both its own movie entry and a special of its series, so a movie
+whose only copies were uploaded against those specials still resolves.</p>
+<p>Where the media is mapped to AniList, the <code translate="no" v-pre>title</code>, <code translate="no" v-pre>overview</code>, <code translate="no" v-pre>genres</code>, <code translate="no" v-pre>year</code>,
+<code translate="no" v-pre>runtime</code> and <code translate="no" v-pre>status</code> fields come from the franchise&#x27;s primary AniList
+entry rather than TheTVDB/TMDB, and an extra <code translate="no" v-pre>anilist</code> object is included.</p>
 <doc-panel id="examples-13" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
@@ -1147,6 +1153,13 @@ assign_user_id | string | User ID of the user to assign this invite to">
       &quot;Towa no Yugure&quot;
     ],
     &quot;notes&quot;: null,
+    &quot;series&quot;: null, // on a movie, the series it is also filed under: { &quot;media_id&quot;: &quot;s168&quot;, &quot;title&quot;: &quot;Sword Art Online&quot; }
+    &quot;stats&quot;: { // public releases only; hidden, unapproved and deleted torrents are not counted
+      &quot;uploads&quot;: 42, // torrents filed under this media
+      &quot;seeders&quot;: &quot;310&quot;, // summed across those torrents
+      &quot;leechers&quot;: &quot;27&quot;,
+      &quot;downloads&quot;: &quot;1893&quot; // times those torrents were completed
+    },
     &quot;episodes&quot;: [
       {
         &quot;id&quot;: 48690,
@@ -1183,7 +1196,94 @@ assign_user_id | string | User ID of the user to assign this invite to">
           &quot;sub&quot;: []
         }
       }
-    ]
+    ],
+    &quot;anilist&quot;: {
+      &quot;display_id&quot;: 11757, // the entry the top-level fields describe
+      &quot;primary&quot;: { // the franchise's first season, used when ?al= is absent
+        &quot;id&quot;: 11757,
+        &quot;id_mal&quot;: 11757,
+        &quot;title&quot;: {
+          &quot;romaji&quot;: &quot;Sword Art Online&quot;,
+          &quot;english&quot;: &quot;Sword Art Online&quot;,
+          &quot;native&quot;: &quot;ソードアート・オンライン&quot;,
+          &quot;synonyms&quot;: [&quot;SAO&quot;, &quot;S.A.O&quot;, &quot;刀剑神域&quot;]
+        },
+        &quot;description&quot;: &quot;In the near future...&quot;, // raw AniList markup
+        &quot;format&quot;: &quot;TV&quot;,
+        &quot;status&quot;: &quot;FINISHED&quot;,
+        &quot;episodes&quot;: 25,
+        &quot;duration&quot;: 23,
+        &quot;season&quot;: &quot;SUMMER&quot;,
+        &quot;season_year&quot;: 2012,
+        &quot;start_date&quot;: &quot;2012-07-08&quot;, // truncated when AniList only knows part of it
+        &quot;end_date&quot;: &quot;2012-12-23&quot;,
+        &quot;cover_image&quot;: &quot;https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx11757-SxYDUzdr9rh2.jpg&quot;,
+        &quot;cover_color&quot;: &quot;#e4bb5d&quot;,
+        &quot;banner_image&quot;: &quot;https://s4.anilist.co/file/anilistcdn/media/anime/banner/11757-TlEEV9weG4Ag.jpg&quot;,
+        &quot;genres&quot;: [&quot;Action&quot;, &quot;Adventure&quot;, &quot;Fantasy&quot;, &quot;Romance&quot;],
+        &quot;studios&quot;: [{ &quot;id&quot;: 561, &quot;name&quot;: &quot;A-1 Pictures&quot; }],
+        &quot;tags&quot;: [{ &quot;id&quot;: 108, &quot;name&quot;: &quot;Virtual World&quot;, &quot;rank&quot;: 97, &quot;category&quot;: &quot;Setting-Scene&quot; }],
+        &quot;external_links&quot;: [{ &quot;site&quot;: &quot;Crunchyroll&quot;, &quot;url&quot;: &quot;https://...&quot;, &quot;type&quot;: &quot;STREAMING&quot; }],
+        &quot;average_score&quot;: 70,
+        &quot;popularity&quot;: 716429,
+        &quot;favourites&quot;: 12345,
+        &quot;country_of_origin&quot;: &quot;JP&quot;,
+        &quot;is_adult&quot;: false,
+        &quot;site_url&quot;: &quot;https://anilist.co/anime/11757&quot;,
+        &quot;next_airing_episode&quot;: null,
+        &quot;next_airing_at&quot;: null // ms since epoch
+      },
+      &quot;entries&quot;: [ // every AniList entry mapped to this media, by season then episode
+        {
+          &quot;season&quot;: 4, // TVDB/TMDB season; null for movies
+          &quot;ord&quot;: 2, // 1-based position within that season
+          &quot;src_start&quot;: 13, // this site's episode numbering
+          &quot;src_end&quot;: 23, // null means open-ended
+          &quot;dst_start&quot;: 1, // AniList's episode numbering
+          &quot;dst_end&quot;: 11,
+          &quot;ratio&quot;: null, // set when one side's episodes span several of the other's
+          &quot;anilist_id&quot;: 114308,
+          &quot;media&quot;: { /* same fields as &quot;primary&quot; */ }
+        }
+      ],
+      &quot;alt_ids&quot;: [ // the other databases' ids, one row per entry above
+        {
+          &quot;anilist_id&quot;: 114308,
+          &quot;mal_id&quot;: 40620,
+          &quot;anidb_id&quot;: 14801, // null when the mappings have no AniDB key for it
+          &quot;imdb_ids&quot;: [] // AniBridge records movie and show IMDb ids here
+        }
+      ],
+      &quot;targets&quot;: [ // where each entry opens, and the poster that stands for it
+        {
+          &quot;anilist_id&quot;: 114308,
+          &quot;media_id&quot;: null, // the movie this entry is also held as, when there is one
+          &quot;poster&quot;: &quot;https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/...&quot;
+        }
+      ],
+      &quot;relations&quot;: [ // AniList's own relation graph for the displayed entry
+        {
+          &quot;relation_type&quot;: &quot;SEQUEL&quot;,
+          &quot;id&quot;: 20594,
+          &quot;type&quot;: &quot;ANIME&quot;, // ANIME or MANGA
+          &quot;title&quot;: { &quot;romaji&quot;: &quot;Sword Art Online II&quot;, &quot;english&quot;: &quot;Sword Art Online II&quot;, &quot;native&quot;: &quot;ソードアート・オンライン II&quot;, &quot;synonyms&quot;: [] },
+          &quot;cover_image&quot;: &quot;https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx20594-FhRgZ1H9Istt.jpg&quot;,
+          &quot;format&quot;: &quot;TV&quot;, // TV, MOVIE, OVA ... for anime; MANGA, NOVEL, ONE_SHOT for manga
+          &quot;site_url&quot;: &quot;https://anilist.co/anime/20594&quot;,
+          &quot;media_id&quot;: &quot;s168&quot; // null when the tracker holds no media for it
+        },
+        {
+          &quot;relation_type&quot;: &quot;ADAPTATION&quot;,
+          &quot;id&quot;: 51479,
+          &quot;type&quot;: &quot;MANGA&quot;,
+          &quot;title&quot;: { &quot;romaji&quot;: &quot;Sword Art Online&quot;, &quot;english&quot;: &quot;Sword Art Online&quot;, &quot;native&quot;: &quot;ソードアート・オンライン&quot;, &quot;synonyms&quot;: [] },
+          &quot;cover_image&quot;: &quot;https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx51479-Ck1qkYUYr4jZ.jpg&quot;,
+          &quot;format&quot;: &quot;NOVEL&quot;,
+          &quot;site_url&quot;: &quot;https://anilist.co/manga/51479&quot;, // note /manga/, not /anime/
+          &quot;media_id&quot;: null // only ANIME relations can ever be held here
+        }
+      ]
+    }
   }
 }</code></pre>
 </doc-codeblock></div>
@@ -1199,6 +1299,124 @@ assign_user_id | string | User ID of the user to assign this invite to">
 </doc-tab>
 </doc-tabs>
 </doc-panel>
+<h3 id="resolve-external-media-id">Resolve External Media ID</h3>
+<p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
+    <span>GET</span>
+</span> <code translate="no" v-pre>/media/resolve</code> <span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">
+    <span>Auth Optional</span>
+</span></p>
+<p>Resolves an external database identifier to a local media ID. <code translate="no" v-pre>/media/&lt;id&gt;</code> accepts the same identifiers.</p>
+<p>Identifiers take the form <code translate="no" v-pre>&lt;provider&gt;-&lt;id&gt;</code>.
+Local media IDs (<code translate="no" v-pre>s123</code>, <code translate="no" v-pre>m456</code>) contain no hyphen.</p>
+<retype-table copy-text="Provider | Example | Notes
+-------- | ------- | -----
+`anilist` | `anilist-20594` | Also sets `anilist_id`
+`mal` | `mal-21881` | Also sets `anilist_id`
+`anidb` | `anidb-10376` | Also sets `anilist_id`
+`tvdb` | `tvdb-259640` | Tries series, then movies
+`tmdb` | `tmdb-45782` | Tries series, then movies
+`imdb` | `imdb-tt5544384` | Tries movies, then series
+`tvdb_show`, `tvdb_movie`, `tmdb_show`, `tmdb_movie`, `imdb_show`, `imdb_movie` | `tmdb_movie-413594` | Explicit form, when the short alias is ambiguous">
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Provider</th>
+<th>Example</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code translate="no" v-pre>anilist</code></td>
+<td><code translate="no" v-pre>anilist-20594</code></td>
+<td>Also sets <code translate="no" v-pre>anilist_id</code></td>
+</tr>
+<tr>
+<td><code translate="no" v-pre>mal</code></td>
+<td><code translate="no" v-pre>mal-21881</code></td>
+<td>Also sets <code translate="no" v-pre>anilist_id</code></td>
+</tr>
+<tr>
+<td><code translate="no" v-pre>anidb</code></td>
+<td><code translate="no" v-pre>anidb-10376</code></td>
+<td>Also sets <code translate="no" v-pre>anilist_id</code></td>
+</tr>
+<tr>
+<td><code translate="no" v-pre>tvdb</code></td>
+<td><code translate="no" v-pre>tvdb-259640</code></td>
+<td>Tries series, then movies</td>
+</tr>
+<tr>
+<td><code translate="no" v-pre>tmdb</code></td>
+<td><code translate="no" v-pre>tmdb-45782</code></td>
+<td>Tries series, then movies</td>
+</tr>
+<tr>
+<td><code translate="no" v-pre>imdb</code></td>
+<td><code translate="no" v-pre>imdb-tt5544384</code></td>
+<td>Tries movies, then series</td>
+</tr>
+<tr>
+<td><code translate="no" v-pre>tvdb_show</code>, <code translate="no" v-pre>tvdb_movie</code>, <code translate="no" v-pre>tmdb_show</code>, <code translate="no" v-pre>tmdb_movie</code>, <code translate="no" v-pre>imdb_show</code>, <code translate="no" v-pre>imdb_movie</code></td>
+<td><code translate="no" v-pre>tmdb_movie-413594</code></td>
+<td>Explicit form, when the short alias is ambiguous</td>
+</tr>
+</tbody>
+</table>
+</div>
+</retype-table>
+<doc-panel id="examples-14" collapsed>
+    <template #title>Examples</template>
+<doc-tabs>
+<doc-tab v-cloak id="query-parameters-3">
+<template #title>Query Parameters</template>
+<retype-table copy-text="Name | Type | Description
+---- | ---- | -----------
+id | string | The external identifier, e.g. `anilist-20594`">
+<div class="table-wrapper scrollbar overflow-hidden">
+<table class="comfortable">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>The external identifier, e.g. <code translate="no" v-pre>anilist-20594</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</retype-table>
+</doc-tab>
+<doc-tab v-cloak id="successful-response-200-14">
+<template #title>Successful Response (200)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: false,
+  &quot;data&quot;: {
+    &quot;media_id&quot;: &quot;s168&quot;,
+    &quot;anilist_id&quot;: 20594 // null when the identifier named a whole series
+  }
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+<doc-tab v-cloak id="unsuccessful-response-404-4">
+<template #title>Unsuccessful Response (404)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;No media found for that external ID.&quot;
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
+</doc-tabs>
+</doc-panel>
 <h3 id="search-media">Search Media</h3>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-info-text bg-badge-info border border-badge-info-border h-6 px-2 text-xs rounded-md">
     <span>GET</span>
@@ -1206,10 +1424,10 @@ assign_user_id | string | User ID of the user to assign this invite to">
     <span>Auth Optional</span>
 </span></p>
 <p>Searches for media items based on search query.</p>
-<doc-panel id="examples-14" collapsed>
+<doc-panel id="examples-15" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
-<doc-tab v-cloak id="query-parameters-3">
+<doc-tab v-cloak id="query-parameters-4">
 <template #title>Query Parameters</template>
 <retype-table copy-text="Name | Type | Description
 ---- | ---- | -----------
@@ -1247,7 +1465,7 @@ offset? | integer | Number of results to skip for pagination (default: 0)">
 </retype-table>
 <h6 id="italics--default---optional-4"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-14">
+<doc-tab v-cloak id="successful-response-200-15">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -1303,22 +1521,22 @@ offset? | integer | Number of results to skip for pagination (default: 0)">
     <span>Auth Optional</span>
 </span></p>
 <p>Returns various statistics about the site, such as the number of users, torrents, and groups.</p>
-<doc-panel id="examples-15" collapsed>
+<doc-panel id="examples-16" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
-<doc-tab v-cloak id="successful-response-200-15">
+<doc-tab v-cloak id="successful-response-200-16">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
   &quot;error&quot;: false,
   &quot;data&quot;: {
     &quot;created_at&quot;: &quot;1764203045818&quot;,
-    &quot;top_media_1w&quot;: [ // Top media by seeders in the past week, max 10
+    &quot;top_media_1w&quot;: [ // Top media by downloads on torrents uploaded in the past week, max 10
       {
         &quot;id&quot;: &quot;s1539&quot;,
         &quot;title&quot;: &quot;Dusk Beyond the End of the World&quot;,
         &quot;banner_url&quot;: &quot;https://artworks.thetvdb.com/banners/v4/series/465214/posters/685e663785276.jpg&quot;,
-        &quot;seeders&quot;: 155
+        &quot;downloads&quot;: 155
       }
     ],
     &quot;users&quot;: {
@@ -1364,10 +1582,10 @@ offset? | integer | Number of results to skip for pagination (default: 0)">
     <span>Auth Optional</span>
 </span></p>
 <p>Returns information about a specific torrent, including its title, description, and other metadata.</p>
-<doc-panel id="examples-16" collapsed>
+<doc-panel id="examples-17" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
-<doc-tab v-cloak id="successful-response-200-16">
+<doc-tab v-cloak id="successful-response-200-17">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -1392,6 +1610,8 @@ offset? | integer | Number of results to skip for pagination (default: 0)">
     &quot;media_episode_ids&quot;: [
       &quot;48665&quot;
     ],
+    &quot;anilist_id&quot;: 11757, // null when the release spans several AniList entries, or the media has no AniList mapping
+    &quot;anilist_ids&quot;: [11757], // List of AniList IDs this release spans, can be empty
     &quot;audio_lang&quot;: &quot;ja&quot;, // All languages are comma separated lists
     &quot;sub_lang&quot;: &quot;&quot;,
     &quot;fsub_lang&quot;: &quot;en&quot;,
@@ -1509,7 +1729,7 @@ offset? | integer | Number of results to skip for pagination (default: 0)">
     <span>Auth Required</span>
 </span></p>
 <p>Edit a specific torrent.</p>
-<doc-panel id="examples-17" collapsed>
+<doc-panel id="examples-18" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="json-data-parameters">
@@ -1689,7 +1909,7 @@ deletion_reason? | string | Reason for deletion (max 256 characters)">
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-17">
+<doc-tab v-cloak id="successful-response-200-18">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -1719,6 +1939,23 @@ deletion_reason? | string | Reason for deletion (max 256 characters)">
     <span>Auth Optional</span>
 </span></p>
 <p>Returns the AnimeTosho data for a specific torrent. <strong>You should handle for long request times on this endpoint.</strong> If data is not yet available, the request may take up to 60 seconds to complete while the site fetches all data from AnimeTosho.</p>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-warning"></div>
+    <div class="flex w-full py-4 border border-l-0 rounded-tr-lg rounded-br-lg doc-callout bg-callout-base-bg border-callout-base-border" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="block text-callout-warning" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M22.48 15.59L14.01 1.45A2.968 2.968 0 0012.16.09c-.78-.19-1.58-.07-2.27.35-.41.25-.76.6-1.01 1.01v.01L.4 15.6c-.83 1.43-.33 3.27 1.1 4.1.45.26.95.4 1.48.4h16.95c.8-.01 1.55-.33 2.11-.9.56-.57.87-1.33.86-2.13a3.04 3.04 0 00-.42-1.48zm-1.87 2.21c-.19.19-.44.3-.69.3H2.99c-.17 0-.34-.05-.49-.13a.992.992 0 01-.37-1.35L10.6 2.48c.08-.14.2-.25.34-.33a.992.992 0 011.37.33l8.46 14.13c.09.15.13.32.13.49 0 .26-.1.51-.29.7z"></path>
+                    <path d="M11.45 12.1c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1s-1 .45-1 1v4c0 .56.45 1 1 1zM11.46 14.1c-.56 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+            <h5>Fetching new records is disabled</h5>
+<p>The site no longer pulls new records from AnimeTosho, due to their closure. This endpoint still returns any data that was already stored for a torrent, but if there is nothing stored it responds <code translate="no" v-pre>503</code> with <code translate="no" v-pre>&quot;Fetching new AnimeTosho data is currently disabled. Only previously stored results are available.&quot;</code>.</p>
+        </div>
+    </div>
+</div>
 <p>AnimeTosho data is not fetched automatically for torrents. A client must request it using this endpoint before the site will fetch it from AnimeTosho. The site&#x27;s frontend will automatically call this endpoint when viewing a torrent that does not have final AnimeTosho data yet.</p>
 <p>If another user is already fetching the data for this torrent, your request will be halted until the other user&#x27;s fetch is complete, to prevent multiple simultaneous fetches for the same torrent.</p>
 <p>Even if the request is cancelled by the client, the site will continue fetching the data in the background.</p>
@@ -1768,7 +2005,7 @@ deletion_reason? | string | Reason for deletion (max 256 characters)">
 </table>
 </div>
 </retype-table>
-<doc-panel id="examples-18" collapsed>
+<doc-panel id="examples-19" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="successful-response-200-201">
@@ -1831,6 +2068,16 @@ deletion_reason? | string | Reason for deletion (max 256 characters)">
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
+<doc-tab v-cloak id="fetching-disabled-503">
+<template #title>Fetching Disabled (503)</template>
+<div class="codeblock-wrapper"><doc-codeblock>
+<pre translate="no" class="language-json"><code v-pre class="language-json">{
+  &quot;error&quot;: true,
+  &quot;message&quot;: &quot;Fetching new AnimeTosho data is currently disabled. Only previously stored results are available.&quot;,
+  &quot;retry&quot;: false
+}</code></pre>
+</doc-codeblock></div>
+</doc-tab>
 </doc-tabs>
 </doc-panel>
 <h3 id="get-torrent-comments">Get Torrent Comments</h3>
@@ -1840,10 +2087,10 @@ deletion_reason? | string | Reason for deletion (max 256 characters)">
     <span>Auth Optional</span>
 </span></p>
 <p>Returns comments for a specific torrent.</p>
-<doc-panel id="examples-19" collapsed>
+<doc-panel id="examples-20" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
-<doc-tab v-cloak id="successful-response-200-18">
+<doc-tab v-cloak id="successful-response-200-19">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -1897,7 +2144,7 @@ deletion_reason? | string | Reason for deletion (max 256 characters)">
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="unsuccessful-response-404-4">
+<doc-tab v-cloak id="unsuccessful-response-404-5">
 <template #title>Unsuccessful Response (404)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -1934,7 +2181,7 @@ You can specify <code translate="no" v-pre>?public=true</code> to get the torren
 The <code translate="no" v-pre>PATCH</code> method is recommended for larger requests, as the <code translate="no" v-pre>GET</code> method may hit URL length limits.</p>
 <p>When authenticated, the returned torrent files will be private torrents with the user&#x27;s passkey included in the announce URL.<br>
 You can specify <code translate="no" v-pre>public=true</code> to get the torrent files without your torrent key.</p>
-<doc-panel id="examples-20" collapsed>
+<doc-panel id="examples-21" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="query-parameters-get">
@@ -2013,7 +2260,7 @@ public? | boolean | Whether to download torrents without your passkey (default: 
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-19">
+<doc-tab v-cloak id="successful-response-200-20">
 <template #title>Successful Response (200)</template>
 <p>Will return a ZIP file containing the requested .torrent files.</p>
 </doc-tab>
@@ -2036,7 +2283,7 @@ public? | boolean | Whether to download torrents without your passkey (default: 
 </span></p>
 <p>Edit a group of torrents. You must have permission to edit all specified torrents. Maximum 250 torrents per request.</p>
 <p>This endpoint will return a <code translate="no" v-pre>bad_torrents</code> field in the response if any of the specified torrents could not be edited.</p>
-<doc-panel id="examples-21" collapsed>
+<doc-panel id="examples-22" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="json-data-parameters-1">
@@ -2214,7 +2461,7 @@ deletion_reason? | string | Reason for deletion (max 256 characters)">
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-20">
+<doc-tab v-cloak id="successful-response-200-21">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -2250,7 +2497,7 @@ deletion_reason? | string | Reason for deletion (max 256 characters)">
 <p>This endpoint will return a <code translate="no" v-pre>bad_torrents</code> field in the response if any of the specified torrents can not be edited.</p>
 <p>This request is done before attempting a bulk edit on the website. You don&#x27;t have to call this endpoint before calling the bulk edit endpoint.
 You will receive the same <code translate="no" v-pre>bad_torrents</code> field in the bulk edit response.</p>
-<doc-panel id="examples-22" collapsed>
+<doc-panel id="examples-23" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="json-data-parameters-2">
@@ -2279,7 +2526,7 @@ ids | array | Array of torrent IDs to edit (min 1, max 250)">
 </retype-table>
 <h6 id="italics--default---optional-7"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-21">
+<doc-tab v-cloak id="successful-response-200-22">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -2315,10 +2562,10 @@ ids | array | Array of torrent IDs to edit (min 1, max 250)">
 <li>Searching <code translate="no" v-pre>s01</code> when a <code translate="no" v-pre>media_id</code> is provided, it will add season 1 to the episode filter.</li>
 <li>Searching <code translate="no" v-pre>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</code> will assume it&#x27;s an info hash, and search for the torrent directly, and return a torrent ID for in the <code translate="no" v-pre>infohash_match</code> data field if a torrent is found.</li>
 </ul>
-<doc-panel id="examples-23" collapsed>
+<doc-panel id="examples-24" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
-<doc-tab v-cloak id="query-parameters-4">
+<doc-tab v-cloak id="query-parameters-5">
 <template #title>Query Parameters</template>
 <retype-table copy-text="Name | Type | Description
 ---- | ---- | -----------
@@ -2327,7 +2574,7 @@ limit? | integer | Number of results to return (default: *`50`*, range: `1`-`100
 offset? | integer | Number of results to skip for pagination (default: 0)
 sort_by? | string | Sort order: *`best`*, `latest`, `oldest`, `rss`, `seeders`, `seeders_asc`, `leechers`, `leechers_asc`, `downloads`, `downloads_asc`, `comments`, `comments_asc`, `filesize`, `filesize_asc`.
 category? | number | Category filter: *`0`*. This currently isn't used, as there's only one category.
-media_id? | string | Comma-separated media IDs to filter by
+media_id? | string | Comma-separated media IDs to filter by. Each one can also be an external id, see [Resolve External Media ID](#resolve-external-media-id). An AniList/MAL/AniDB ID narrows to that entry's episodes.
 tvdbid? | string | Comma-separated TVDB series IDs to filter by
 tmdbid? | string | Comma-separated TMDB movie IDs to filter by
 episode_ids? | string | Comma-separated episode IDs to filter by
@@ -2391,7 +2638,7 @@ after? | string | Filter torrents uploaded after this date, unix milliseconds">
 <tr>
 <td>media_id?</td>
 <td>string</td>
-<td>Comma-separated media IDs to filter by</td>
+<td>Comma-separated media IDs to filter by. Each one can also be an external id, see <doc-anchor-trigger to="#resolve-external-media-id">Resolve External Media ID</doc-anchor-trigger>. An AniList/MAL/AniDB ID narrows to that entry&#x27;s episodes.</td>
 </tr>
 <tr>
 <td>tvdbid?</td>
@@ -2524,7 +2771,7 @@ after? | string | Filter torrents uploaded after this date, unix milliseconds">
 </retype-table>
 <h6 id="italics--default---optional-8"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-22">
+<doc-tab v-cloak id="successful-response-200-23">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -2587,6 +2834,7 @@ after? | string | Filter torrents uploaded after this date, unix milliseconds">
         &quot;user_download_count&quot;: null, // Number of times the authenticated user has downloaded this torrent, or null
         &quot;has_mediainfo&quot;: false,
         &quot;nyaa_upload_time&quot;: &quot;1573878523000&quot;, // If imported from Nyaa, the original upload time as a Unix timestamp in milliseconds, otherwise null
+        &quot;rss_time&quot;: &quot;1757116800000&quot;, // When the torrent entered the RSS/torznab feed as a Unix timestamp in milliseconds: the upload time, or the approval time if it needed approval
         &quot;batch&quot;: false
       }
     ],
@@ -2645,7 +2893,7 @@ after? | string | Filter torrents uploaded after this date, unix milliseconds">
 </span></p>
 <p>Uploads a new torrent to the site.</p>
 <p>It&#x27;s recommended you first perform <doc-anchor-trigger to="#perform-upload-checks">upload checks</doc-anchor-trigger> before uploading a torrent, to ensure the torrent is being parsed as expected.</p>
-<doc-panel id="examples-24" collapsed>
+<doc-panel id="examples-25" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="json-data-parameters-3">
@@ -2654,7 +2902,6 @@ after? | string | Filter torrents uploaded after this date, unix milliseconds">
 ---- | ---- | -----------
 torrent | string | Base64 encoded torrent file
 title | string | Title for the torrent (max 512 characters)
-movie | boolean | Whether this torrent is for a movie (true) or series (false)
 category | number | Category ID (currently only 1 is valid)
 video_type | number or null | Video type category ID
 video_codec | number or null | Video codec category ID
@@ -2664,7 +2911,6 @@ anonymous | boolean | Whether the upload should be anonymous
 hidden | boolean | Whether the torrent should be hidden
 otl | boolean | Whether the torrent's subtitles contain an original translation
 hardsub | boolean | Whether the torrent contains hardsubbed video
-batch | boolean | Whether the torrent is a batch release (default: false)
 primary_group? | object | Primary group information (see below)
 secondary_groups | array | Array of secondary group objects (max 50 items)
 audio_langs | string | Comma-separated list of audio languages (max 256 characters)
@@ -2692,11 +2938,6 @@ ignore_warnings? | boolean | Whether to ignore validation warnings, and proceed 
 <td>title</td>
 <td>string</td>
 <td>Title for the torrent (max 512 characters)</td>
-</tr>
-<tr>
-<td>movie</td>
-<td>boolean</td>
-<td>Whether this torrent is for a movie (true) or series (false)</td>
 </tr>
 <tr>
 <td>category</td>
@@ -2742,11 +2983,6 @@ ignore_warnings? | boolean | Whether to ignore validation warnings, and proceed 
 <td>hardsub</td>
 <td>boolean</td>
 <td>Whether the torrent contains hardsubbed video</td>
-</tr>
-<tr>
-<td>batch</td>
-<td>boolean</td>
-<td>Whether the torrent is a batch release (default: false)</td>
 </tr>
 <tr>
 <td>primary_group?</td>
@@ -2816,7 +3052,6 @@ ignore_warnings? | boolean | Whether to ignore validation warnings, and proceed 
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
   &quot;torrent&quot;: &quot;ZDg6YW5ub3VuY2....&quot;,
   &quot;title&quot;: &quot;[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0]&quot;,
-  &quot;movie&quot;: false,
   &quot;category&quot;: &quot;1&quot;,
   &quot;video_codec&quot;: 2,
   &quot;hidden&quot;: false,
@@ -2825,7 +3060,6 @@ ignore_warnings? | boolean | Whether to ignore validation warnings, and proceed 
   &quot;mtl&quot;: false,
   &quot;otl&quot;: false,
   &quot;hardsub&quot;: false,
-  &quot;batch&quot;: false,
   &quot;anonymous&quot;: false,
   &quot;primary_group&quot;: {
     &quot;id&quot;: &quot;1234567890&quot;,
@@ -2851,7 +3085,7 @@ ignore_warnings? | boolean | Whether to ignore validation warnings, and proceed 
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-23">
+<doc-tab v-cloak id="successful-response-200-24">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -2901,7 +3135,22 @@ ignore_warnings? | boolean | Whether to ignore validation warnings, and proceed 
     <span>Auth Required</span>
 </span></p>
 <p>Performs various checks for a new torrent upload, such as verifying its parsability.</p>
-<doc-panel id="examples-25" collapsed>
+<p>Our system and ruleset will attempt to correct the title and parse it, and return the results:</p>
+<ul>
+<li><code translate="no" v-pre>fixed_title</code> is the title the site will store and display. It equals the submitted title when no rule applied.</li>
+<li><code translate="no" v-pre>title_rewritten</code> is <code translate="no" v-pre>true</code> when <code translate="no" v-pre>fixed_title</code> differs from what was submitted.</li>
+<li><code translate="no" v-pre>title_rules_applied</code> lists each rule that fired, in order, as <code translate="no" v-pre>{ rule_id, name, before, after }</code>.</li>
+</ul>
+<p><code translate="no" v-pre>parsedData</code> and <code translate="no" v-pre>auto_title</code> are always derived from the corrected title. Clients should show <code translate="no" v-pre>fixed_title</code> to the user rather than silently replacing what they typed.</p>
+<p>When nothing resolved, <code translate="no" v-pre>title_suggestions</code> carries up to three corrected titles, best first. Each will parse, but may not be correct. Clients can offer them as one-click fixes, but the user should be able to edit them before submission. Each suggestion includes:</p>
+<ul>
+<li><code translate="no" v-pre>title</code>: the full corrected title, ready to submit as-is.</li>
+<li><code translate="no" v-pre>reason</code>: why it is being suggested, in plain words.</li>
+<li><code translate="no" v-pre>media_id</code> / <code translate="no" v-pre>media_title</code>: what the suggestion resolved to.</li>
+<li><code translate="no" v-pre>confidence</code>: name similarity against our library, 0-1.</li>
+</ul>
+<p>The array is empty when the title parsed, or when nothing plausible was found.</p>
+<doc-panel id="examples-26" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="json-data-parameters-4">
@@ -2909,7 +3158,6 @@ ignore_warnings? | boolean | Whether to ignore validation warnings, and proceed 
 <retype-table copy-text="Name | Type | Description
 ---- | ---- | -----------
 title | string | Title for the torrent (max 512 characters)
-movie | boolean | Whether this torrent is for a movie (true) or series (false)
 torrent? | string | Base64-encoded `.torrent` file. If provided, `files`, `announce_urls`, and `raw_announce_urls` are extracted from it and any values supplied for those fields are ignored.
 files? | array | Array of file objects (`{ path: string }`) or plain path strings. Ignored if `torrent` is provided.
 video_type | number or null | Video type category ID
@@ -2918,7 +3166,6 @@ level | number | Subtitle level (null or -1 to 3, -1 = no subs)
 mtl | boolean | Whether the torrent contains machine translated subtitles
 otl | boolean | Whether the torrent's subtitles contain an original translation
 hardsub | boolean | Whether the torrent contains hardsubbed video
-batch | boolean | Whether the torrent is a batch (default: false)
 primary_group? | object | Primary group information (see below)
 audio_langs | string | Comma-separated list of audio languages (max 256 characters)
 sub_langs | string | Comma-separated list of subtitle languages (max 256 characters)
@@ -2939,11 +3186,6 @@ raw_announce_urls? | array of arrays of strings | Tiered announce URLs. Ignored 
 <td>title</td>
 <td>string</td>
 <td>Title for the torrent (max 512 characters)</td>
-</tr>
-<tr>
-<td>movie</td>
-<td>boolean</td>
-<td>Whether this torrent is for a movie (true) or series (false)</td>
 </tr>
 <tr>
 <td>torrent?</td>
@@ -2984,11 +3226,6 @@ raw_announce_urls? | array of arrays of strings | Tiered announce URLs. Ignored 
 <td>hardsub</td>
 <td>boolean</td>
 <td>Whether the torrent contains hardsubbed video</td>
-</tr>
-<tr>
-<td>batch</td>
-<td>boolean</td>
-<td>Whether the torrent is a batch (default: false)</td>
 </tr>
 <tr>
 <td>primary_group?</td>
@@ -3043,7 +3280,6 @@ raw_announce_urls? | array of arrays of strings | Tiered announce URLs. Ignored 
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
   &quot;title&quot;: &quot;[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0]&quot;,
-  &quot;movie&quot;: false,
   &quot;torrent&quot;: &quot;ZDg6YW5ub3VuY2....&quot;,
   &quot;video_type&quot;: null,
   &quot;video_codec&quot;: null,
@@ -3062,7 +3298,6 @@ raw_announce_urls? | array of arrays of strings | Tiered announce URLs. Ignored 
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
   &quot;title&quot;: &quot;[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0]&quot;,
-  &quot;movie&quot;: false,
   &quot;video_type&quot;: null,
   &quot;video_codec&quot;: null,
   &quot;files&quot;: [
@@ -3088,7 +3323,7 @@ raw_announce_urls? | array of arrays of strings | Tiered announce URLs. Ignored 
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-24">
+<doc-tab v-cloak id="successful-response-200-25">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -3135,6 +3370,12 @@ raw_announce_urls? | array of arrays of strings | Tiered announce URLs. Ignored 
       &quot;releaseGroup&quot;: &quot;ExampleGroup&quot;
     },
     &quot;auto_title&quot;: &quot;[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0]&quot;,
+    &quot;fixed_title&quot;: &quot;[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0]&quot;,
+    &quot;movie&quot;: false, // detected from the title: false = series (Sonarr), true = movie (Radarr)
+    &quot;batch&quot;: false, // detected from the episodes: whether they fill a whole TheTVDB season or AniList entry
+    &quot;title_suggestions&quot;: [], // only populated when the title resolved to nothing
+    &quot;title_rewritten&quot;: false,
+    &quot;title_rules_applied&quot;: [],
     &quot;upgraded_torrents&quot;: []
   }
 }</code></pre>
@@ -3159,7 +3400,7 @@ raw_announce_urls? | array of arrays of strings | Tiered announce URLs. Ignored 
 </span></p>
 <p>Extracts metadata for a torrent using Mediainfo Text or JSON output.</p>
 <p>When providing JSON output, you must provide the data as JSON, not a JSON string.</p>
-<doc-panel id="examples-26" collapsed>
+<doc-panel id="examples-27" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="json-data-parameters-5">
@@ -3217,7 +3458,7 @@ mediainfo | string or object | Mediainfo data as plain text or JSON object">
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-25">
+<doc-tab v-cloak id="successful-response-200-26">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -3266,10 +3507,10 @@ mediainfo | string or object | Mediainfo data as plain text or JSON object">
     </div>
 </div>
 <p>Returns information about a specific user, including their username, profile picture, and other metadata.</p>
-<doc-panel id="examples-27" collapsed>
+<doc-panel id="examples-28" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
-<doc-tab v-cloak id="successful-response-200-26">
+<doc-tab v-cloak id="successful-response-200-27">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -3320,7 +3561,7 @@ mediainfo | string or object | Mediainfo data as plain text or JSON object">
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="unsuccessful-response-404-5">
+<doc-tab v-cloak id="unsuccessful-response-404-6">
 <template #title>Unsuccessful Response (404)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -3338,7 +3579,7 @@ mediainfo | string or object | Mediainfo data as plain text or JSON object">
     <span>Auth Required</span>
 </span></p>
 <p>Perform edits on your account. This includes Nyaa links, profile picture, revoking API keys, and your description.</p>
-<doc-panel id="examples-28" collapsed>
+<doc-panel id="examples-29" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="json-data-parameters-6">
@@ -3415,7 +3656,7 @@ hide_peer_amount? | boolean | Whether to hide the exact amount of data you've up
 </retype-table>
 <h6 id="at-least-one-is-required-italics--default---optional-3">At least one is required, <em>italics</em> = default, ? = optional</h6>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-27">
+<doc-tab v-cloak id="successful-response-200-28">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -3442,10 +3683,10 @@ hide_peer_amount? | boolean | Whether to hide the exact amount of data you've up
     <span>Auth Optional</span>
 </span></p>
 <p>Returns the groups that a user is a member of.</p>
-<doc-panel id="examples-29" collapsed>
+<doc-panel id="examples-30" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
-<doc-tab v-cloak id="successful-response-200-28">
+<doc-tab v-cloak id="successful-response-200-29">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -3482,7 +3723,7 @@ hide_peer_amount? | boolean | Whether to hide the exact amount of data you've up
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
-<doc-tab v-cloak id="unsuccessful-response-404-6">
+<doc-tab v-cloak id="unsuccessful-response-404-7">
 <template #title>Unsuccessful Response (404)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -3565,10 +3806,10 @@ hide_peer_amount? | boolean | Whether to hide the exact amount of data you've up
 </table>
 </div>
 </retype-table>
-<doc-panel id="examples-30" collapsed>
+<doc-panel id="examples-31" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
-<doc-tab v-cloak id="successful-response-200-29">
+<doc-tab v-cloak id="successful-response-200-30">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -3601,7 +3842,7 @@ hide_peer_amount? | boolean | Whether to hide the exact amount of data you've up
     <span>Auth Required</span>
 </span></p>
 <p>Marks specified notifications as read. Returns the updated list of notifications.</p>
-<doc-panel id="examples-31" collapsed>
+<doc-panel id="examples-32" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
 <doc-tab v-cloak id="json-data-parameters-7">
@@ -3630,7 +3871,7 @@ ids | array or string | Either an array of notification IDs to mark as read, or 
 </retype-table>
 <h6 id="italics--default---optional-12"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-30">
+<doc-tab v-cloak id="successful-response-200-31">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -3663,10 +3904,10 @@ ids | array or string | Either an array of notification IDs to mark as read, or 
     <span>Auth Required</span>
 </span></p>
 <p>Returns a list of torrents that the user is a peer of, including their upload and download statistics.</p>
-<doc-panel id="examples-32" collapsed>
+<doc-panel id="examples-33" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
-<doc-tab v-cloak id="successful-response-200-31">
+<doc-tab v-cloak id="successful-response-200-32">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
@@ -3740,10 +3981,10 @@ ids | array or string | Either an array of notification IDs to mark as read, or 
         </div>
     </div>
 </div>
-<doc-panel id="examples-33" collapsed>
+<doc-panel id="examples-34" collapsed>
     <template #title>Examples</template>
 <doc-tabs>
-<doc-tab v-cloak id="query-parameters-5">
+<doc-tab v-cloak id="query-parameters-6">
 <template #title>Query Parameters</template>
 <retype-table copy-text="Name | Type | Description
 ---- | ---- | -----------
@@ -3769,7 +4010,7 @@ query | string | Exact username to search for.">
 </retype-table>
 <h6 id="italics--default---optional-13"><em>italics</em> = default, ? = optional</h6>
 </doc-tab>
-<doc-tab v-cloak id="successful-response-200-32">
+<doc-tab v-cloak id="successful-response-200-33">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{

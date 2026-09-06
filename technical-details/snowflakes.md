@@ -16,6 +16,7 @@ Types are represented as follows:
 - `5` - Report
 - `6` - Notification
 - `7` - Report Chat
+- `8` - Title Rule
 
 The increment is a number that starts at a random value 0-15, and increases by 1 for each new snowflake made on the same thread, or loops back to zero if it reaches 16. This is used to decrease the chance of two snowflakes being the same if they were created at the same time.
 
@@ -45,6 +46,7 @@ const SnowflakeTypeNames = {
     5: 'Report',
     6: 'Notification',
     7: 'ReportChat',
+    8: 'TitleRule',
 };
 
 function extractSnowflake(snowflake) {
@@ -76,6 +78,7 @@ enum SnowflakeTypes {
 	Report = 5,
 	Notification = 6,
 	ReportChat = 7,
+	TitleRule = 8,
 }
 
 const SnowflakeTypeNames: Record<SnowflakeTypes, string> = {
@@ -117,6 +120,7 @@ SnowflakeTypeNames = {
     5: 'Report',
     6: 'Notification',
     7: 'ReportChat',
+    8: 'TitleRule',
 }
 
 def extract_snowflake(snowflake):

@@ -49,7 +49,11 @@ You can drag and drop your video file onto the upload page to automatically fill
 !!!
 
 !!!info Media Parsing
-We will try to figure out what show/film you are uploading based on the torrent title. Internally, we use Sonarr/Radarr to do this, meaning if we can't parse it, neither will other users! Try to make sure that we can parse it correctly by following the naming conventions.
+We will try to figure out what show/film you are uploading based on the torrent title. Internally, we use Sonarr/Radarr/Anilist to do this, meaning if we can't parse it, neither will other users! Try to make sure that we can parse it correctly by following the naming conventions.
+
+When nothing matches, the Preview box offers corrected titles if we can find a match in our database. Most of the time, these are accurate, but you should check that they match what you're uploading.
+
+If we have seen a title similar to yours before, it might auto-correct your title to ensure it parses correctly.
 !!!
 
 Not sure what to put in each field? You can find more information about each field here:
@@ -71,6 +75,9 @@ Sometimes, your upload will have to be approved by a staff member before it is v
 
 Your upload may be held for approval if:
 - It's your first time uploading.
+- We could not work out which show or film it is from the title.
+
+Once approved, your torrent enters the RSS and Torznab feeds at that moment rather than at its original upload time, so automation software still picks it up even if approval took a while.
 
 Please be patient while staff reviews your upload. This can take anywhere from a few minutes to up to 24 hours, depending on how busy the staff are. You will receive a notification when your upload is approved or rejected.
 

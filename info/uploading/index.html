@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.6.0.839452645228">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.6.0.842043384697">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.6.0">
@@ -37,11 +37,11 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.6.0.839452645228" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.6.0.842043384697" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.6.0.839452645228" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.6.0.842043384697" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.6.0.839452645228" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.6.0.842043384697" data-turbo-eval="false" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -330,7 +330,9 @@ The other tracker can be any public tracker. It&#x27;s required to have 2 tracke
         </div>
         <div class="pr-5 ml-3 w-full">
             <h5>Media Parsing</h5>
-<p>We will try to figure out what show/film you are uploading based on the torrent title. Internally, we use Sonarr/Radarr to do this, meaning if we can&#x27;t parse it, neither will other users! Try to make sure that we can parse it correctly by following the naming conventions.</p>
+<p>We will try to figure out what show/film you are uploading based on the torrent title. Internally, we use Sonarr/Radarr/Anilist to do this, meaning if we can&#x27;t parse it, neither will other users! Try to make sure that we can parse it correctly by following the naming conventions.</p>
+<p>When nothing matches, the Preview box offers corrected titles if we can find a match in our database. Most of the time, these are accurate, but you should check that they match what you&#x27;re uploading.</p>
+<p>If we have seen a title similar to yours before, it might auto-correct your title to ensure it parses correctly.</p>
         </div>
     </div>
 </div>
@@ -353,7 +355,9 @@ The other tracker can be any public tracker. It&#x27;s required to have 2 tracke
 <p>Your upload may be held for approval if:</p>
 <ul>
 <li>It&#x27;s your first time uploading.</li>
+<li>We could not work out which show or film it is from the title.</li>
 </ul>
+<p>Once approved, your torrent enters the RSS and Torznab feeds at that moment rather than at its original upload time, so automation software still picks it up even if approval took a while.</p>
 <p>Please be patient while staff reviews your upload. This can take anywhere from a few minutes to up to 24 hours, depending on how busy the staff are. You will receive a notification when your upload is approved or rejected.</p>
 <div class="flex mb-6">
     <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-info"></div>

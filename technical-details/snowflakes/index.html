@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.6.0.839452645228">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.6.0.842043384697">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.6.0">
@@ -37,12 +37,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.6.0.839452645228" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.6.0.842043384697" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.6.0.839452645228" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.6.0.842043384697" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.6.0.839452645228" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.6.0.839452645228" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.6.0.842043384697" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.6.0.842043384697" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -177,6 +177,7 @@
 <li><code translate="no" v-pre>5</code> - Report</li>
 <li><code translate="no" v-pre>6</code> - Notification</li>
 <li><code translate="no" v-pre>7</code> - Report Chat</li>
+<li><code translate="no" v-pre>8</code> - Title Rule</li>
 </ul>
 <p>The increment is a number that starts at a random value 0-15, and increases by 1 for each new snowflake made on the same thread, or loops back to zero if it reaches 16. This is used to decrease the chance of two snowflakes being the same if they were created at the same time.</p>
 <p>To decode a snowflake:</p>
@@ -203,6 +204,7 @@ const SnowflakeTypeNames = {
     5: 'Report',
     6: 'Notification',
     7: 'ReportChat',
+    8: 'TitleRule',
 };
 
 function extractSnowflake(snowflake) {
@@ -233,6 +235,7 @@ enum SnowflakeTypes {
 	Report = 5,
 	Notification = 6,
 	ReportChat = 7,
+	TitleRule = 8,
 }
 
 const SnowflakeTypeNames: Record&lt;SnowflakeTypes, string&gt; = {
@@ -273,6 +276,7 @@ SnowflakeTypeNames = {
     5: 'Report',
     6: 'Notification',
     7: 'ReportChat',
+    8: 'TitleRule',
 }
 
 def extract_snowflake(snowflake):
