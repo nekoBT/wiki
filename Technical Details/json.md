@@ -714,6 +714,14 @@ Returns information about a specific media item, including its title, descriptio
 
 Use `?force=true` to get the media, even if there are no torrents for it.
 
+"No torrents" counts releases filed under an equivalent media as well. A film
+is regularly both its own movie entry and a special of its series, so a movie
+whose only copies were uploaded against those specials still resolves.
+
+Where the media is mapped to AniList, the `title`, `overview`, `genres`, `year`,
+`runtime` and `status` fields come from the franchise's primary AniList
+entry rather than TheTVDB/TMDB, and an extra `anilist` object is included.
+
 ==- Examples
 +++ Successful Response (200)
 ```json
@@ -740,6 +748,13 @@ Use `?force=true` to get the media, even if there are no torrents for it.
       "Towa no Yugure"
     ],
     "notes": null,
+    "series": null, // on a movie, the series it is also filed under: { "media_id": "s168", "title": "Sword Art Online" }
+    "stats": { // public releases only; hidden, unapproved and deleted torrents are not counted
+      "uploads": 42, // torrents filed under this media
+      "seeders": "310", // summed across those torrents
+      "leechers": "27",
+      "downloads": "1893" // times those torrents were completed
+    },
     "episodes": [
       {
         "id": 48690,
@@ -776,7 +791,94 @@ Use `?force=true` to get the media, even if there are no torrents for it.
           "sub": []
         }
       }
-    ]
+    ],
+    "anilist": {
+      "display_id": 11757, // the entry the top-level fields describe
+      "primary": { // the franchise's first season, used when ?al= is absent
+        "id": 11757,
+        "id_mal": 11757,
+        "title": {
+          "romaji": "Sword Art Online",
+          "english": "Sword Art Online",
+          "native": "ソードアート・オンライン",
+          "synonyms": ["SAO", "S.A.O", "刀剑神域"]
+        },
+        "description": "In the near future...", // raw AniList markup
+        "format": "TV",
+        "status": "FINISHED",
+        "episodes": 25,
+        "duration": 23,
+        "season": "SUMMER",
+        "season_year": 2012,
+        "start_date": "2012-07-08", // truncated when AniList only knows part of it
+        "end_date": "2012-12-23",
+        "cover_image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx11757-SxYDUzdr9rh2.jpg",
+        "cover_color": "#e4bb5d",
+        "banner_image": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/11757-TlEEV9weG4Ag.jpg",
+        "genres": ["Action", "Adventure", "Fantasy", "Romance"],
+        "studios": [{ "id": 561, "name": "A-1 Pictures" }],
+        "tags": [{ "id": 108, "name": "Virtual World", "rank": 97, "category": "Setting-Scene" }],
+        "external_links": [{ "site": "Crunchyroll", "url": "https://...", "type": "STREAMING" }],
+        "average_score": 70,
+        "popularity": 716429,
+        "favourites": 12345,
+        "country_of_origin": "JP",
+        "is_adult": false,
+        "site_url": "https://anilist.co/anime/11757",
+        "next_airing_episode": null,
+        "next_airing_at": null // ms since epoch
+      },
+      "entries": [ // every AniList entry mapped to this media, by season then episode
+        {
+          "season": 4, // TVDB/TMDB season; null for movies
+          "ord": 2, // 1-based position within that season
+          "src_start": 13, // this site's episode numbering
+          "src_end": 23, // null means open-ended
+          "dst_start": 1, // AniList's episode numbering
+          "dst_end": 11,
+          "ratio": null, // set when one side's episodes span several of the other's
+          "anilist_id": 114308,
+          "media": { /* same fields as "primary" */ }
+        }
+      ],
+      "alt_ids": [ // the other databases' ids, one row per entry above
+        {
+          "anilist_id": 114308,
+          "mal_id": 40620,
+          "anidb_id": 14801, // null when the mappings have no AniDB key for it
+          "imdb_ids": [] // AniBridge records movie and show IMDb ids here
+        }
+      ],
+      "targets": [ // where each entry opens, and the poster that stands for it
+        {
+          "anilist_id": 114308,
+          "media_id": null, // the movie this entry is also held as, when there is one
+          "poster": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/..."
+        }
+      ],
+      "relations": [ // AniList's own relation graph for the displayed entry
+        {
+          "relation_type": "SEQUEL",
+          "id": 20594,
+          "type": "ANIME", // ANIME or MANGA
+          "title": { "romaji": "Sword Art Online II", "english": "Sword Art Online II", "native": "ソードアート・オンライン II", "synonyms": [] },
+          "cover_image": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx20594-FhRgZ1H9Istt.jpg",
+          "format": "TV", // TV, MOVIE, OVA ... for anime; MANGA, NOVEL, ONE_SHOT for manga
+          "site_url": "https://anilist.co/anime/20594",
+          "media_id": "s168" // null when the tracker holds no media for it
+        },
+        {
+          "relation_type": "ADAPTATION",
+          "id": 51479,
+          "type": "MANGA",
+          "title": { "romaji": "Sword Art Online", "english": "Sword Art Online", "native": "ソードアート・オンライン", "synonyms": [] },
+          "cover_image": "https://s4.anilist.co/file/anilistcdn/media/manga/cover/medium/bx51479-Ck1qkYUYr4jZ.jpg",
+          "format": "NOVEL",
+          "site_url": "https://anilist.co/manga/51479", // note /manga/, not /anime/
+          "media_id": null // only ANIME relations can ever be held here
+        }
+      ]
+    }
   }
 }
 ```
@@ -785,6 +887,51 @@ Use `?force=true` to get the media, even if there are no torrents for it.
 {
   "error": true,
   "message": "No torrents found for this media."
+}
+```
++++
+==-
+
+
+
+### Resolve External Media ID
+[!badge variant="info" text="GET"] `/media/resolve` [!badge variant="success" text="Auth Optional"]
+
+Resolves an external database identifier to a local media ID. `/media/<id>` accepts the same identifiers.
+
+Identifiers take the form `<provider>-<id>`.
+Local media IDs (`s123`, `m456`) contain no hyphen.
+
+Provider | Example | Notes
+-------- | ------- | -----
+`anilist` | `anilist-20594` | Also sets `anilist_id`
+`mal` | `mal-21881` | Also sets `anilist_id`
+`anidb` | `anidb-10376` | Also sets `anilist_id`
+`tvdb` | `tvdb-259640` | Tries series, then movies
+`tmdb` | `tmdb-45782` | Tries series, then movies
+`imdb` | `imdb-tt5544384` | Tries movies, then series
+`tvdb_show`, `tvdb_movie`, `tmdb_show`, `tmdb_movie`, `imdb_show`, `imdb_movie` | `tmdb_movie-413594` | Explicit form, when the short alias is ambiguous
+
+==- Examples
++++ Query Parameters
+Name | Type | Description
+---- | ---- | -----------
+id | string | The external identifier, e.g. `anilist-20594`
++++ Successful Response (200)
+```json
+{
+  "error": false,
+  "data": {
+    "media_id": "s168",
+    "anilist_id": 20594 // null when the identifier named a whole series
+  }
+}
+```
++++ Unsuccessful Response (404)
+```json
+{
+  "error": true,
+  "message": "No media found for that external ID."
 }
 ```
 +++
@@ -865,12 +1012,12 @@ Returns various statistics about the site, such as the number of users, torrents
   "error": false,
   "data": {
     "created_at": "1764203045818",
-    "top_media_1w": [ // Top media by seeders in the past week, max 10
+    "top_media_1w": [ // Top media by downloads on torrents uploaded in the past week, max 10
       {
         "id": "s1539",
         "title": "Dusk Beyond the End of the World",
         "banner_url": "https://artworks.thetvdb.com/banners/v4/series/465214/posters/685e663785276.jpg",
-        "seeders": 155
+        "downloads": 155
       }
     ],
     "users": {
@@ -938,6 +1085,8 @@ Returns information about a specific torrent, including its title, description, 
     "media_episode_ids": [
       "48665"
     ],
+    "anilist_id": 11757, // null when the release spans several AniList entries, or the media has no AniList mapping
+    "anilist_ids": [11757], // List of AniList IDs this release spans, can be empty
     "audio_lang": "ja", // All languages are comma separated lists
     "sub_lang": "",
     "fsub_lang": "en",
@@ -1140,6 +1289,10 @@ deletion_reason? | string | Reason for deletion (max 256 characters)
 
 Returns the AnimeTosho data for a specific torrent. **You should handle for long request times on this endpoint.** If data is not yet available, the request may take up to 60 seconds to complete while the site fetches all data from AnimeTosho.
 
+!!!warning Fetching new records is disabled
+The site no longer pulls new records from AnimeTosho, due to their closure. This endpoint still returns any data that was already stored for a torrent, but if there is nothing stored it responds `503` with `"Fetching new AnimeTosho data is currently disabled. Only previously stored results are available."`.
+!!!
+
 AnimeTosho data is not fetched automatically for torrents. A client must request it using this endpoint before the site will fetch it from AnimeTosho. The site's frontend will automatically call this endpoint when viewing a torrent that does not have final AnimeTosho data yet.
 
 If another user is already fetching the data for this torrent, your request will be halted until the other user's fetch is complete, to prevent multiple simultaneous fetches for the same torrent.
@@ -1206,6 +1359,14 @@ The server sent a request to AnimeTosho, received a `processing` status, and is 
 {
   "error": true,
   "message": "Torrent was skipped on AnimeTosho.",
+  "retry": false
+}
+```
++++ Fetching Disabled (503)
+```json
+{
+  "error": true,
+  "message": "Fetching new AnimeTosho data is currently disabled. Only previously stored results are available.",
   "retry": false
 }
 ```
@@ -1499,7 +1660,7 @@ limit? | integer | Number of results to return (default: *`50`*, range: `1`-`100
 offset? | integer | Number of results to skip for pagination (default: 0)
 sort_by? | string | Sort order: *`best`*, `latest`, `oldest`, `rss`, `seeders`, `seeders_asc`, `leechers`, `leechers_asc`, `downloads`, `downloads_asc`, `comments`, `comments_asc`, `filesize`, `filesize_asc`.
 category? | number | Category filter: *`0`*. This currently isn't used, as there's only one category.
-media_id? | string | Comma-separated media IDs to filter by
+media_id? | string | Comma-separated media IDs to filter by. Each one can also be an external id, see [Resolve External Media ID](#resolve-external-media-id). An AniList/MAL/AniDB ID narrows to that entry's episodes.
 tvdbid? | string | Comma-separated TVDB series IDs to filter by
 tmdbid? | string | Comma-separated TMDB movie IDs to filter by
 episode_ids? | string | Comma-separated episode IDs to filter by
@@ -1588,6 +1749,7 @@ after? | string | Filter torrents uploaded after this date, unix milliseconds
         "user_download_count": null, // Number of times the authenticated user has downloaded this torrent, or null
         "has_mediainfo": false,
         "nyaa_upload_time": "1573878523000", // If imported from Nyaa, the original upload time as a Unix timestamp in milliseconds, otherwise null
+        "rss_time": "1757116800000", // When the torrent entered the RSS/torznab feed as a Unix timestamp in milliseconds: the upload time, or the approval time if it needed approval
         "batch": false
       }
     ],
@@ -1651,7 +1813,6 @@ Name | Type | Description
 ---- | ---- | -----------
 torrent | string | Base64 encoded torrent file
 title | string | Title for the torrent (max 512 characters)
-movie | boolean | Whether this torrent is for a movie (true) or series (false)
 category | number | Category ID (currently only 1 is valid)
 video_type | number or null | Video type category ID
 video_codec | number or null | Video codec category ID
@@ -1661,7 +1822,6 @@ anonymous | boolean | Whether the upload should be anonymous
 hidden | boolean | Whether the torrent should be hidden
 otl | boolean | Whether the torrent's subtitles contain an original translation
 hardsub | boolean | Whether the torrent contains hardsubbed video
-batch | boolean | Whether the torrent is a batch release (default: false)
 primary_group? | object | Primary group information (see below)
 secondary_groups | array | Array of secondary group objects (max 50 items)
 audio_langs | string | Comma-separated list of audio languages (max 256 characters)
@@ -1687,7 +1847,6 @@ ignore_warnings? | boolean | Whether to ignore validation warnings, and proceed 
 {
   "torrent": "ZDg6YW5ub3VuY2....",
   "title": "[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0]",
-  "movie": false,
   "category": "1",
   "video_codec": 2,
   "hidden": false,
@@ -1696,7 +1855,6 @@ ignore_warnings? | boolean | Whether to ignore validation warnings, and proceed 
   "mtl": false,
   "otl": false,
   "hardsub": false,
-  "batch": false,
   "anonymous": false,
   "primary_group": {
     "id": "1234567890",
@@ -1766,13 +1924,29 @@ ignore_warnings? | boolean | Whether to ignore validation warnings, and proceed 
 
 Performs various checks for a new torrent upload, such as verifying its parsability.
 
+Our system and ruleset will attempt to correct the title and parse it, and return the results:
+
+- `fixed_title` is the title the site will store and display. It equals the submitted title when no rule applied.
+- `title_rewritten` is `true` when `fixed_title` differs from what was submitted.
+- `title_rules_applied` lists each rule that fired, in order, as `{ rule_id, name, before, after }`.
+
+`parsedData` and `auto_title` are always derived from the corrected title. Clients should show `fixed_title` to the user rather than silently replacing what they typed.
+
+When nothing resolved, `title_suggestions` carries up to three corrected titles, best first. Each will parse, but may not be correct. Clients can offer them as one-click fixes, but the user should be able to edit them before submission. Each suggestion includes:
+
+- `title`: the full corrected title, ready to submit as-is.
+- `reason`: why it is being suggested, in plain words.
+- `media_id` / `media_title`: what the suggestion resolved to.
+- `confidence`: name similarity against our library, 0-1.
+
+The array is empty when the title parsed, or when nothing plausible was found.
+
 
 ==- Examples
 +++ JSON Data Parameters
 Name | Type | Description
 ---- | ---- | -----------
 title | string | Title for the torrent (max 512 characters)
-movie | boolean | Whether this torrent is for a movie (true) or series (false)
 torrent? | string | Base64-encoded `.torrent` file. If provided, `files`, `announce_urls`, and `raw_announce_urls` are extracted from it and any values supplied for those fields are ignored.
 files? | array | Array of file objects (`{ path: string }`) or plain path strings. Ignored if `torrent` is provided.
 video_type | number or null | Video type category ID
@@ -1781,7 +1955,6 @@ level | number | Subtitle level (null or -1 to 3, -1 = no subs)
 mtl | boolean | Whether the torrent contains machine translated subtitles
 otl | boolean | Whether the torrent's subtitles contain an original translation
 hardsub | boolean | Whether the torrent contains hardsubbed video
-batch | boolean | Whether the torrent is a batch (default: false)
 primary_group? | object | Primary group information (see below)
 audio_langs | string | Comma-separated list of audio languages (max 256 characters)
 sub_langs | string | Comma-separated list of subtitle languages (max 256 characters)
@@ -1801,7 +1974,6 @@ raw_announce_urls? | array of arrays of strings | Tiered announce URLs. Ignored 
 ```json
 {
   "title": "[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0]",
-  "movie": false,
   "torrent": "ZDg6YW5ub3VuY2....",
   "video_type": null,
   "video_codec": null,
@@ -1818,7 +1990,6 @@ raw_announce_urls? | array of arrays of strings | Tiered announce URLs. Ignored 
 ```json
 {
   "title": "[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0]",
-  "movie": false,
   "video_type": null,
   "video_codec": null,
   "files": [
@@ -1889,6 +2060,12 @@ raw_announce_urls? | array of arrays of strings | Tiered announce URLs. Ignored 
       "releaseGroup": "ExampleGroup"
     },
     "auto_title": "[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0]",
+    "fixed_title": "[ExampleGroup] Media Title - 01 [WEB 1080p x265][FLAC 2.0]",
+    "movie": false, // detected from the title: false = series (Sonarr), true = movie (Radarr)
+    "batch": false, // detected from the episodes: whether they fill a whole TheTVDB season or AniList entry
+    "title_suggestions": [], // only populated when the title resolved to nothing
+    "title_rewritten": false,
+    "title_rules_applied": [],
     "upgraded_torrents": []
   }
 }
