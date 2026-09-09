@@ -53,7 +53,7 @@ We will try to figure out what show/film you are uploading based on the torrent 
 
 When nothing matches, the Preview box offers corrected titles if we can find a match in our database. Most of the time, these are accurate, but you should check that they match what you're uploading.
 
-If we have seen a title similar to yours before, it might auto-correct your title to ensure it parses correctly.
+If we have seen a title similar to yours before or find a known fixable issue, it might auto-correct your title to ensure it parses correctly.
 !!!
 
 Not sure what to put in each field? You can find more information about each field here:
@@ -76,6 +76,10 @@ Sometimes, your upload will have to be approved by a staff member before it is v
 Your upload may be held for approval if:
 - It's your first time uploading.
 - We could not work out which show or film it is from the title.
+
+!!!success
+If your upload was held **only** because we could not work out what it was, editing the title so that it does match a show or film approves the torrent immediately.
+!!!
 
 Once approved, your torrent enters the RSS and Torznab feeds at that moment rather than at its original upload time, so automation software still picks it up even if approval took a while.
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.6.0.842043384697">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.6.0.842307113048">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.6.0">
@@ -37,11 +37,11 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.6.0.842043384697" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.6.0.842307113048" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.6.0.842043384697" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.6.0.842307113048" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.6.0.842043384697" data-turbo-eval="false" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.6.0.842307113048" data-turbo-eval="false" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -332,7 +332,7 @@ The other tracker can be any public tracker. It&#x27;s required to have 2 tracke
             <h5>Media Parsing</h5>
 <p>We will try to figure out what show/film you are uploading based on the torrent title. Internally, we use Sonarr/Radarr/Anilist to do this, meaning if we can&#x27;t parse it, neither will other users! Try to make sure that we can parse it correctly by following the naming conventions.</p>
 <p>When nothing matches, the Preview box offers corrected titles if we can find a match in our database. Most of the time, these are accurate, but you should check that they match what you&#x27;re uploading.</p>
-<p>If we have seen a title similar to yours before, it might auto-correct your title to ensure it parses correctly.</p>
+<p>If we have seen a title similar to yours before or find a known fixable issue, it might auto-correct your title to ensure it parses correctly.</p>
         </div>
     </div>
 </div>
@@ -357,6 +357,22 @@ The other tracker can be any public tracker. It&#x27;s required to have 2 tracke
 <li>It&#x27;s your first time uploading.</li>
 <li>We could not work out which show or film it is from the title.</li>
 </ul>
+<div class="flex mb-6">
+    <div class="shrink-0 w-1.5 rounded-tl-lg rounded-bl-lg bg-callout-success"></div>
+    <div class="flex w-full py-4 border border-l-0 rounded-tr-lg rounded-br-lg doc-callout bg-callout-base-bg border-callout-base-border" role="alert">
+        <div class="flex items-center ml-4 h-7">
+            <svg xmlns="http://www.w3.org/2000/svg" class="block text-callout-success" width="22" height="22" viewBox="0 0 24 24" role="presentation">
+                <g fill="currentColor"><g>
+                    <path d="M21 9.09c-.55 0-1 .45-1 1v.92c0 4.96-4.04 8.99-9 8.99-4.97 0-9-4.04-9-9s4.04-9 9-9c1.27 0 2.5.26 3.66.78.51.22 1.1 0 1.32-.51.23-.5 0-1.1-.51-1.32C14.06.32 12.56 0 11.01 0H11C4.94 0 0 4.93 0 10.99 0 17.06 4.93 22 10.99 22H11c6.06 0 11-4.93 11-10.99v-.92c0-.56-.45-1-1-1z"></path>
+                    <path d="M8.71 9.31a.996.996 0 10-1.41 1.41l3 3c.19.19.44.29.71.29.27 0 .52-.11.71-.29l10-10.01a.996.996 0 10-1.41-1.41L11 11.6 8.71 9.31z"></path>
+                </g></g>
+            </svg>
+        </div>
+        <div class="pr-5 ml-3 w-full">
+<p>If your upload was held <strong>only</strong> because we could not work out what it was, editing the title so that it does match a show or film approves the torrent immediately.</p>
+        </div>
+    </div>
+</div>
 <p>Once approved, your torrent enters the RSS and Torznab feeds at that moment rather than at its original upload time, so automation software still picks it up even if approval took a while.</p>
 <p>Please be patient while staff reviews your upload. This can take anywhere from a few minutes to up to 24 hours, depending on how busy the staff are. You will receive a notification when your upload is approved or rejected.</p>
 <div class="flex mb-6">

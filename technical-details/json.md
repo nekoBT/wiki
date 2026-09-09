@@ -1135,6 +1135,7 @@ Returns information about a specific torrent, including its title, description, 
     ],
     "can_edit": false,
     "waiting_approve": false,
+    "auto_approve_on_fix": false, // true when editing the title so it matches a show/film would approve this torrent outright
     "disable_comments": false,
     "lock_comments": false,
     "disable_edits": false,
@@ -1220,7 +1221,10 @@ deletion_reason? | string | Reason for deletion (max 256 characters)
 +++ Successful Response (200)
 ```json
 {
-  "error": false
+  "error": false,
+  "data": {
+    "auto_approved": false // true when this edit resolved the media and took the torrent out of the approval queue
+  }
 }
 ```
 +++ Unsuccessful Response (400)
@@ -1864,6 +1868,8 @@ Our system and ruleset will attempt to correct the title and parse it, and retur
 
 - `fixed_title` is the title the site will store and display. It equals the submitted title when no rule applied.
 - `title_rewritten` is `true` when `fixed_title` differs from what was submitted.
+- `title_rewritten_reason` says what was changed in a few words.
+- `title_rewritten_reason_extended` is the same but more in-depth.
 - `title_rules_applied` lists each rule that fired, in order, as `{ rule_id, name, before, after }`.
 
 `parsedData` and `auto_title` are always derived from the corrected title. Clients should show `fixed_title` to the user rather than silently replacing what they typed.
@@ -1999,6 +2005,8 @@ raw_announce_urls? | array of arrays of strings | Tiered announce URLs. Ignored 
     "movie": false, // detected from the title: false = series (Sonarr), true = movie (Radarr)
     "batch": false, // detected from the episodes: whether they fill a whole TheTVDB season or AniList entry
     "title_suggestions": [], // only populated when the title resolved to nothing
+    "title_rewritten_reason": null, // a few words per change, or null if the title was not changed
+    "title_rewritten_reason_extended": null, // longer
     "title_rewritten": false,
     "title_rules_applied": [],
     "upgraded_torrents": []

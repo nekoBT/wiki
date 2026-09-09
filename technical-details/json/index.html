@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.6.0.842043384697">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.6.0.842307113048">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.6.0">
@@ -37,12 +37,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.6.0.842043384697" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.6.0.842307113048" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.6.0.842043384697" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.6.0.842307113048" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.6.0.842043384697" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.6.0.842043384697" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.6.0.842307113048" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.6.0.842307113048" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -1703,6 +1703,7 @@ offset? | integer | Number of results to skip for pagination (default: 0)">
     ],
     &quot;can_edit&quot;: false,
     &quot;waiting_approve&quot;: false,
+    &quot;auto_approve_on_fix&quot;: false, // true when editing the title so it matches a show/film would approve this torrent outright
     &quot;disable_comments&quot;: false,
     &quot;lock_comments&quot;: false,
     &quot;disable_edits&quot;: false,
@@ -1913,7 +1914,10 @@ deletion_reason? | string | Reason for deletion (max 256 characters)">
 <template #title>Successful Response (200)</template>
 <div class="codeblock-wrapper"><doc-codeblock>
 <pre translate="no" class="language-json"><code v-pre class="language-json">{
-  &quot;error&quot;: false
+  &quot;error&quot;: false,
+  &quot;data&quot;: {
+    &quot;auto_approved&quot;: false // true when this edit resolved the media and took the torrent out of the approval queue
+  }
 }</code></pre>
 </doc-codeblock></div>
 </doc-tab>
@@ -3139,6 +3143,8 @@ ignore_warnings? | boolean | Whether to ignore validation warnings, and proceed 
 <ul>
 <li><code translate="no" v-pre>fixed_title</code> is the title the site will store and display. It equals the submitted title when no rule applied.</li>
 <li><code translate="no" v-pre>title_rewritten</code> is <code translate="no" v-pre>true</code> when <code translate="no" v-pre>fixed_title</code> differs from what was submitted.</li>
+<li><code translate="no" v-pre>title_rewritten_reason</code> says what was changed in a few words.</li>
+<li><code translate="no" v-pre>title_rewritten_reason_extended</code> is the same but more in-depth.</li>
 <li><code translate="no" v-pre>title_rules_applied</code> lists each rule that fired, in order, as <code translate="no" v-pre>{ rule_id, name, before, after }</code>.</li>
 </ul>
 <p><code translate="no" v-pre>parsedData</code> and <code translate="no" v-pre>auto_title</code> are always derived from the corrected title. Clients should show <code translate="no" v-pre>fixed_title</code> to the user rather than silently replacing what they typed.</p>
@@ -3374,6 +3380,8 @@ raw_announce_urls? | array of arrays of strings | Tiered announce URLs. Ignored 
     &quot;movie&quot;: false, // detected from the title: false = series (Sonarr), true = movie (Radarr)
     &quot;batch&quot;: false, // detected from the episodes: whether they fill a whole TheTVDB season or AniList entry
     &quot;title_suggestions&quot;: [], // only populated when the title resolved to nothing
+    &quot;title_rewritten_reason&quot;: null, // a few words per change, or null if the title was not changed
+    &quot;title_rewritten_reason_extended&quot;: null, // longer
     &quot;title_rewritten&quot;: false,
     &quot;title_rules_applied&quot;: [],
     &quot;upgraded_torrents&quot;: []
