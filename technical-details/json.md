@@ -1404,7 +1404,8 @@ Returns comments for a specific torrent.
 Returns the torrent file for a specific torrent.
 
 When authenticated, the returned torrent file will be a private torrent with the user's passkey included in the announce URL.<br>
-You can specify `?public=true` to get the torrent file without your torrent key.
+You can specify `?public=true` to get the torrent file without your torrent key.<br>
+If you aren't authenticated with a cookie, you can pass your API key as the `apikey` query parameter instead.
 
 This endpoint returns the raw torrent file data with a `application/x-bittorrent` content type.
 

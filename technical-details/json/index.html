@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.6.0.842307113048">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.6.0.842906887134">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.6.0">
@@ -37,12 +37,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.6.0.842307113048" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.6.0.842906887134" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.6.0.842307113048" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.6.0.842906887134" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.6.0.842307113048" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.6.0.842307113048" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.6.0.842906887134" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.6.0.842906887134" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -2167,7 +2167,8 @@ deletion_reason? | string | Reason for deletion (max 256 characters)">
 </span></p>
 <p>Returns the torrent file for a specific torrent.</p>
 <p>When authenticated, the returned torrent file will be a private torrent with the user&#x27;s passkey included in the announce URL.<br>
-You can specify <code translate="no" v-pre>?public=true</code> to get the torrent file without your torrent key.</p>
+You can specify <code translate="no" v-pre>?public=true</code> to get the torrent file without your torrent key.<br>
+If you aren&#x27;t authenticated with a cookie, you can pass your API key as the <code translate="no" v-pre>apikey</code> query parameter instead.</p>
 <p>This endpoint returns the raw torrent file data with a <code translate="no" v-pre>application/x-bittorrent</code> content type.</p>
 <h3 id="bulk-download-torrents">Bulk Download Torrents</h3>
 <p><span class="no-link inline-flex align-middle items-center justify-center font-medium leading-none whitespace-nowrap text-badge-success-text bg-badge-success border border-badge-success-border h-6 px-2 text-xs rounded-md">

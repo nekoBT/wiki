@@ -61,11 +61,15 @@ group_parents? | boolean | Set to `true` to include torrents from parent groups 
 uploader_id? | string | Comma-separated uploader IDs to filter for.
 uploader_uploads? | boolean | Set to *`true`* to return torrents where the uploader is the uploader or `false` to exclude them.
 uploader_contributions? | boolean | Set to `true` to return torrents where the uploader is not the uploader or *`false`* to exclude them.
+link? | string | Set to `torrent` to return `.torrent` download links instead of *`magnet`* links. The `magneturl` attribute is left out in this mode. If you supplied a valid `apikey`, it is included in each download link so the file contains your private announce URL.
 
 ###### *italics* = default, ? = optional
 
 <br>
 
 !!!info
-The Torznab API only provides magnet links, not torrent files, to ensure torrent clients use the auto title, and not the torrent title (important for tag matching).
+By default, the Torznab API provides magnet links rather than torrent files, so that torrent clients use the auto title and not the torrent title (important for tag matching). Only use `link=torrent` if your setup needs torrent files.
+!!!
+!!!warning
+With `link=torrent` and an `apikey`, each download link contains your API key. Don't share the feed output.
 !!!
