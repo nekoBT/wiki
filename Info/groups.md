@@ -16,9 +16,9 @@ If you want to have a release group in your torrent titles, you must have a grou
 !!!
 
 !!!danger
-You are not allowed to snipe or impersonate other active groups, even if they aren't registered on nekoBT.<br>
+You are not allowed to impersonate other groups, even if they aren't registered on nekoBT.<br>
 Doing so could result in your group name being revoked.<br>
-However, if a group is inactive and/or not contactable, you may create a group with their tag and request a Staff Key to import their old torrents. See more on [Rule 11](https://wiki.nekobt.to/rules).
+You can import an existing groups' releases using Open Groups, read more below.
 !!!
 
 ### Creating a Group
@@ -26,6 +26,23 @@ You can create a group [here](https://nekobt.to/groups/new).
 !!!warning
 Be careful when choosing your tag, as it cannot be changed later.
 !!!
+
+### Open Groups
+An open group is a group for a release group that isn't on nekoBT yet. Anyone who has passed the [upload test](https://nekobt.to/upload/test) can upload that group's releases to it. When the real group turns up, staff hand it over to them.
+
+!!!warning
+Only upload the group's **own** releases to an open group. Your own re-encodes or muxes go under your own tag, with the open group added as a secondary group. See [Rule 16](/rules).
+!!!
+
+**Creating one:** tick **Open group** when you [create a group](https://nekobt.to/groups/new). Open groups are always public, and only staff can rename them or turn the setting off, so be sure before you tick it.
+
+**Uploading:** open the group's page and click **Upload**. You'll be asked to confirm that the torrent only contains that group's releases. Batches are fine, as long as everything in them is theirs.
+
+**Importing from Nyaa:** if staff have set up a Nyaa account or search for the group, its page shows an **Import from Nyaa** button that anyone who has uploaded at least one approved torrent can use. Open a ticket to get it linked.
+
+**Claiming a group:** if an open group is named after your group, click **Claim group** on its page and give some proof that it's yours (website, Discord, Nyaa profile, socials). Once a moderator approves it, you become the leader, its torrents move to you, and the people who uploaded them stay credited as contributors.
+
+If someone creates an open group in bad faith or uploads things a group never released, report it.
 
 ### Anonymity Level
 You can choose the anonymity level of your group:
@@ -41,6 +58,7 @@ You can invite registered users and unregistered users to your group.
 - When inviting a user, an invite is created for them.
 - If the user is registered, they will receive a notification with the invite.
 - If the user is unregistered, you'll need to send them the invite link through the group edit page.
+- Crediting a nekoBT user who isn't in the group on an upload also invites them. See [Staff credits](/Info/uploading#staff-credits).
 
 ### Primary vs Secondary Groups
 Torrents can have a primary group and secondary groups.
@@ -60,6 +78,8 @@ Groups have 4 levels of membership:
 - **Leader**: Can do everything.
 
 Only the leader can manage permissions.
+
+In an open group, the leader and admins can edit and delete every torrent in the group, including ones other people uploaded.
 
 ### Group Links
 You can link groups together to show parent-child relationships between groups. This can be useful when 2 groups come together to work on a project.

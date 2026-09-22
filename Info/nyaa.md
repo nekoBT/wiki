@@ -29,10 +29,11 @@ Make sure to read all instructions before importing torrents from Nyaa.
 !!!info
 Before you can import, you must have uploaded at least one torrent to nekoBT, and had it approved.
 This is to ensure that you understand how uploading works on nekoBT.
+This also applies to importing into an [open group](/Info/groups#open-groups).
 !!!
 
 !!!tip Inactive Groups
-If a group is inactive and/or not contactable, you may make a group with their tag and request a Staff Key to import their old torrents. See more on [Rule 11](https://wiki.nekobt.to/rules).
+If a group is inactive and/or not contactable, you may make an open group with their tag and, if required, request staff to link with Nyaa to import their old torrents.
 !!!
 
 Importing can be done in three ways:
@@ -42,6 +43,7 @@ Method | Description | Can Import Anonymous & Hidden Torrents
 Linked Account | Uses your linked Nyaa account to import all torrents from that account. | ❌
 Cookie Verification | You will need to provide your Nyaa `session` cookie. nekoBT will use this to import all torrents from that account. | ✅
 Staff Key | Allows you to import torrents based on an account or search query. Contact staff to obtain a staff key. | 🟠 (anon only)
+Open Group | Uses the Nyaa account and/or query staff configured on an [open group](/Info/groups#open-groups). No linking or key needed, but everything imported goes into that group. | 🟠 (if using query)
 
 
 
