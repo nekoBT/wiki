@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="color-scheme" content="light dark">
-    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.6.0.842906887134">
+    <meta name="turbo-cache-control" content="no-cache" data-turbo-track="reload" data-track-token="4.6.0.843425985211">
 
     <!-- See retype.com -->
     <meta name="generator" content="Retype 4.6.0">
@@ -37,12 +37,12 @@
 
     <script data-cfasync="false">(function(){var cl=document.documentElement.classList,ls=localStorage.getItem("retype_scheme"),hd=cl.contains("dark"),hl=cl.contains("light"),wm=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(ls==="dark"||(!ls&&wm&&!hd&&!hl)){cl.remove("light");cl.add("dark")}else if(ls==="light"||(!ls&&!wm&&!hd&&!hl)){cl.remove("dark");cl.add("light")}})();</script>
 
-    <link href="../../resources/css/retype.css?v=4.6.0.842906887134" rel="stylesheet">
+    <link href="../../resources/css/retype.css?v=4.6.0.843425985211" rel="stylesheet">
 
-    <script data-cfasync="false" src="../../resources/js/config.js?v=4.6.0.842906887134" data-turbo-eval="false" defer></script>
+    <script data-cfasync="false" src="../../resources/js/config.js?v=4.6.0.843425985211" data-turbo-eval="false" defer></script>
     <script data-cfasync="false" src="../../resources/js/retype.js?v=4.6.0" data-turbo-eval="false" defer></script>
-    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.6.0.842906887134" data-turbo-eval="false" defer></script>
-    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.6.0.842906887134" defer></script>
+    <script id="lunr-js" data-cfasync="false" src="../../resources/js/lunr.js?v=4.6.0.843425985211" data-turbo-eval="false" defer></script>
+    <script id="prism-js" data-cfasync="false" src="../../resources/js/prism.js?v=4.6.0.843425985211" defer></script>
 
     <meta name="darkreader-lock" />
     <style>
@@ -354,6 +354,9 @@ referrer-policy: same-origin</code></pre>
     &quot;tagline&quot;: &quot;Example fansub group&quot;,
     &quot;description&quot;: &quot;This is an example fansub group.&quot;,
     &quot;anonymous&quot;: 0,
+    &quot;open&quot;: false, // Whether this is an open group (anyone with upload permission may upload into it)
+    &quot;manual_uploads&quot;: true, // Only meaningful while open. false = only Nyaa import allowed
+    &quot;nyaa_import_enabled&quot;: false, // Whether the open group has a Nyaa import set up
     &quot;members&quot;: [
       {
         &quot;id&quot;: &quot;1234567890&quot;,
@@ -361,6 +364,7 @@ referrer-policy: same-origin</code></pre>
         &quot;invite&quot;: false,
         &quot;invite_key&quot;: null, // Only present if user is group leader/admin
         &quot;invite_has_recipient&quot;: null, // Only present if user is group leader/admin
+        &quot;invite_recipient&quot;: { &quot;id&quot;: &quot;123456789&quot;, &quot;display_name&quot;: &quot;ExampleUser&quot; }, // Only present if user is group leader/admin and the invite is assigned to a user
         &quot;display_name&quot;: &quot;ExampleUser&quot;,
         &quot;pfp_hash&quot;: &quot;abcdef1234567890abcdef1234567890abcdef12&quot;,
         &quot;leader&quot;: true,
@@ -381,6 +385,7 @@ referrer-policy: same-origin</code></pre>
           &quot;pfp_hash&quot;: null,
           &quot;tagline&quot;: &quot;&quot;,
           &quot;anonymous&quot;: 0,
+          &quot;open&quot;: false, // Whether the linked group is an open group
           &quot;active&quot;: true, // Whether the link has been approved by both groups
           &quot;initiator&quot;: false // Whether the child group was the one to initiate the link
         }
@@ -392,6 +397,9 @@ referrer-policy: same-origin</code></pre>
     ],
     &quot;can_edit&quot;: false,
     &quot;can_leave&quot;: false,
+    &quot;can_upload&quot;: false, // Whether you may upload with this group as the primary group
+    &quot;can_import&quot;: false, // Whether you may run this open group's configured Nyaa import
+    &quot;can_claim&quot;: false, // Whether you may open a claim ticket for this open group
     &quot;can_delete&quot;: null, // Only present if user is group leader
     &quot;stats&quot;: {
       &quot;uploads&quot;: 50,
@@ -548,6 +556,7 @@ order? | string | Order of results. `asc` or *`desc`*.">
         &quot;name&quot;: &quot;example-group&quot;,
         &quot;tag&quot;: &quot;example-group&quot;,
         &quot;display_tag&quot;: &quot;Example Group&quot;,
+        &quot;open&quot;: false, // Whether this is an open group
         &quot;pfp_hash&quot;: &quot;abcdefghijklmnopqrstuvwxyz123456&quot;,
         &quot;tagline&quot;: &quot;An example group tagline.&quot;,
         &quot;member_count&quot;: &quot;5&quot;,
@@ -1179,6 +1188,7 @@ entry rather than TheTVDB/TMDB, and an extra <code translate="no" v-pre>anilist<
         &quot;display_name&quot;: &quot;Example&quot;,
         &quot;tag&quot;: &quot;example&quot;,
         &quot;display_tag&quot;: &quot;Example&quot;,
+        &quot;open&quot;: false, // Whether this is an open group
         &quot;tagline&quot;: &quot;Example fansub group&quot;,
         &quot;pfp_hash&quot;: null,
         &quot;episodes&quot;: { // Episodes worked on by this group
@@ -1640,6 +1650,7 @@ offset? | integer | Number of results to skip for pagination (default: 0)">
         &quot;id&quot;: &quot;1234567890&quot;,
         &quot;name&quot;: &quot;example group&quot;,
         &quot;display_name&quot;: &quot;Example Group&quot;,
+        &quot;display_tag&quot;: &quot;ExampleGroup&quot;,
         &quot;pfp_hash&quot;: null,
         &quot;tagline&quot;: &quot;An example group tagline.&quot;,
         &quot;members&quot;: [
@@ -1654,6 +1665,7 @@ offset? | integer | Number of results to skip for pagination (default: 0)">
           }
         ],
         &quot;uploading_group&quot;: true,
+        &quot;open&quot;: false, // Whether this group is an open group
         &quot;role&quot;: null
       }
     ],
@@ -1746,7 +1758,7 @@ video_codec? | number or null | Video codec category
 audio_lang? | string | Comma-separated list of audio languages
 sub_lang? | string | Comma-separated list of subtitle languages
 fsub_lang? | string | Comma-separated list of fansub languages
-anonymous? | boolean | Whether the upload should be anonymous
+anonymous? | boolean | Whether the upload should be anonymous, forced to false when the primary group is an open group
 hidden? | boolean | Whether the torrent should be hidden
 hardsub? | boolean | Whether the torrent contains hardsubbed video
 otl? | boolean | Whether the torrent's subtitles contains an original translation
@@ -1815,7 +1827,7 @@ deletion_reason? | string | Reason for deletion (max 256 characters)">
 <tr>
 <td>anonymous?</td>
 <td>boolean</td>
-<td>Whether the upload should be anonymous</td>
+<td>Whether the upload should be anonymous, forced to false when the primary group is an open group</td>
 </tr>
 <tr>
 <td>hidden?</td>
@@ -2304,7 +2316,7 @@ video_codec? | number or null | Video codec category
 audio_lang? | string | Comma-separated list of audio languages (max 256 characters)
 sub_lang? | string | Comma-separated list of subtitle languages (max 256 characters)
 fsub_lang? | string | Comma-separated list of fansub languages (max 256 characters)
-anonymous? | boolean | Whether the uploads should be anonymous
+anonymous? | boolean | Whether the upload should be anonymous, forced to false when the primary group is an open group
 hidden? | boolean | Whether the torrents should be hidden
 hardsub? | boolean | Whether the torrents contain hardsubbed video
 mtl? | boolean | Whether the torrents contain machine translated subtitles
@@ -2372,7 +2384,7 @@ deletion_reason? | string | Reason for deletion (max 256 characters)">
 <tr>
 <td>anonymous?</td>
 <td>boolean</td>
-<td>Whether the uploads should be anonymous</td>
+<td>Whether the upload should be anonymous, forced to false when the primary group is an open group</td>
 </tr>
 <tr>
 <td>hidden?</td>
@@ -3546,6 +3558,7 @@ mediainfo | string or object | Mediainfo data as plain text or JSON object">
         &quot;pfp_hash&quot;: &quot;abdef1234567890abcdef1234567890abcdef12&quot;,
         &quot;tag&quot;: &quot;examplegroup&quot;,
         &quot;display_tag&quot;: &quot;ExampleGroup&quot;,
+        &quot;open&quot;: false, // Whether this is an open group
         &quot;admin&quot;: false,
         &quot;leader&quot;: false,
         &quot;regular&quot;: false
@@ -3711,6 +3724,8 @@ hide_peer_amount? | boolean | Whether to hide the exact amount of data you've up
       &quot;display_tag&quot;: &quot;Example&quot;,
       &quot;description&quot;: &quot;Example group description.&quot;,
       &quot;anonymous&quot;: 0,
+      &quot;open&quot;: false, // Whether this is an open group
+      &quot;manual_uploads&quot;: true, // Only meaningful while open, false = nyaa import only
       &quot;admin&quot;: false, // Whether the user is an admin of the group
       &quot;leader&quot;: false,
       &quot;regular&quot;: false,

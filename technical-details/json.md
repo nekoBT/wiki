@@ -188,6 +188,9 @@ Returns information about a specific group, including its name, description, mem
     "tagline": "Example fansub group",
     "description": "This is an example fansub group.",
     "anonymous": 0,
+    "open": false, // Whether this is an open group (anyone with upload permission may upload into it)
+    "manual_uploads": true, // Only meaningful while open. false = only Nyaa import allowed
+    "nyaa_import_enabled": false, // Whether the open group has a Nyaa import set up
     "members": [
       {
         "id": "1234567890",
@@ -195,6 +198,7 @@ Returns information about a specific group, including its name, description, mem
         "invite": false,
         "invite_key": null, // Only present if user is group leader/admin
         "invite_has_recipient": null, // Only present if user is group leader/admin
+        "invite_recipient": { "id": "123456789", "display_name": "ExampleUser" }, // Only present if user is group leader/admin and the invite is assigned to a user
         "display_name": "ExampleUser",
         "pfp_hash": "abcdef1234567890abcdef1234567890abcdef12",
         "leader": true,
@@ -215,6 +219,7 @@ Returns information about a specific group, including its name, description, mem
           "pfp_hash": null,
           "tagline": "",
           "anonymous": 0,
+          "open": false, // Whether the linked group is an open group
           "active": true, // Whether the link has been approved by both groups
           "initiator": false // Whether the child group was the one to initiate the link
         }
@@ -226,6 +231,9 @@ Returns information about a specific group, including its name, description, mem
     ],
     "can_edit": false,
     "can_leave": false,
+    "can_upload": false, // Whether you may upload with this group as the primary group
+    "can_import": false, // Whether you may run this open group's configured Nyaa import
+    "can_claim": false, // Whether you may open a claim ticket for this open group
     "can_delete": null, // Only present if user is group leader
     "stats": {
       "uploads": 50,
@@ -327,6 +335,7 @@ order? | string | Order of results. `asc` or *`desc`*.
         "name": "example-group",
         "tag": "example-group",
         "display_tag": "Example Group",
+        "open": false, // Whether this is an open group
         "pfp_hash": "abcdefghijklmnopqrstuvwxyz123456",
         "tagline": "An example group tagline.",
         "member_count": "5",
@@ -738,6 +747,7 @@ entry rather than TheTVDB/TMDB, and an extra `anilist` object is included.
         "display_name": "Example",
         "tag": "example",
         "display_tag": "Example",
+        "open": false, // Whether this is an open group
         "tagline": "Example fansub group",
         "pfp_hash": null,
         "episodes": { // Episodes worked on by this group
@@ -1072,6 +1082,7 @@ Returns information about a specific torrent, including its title, description, 
         "id": "1234567890",
         "name": "example group",
         "display_name": "Example Group",
+        "display_tag": "ExampleGroup",
         "pfp_hash": null,
         "tagline": "An example group tagline.",
         "members": [
@@ -1086,6 +1097,7 @@ Returns information about a specific torrent, including its title, description, 
           }
         ],
         "uploading_group": true,
+        "open": false, // Whether this group is an open group
         "role": null
       }
     ],
@@ -1171,7 +1183,7 @@ video_codec? | number or null | Video codec category
 audio_lang? | string | Comma-separated list of audio languages
 sub_lang? | string | Comma-separated list of subtitle languages
 fsub_lang? | string | Comma-separated list of fansub languages
-anonymous? | boolean | Whether the upload should be anonymous
+anonymous? | boolean | Whether the upload should be anonymous, forced to false when the primary group is an open group
 hidden? | boolean | Whether the torrent should be hidden
 hardsub? | boolean | Whether the torrent contains hardsubbed video
 otl? | boolean | Whether the torrent's subtitles contains an original translation
@@ -1477,7 +1489,7 @@ video_codec? | number or null | Video codec category
 audio_lang? | string | Comma-separated list of audio languages (max 256 characters)
 sub_lang? | string | Comma-separated list of subtitle languages (max 256 characters)
 fsub_lang? | string | Comma-separated list of fansub languages (max 256 characters)
-anonymous? | boolean | Whether the uploads should be anonymous
+anonymous? | boolean | Whether the upload should be anonymous, forced to false when the primary group is an open group
 hidden? | boolean | Whether the torrents should be hidden
 hardsub? | boolean | Whether the torrents contain hardsubbed video
 mtl? | boolean | Whether the torrents contain machine translated subtitles
@@ -2119,6 +2131,7 @@ Returns information about a specific user, including their username, profile pic
         "pfp_hash": "abdef1234567890abcdef1234567890abcdef12",
         "tag": "examplegroup",
         "display_tag": "ExampleGroup",
+        "open": false, // Whether this is an open group
         "admin": false,
         "leader": false,
         "regular": false
@@ -2209,6 +2222,8 @@ Returns the groups that a user is a member of.
       "display_tag": "Example",
       "description": "Example group description.",
       "anonymous": 0,
+      "open": false, // Whether this is an open group
+      "manual_uploads": true, // Only meaningful while open, false = nyaa import only
       "admin": false, // Whether the user is an admin of the group
       "leader": false,
       "regular": false,

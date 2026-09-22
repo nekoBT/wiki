@@ -2,6 +2,10 @@
 
 Let's pretend this is your first time uploading a torrent to nekoBT. Here's a step-by-step guide on how to do it.
 
+!!!tip Uploading to a group that isn't yours
+If a release group isn't on nekoBT yet, someone may have set up an [open group](/Info/groups#open-groups) for them first.
+!!!
+
 ### 1. Create an account and read the rules
 Before you can upload, you must create an account and read the [rules](/rules).
 

@@ -1,6 +1,6 @@
 # Site Rules
 
-Last Updated: 22 June 2026
+Last Updated: 22 September 2026
 
 You can view all changes to the rules [here](https://github.com/nekoBT/wiki/commits/main/rules.md).
 
@@ -35,7 +35,8 @@ This list is not exhaustive. Staff may decide that your actions negatively affec
 10. **Torrent titles (except Romaji) must be in English**.
 11. **No impersonation**. You aren't allowed to impersonate staff members, claim to be a staff member, or use well-known group names without permission of the group (even if they aren't registered on the site).
     - **Exception:** If a group is inactive and/or not contactable, you may use their tag and request a Staff Key to import their old torrents. You are not allowed to upload your own torrents under their tag. Staff may refuse and delete the group if they believe you have bad intent or don't have significant history on the site.
-    - If the group becomes active again, you must transfer ownership of the group. Staff will assist with this process if needed (ex: hard to verify the real owner).  
+    - If the group becomes active again, you must transfer ownership of the group. Staff will assist with this process if needed (ex: hard to verify the real owner).
+    - See also [Open Groups](/Info/groups#open-groups), which is the supported way to collect an unregistered group's releases.  
 12. **"Bad" video or audio quality is not allowed.** This is subjective, but use common sense. Torrents where the video or audio quality has been significantly degraded, due to poor encoding, are not allowed. Generally, don't do these, *just for the sake of it*:
     - No AI upscaling (like 1080p->4k, downscaling and rescaling is fine if you know what you're doing).
     - No increasing resolution from the original source (like 720p->1080p, or 1080p->4k), unless you have a good reason to do so.
@@ -52,3 +53,7 @@ This list is not exhaustive. Staff may decide that your actions negatively affec
     - Distributing your torrent key to others, or using someone else's torrent key.
 15. **Multi-season/complete packs** are allowed, if the series has been completed, and there is no current indication that the series will continue.
     - Packs containing both TV anime and movies are allowed, as long as you include all relevant content related to the series.
+16. **Only upload a group's own releases to their [open group](/Info/groups#open-groups).** An open group is held on behalf of a release group that isn't on the site yet, so what goes under its tag MUST be that group's work.
+    - **Batching is allowed.** Several episodes or a whole season of that group's releases can go in one torrent.
+    - Re-encodes, remuxes and any edit of your own belong under your own tag, not theirs, however small the change. Filename and title changes are okay, as long as they are reasonable.
+    - Uploading content the group didn't release under their tag is treated as impersonation, under Rule 11.
